@@ -15,7 +15,16 @@
 
     body {
       margin: 0;
+      width: 100%;
     }
+
+    nav {
+      background-color: black;
+      color: white;
+      padding-left: calc(50% - 300px);
+      min-width: 600px;
+    }
+
 
     header {
       width: 100%;
@@ -73,6 +82,7 @@
 
 
     .p3 {
+      padding: 0;
       width: 600px;
       margin: auto;
       border-bottom: 1px dotted;
@@ -92,10 +102,83 @@
     #d1 div:hover {
       background-color: red;
     }
+
+
+
+    /* BFC --- Block Format Context */
+    /* 块级格式化上下文
+       1. 它不会与自己的子元素margin重叠
+       2. 它自身形成了一个布局单元(布局此元素的内部时,不用考虑其外部, 可以理解为完全隔离的. 可以把此元素理解为一个iframe)
+    */
+
+    /* overflow的效果会触发BFC */
+
+    hr {
+      margin: 0;
+    }
+
+    .wrap {
+      width: 600px;
+      margin: auto;
+    }
+
+    ul.tabs {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    ul.tabs li {
+      box-sizing: border-box;
+      width: 180px;
+      height: 40px;
+      border: 3px solid;
+      background-color: pink;
+      margin-bottom: 15px;
+      text-align: center;
+      line-height: 34px;
+    }
+
+    ul.tabs li:nth-child(n+5) {
+      margin-left: 210px;
+    }
+
+    ul.tabs li:nth-child(n+9) {
+      margin-left: 420px;
+    }
+
+    ul.tabs li:nth-child(4n+5) {
+      margin-top: -220px;
+    }
+
+    ul.tabs li:hover {
+      background-color: red;
+    }
+
+
+
+
+
+    ul.links {
+      list-style: none;
+      padding: 0;
+      overflow: hidden;
+      /* background-color: magenta; */
+    }
+
+    .links li {
+      border-bottom: 1px dotted;
+      margin-bottom: -1px;
+    }
+
+    footer {
+      text-align: center;
+      background-color: mediumorchid;
+    }
   </style>
 </head>
 
-<body style="">
+<body>
   <header>
     <p class="p1">hello world 请调整浏览器窗口大小查看效果</p>
   </header>
@@ -123,6 +206,52 @@
   <p class="p3 p4">link</p>
   <p class="p5">©版权所有<br>本页所有布局均使用块元素</p>
 
+
+  <hr>
+  <nav>hello world 请调整浏览器窗口大小查看效果</nav>
+  <div class="wrap">
+
+    <p class="pagrah">页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体
+      宽度600px
+      页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体
+      宽度600px
+      页面主体 宽度600px</p>
+
+    <ul class="tabs">
+      <li>宽180高40(包含边框)</li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+
+    <ul class="links">
+      <li>link</li>
+      <li>link</li>
+      <li>link</li>
+      <li>link</li>
+      <li>link</li>
+    </ul>
+
+
+  </div>
+
+  <footer>
+    ©版权所有<br>本页所有布局均使用块元素
+  </footer>
 </body>
+
+
+
+<!--
+https://jsbin.com/kogupek/1/edit?html,css,output
+css-block-layout.html实现 -->
 
 </html>
