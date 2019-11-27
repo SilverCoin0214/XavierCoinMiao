@@ -175,6 +175,45 @@
       text-align: center;
       background-color: mediumorchid;
     }
+
+
+
+    /* 行内布局作业 */
+    /* inline-bolock
+    从外面看: 它是行内替换元素.
+    从里面看: 它的内容认为是在一个块元素里
+
+    有内容时, 基线是内容的最后一行的基线.
+    无内容时, 将margin-box底部作为基线
+     */
+    div.tabs2 {
+      width: 600px;
+      margin: auto;
+      font-size: 0;
+    }
+
+    span.t2 {
+      display: inline-block;
+      width: 180px;
+      height: 40px;
+      background-color: palevioletred;
+      border: 3px solid;
+      box-sizing: border-box;
+      text-align: center;
+      line-height: 34px;
+      margin-top: 15px;
+      font-size: 13px;
+    }
+
+    span.t2:nth-child(2n) {
+      background-color: peachpuff;
+      margin-right: 30px;
+      margin-left: 30px;
+    }
+
+    span.t2:hover {
+      background-color: greenyellow;
+    }
   </style>
 </head>
 
@@ -199,6 +238,22 @@
     <div>产品</div>
     <div>产品</div>
   </div>
+
+  <div class="tabs2">
+    <span class="t2">宽180高40(包含边框)</span>
+    <span class="t2">产品</span>
+    <span class="t2">产品</span> <br>
+    <span class="t2">4</span>
+    <span class="t2">5</span>
+    <span class="t2">6</span> <br>
+    <span class="t2">7</span>
+    <span class="t2">8</span>
+    <span class="t2">9</span> <br>
+    <span class="t2">10</span>
+    <span class="t2">11</span>
+    <span class="t2">12</span>
+  </div>
+
   <p class="p3">link</p>
   <p class="p3">link</p>
   <p class="p3">link</p>
