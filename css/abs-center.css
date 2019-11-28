@@ -1,0 +1,108 @@
+/* 绝对定位 */
+div.abs {
+    width: 200px;
+    height: 200px;
+    border: 2px solid;
+    position: relative;
+}
+
+div.a {
+    height: 30px;
+    width: 60px;
+    background-color: red;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+}
+
+
+/* 相对定位 */
+div.abs2 {
+    width: 200px;
+    height: 200px;
+    border: 2px solid grey;
+}
+
+
+div.aa {
+    height: 30px;
+    width: 60px;
+    background-color: orange;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* 行内 */
+div.inlines {
+    width: 200px;
+    height: 200px;
+    border: 2px solid blue;
+    text-align: center;
+}
+
+div.b {
+    font-size: 15px;
+    width: 60px;
+    height: 30px;
+    background-color: green;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+div.inlines:after {
+    font-size: 0;
+    content: "";
+    height: 100%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+
+
+/* flex */
+div.flexs {
+    width: 200px;
+    height: 200px;
+    border: 2px solid pink;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+div.c {
+    width: 60px;
+    height: 30px;
+    background-color: purple;
+    /* margin: auto; */
+}
+
+
+
+/* table   */
+
+div.tables {
+    display: table;
+    width: 200px;
+    height: 200px;
+    border: 2px solid darkorange;
+    text-align: center;
+}
+
+div.td {
+    height: 100%;
+    display: table-cell;
+    vertical-align: middle;
+    border: 2px solid indigo;
+}
+
+div.d {
+    display: inline-block;
+    width: 60px;
+    height: 30px;
+    background-color: darkred;
+}
