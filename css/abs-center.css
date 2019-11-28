@@ -46,7 +46,6 @@ div.inlines {
 }
 
 div.b {
-    font-size: 15px;
     width: 60px;
     height: 30px;
     background-color: green;
@@ -62,6 +61,25 @@ div.inlines:after {
     vertical-align: middle;
 }
 
+
+
+/* 行内2 */
+div.inlines2 {
+    width: 200px;
+    height: 200px;
+    border: 2px solid crimson;
+    font-size: 0;
+    text-align: center;
+    line-height: 200px;
+}
+
+div.bb {
+    width: 60px;
+    height: 30px;
+    background-color: skyblue;
+    display: inline-block;
+    vertical-align: middle;
+}
 
 
 /* flex */
