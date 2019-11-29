@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 
+
     <style>
         html,
         body {
@@ -16,21 +17,14 @@
         }
 
         div.inlinebox {
-            font-size: 0;
             height: 100%;
         }
 
-        div.inlinebox * {
-            display: inline-block;
-            vertical-align: top;
-            box-sizing: border-box;
-        }
 
         header {
             width: 100%;
             height: 66px;
             background-color: #C7DFFE;
-
         }
 
         nav {
@@ -45,7 +39,10 @@
             height: calc(100% - 66px);
             background-color: #E0ECF9;
             border-top: 4px solid #88B5E9;
-            font-size: 16px;
+
+            position: relative;
+            left: 188px;
+            bottom: calc(100% - 58px);
         }
 
         .navBarDiv {
@@ -65,7 +62,7 @@
             <div class="navMiBar"></div>
         </nav>
         <article>
-            <h2>使用inline-block定位</h2>
+            <h2>使用relative定位</h2>
         </article>
     </div>
 </body>
