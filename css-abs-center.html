@@ -10,51 +10,175 @@
 </head>
 
 <body>
-    <div>
-        <h2>1. 绝对定位居中</h2>
-        <div class="abs">
-            <div class="a"></div>
-        </div>
-        <br>
-    </div>
-
-    <div>
-        <h2>2.相对定位居中</h2>
-        <div class="abs2">
-            <div class="aa"></div>
-        </div>
-    </div>
-
-    <div>
-        <h2>3.行内居中</h2>
-        <div class="inlines">
-            <div class="b"></div>
-        </div>
-
-        <h2></h2>
-        <div class="inlines2">
-            <div class="bb"></div>
-        </div>
-
-
-    </div>
-
-    <div>
-        <h2>4.flex居中</h2>
-        <div class="flexs">
-            <div class="c"></div>
+    <div class="a1">
+        <h2>1.行内定位水平垂直居中</h2>
+        <div class="a2">
+            <div class="a3"></div>
         </div>
     </div>
 
 
-    <div>
-        <h2>5.display为table居中</h2>
-        <div class="tables">
-            <div class="td">
-                <div class="d"></div>
+    <div class="b1">
+        <h2>2.绝对定位水平垂直居中</h2>
+        <div class="b2">
+            <div class="b3"></div>
+        </div>
+    </div>
+
+
+    <div class="c1">
+        <h2>3.相对定位水平垂直居中</h2>
+        <div class="c2">
+            <div class="c3"></div>
+        </div>
+    </div>
+
+
+    <div class="d1">
+        <h2>4.flex定位水平垂直居中</h2>
+        <div class="d2">
+            <div class="d3"></div>
+        </div>
+    </div>
+
+
+    <div class="e1">
+        <h2>5.table定位水平垂直居中</h2>
+        <div class="e2">
+            <div class="e3">
+                <div class="e4"></div>
             </div>
         </div>
     </div>
+
+
+    <div class="f1">
+        <h2>6.伪元素水平垂直定位居中</h2>
+        <div class="f2">
+            <div class="f3"></div>
+        </div>
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <hr>
+    <br>
+    <br>
+    <br>
+
+    <h1>各类居中方案</h1>
+    <ul>
+        <h2>水平居中</h2>
+        <ul>
+            <h3>1. 行内元素</h3>
+            <li>1.1 行内元素:父元素设置text-align:center就可以 </li>
+            <div class="inlines">
+                <div class="ins">abc</div>
+            </div>
+            <li>1.2 行内块元素: 父元素设置成text-align:center,子元素设置为inline-block.有基线用父元素的font-size:0去除</li>
+            <div class="inb">
+                <div class="inbs"></div>
+            </div>
+        </ul>
+        <ul>
+            <h3>2. 块级元素</h3>
+            <li>2.1 子元素设置成margin: 0 auto;</li>
+            <div class="margins">
+                <div class="mars"></div>
+            </div>
+
+            <li>2.2 使用table+margin: display:table类似于block元素,但宽度为内容宽</li>
+            <div class="tabs">
+                <span class="tabs2">table</span>
+            </div>
+
+            <li>2.3 使用absolute+transform: 先父元素相对定位,子元素绝对定位, 右移子元素,距离为父元素宽度的50%, 再左移子元素,距离为自身宽度的50%</li>
+            <div class="at1">
+                <div class="at2">abs+trans</div>
+            </div>
+
+            <li>2.4 使用flex+justify-content:center</li>
+            <div class="fle1">
+                <div class="fle2">flex+justify</div>
+            </div>
+
+            <li>2.5 使用flex+margin: 父元素设置flex,子元素设置margin:0 auto</li>
+            <div class="fm1">
+                <div class="fm2"></div>
+            </div>
+        </ul>
+        <ul>
+            <h3>3. 多块级元素</h3>
+            <li>3.1 使用flex+ justify-content</li>
+            <div class="flej1">
+                <div class="flej2"></div>
+                <div class="flej2"></div>
+                <div class="flej2"></div>
+            </div>
+
+            <li>3.2 使用inline-blcok: 父元素设置text-align:center</li>
+            <div class="inbl1">
+                <div class="inbl2"></div>
+                <div class="inbl2"></div>
+                <div class="inbl2"></div>
+            </div>
+        </ul>
+        <ul>
+            <h3>4. 浮动元素</h3>
+        </ul>
+
+        <ul>
+            <h3>5. 绝对定位元素</h3>
+            <div class="abso1">
+                <div class="abso2"></div>
+            </div>
+        </ul>
+    </ul>
+
+
+    <ul>
+        <h2>垂直居中</h2>
+
+        <ul>
+            <h3>1. 单行内联元素</h3>
+            <li>1.1 使用line-heiht=height</li>
+            <div class="lhh1"><span class="lhh2">height</span></div>
+        </ul>
+
+        <ul>
+            <h3>2. 多行内联元素</h3>
+            <li>2.1 使用flex里的flex-direction:column</li>
+            <div class="flexd1">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
+            </div>
+
+            <li>2.2 使用flex里的align-items:center</li>
+            <div class="flexd2">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
+            </div>
+        </ul>
+
+        <ul>
+            <h3>3. 块级元素</h3>
+            <li>3.1 使用absolute+负margin: 绝对定位到顶部的50%, 并设置margin-top向上偏移元素自身高度的一半</li>
+            <div class="absoma1">
+                <div class="absoma2"></div>
+            </div>
+            <li>3.2 使用absolute+transform: 当元素高度未知时,可以使用transform:translateY来反向偏移50%实现</li>
+            <div class="absotr1">
+                <div class="absotr2">transform:translateY</div>
+            </div>
+            <li>3.3 使用flex+align-items:center. 直接使子元素垂直居中</li>
+            <div class="flexal1">
+                <div class="flexal2">align-items</div>
+            </div>
+            <li>3.4 使用table-cell+ vertical-align: 使父元素变成表格单元格, 设置vertical-algin属性, 使子元素垂直居中</li>
+            <div class="tabce1">
+                <div class="tabce2">vertical-algin:middle</div>
+            </div>
+        </ul>
+    </ul>
 </body>
 
 </html>
