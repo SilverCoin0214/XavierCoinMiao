@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        html,
+        body,
+        h2 {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+        }
+
+        .inlines {
+            height: 100%;
+            font-size: 0;
+            position: relative;
+        }
+
+        .l1 {
+            width: 20%;
+            height: 100%;
+            background-color: #448F30;
+        }
+
+        .center {
+            width: 40%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 20%;
+        }
+
+        .r1 {
+            width: 20%;
+            height: 100%;
+            background-color: #AAA639;
+            position: absolute;
+            top: 0;
+            left: 60%;
+        }
+
+        .r2 {
+            width: 20%;
+            height: 100%;
+            background-color: #83A136;
+            position: absolute;
+            top: 0;
+            left: 80%;
+        }
+
+        header {
+            width: 100%;
+            height: 20%;
+            background-color: #ADC964;
+            font-size: 16px;
+        }
+
+        article {
+            width: 100%;
+            height: 80%;
+            background-color: #83A136;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="inlines">
+        <aside class="l1">1</aside>
+        <div class="center">
+            <header>
+                <h2>使用absolute定位</h2>
+            </header>
+            <article>5</article>
+        </div>
+        <aside class="r1">2</aside>
+        <aside class="r2">3</aside>
+    </div>
+</body>
+
+</html>
