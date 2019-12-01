@@ -16,32 +16,27 @@
             height: 100%;
         }
 
-        .inlines {
+        .flexbox {
             height: 100%;
-            font-size: 0;
-        }
-
-        .inlines * {
-            display: inline-block;
-            vertical-align: top;
+            display: flex;
         }
 
         aside.l1 {
             width: 20%;
             height: 100%;
-            background-color: #FFA038;
+            background-color: #51C4CE;
         }
 
         aside.r1 {
             width: 20%;
             height: 100%;
-            background-color: #FFA038;
+            background-color: #017984;
         }
 
         aside.r2 {
             width: 20%;
             height: 100%;
-            background-color: #964E00;
+            background-color: #016771;
         }
 
         div.center {
@@ -52,30 +47,30 @@
         header {
             width: 100%;
             height: 20%;
-            background-color: #FFB463;
+            background-color: #0AB9CA;
             font-size: 16px;
         }
 
         article {
             width: 100%;
             height: 80%;
-            background-color: #F38004;
+            background-color: #01A2B1;
         }
     </style>
 
 </head>
 
 <body>
-    <div class="inlines">
-        <aside class="l1">1</aside>
+    <div class="flexbox">
+        <aside class="l1"></aside>
         <div class="center">
             <header>
-                <h3>使用inline-block定位</h3>
+                <h3>使用flex定位</h3>
             </header>
-            <article>5</article>
+            <article></article>
         </div>
-        <aside class="r1">2</aside>
-        <aside class="r2">3</aside>
+        <aside class="r1"></aside>
+        <aside class="r2"></aside>
     </div>
 </body>
 

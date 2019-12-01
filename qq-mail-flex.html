@@ -15,57 +15,56 @@
             height: 100%;
         }
 
-        div.inlinebox {
-            font-size: 0;
+        div.flexbox {
             height: 100%;
+            display: flex;
+            flex-wrap: wrap;
         }
 
-        div.inlinebox * {
-            display: inline-block;
-            vertical-align: top;
+        div.flexbox * {
             box-sizing: border-box;
         }
 
         header {
             width: 100%;
             height: 66px;
-            background-color: #FFDA47;
+            background-color: #E68BA7;
 
         }
 
         nav {
             width: 180px;
             height: calc(100% - 66px);
-            background-color: #FFCF11;
-            border: 4px solid #C29B00;
+            background-color: #C75779;
+            border: 4px solid #8D193C;
         }
 
         article {
             width: calc(100% - 180px);
             height: calc(100% - 66px);
-            background-color: #F2C000;
-            border-top: 4px solid #C29B00;
-            font-size: 16px;
+            background-color: #AA3357;
+            border-top: 4px solid #8D193C;
+            color: white;
         }
 
         .navBarDiv {
             width: 100%;
             height: 107px;
             background-color: white;
-            border-bottom: 4px solid #C29B00;
+            border-bottom: 4px solid #8D193C;
         }
     </style>
 </head>
 
 <body>
-    <div class="inlinebox">
+    <div class="flexbox">
         <header></header>
         <nav>
             <div class="navBarDiv"></div>
             <div class="navMiBar"></div>
         </nav>
         <article>
-            <h2>使用inline-block定位</h2>
+            <h2>使用flex定位</h2>
         </article>
     </div>
 </body>
