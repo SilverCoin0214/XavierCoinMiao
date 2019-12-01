@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        html,
+        body,
+        h3 {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+        }
+
+        .floatbox {
+            height: 100%;
+        }
+
+        .floatbox * {
+            float: left;
+        }
+
+        aside.l1 {
+            width: 20%;
+            height: 100%;
+            background-color: #6C91AC;
+        }
+
+        aside.r1 {
+            width: 20%;
+            height: 100%;
+            background-color: #174565;
+        }
+
+        aside.r2 {
+            width: 20%;
+            height: 100%;
+            background-color: #062E4A;
+        }
+
+        div.center {
+            width: 40%;
+            height: 100%;
+        }
+
+        header {
+            width: 100%;
+            height: 20%;
+            background-color: #43708F;
+            font-size: 16px;
+            color: white;
+        }
+
+        article {
+            width: 100%;
+            height: 80%;
+            background-color: #2A597A;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="floatbox"">
+        <aside class=" l1">
+        </aside>
+        <div class="center">
+            <header>
+                <h3>使用float:left定位</h3>
+            </header>
+            <article></article>
+        </div>
+        <aside class="r1"></aside>
+        <aside class="r2"></aside>
+    </div>
+</body>
+
+</html>
