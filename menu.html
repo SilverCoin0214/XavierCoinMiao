@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        ul,
+        li {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .navs {
+            width: 100%;
+            height: 23px;
+            border: 1px solid #363636;
+            background-color: #363636;
+        }
+
+        .nav {
+            position: relative;
+            float: left;
+            height: 23px;
+            line-height: 23px;
+            text-align: center;
+            padding: 0 10px;
+            color: white;
+        }
+
+        .sub-navs {
+            position: absolute;
+            top: 100%;
+            width: 150px;
+            background-color: rgba(0, 0, 0, 0.3);
+            display: none;
+            text-align: left;
+            padding-left: 10px;
+            margin-left: -10px;
+        }
+
+        .nav:hover .sub-navs {
+            display: block;
+            color: white;
+        }
+
+        .nav:hover .sub-nav:hover {
+            background-color: blue;
+        }
+
+        sub.nav {
+            position: relative;
+        }
+
+        .sub-navs3 {
+            position: absolute;
+            left: 160px;
+            top: 16px;
+            width: 150px;
+            background-color: rgba(0, 0, 0, 0.3);
+            display: none;
+            text-align: left;
+            padding-left: 10px;
+            border-radius: 5%;
+        }
+
+        .sub-nav:hover .sub-navs3 {
+            display: block;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="navs">
+        <li class="nav">Code
+            <ul class="sub-navs">
+                <li class="sub-nav">AVSC</li>
+                <li class="sub-nav">Check for upadtes</li>
+                <li class="sub-nav">Preference >
+                    <ul class="sub-navs3">
+                        <li class="sub-nav3">settings</li>
+                        <li class="sub-nav3">settings</li>
+                        <li class="sub-nav3">settings</li>
+                        <li class="sub-nav3">settings</li>
+                        <li class="sub-nav3">settings</li>
+                        <li class="sub-nav3">settings</li>
+                    </ul>
+
+                </li>
+                <li class="sub-nav">services</li>
+                <li class="sub-nav">Hide VScode</li>
+                <li class="sub-nav">Hide others</li>
+                <li class="sub-nav">Quit VScode</li>
+            </ul>
+        </li>
+        <li class="nav">File
+            <ul class="sub-navs">
+                <li class="sub-nav">New file</li>
+                <li class="sub-nav">New Windows</li>
+                <li class="sub-nav">Open</li>
+                <li class="sub-nav">Open workpace</li>
+                <li class="sub-nav">Open Recent</li>
+                <li class="sub-nav">Find </li>
+                <li class="sub-nav">Replace</li>
+            </ul>
+        </li>
+        <li class="nav">Edit</li>
+        <li class="nav">selection</li>
+        <li class="nav">View</li>
+        <li class="nav">Go</li>
+        <li class="nav">Debug</li>
+        <li class="nav">Terminal</li>
+        <li class="nav">Window</li>
+        <li class="nav">Help</li>
+    </ul>
+</body>
+
+</html>

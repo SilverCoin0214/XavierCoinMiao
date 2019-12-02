@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./css/checkbox.css">
+    <title>Document</title>
+
+    <style>
+        #apple {
+            display: none;
+        }
+
+        input+label {
+            position: absolute;
+            top: 50px;
+            display: block;
+            box-sizing: border-box;
+            width: 270px;
+            height: 154px;
+            border: 3px solid #CBC9CB;
+            border-radius: 77px;
+        }
+
+        input:checked+label {
+            background-color: #6FDC60;
+            border: 3px solid #6FDC60;
+        }
+
+        input:checked+label::before {
+            background-color: white;
+        }
+
+
+        label::before {
+            content: "";
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            width: 136px;
+            height: 136px;
+            background-color: white;
+            border-radius: 68px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            box-shadow: 7px 7px 10px rgba(43, 30, 30, 0.2),
+                -3px 3px 5px rgba(0, 0, 0, 0.1),
+                3px -3px 5px rgba(0, 0, 0, 0.1),
+                -3px -3px 5px rgba(0, 0, 0, 0.1);
+            transition: 200ms ease-in;
+
+        }
+
+
+        input:checked+label::before {
+            width: 136px;
+            height: 136px;
+            border-radius: 68px;
+            top: 5px;
+            left: 120px;
+            transition: 200ms ease-in;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="checkbox" name="" id="apple">
+    <label for="apple"></label>
+
+
+    <input class="apple-switch" type="checkbox">
+</body>
+
+</html>

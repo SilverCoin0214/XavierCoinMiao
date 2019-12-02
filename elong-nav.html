@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
+        .wrap {
+            width: 100%;
+            background-color: #1F64C8;
+            height: 39px;
+            font-size: 0;
+        }
+
+        header {
+            height: 75px;
+        }
+
+        nav {
+            max-width: 1200px;
+            min-width: 1200px;
+            margin: auto;
+            height: 39px;
+        }
+
+        ul {
+            padding: 0;
+        }
+
+        ul li {
+            list-style: none;
+            display: inline-block;
+            text-align: center;
+            line-height: 39px;
+            border-right: 1px solid #3774ce;
+
+        }
+
+        ul li a {
+            text-decoration: none;
+            display: block;
+            color: white;
+            font-size: 14px;
+            padding: 0 12px;
+            position: relative;
+        }
+
+        li a:hover {
+            color: white;
+            background-color: #0053ac;
+        }
+
+        .label::before {
+            content: "低价促";
+            background-color: #FFAB59;
+            font-size: 13px;
+            position: absolute;
+            bottom: 33px;
+            left: -7px;
+            height: 14px;
+            line-height: 14px;
+            padding: 1px;
+        }
+
+        .label::after {
+            content: "新升级";
+            background-color: #FFAB59;
+            font-size: 13px;
+            position: absolute;
+            bottom: 33px;
+            left: 60px;
+            height: 14px;
+            line-height: 14px;
+            padding: 1px;
+        }
+
+        .tri::before {
+            content: "";
+            position: absolute;
+            border-style: solid;
+            border-color: #ff8e00 transparent transparent transparent;
+            border-width: 10px 10px 0 0;
+            left: 76px;
+            bottom: 29px;
+        }
+
+        .tri::after {
+            content: "";
+            position: absolute;
+            border-style: solid;
+            border-color: #ff8e00 transparent transparent transparent;
+            border-width: 10px 10px 0 0;
+            left: 144px;
+            bottom: 29px;
+        }
+    </style>
+</head>
+
+<body>
+    <header></header>
+    <div class="wrap">
+        <nav>
+            <ul>
+                <li><a href="">首页</a></li>
+                <li><a href="">国内酒店</a></li>
+                <li><a href="" class="tri">海外酒店</a></li>
+                <li><a href="" class="label">国内•国际机票</a></li>
+                <li><a href="">火车票</a></li>
+                <li><a href="">汽车票</a></li>
+                <li><a href="">商旅</a></li>
+            </ul>
+        </nav>
+    </div>
+</body>
+
+</html>
