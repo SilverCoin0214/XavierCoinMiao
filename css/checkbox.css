@@ -1,4 +1,4 @@
-input.apple-switch {
+.apple-switch.apple-switch {
     position: relative;
     -webkit-appearance: none;
     outline: none;
@@ -12,7 +12,7 @@ input.apple-switch {
     top: 300px;
 }
 
-input.apple-switch:after {
+.apple-switch:after {
     content: "";
     position: absolute;
     top: 1px;
@@ -24,12 +24,12 @@ input.apple-switch:after {
     box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);
 }
 
-input.apple-switch:checked {
+.apple-switch:checked {
     box-shadow: inset 20px 0 0 0 #4ed164;
     border-color: #4ed164;
 }
 
-input.apple-switch:checked:after {
+.apple-switch:checked:after {
     left: 20px;
     box-shadow: -2px 4px 3px rgba(0, 0, 0, 0.05);
 }

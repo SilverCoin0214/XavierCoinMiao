@@ -9,9 +9,6 @@
     <style>
         .game {
             position: relative;
-            width: 600px;
-            height: 200px;
-            background: rgba(0, 0, 0, 0.1)
         }
 
         .pic {
@@ -19,72 +16,35 @@
             position: absolute;
             width: 90px;
             height: 150px;
+            transition: 0.933333ms linear;
         }
 
-        div.myimg1 {
-            background-position: 0px 0px;
-            visibility: visible;
-        }
 
-        div.myimg2 {
-            background-position: -95px 0px;
-            left: 50px;
-            top: 6px;
-            visibility: hidden;
-        }
-
-        div.myimg3 {
-            background-position: -210px 0px;
-            left: 125px;
-            top: 6px;
-            visibility: hidden;
-        }
-
-        div.myimg4 {
-            background-position: -318px 0px;
-            left: 200px;
-            top: 6px;
-            visibility: hidden;
-        }
-
-        div.myimg5 {
-            background-position: -423px 0px;
-            left: 279px;
-            top: 6px;
-            visibility: hidden;
-        }
-
-        div.myimg6 {
+        .pic:hover {
             background-position: -532px 0px;
-            left: 350px;
             top: 6px;
-            visibility: hidden;
+            transition: 1s linear;
         }
 
-
-
-        div.myimg1:hover div.myimg2 {
-            visibility: visible;
+        input {
+            display: none;
         }
 
-        div.myimg1:hover div.myimg3 {
-            visibility: visible;
-            transition-delay: 200ms;
+        input+label {
+            display: block;
+            float: left;
+            background-image: url(./img/twitter.png);
+            width: 100px;
+            height: 100px;
+            margin-top: 160px;
+            background-position: 0px 0px;
+            /* transition: 0.933333s linear;
+            transition: 1s setps(28); */
         }
 
-        div.myimg1:hover div.myimg4 {
-            visibility: visible;
-            transition-delay: 400ms;
-        }
-
-        div.myimg1:hover div.myimg5 {
-            visibility: visible;
-            transition-delay: 600ms;
-        }
-
-        div.myimg1:hover div.myimg6 {
-            visibility: visible;
-            transition-delay: 800ms;
+        input:checked+label {
+            background-position: -2800px 0px;
+            transition: 0.466666s linear;
         }
     </style>
 </head>
@@ -92,20 +52,11 @@
 <body>
     <div class="game">
         <div class="pic myimg1">
-            <div class="pic myimg2"> </div>
-
-            <div class="pic myimg3"></div>
-
-            <div class="pic myimg4"></div>
-
-            <div class="pic myimg5"></div>
-
-            <div class="pic myimg6"></div>
-
         </div>
-
-
     </div>
+
+    <input type="checkbox" id="up">
+    <label for="up"></label>
 </body>
 
 </html>
