@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .game {
+            position: relative;
+            width: 600px;
+            height: 370px;
+            background: rgba(0, 0, 0, 0.1)
+        }
+
+        .pic {
+            background-image: url(./img/gamesprite.webp);
+            position: absolute;
+            width: 90px;
+            height: 150px;
+        }
+
+        div.myimg1 {
+            background-position: 0px 0px;
+            left: 250px;
+        }
+
+        div.myimg2 {
+            background-position: -95px 0px;
+            left: 234px;
+            top: 6px;
+            display: none;
+        }
+
+        div.myimg3 {
+
+            background-position: -210px 0px;
+            left: 228px;
+            top: 6px;
+            display: none;
+        }
+
+        div.myimg4 {
+
+            background-position: -318px 0px;
+            left: 229px;
+            top: 6px;
+            display: none;
+        }
+
+        div.myimg5 {
+
+            background-position: -423px 0px;
+            left: 234px;
+            top: 6px;
+            display: none;
+        }
+
+        div.myimg6 {
+
+            background-position: -532px 0px;
+            left: 234px;
+            top: 6px;
+            display: none;
+        }
+
+        div.myimg1:active {
+            display: none;
+        }
+
+        div.myimg1:active+div.myimg2 {
+            display: block;
+        }
+
+        div.myimg2:active {
+            display: none;
+        }
+
+        div.myimg2:active+div.myimg3 {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="game">
+        <div class="pic myimg1"> </div>
+
+        <div class="pic myimg2"> </div>
+
+        <br>
+        <div class="pic myimg3"></div>
+
+        <br>
+        <div class="pic myimg4"></div>
+
+        <br>
+        <div class="pic myimg5"></div>
+
+        <br>
+        <div class="pic myimg6"></div>
+    </div>
+</body>
+
+</html>
