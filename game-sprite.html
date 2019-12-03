@@ -10,7 +10,7 @@
         .game {
             position: relative;
             width: 600px;
-            height: 370px;
+            height: 200px;
             background: rgba(0, 0, 0, 0.1)
         }
 
@@ -23,83 +23,88 @@
 
         div.myimg1 {
             background-position: 0px 0px;
-            left: 250px;
+            visibility: visible;
         }
 
         div.myimg2 {
             background-position: -95px 0px;
-            left: 234px;
+            left: 50px;
             top: 6px;
-            display: none;
+            visibility: hidden;
         }
 
         div.myimg3 {
-
             background-position: -210px 0px;
-            left: 228px;
+            left: 125px;
             top: 6px;
-            display: none;
+            visibility: hidden;
         }
 
         div.myimg4 {
-
             background-position: -318px 0px;
-            left: 229px;
+            left: 200px;
             top: 6px;
-            display: none;
+            visibility: hidden;
         }
 
         div.myimg5 {
-
             background-position: -423px 0px;
-            left: 234px;
+            left: 279px;
             top: 6px;
-            display: none;
+            visibility: hidden;
         }
 
         div.myimg6 {
-
             background-position: -532px 0px;
-            left: 234px;
+            left: 350px;
             top: 6px;
-            display: none;
+            visibility: hidden;
         }
 
-        div.myimg1:active {
-            display: none;
+
+
+        div.myimg1:hover div.myimg2 {
+            visibility: visible;
         }
 
-        div.myimg1:active+div.myimg2 {
-            display: block;
+        div.myimg1:hover div.myimg3 {
+            visibility: visible;
+            transition-delay: 200ms;
         }
 
-        div.myimg2:active {
-            display: none;
+        div.myimg1:hover div.myimg4 {
+            visibility: visible;
+            transition-delay: 400ms;
         }
 
-        div.myimg2:active+div.myimg3 {
-            display: block;
+        div.myimg1:hover div.myimg5 {
+            visibility: visible;
+            transition-delay: 600ms;
+        }
+
+        div.myimg1:hover div.myimg6 {
+            visibility: visible;
+            transition-delay: 800ms;
         }
     </style>
 </head>
 
 <body>
     <div class="game">
-        <div class="pic myimg1"> </div>
+        <div class="pic myimg1">
+            <div class="pic myimg2"> </div>
 
-        <div class="pic myimg2"> </div>
+            <div class="pic myimg3"></div>
 
-        <br>
-        <div class="pic myimg3"></div>
+            <div class="pic myimg4"></div>
 
-        <br>
-        <div class="pic myimg4"></div>
+            <div class="pic myimg5"></div>
 
-        <br>
-        <div class="pic myimg5"></div>
+            <div class="pic myimg6"></div>
 
-        <br>
-        <div class="pic myimg6"></div>
+        </div>
+
+
     </div>
 </body>
 
