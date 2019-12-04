@@ -1,0 +1,153 @@
+table {
+    border-collapse: collapse;
+}
+
+hr {
+    margin: 30px;
+}
+
+/* 基础配置 */
+.table {
+    width: 100%;
+    text-align: left;
+    color: #212529;
+    margin-bottom: 1em;
+}
+
+.table thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #dee2e6;
+}
+
+.table td,
+.table th {
+    border-top: 1px solid #dee2e6;
+    padding: 0.75em;
+    vertical-align: top;
+}
+
+
+/* thead-dark和thead-light设置 */
+
+.thead-dark {
+    background-color: #343a40;
+    color: #fff;
+    border-color: #454d55;
+}
+
+.thead-light {
+    background-color: #e9ecef;
+    border-color: #dee2e6;
+    color: #495057;
+}
+
+
+/* table-striped设置 */
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+
+.table-dark.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+
+/* table-bordered 加边框设置 */
+
+.table-bordered {
+    border: 1px solid #dee2e6;
+}
+
+.table-bordered td,
+.table-bordered th,
+.table-bordered thead td {
+    border: 1px solid #dee2e6;
+}
+
+.table-bordered thead td,
+.table-bordered thead th {
+    border-bottom-width: 2px;
+}
+
+
+/* dark设置 */
+
+.table-dark {
+    background-color: #343a40;
+    color: #fff;
+}
+
+.table-dark th,
+.table-dark td,
+.table-dark thead th,
+.table-dark tbody+tbody {
+    border-color: #454d55;
+}
+
+
+/*  table-borderless 无边框设置 */
+
+.table-borderless td,
+.table-borderless th,
+.table-borderless thead th {
+    border: 0px solid;
+}
+
+
+/* table-hover 设置 */
+
+.table-hover tbody tr:hover {
+    background-color: rgba(0, 0, 0, 0.075);
+}
+
+.table-dark.table-hover tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.075);
+}
+
+
+/* table-sm 设置*/
+
+.table-sm td,
+.table-sm th {
+    padding: 0.3em;
+}
+
+
+/* Contextual classes */
+
+.table-active,
+.table-active td,
+.table-active th {
+    background-color: rgba(0, 0, 0, 0.075);
+}
+
+.table-primary,
+.table-primary td,
+.table-primary th {
+    background-color: #b8daff;
+}
+
+.table-success,
+.table-success td,
+.table-success th {
+    background: #c3e6cb;
+}
+
+.table-danger,
+.table-danger td,
+.table-danger th {
+    background-color: #f5c6cb;
+}
+
+.table-warning,
+.table-warning td,
+.table-warning th {
+    background-color: #ffeeba;
+}
+
+.table-info,
+.table-info td,
+.table-info th {
+    background-color: #bee5eb;
+}
