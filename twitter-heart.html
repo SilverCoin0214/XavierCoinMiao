@@ -6,17 +6,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-
     <style>
+        .game {
+            position: relative;
+        }
+
+        .pic {
+            background-image: url(./img/gamesprite.webp);
+            position: absolute;
+            width: 90px;
+            height: 150px;
+            transition: 0.933333ms linear;
+        }
+
+
+        .pic:hover {
+            background-position: -532px 0px;
+            top: 6px;
+            transition: 1s linear;
+        }
+
         input {
             display: none;
         }
 
         input+label {
             display: block;
+            float: left;
             background-image: url(https://abs.twimg.com/a/1454637594/img/t1/web_heart_animation.png);
             width: 100px;
             height: 100px;
+            margin-top: 160px;
             background-position: 0px 0px;
             /* transition: 0.933333s linear;
             transition: 1s setps(28); */
@@ -30,6 +50,11 @@
 </head>
 
 <body>
+    <div class="game">
+        <div class="pic myimg1">
+        </div>
+    </div>
+
     <input type="checkbox" id="up">
     <label for="up"></label>
 </body>
