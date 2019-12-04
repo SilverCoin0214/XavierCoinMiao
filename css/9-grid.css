@@ -1,0 +1,106 @@
+html {
+    font-size: 10px;
+}
+
+
+/* inline-block布局 */
+.content {
+    width: 30rem;
+    font-size: 0;
+}
+
+.box {
+    box-sizing: border-box;
+    width: 10rem;
+    height: 10rem;
+    border: 4px solid #fb3;
+
+    font-size: 16px;
+    text-align: center;
+    line-height: 100px;
+
+    display: inline-block;
+    position: relative;
+}
+
+.box:nth-of-type(n+4) {
+    margin-top: -0.4rem;
+}
+
+.box:nth-of-type(3n+2),
+.box:nth-of-type(3n+3) {
+    margin-left: -0.4rem;
+}
+
+.box:hover {
+    border: 4px solid red;
+    z-index: 10;
+}
+
+
+/* flex布局模式 */
+
+.content2 {
+    width: 30rem;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.content2 div {
+    box-sizing: border-box;
+    width: 10rem;
+    height: 10rem;
+    border: 0.4rem solid blue;
+
+    font-size: 1.6rem;
+    line-height: 10rem;
+    text-align: center;
+}
+
+.content2 div:nth-of-type(n+4) {
+    margin-top: -0.4rem;
+}
+
+.content2 div:nth-of-type(3n+2),
+.content2 div:nth-of-type(3n+3) {
+    margin-left: -0.4rem;
+}
+
+.content2 div:hover {
+    border: 4px solid red;
+    z-index: 10;
+}
+
+
+/* float布局模式 */
+.content3 {
+    width: 30rem;
+    float: left;
+}
+
+.content3 div {
+    box-sizing: border-box;
+    width: 10rem;
+    height: 10rem;
+    border: 4px solid green;
+    float: left;
+
+    text-align: center;
+    line-height: 10rem;
+
+    position: relative;
+}
+
+.content3 div:nth-of-type(n+4) {
+    margin-top: -0.4rem;
+}
+
+.content3 div:nth-of-type(3n+2),
+.content3 div:nth-of-type(3n+3) {
+    margin-left: -0.4rem;
+}
+
+.content3 div:hover {
+    border: 4px solid red;
+    z-index: 10;
+}
