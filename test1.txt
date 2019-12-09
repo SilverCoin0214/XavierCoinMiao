@@ -16,12 +16,17 @@
    - git 跟git相关的命令, 诸如  git add, git commit, git status, git push, git pull
    - rm -rf 删除目录以及其下所有文件
    - cat xxx.txt 显示xxx.txt里的内容或者如果xxx.txt不存在, 则创建xxx.txt. cat还有合并功能.
+   - touch 文件
+   - pwd 查看当前路径
+   - vi
 
 
 
 2. 什么是 html 实体？常见 html 实体有哪些？
 
    - HTML中的预留字符必须被替换为字符实体。
+   - 其实就是html转义字符.
+   - 有些特殊字符在Html中不能明文出现, 需要通过特殊的形式表达这种特殊形式就成为html实体.
 
    - 常见的html实体:
 
@@ -50,6 +55,9 @@
 
    - 因为计算机是通过逻辑电路来组成的,逻辑电路只有高低电平两种状态, 可以用开闭来控制, 对应到状态里就是1和0
    - 并且二进制状态简单所以稳定性高,运算规则也容易.
+   1. 二进制数字信号可以有效消除误差
+   2. 二进制对应数学中的布尔逻辑
+   3.
 
 4. 什么是 Unicode？如何表示，有什么作用？最通用的 Unicode 实现是？
 
@@ -66,7 +74,7 @@
    - GUI(Graphical User interface)是图形用户界面,又成图形用户接口, 指的是采用图形的方式显示计算机操作的用户界面
    - CLI(command-line interface)是指命令行界面, 是用户在输入提示符下执行指令的界面.
    - 接口与界面的英文都是Interface, 通常是翻译上的差异造成的. 但通常归类为前端的成为界面, 而后端的称为接口.
-   - 现实生活中浏览器显示就是界面, 而浏览器背后连接的服务器就是通过接口来进行数据传输.
+   - 现实生活中浏览器显示就是界面, 而浏览器背后连接的服务器就是通过接口来进行数据传输. 或者说所有通过按钮操作的设备都是GUI, 通过指令输入执行的就是CLI.
 
 6. 在什么情况下 html 标签可以不需要闭合？
 
@@ -74,8 +82,13 @@
    - 所以具体是看声明的doctype是什么.
    - HTML编码规范: http://wangchujiang.com/spec/html/html.html
 
+  ```
+    自闭合标签可以不用闭合.
+    非自闭合标签在一些情况下也可以不用闭合, 因为它会自动闭合.
+  ```
 7. 在一些情况下某些非自闭合标签的结束标签可以省略的原因是什么？
 
+   - 原因在于根据html标签分类等规则, 在某些嵌套方式下, 已经可以推导出该标签必须闭合,则不需要人为书写闭合标签.
    - 符合DOCTYPE声明
 
    - 不需要自闭合的标签有
@@ -94,6 +107,9 @@
    - 费茨定律: 任意一点移动到目标中心位置所需时间与该点到目标的距离和大小有关，距离越大时间越长，目标越大时间越短。
    - 应用: 油门和刹车, window和mac系统菜单设计
    - 参考: https://zhuanlan.zhihu.com/p/25530956
+   ```
+   在交互设计中, 目标的可达程度与鼠标与目标的距离成反比, 与目标大小呈正比.
+   ```
 
 9. 为什么英文很重要？
 
@@ -107,12 +123,12 @@
 
 11. 将十六进制数 `ABCDEF` 转换为十进制数
 
-    - F 16一次方*15
-    - E 16二次方*14
-    - D 16三次方*13
-    - C 16四次方*12
-    - B 16五次方*11
-    - A 16六次方*10
+    - F 16*15
+    - E 16一次次方*14
+    - D 16二次方*13
+    - C 16三次方*12
+    - B 16四次方*11
+    - A 16五次方*10
     - 11259375
 
 12. 将十进制数 `435` 分别转换成二进制数和十六进制数
@@ -161,7 +177,10 @@
 
     - 路径是一种电脑文件或者目录名称的通用表现形式, 它指向文件系统上的唯一位置. 通俗的来说就是文件的地址.
     - 作用就是用来查找文件或目录, 应用场景就是可以为系统设置环境变量, 以及加载多个文件到一个文件中去.
-
+    ```
+    路径指操作系统中有一个有序文件夹列表.
+    当用户在命令行或windows的运行窗口中输入命令时, 会按序在路径列表中查找相应的可执行程序.
+    ```
 15. 什么是文本文件？什么是二进制文件？它们最明显的区别是？
 
 - 文本文件就是二进制文件的一种,通过 unicode和ascii 进行解码后能够直接阅读的文件.
@@ -172,11 +191,16 @@
 
 - 参考:https://www.zhihu.com/question/19971994
 
-
+```
+实际上二者并无本质区别, 都是硬盘上的文件.
+当一个文件是以文本编码方式编码了几乎可以用键盘输入的字符时,称为文本文件.
+其他情况成为二进制文件.
+```
 
 16. 为什么说 html 与数学公式有诸多相似之处？
 
     - 都可以生成树状结构
+    - 括号/标签的嵌套规则是相同的.
 
 17. 几种常见图片格式有什么区别和特点？
 
@@ -199,6 +223,7 @@
     - 用于存储页面或应用程序的私有定制数据
 
     - 赋予我们在所有 HTML 元素上嵌入自定义 data 属性的能力。
+    - 好处是不会因为标准的改变而产生额外的语义.
 
 
 
@@ -207,13 +232,13 @@
     - 加label
     - 为checkbox增加样式
     - 修改border扩大区域
-    - 使用伪元素修改区域
 
 
 
 20. 什么是 MIME Type？
 
     - MIME Type是一种标准, 用来表示文档,文件或字节流的性质和字节格式. 全称multipurpose internet mail extensions, 中文翻译多功能英特网邮件扩展.
+  - 媒体类型, 即比文件扩展名更精确明确的文件类型描述
 
     - 常见类型
 
@@ -242,7 +267,21 @@
 
       参考2: https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Basics_of_HTTP/MIME_types
 
-21. 什么是 BOM 头？
+21. 那些标签可以使用target属性, 那些标签可以使用href属性?
+```
+target:
+  <base>
+  <a>
+  <form>
+  <area>
+
+href:
+  <a>
+  <base>
+  <link>
+```
+
+22. 什么是 BOM 头？
 
     - BOM是用来判断文本文件是哪一种Unicode编码的标记, 其本身是一个unicode字符,位于文本文件头部.
     - 在不同的uinicode编码中, 对应的bom的二进制节如下:
@@ -251,7 +290,7 @@
     - EF BB BF UTF8
     - 参考:https://blog.csdn.net/xun_jing/article/details/81564710
 
-22. group 类型的标签有哪些？
+23. group 类型的标签有哪些？
 
     - <hgroup>
 
@@ -263,13 +302,13 @@
 
     - 参考:https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element
 
-23. 什么是 SEO？
+24. 什么是 SEO？
     - SEO全称搜索引擎优化,指通过采用易于搜索引擎索引的合理手段, 使网站各项基本要素适合搜索引擎的检索原则并且对用户更友好, 从而更容易被搜索引擎收录及优先顺序从属, 从而为网站带来流量.
     - SEO是指从自然搜索结果获得网站流量的技术和过程.
     - 参考: https://www.seozac.com/topic/whats-seo-really/
     - 参考2:https://www.zhihu.com/question/21361708
 
-24. 分别列出每种常见浏览器的内核名称（自己查）。
+25. 分别列出每种常见浏览器的内核名称（自己查）。
 
     - IE浏览器:  Trident内核, 俗称IE内核
     - chrome: Blink内核
@@ -280,7 +319,7 @@
     - 搜狗, QQ, 遨游:  Trident+webkit
     - 参考:https://zhuanlan.zhihu.com/p/61652177
 
-25. 列表类标签有哪些？分别如何使用？需要注意些什么？
+26. 列表类标签有哪些？分别如何使用？需要注意些什么？
 
     ```html
     <ul>无序列表</ul>
@@ -299,11 +338,22 @@
 
 
 
-26. 为什么不同类型的标签的 fallback 内容要以不同的形式提供？
+27. 为什么不同类型的标签的 fallback 内容要以不同的形式提供？
 
-    -
+    ```
+    <script></script>
+    <noscript>您的浏览器不支持script</noscript>
 
-27. 分别写出在 head 中设定页面编码，设定 icon，引入样式表的标签
+    <iframe src="ssss">
+      <p>您的浏览器不支持iframe</p>
+    </iframe>
+
+
+    原因在于某些正常使用时,内部时有内容的, 所以fallbakc不能放在其内部.
+    某些标签在正常使用时, 是空的, 相当于替换元素. 则fallback可以写在其内部.
+    ```
+
+28. 分别写出在 head 中设定页面编码，设定 icon，引入样式表的标签
 
     ```html
     <meta charset="utf-8">
@@ -313,7 +363,7 @@
 
 
 
-28. 什么叫做可访问性，html 中为此做了什么工作？
+29. 什么叫做可访问性，html 中为此做了什么工作？
 
     - 可访问性指的是尽可能多的人使用你的网站, 使web内容对于残障用户的可阅读和可理解性. 也使普通用户能够更容易的理解web内容.
     - HTML指定了良好的语义, 可访问的表格,以及文本替代品.
@@ -321,7 +371,18 @@
     - 参考2:https://developer.mozilla.org/en-US/docs/Learn/Accessibility/HTML
     - 参考3:https://www.jianshu.com/p/8a0cd5403ffc
 
-29. 写出以下几个符号的 ascii 码：`a，A，0，CR，LF，空格，NBSP`。
+    ```
+    1. 指软件在不同设备上能否正常使用
+    2. 指软件对于不同人群能够正常使用
+    3. 指软件对于各种不同输入设备能否使用
+
+    所做工作:
+    aria与role属性用来通过浏览器告诉读屏软件当前元素所代表常见交互元素如下拉框,选项卡,列表框
+    表格th标签的id与td标签的headers属性
+    ```
+
+
+30. 写出以下几个符号的 ascii 码：`a，A，0，CR，LF，空格，NBSP`。
 
     - a : 97
     - A: 65
@@ -331,7 +392,7 @@
     - 空格: 32
     - NBSP: 160
 
-30. 中英互翻
+31. 中英互翻
     * geek : 极客
     * nerd: 书呆子
     * hacker: 黑客
@@ -344,7 +405,7 @@
     * byte: 字节
     * alternative: 可选择性
     * 属性: Attributes
-    * obsolate
+    * obsolate 已废弃的
     * 二进制: Binary
     * 十进制:Decimal
     * 十六进制: Hex
@@ -352,32 +413,33 @@
     * deprecate: 已弃用
     * loop:循环
     * 行: row
-    * 列: col
+    * 列: column
     * horizontal: 水平
     * 语义化: Semantic
     * 可访问性: accessibility
 
 
-33. 用文字描述如下选择器将选择哪些（个）元素
+32. 用文字描述如下选择器将选择哪些（个）元素
   ```css
   div, h1 {}
    - 选div, h1
   div[class] [id="abc"] {}
-   - 选id为abc的div
+   - 有class属性的div元素里面的id为abc的元素
   div:hover ul li > div {}
-   - div鼠标划过时ul下的li底下的第一个子元素div
+   - div鼠标划过时ul下的li底下的子元素div
+   - 被hover的div里面ul里面li的div子元素
   body :active {}
    - body下所有被选中的元素
   div:hover::after {}
-  ```
-- div在鼠标滑过下after伪元素
+  - div在鼠标滑过下after伪元素
   ::selection {}
-   - 文档中被用户高亮的部分
+  - 文档中被用户高亮的部分
   :target {}
-   - target伪类
+  - target伪类
+  - 当前页面的目标元素
+  - 目标元素: id的值为地址栏中#后面的内容的元素.
   input + ul + p ~ span {}
-   - input后面第一个ul的后面第一个p元素后面拥有共同父元素的span元素
-  ```
+  - input后面第一个ul的后面第一个p元素后面拥有共同父元素的span元素
 
   ```
 
@@ -389,19 +451,19 @@
      - 2
     div[title] {}
      - 11
-fieldset legend + input {}
+    fieldset legend + input {}
      - 3
     #some #thing .not:hover .abc:hover {}
-     - 222
+     - 240
 
     参考: https://juejin.im/post/5be3d07be51d457d4932b043
     ```
 
 35. `em,px,rem,vw,vh` 分别代表多长？
 
-    - em 代表自身字号的大小
-    - Px 代表像素点, 根据显示器分辨率决定
-    - Rem 代表根据根元素字号的大小
+    - em 代表当前自身字号的大小
+    - Px 代表CSS像素,当页面不放大的时候代表一个操作系统像素,当操作系统分辨率同时期物理分辨率相同时,一个px代表显示器的一个物理像素
+    - Rem 代表根元素字号的大小
     - Vw 代表相对于视窗的宽度决定, 长度为视窗宽度的1/100
     - vh 代表相对于视窗的高度决定, 长度为视窗高度的1/100
     - 参考: https://juejin.im/post/5c7646e2f265da2d8e70f681
@@ -461,10 +523,10 @@ fieldset legend + input {}
     }
     ```
     - h1后面多个逗号
-    - rgba的颜色格式错误,且后面没有;
-    - color拼写错误
+    - rgba后面没有冒号且颜色格式错误,且后面没有;
+    - color拼写错误, 颜色属性写的错误.
     - font顺序错误
-    - font-varient后面跟着;, 应该是:
+    - font-variant后面跟着;, 应该是:  里面不能跟着abc,有关键字
 
 40. 写出如下结构中div元素的所有后代/祖先/子/父/兄弟元素
     ```html
@@ -483,8 +545,8 @@ fieldset legend + input {}
       </main>
     </section>
     ```
-    - 后代: ul ,li, a
-    - 祖先: main, secion
+    - 后代: ul ,li, a img
+    - 祖先: main, section
     - 子元素: ul
     - 父元素: main
     - 兄弟元素: h2, aside
@@ -494,6 +556,8 @@ fieldset legend + input {}
     - 区别:
       - 可替换元素就是浏览器根据元素的标签和属性, 来决定元素的显示具体内容.
       - 不可替换元素的内容直接表现给用户端.
+      - 有内在宽高
+      - 一般没有后代元素
     - 参考: https://segmentfault.com/a/1190000006835284
     - 参考2: https://blog.csdn.net/Syleapn/article/details/79583598
 
@@ -504,7 +568,7 @@ fieldset legend + input {}
 
 43. 如何让页面打印时应用不同的效果？
     - 在CSS上为打印增加样式,  @media print{}
-    - 也可以单独设置CSS文件, 设置Link里的media="print"属性来指定样式专门用于打印
+    - 也可以单独设置CSS文件, 设置Link里的media="print"属性来指定样式专门用于打印  <link rel="stylesheet" href="xxx.css" media="print">
     - 参考: https://www.jianshu.com/p/3a1d9690f3de
 
 44. 假设 index.html 的路径为 http://user.coding.me/task/index.html ，如下引用的a.css和b.css路径分别为？
@@ -523,11 +587,11 @@ fieldset legend + input {}
 
 45. 写出满足如下条件的选择器
     * 第  8个子结点之后，倒数第 5 个子结点之前的li结点
-    - ul li:nth-child(n+8):nth-last-child(n+5) {}
+    - ul li:nth-child(n+8):nth-last-child(-n+5) {}
     * 【类名】以“damiao-”开头的元素
-    - [class=^"damiao-"]
+    - [class=^"damiao-"],[class=" damiao-"]
     * rel 属性中有 nofollow 这个单词的标签
-    - [rel*=" nofollow "]
+    - [rel~="nofollow"]
 
 46. 链接伪类的几种状态书写的顺序是什么？为什么？
     - link, visited, hover, active,
@@ -540,7 +604,7 @@ fieldset legend + input {}
     - 第3正确
 
 48. 详述你对盒模型的理解。
-    - 每个HTML元素都具有盒模型
+    - 每个HTML元素都具有盒模型, 生成一个或多个矩形, 这些矩形可以嵌套
     - 盒模型包括了content, padding, border, margin
     - 默认的width指的是content的宽度, 默认height也是如此.
     - 但现在可以修改box-sizing, 设置为border-box,或者content-box
@@ -551,6 +615,9 @@ fieldset legend + input {}
 49. 元素的高度写百分比在什么情况下【无效】，为什么？在什么情况下【有效】，有效时是以哪个元素的高度为基准值？
     - 在没设置HTML的height:100%时无效, 因为HTML默认宽度是占比100%, 但高度时显示内容的高度,
     - 生效就是吧html和body都设置为Height:100%, 然后在元素的父元素上也设置为100%, 继承过来. 基准值是按父元素来的.
+    ```
+
+    ```
 
 50. 字体的 italic 与 obsolete 的区别是？
     - italic是文字本身有倾斜属性, 可以让它倾斜, 如果文字没有倾斜属性, 则无法使用.替代应用为oblique.
@@ -561,6 +628,12 @@ fieldset legend + input {}
     - 模拟信号是一种信号与信息的不断变化的物理量表示.所以模拟是连续的.
     - 数字信号是一种信号与自变量和因变量的分散.数字是离散的.
     - 区别: 传输上一个信号是连续的一个是离散的.
+    -
+    - 模拟信号: 将设备,介质中的物理量直接读出来经过转换后使用
+    - 数字信号: 将介质中的物理量读出并理解0和1
+    - 区别: 数字信号可以几乎完全消除误差
+    - 区别2: 模拟信号会被干扰
+    - 区别3: 数字信号传输距离近,抗干扰能力弱. 模拟信号传输距离远,抗干扰能力强.
 
 52. 将如下 markdown 转换成 html
     ```md
@@ -662,14 +735,14 @@ fieldset legend + input {}
 54. 列出 input 的 type 有哪些值，以及为各个值时分别需要怎么使用。
     - button
     - checkbox
-    - text
-    - radio
+    - text   (maxlength minlength)
     - date
     - color
     - submit
-    - file
-    - image
+    - file (accept)
+    - image  (src alt)
     - password
+    - range (min max step)
     - 参考: https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/Input
 55. 想要让一个文本输入框在页面打开后自动获得光标要怎么办？
 
@@ -756,12 +829,34 @@ fieldset legend + input {}
 61. 写出如下标签或属性值的英文全称
 
     标签：html,div,p,a,em,tr,th,td,col,ul,ol,li,dl,dt,dd,pre,nav
-
+    html hyper text markup language
+    p paragraph
+    a anchor
+    em emphasis
+    tr table row
+    th table head
+    td table data
+    col column
+    ul unordered list
+    or ordered list
+    li list item
+    dl description list
+    dt description title
+    dd description detail
+    pre preformated
+    nav navigator
     属性：coord,rect,poly,href,src
+    coord coordinate
+    rect rectangle
+    poly polygon
+    href hyper reference
+    src source
 
 62. 请说出你对命令行程序的理解，以及其与 GUI 程序的区别
     - 通过指令来进行执行命令的终端就是命令行程序.
     - GUI具有用户交互逻辑, 而CLI则基本没有. 它们都具有功能逻辑
+
+    - 一个命令其实就对应一个程序, 只不过其没有界面,只有文字输出, 通过参数来调整其行为
 
 63. 请确认以下标签分别属性什么类别（Content Category）？
 
