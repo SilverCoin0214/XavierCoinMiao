@@ -1,0 +1,578 @@
+/* ----------------顶部栏------------------------- */
+
+/* 顶部左侧边栏 */
+.site-topbar {
+    background-color: #333;
+    height: 40px;
+    font-size: 12px;
+    position: relative;
+}
+
+.container {
+    width: 1226px;
+    color: #b0b0b0;
+    margin: 0 auto;
+}
+
+.topbar-nav {
+    float: left;
+}
+
+.sep {
+    margin: 0 0.3em;
+    color: #424242;
+    height: 40px;
+    line-height: 40px;
+}
+
+.site-topbar a {
+    line-height: 40px;
+    display: inline-block;
+}
+
+.download {
+    position: relative;
+}
+
+.site-topbar .topbar-nav a:hover {
+    color: #fff;
+}
+
+/* 这里面用display: none会无transition. */
+/* 用visiblity: hidden会导致内部不跟着一起transition */
+.appcode {
+    position: absolute;
+    width: 124px;
+    height: 0px;
+    top: 40px;
+    left: 50%;
+    margin-left: -55px;
+    box-shadow: 0 1px 5px #aaa;
+    color: #333;
+    text-align: center;
+    font-size: 14px;
+    line-height: 1;
+    overflow: hidden;
+    transition: 0.3s;
+    z-index: 20;
+    background-color: #fff;
+}
+
+.appcode img {
+    display: block;
+    margin: 18px auto 12px;
+}
+
+.download::before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 8px 8px 8px;
+    border-color: transparent transparent #fff transparent;
+    top: 32px;
+    left: 40%;
+    display: none;
+}
+
+.download:hover::before {
+    display: block;
+}
+
+.download:hover .appcode {
+    height: 150px;
+    transition: 0.3s;
+}
+
+/* 顶部右侧边栏 */
+
+.topbar-info {
+    float: right;
+
+}
+
+.topbar-info a:hover {
+    color: #fff;
+}
+
+.topbar-cart {
+    float: right;
+    width: 120px;
+    height: 40px;
+    background-color: #424242;
+    text-align: center;
+    margin-left: 15px;
+    position: relative;
+}
+
+.topbar-cart img {
+    position: absolute;
+    top: 25%;
+    left: 9px;
+}
+
+.topbar-cart span {
+    margin-left: 2px;
+}
+
+/* 这边一定要给height:0px, 才能使得transition生效 */
+.topbar-cart .cart-content {
+    position: absolute;
+    width: 316px;
+    height: 0px;
+    right: 0px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, .15);
+    overflow: hidden;
+    transition: 0.3s;
+    background-color: #fff;
+    z-index: 20;
+}
+
+.topbar-cart .cart-content .cart-empty {
+    position: absolute;
+    color: #424242;
+    top: 40%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.topbar-cart:hover a,
+.topbar-cart:hover span {
+    color: #ee702e;
+}
+
+.topbar-cart:hover .cart-content {
+    height: 100px;
+    transition: 0.3s;
+}
+
+.site-topbar .container::after {
+    content: "";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+
+
+/* ----------------头部栏----------------- */
+/* 头部导航栏  */
+.site-header {
+    height: 100px;
+    position: relative;
+}
+
+
+.site-header .container {
+    width: 1226px;
+    height: 100px;
+    margin: 0 auto;
+}
+
+
+/* logo区域 */
+.site-header .container .header-logo {
+    float: left;
+    width: 62px;
+    margin-top: 22px;
+}
+
+.site-header .container .header-logo .logo {
+    position: relative;
+    display: block;
+    width: 54px;
+    height: 54px;
+    background-color: #ff6700;
+    overflow: hidden;
+    text-indent: -999em;
+}
+
+
+.site-header .container .logo::before,
+.site-header .container .logo::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 55px;
+    height: 55px;
+    transition: 0.2s;
+}
+
+.site-header .container .logo::before {
+    background: url(../img/mi-logo.png) no-repeat 50% 50%;
+}
+
+.site-header .container .logo::after {
+    background: url(../img/mi-home.png) no-repeat 50% 50%;
+    margin-left: -55px;
+    opacity: 0;
+}
+
+.site-header .logo::after,
+.site-header .logo::before {
+    transform: translateX(0);
+}
+
+.site-header .logo:hover::before,
+.site-header .logo:hover::after {
+    transform: translateX(55px);
+}
+
+.site-header .logo:hover::before {
+    opacity: 0;
+}
+
+.site-header .logo:hover::after {
+    opacity: 1;
+}
+
+
+/* 中部nav区域 */
+
+.header-nav {
+    float: left;
+}
+
+
+.site-header .nav-list {
+    float: left;
+    height: 88px;
+    padding: 12px 0 0 30px;
+}
+
+.header-nav .nav-item,
+.header-nav .nav-category {
+    float: left;
+}
+
+
+.site-header .nav-item-a {
+    color: #333;
+    float: left;
+    padding: 26px 10px 38px;
+    font-size: 16px;
+}
+
+.site-header .nav-category .link-category {
+    text-align: right;
+    padding-left: 30px;
+    padding-right: 15px;
+}
+
+.site-header .nav-list a:hover {
+    color: #ff6700;
+}
+
+
+/* nav的下拉菜单 */
+
+
+.nav-list .nav-item .pop {
+    position: absolute;
+    width: 100%;
+    height: 0px;
+    background-color: #fff;
+    left: 0;
+    top: 100px;
+    overflow: hidden;
+    transition: height .3s;
+    z-index: 15;
+}
+
+
+.nav-list .pop-container {
+    width: 1226px;
+    margin: 0 auto;
+}
+
+.nav-list .children-ul {
+    font-size: 12px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-list .children-li {
+    float: left;
+    width: 180px;
+    padding: 35px 12px 0;
+    text-align: center;
+    position: relative;
+}
+
+.nav-list .children-li img {
+    display: block;
+    margin: 0 auto;
+}
+
+.nav-list .children-li .title {
+    color: #333;
+    font-weight: normal;
+    margin-top: 18px;
+}
+
+.nav-list .children-ul .price {
+    color: #ff6700;
+}
+
+.nav-list .aside-line {
+    width: 1px;
+    height: 100px;
+    position: absolute;
+    background-color: #e0e0e0;
+    right: 0;
+    top: 34px;
+    z-index: 100;
+}
+
+/* TODO: 需要解决问题,怎么下拉后可以不用再下拉 */
+.nav-item:hover .pop {
+    height: 228px;
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.18);
+    border-top: 1px solid #e0e0e0;
+    transition: box-shadow .2s, height .2s;
+}
+
+/* 全部商品分类下拉菜单 */
+#navcategory {
+    visibility: hidden;
+    position: relative;
+}
+
+
+
+.site-category {
+    width: 234px;
+    height: 460px;
+    position: absolute;
+    font-size: 14px;
+    top: 88px;
+    left: -92px;
+    z-index: 15;
+    visibility: visible;
+}
+
+.site-category .site-category-list {
+    height: 420px;
+    margin: 0;
+    padding: 20px 0;
+    /* border: 1px solid #ff6700; */
+    color: #fff;
+    background-color: rgba(105, 101, 101, .6);
+    position: relative;
+}
+
+.site-category .category-item .cia {
+    position: relative;
+    display: block;
+    padding-left: 30px;
+    color: #fff;
+    height: 42px;
+    line-height: 42px;
+}
+
+.site-category .category-item .cia::before {
+    content: url(../img/arrow_right.png);
+    position: absolute;
+    display: block;
+    width: 16px;
+    height: 16px;
+    top: 5px;
+    right: 20px;
+}
+
+.site-category .category-item:hover .cia {
+    background-color: #ff6700;
+    color: #fff;
+}
+
+
+.site-category .category-item .slide-pop {
+    position: absolute;
+    height: 458px;
+    left: 230px;
+    top: 0px;
+    border: 1px solid #e0e0e0;
+    background-color: #fff;
+    border-left: 0;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.18);
+    display: none;
+}
+
+.site-category .category-item .col4 {
+    width: 992px;
+}
+
+.site-category .category-item .col3 {
+    width: 744px;
+}
+
+.site-category .category-item .col2 {
+    width: 496px;
+}
+
+.slide-pop .pop-ul {
+    padding: 2px 0;
+    float: left;
+    width: 248px;
+    height: 458px;
+    margin: 0;
+    padding: 2px 0;
+}
+
+.slide-pop .pop-ul li {
+    position: relative;
+    float: left;
+    width: 265px;
+    height: 76px;
+}
+
+.slide-pop .pop-ul .pop-a {
+    display: block;
+    padding: 18px 20px;
+    line-height: 40px;
+    height: 40px;
+    color: #333;
+}
+
+.slide-pop .pop-ul .pop-a img {
+    float: left;
+    margin-right: 12px;
+    vertical-align: middle;
+}
+
+.slide-pop .pop-ul .pop-a .pop-name {
+    float: left;
+    width: 172px;
+    line-height: 40px;
+    white-space: nowrap;
+}
+
+.site-category .category-item:hover .slide-pop {
+    display: block;
+}
+
+
+
+/* 查询框 */
+.header-search {
+    /* background-color: palegreen; */
+    float: right;
+}
+
+.header-search .search-form {
+    position: relative;
+    height: 100px;
+}
+
+.header-search .h-search {
+    position: absolute;
+    right: 51px;
+    top: 25%;
+    width: 223px;
+    height: 48px;
+    padding: 0 10px;
+    line-height: 48px;
+    font-size: 14px;
+    border: 1px solid #e0e0e0;
+    outline: none;
+}
+
+
+.header-search .h-button {
+    position: absolute;
+    right: 0px;
+    top: 25%;
+    width: 52px;
+    height: 50px;
+    border: 1px solid #e0e0e0;
+    background-image: url(../img/search.png);
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    outline: none;
+}
+
+.header-search:hover .h-search,
+.header-search:hover .h-button {
+    border-color: #b0b0b0;
+}
+
+.header-search .h-search:focus,
+.header-search .h-search:focus~.h-button {
+    border-color: #ff6700;
+}
+
+.header-search .h-button:hover {
+    border-color: #ff6700;
+    background-color: #ff6700;
+    background-image: url(../img/search-hover.png);
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+.header-search .h-button:hover+label {
+    border-color: #b0b0b0;
+}
+
+.header-search .search-hot {
+    position: absolute;
+    top: 36px;
+    right: 62px;
+    text-align: right;
+    white-space: nowrap;
+
+}
+
+.header-search .search-hot a {
+    display: inline-block;
+    margin-left: 5px;
+    font-size: 12px;
+    padding: 0 5px;
+    background-color: #eee;
+    color: #757575;
+}
+
+.header-search .search-hot a:hover {
+    background-color: #ff6700;
+    color: #fff;
+}
+
+
+.header-search .keywords {
+    position: absolute;
+    top: 75px;
+    left: -296px;
+    border: 1px solid #ff6700;
+    border-top: 0;
+    width: 243px;
+    display: none;
+    z-index: 18;
+    background-color: #fff;
+}
+
+.header-search .keyword-list {
+    margin: 0;
+    padding: 0;
+}
+
+.header-search .keyword-list a {
+    display: block;
+    padding: 6px 15px;
+    font-size: 12px;
+    color: #424242;
+}
+
+.header-search .keyword-list li:hover {
+    background-color: #fafafa;
+}
+
+.header-search .h-search:focus~.keywords {
+    display: block;
+}
+
+.header-search .h-search:focus+.search-hot {
+    display: none;
+}
