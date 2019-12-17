@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        * {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+
+        /* 定位方式 */
+        div {
+            height: 100px;
+            width: 200px;
+            border: 1px solid red;
+            position: relative;
+        }
+
+        span {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            transition: 1s;
+        }
+
+        div:hover span {
+            font-size: 50px;
+        }
+
+        /* table方式 */
+        header {
+            display: table-cell;
+            height: 100px;
+            width: 200px;
+            border: 1px solid blue;
+            transition: 1s;
+            vertical-align: bottom;
+        }
+
+        header:hover {
+            font-size: 50px;
+        }
+
+        /* 定高度后修改行高模式 */
+
+        main {
+            height: 100px;
+            width: 200px;
+            border: 1px solid green;
+            background-clip: content-box;
+            height: 50px;
+            padding-top: 50px;
+            line-height: 80px;
+            transition: 1s;
+        }
+
+        main:hover {
+            line-height: 50px;
+            font-size: 50px;
+        }
+
+        /* 修改padding */
+
+        section {
+            /* height: 100px; */
+            width: 200px;
+            border: 1px solid purple;
+            padding-top: 80px;
+            background-clip: content-box;
+            transition: 1s;
+        }
+
+        section:hover {
+            font-size: 50px;
+            padding-top: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <span>订阅博客</span>
+    </div>
+
+    <header>订阅博客</header>
+
+    <main>订阅博客</main>
+
+    <section>订阅博客</section>
+</body>
+
+</html>
