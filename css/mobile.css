@@ -181,6 +181,7 @@ body {
     flex-wrap: wrap;
     flex-direction: column;
     background-color: #fff;
+    font-size: 0;
 }
 
 .main_content .recommed_product a {
@@ -196,6 +197,7 @@ body {
 
 .main_content .recommed_product a:nth-child(1) {
     height: 3.5277rem;
+    margin-left: 0;
 }
 
 .main_content .recommed_product a:nth-child(3) {
