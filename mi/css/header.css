@@ -106,10 +106,11 @@
     position: relative;
 }
 
-.topbar-cart img {
-    position: absolute;
-    top: 25%;
-    left: 9px;
+
+.topbar-cart em {
+    font-size: 20px;
+    vertical-align: -3px;
+
 }
 
 .topbar-cart span {
@@ -138,9 +139,9 @@
     bottom: 0;
 }
 
-.topbar-cart:hover a,
-.topbar-cart:hover span {
+.topbar-cart:hover {
     color: #ee702e;
+    background-color: #fff;
 }
 
 .topbar-cart:hover .cart-content {

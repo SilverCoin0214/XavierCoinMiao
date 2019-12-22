@@ -275,25 +275,28 @@
   left: 0;
 }
 
-.home-box .box-tit i {
+.home-box .box-tit .iconfont {
   position: absolute;
   width: 12px;
   height: 12px;
   padding: 4px;
   margin-left: 8px;
   border-radius: 20px;
-  line-height: 58px;
   background: #b0b0b0;
   color: #fff;
   right: 0;
   top: 18px;
 }
 
-.home-box .box-tit i:before {
+/* .home-box .box-tit i:before {
   content: url(../img/more-right.png);
   position: absolute;
   top: -18px;
-}
+} */
+
+/* .home-box .box-tit .iconfont-arrow-right-big:before {
+  content: "\E623";
+} */
 
 .home-box .box-tit .more:hover a {
   color: #ff6700;
