@@ -1,0 +1,148 @@
+* {
+    xbackground-color: rgba(0, 0, 0, 0.1);
+}
+
+@keyframes roll {
+    from {
+        transform: rotateX(0deg) rotateY(0deg);
+    }
+
+    to {
+        transform: rotateX(360deg) rotateY(720deg)
+    }
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+div {
+    width: 500px;
+    height: 500px;
+    position: relative;
+    transform-style: preserve-3d;
+    animation: roll 10s infinite alternate;
+}
+
+div:hover {
+    animation-play-state: paused;
+}
+
+li {
+    width: 100px;
+    height: 100px;
+    margin: 5px;
+    position: absolute;
+}
+
+/* 平面的正侧 */
+
+li:nth-child(1) {
+    transform: translateZ(110px);
+}
+
+li:nth-child(2) {
+    transform: translateZ(10px);
+}
+
+li:nth-child(3) {
+    transform: rotateX(90deg) translateY(60px) translateZ(50px);
+}
+
+li:nth-child(4) {
+    transform: rotateX(90deg) translateY(60px) translateZ(-50px);
+}
+
+li:nth-child(5) {
+    transform: rotateY(90deg) translateX(-60px) translateZ(50px);
+}
+
+li:nth-child(6) {
+    transform: rotateY(90deg) translateX(-60px) translateZ(-50px);
+}
+
+/* 平面的另一侧 */
+
+ul:nth-child(n+5) li:nth-child(1) {
+    transform: translateZ(-100px);
+}
+
+ul:nth-child(n+5) li:nth-child(2) {
+    transform: translateZ(0px);
+}
+
+ul:nth-child(n+5) li:nth-child(3) {
+    transform: rotateX(90deg) translateY(-50px) translateZ(50px);
+}
+
+ul:nth-child(n+5) li:nth-child(4) {
+    transform: rotateX(90deg) translateY(-50px) translateZ(-50px);
+}
+
+ul:nth-child(n+5) li:nth-child(5) {
+    transform: rotateY(90deg) translateX(50px) translateZ(50px);
+}
+
+ul:nth-child(n+5) li:nth-child(6) {
+    transform: rotateY(90deg) translateX(50px) translateZ(-50px);
+}
+
+
+/* 定位 */
+.box1,
+.box5 {
+    bottom: 50%;
+    right: 50%;
+}
+
+.box2,
+.box6 {
+    top: 50%;
+    right: 50%;
+}
+
+.box3,
+.box7 {
+    bottom: 50%;
+    left: 50%;
+}
+
+.box4,
+.box8 {
+    top: 50%;
+    left: 50%;
+}
+
+.box1 {
+    background-image: linear-gradient(to bottom right, #B1B35B, #CE9CFF);
+}
+
+.box2 {
+    background-image: radial-gradient(#B35B87, #FF9CCD, #9FFF9F);
+}
+
+.box3 {
+    background-image: linear-gradient(to bottom right, #6696B3, #FFDBAB);
+}
+
+.box4 {
+    background-image: radial-gradient(#5B61B3 30%, #FFEA9C 70%);
+}
+
+.box5 {
+    background-image: radial-gradient(circle, #985BB3, #FFCE9C, #E4FF9C);
+}
+
+.box6 {
+    background-image: linear-gradient(to bottom right, #B35B7D, #9CFFA2);
+}
+
+.box7 {
+    background-image: linear-gradient(to bottom right, #B3725B, #9CFFEB);
+}
+
+.box8 {
+    background-image: linear-gradient(#625BB3, #A49CFF, #FFF09E);
+}
