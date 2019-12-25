@@ -1,0 +1,295 @@
+* {
+    xbackground-color: rgba(0, 0, 0, 0.1);
+}
+
+@keyframes roll {
+    from {
+        transform: rotateX(0deg) rotateY(0deg);
+    }
+
+    to {
+        transform: rotateX(360deg) rotateY(720deg)
+    }
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+main {
+    width: 500px;
+    height: 500px;
+    position: relative;
+}
+
+div {
+    width: 300px;
+    height: 300px;
+    display: flex;
+    flex-wrap: wrap;
+    transform-style: preserve-3d;
+    animation: roll 20s infinite alternate;
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+
+}
+
+div:hover {
+    animation-play-state: paused;
+}
+
+ul {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    margin: 5px;
+}
+
+li {
+    box-sizing: border-box;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+}
+
+
+.second {
+    position: absolute;
+    top: 0;
+}
+
+.first {
+    position: absolute;
+    top: 0;
+}
+
+.fourth {
+    position: absolute;
+    top: 0;
+}
+
+.fifth {
+    position: absolute;
+    top: 0;
+}
+
+
+
+
+/* 第三层 */
+li:nth-child(1) {
+    transform: translateZ(50px);
+}
+
+li:nth-child(2) {
+    transform: translateZ(0px);
+}
+
+li:nth-child(3) {
+    transform: rotateX(90deg) translateY(25px) translateZ(25px);
+}
+
+li:nth-child(4) {
+    transform: rotateX(90deg) translateY(25px) translateZ(-25px);
+}
+
+li:nth-child(5) {
+    transform: rotateY(90deg) translateX(-25px) translateZ(25px);
+}
+
+li:nth-child(6) {
+    transform: rotateY(90deg) translateX(-25px) translateZ(-25px);
+}
+
+/* 第二层 */
+
+.second li:nth-child(1) {
+    transform: translateZ(110px);
+}
+
+.second li:nth-child(2) {
+    transform: translateZ(60px);
+}
+
+.second li:nth-child(3) {
+    transform: rotateX(90deg) translateY(85px) translateZ(25px);
+}
+
+.second li:nth-child(4) {
+    transform: rotateX(90deg) translateY(85px) translateZ(-25px);
+}
+
+.second li:nth-child(5) {
+    transform: rotateY(90deg) translateX(-85px) translateZ(25px);
+}
+
+.second li:nth-child(6) {
+    transform: rotateY(90deg) translateX(-85px) translateZ(-25px);
+}
+
+/* 第一层 */
+
+.first li:nth-child(1) {
+    transform: translateZ(165px);
+}
+
+.first li:nth-child(2) {
+    transform: translateZ(115px);
+}
+
+.first li:nth-child(3) {
+    transform: rotateX(90deg) translateY(140px) translateZ(25px);
+}
+
+.first li:nth-child(4) {
+    transform: rotateX(90deg) translateY(140px) translateZ(-25px);
+}
+
+.first li:nth-child(5) {
+    transform: rotateY(90deg) translateX(-140px) translateZ(25px);
+}
+
+.first li:nth-child(6) {
+    transform: rotateY(90deg) translateX(-140px) translateZ(-25px);
+}
+
+
+/* 第四层 */
+
+.fourth li:nth-child(1) {
+    transform: translateZ(-60px);
+}
+
+.fourth li:nth-child(2) {
+    transform: translateZ(-10px);
+}
+
+.fourth li:nth-child(3) {
+    transform: rotateX(90deg) translateY(-35px) translateZ(25px);
+}
+
+.fourth li:nth-child(4) {
+    transform: rotateX(90deg) translateY(-35px) translateZ(-25px);
+}
+
+.fourth li:nth-child(5) {
+    transform: rotateY(90deg) translateX(35px) translateZ(25px);
+}
+
+.fourth li:nth-child(6) {
+    transform: rotateY(90deg) translateX(35px) translateZ(-25px);
+}
+
+/* 第五层 */
+
+.fifth li:nth-child(1) {
+    transform: translateZ(-115px);
+}
+
+.fifth li:nth-child(2) {
+    transform: translateZ(-65px);
+}
+
+.fifth li:nth-child(3) {
+    transform: rotateX(90deg) translateY(-90px) translateZ(25px);
+}
+
+.fifth li:nth-child(4) {
+    transform: rotateX(90deg) translateY(-90px) translateZ(-25px);
+}
+
+.fifth li:nth-child(5) {
+    transform: rotateY(90deg) translateX(90px) translateZ(25px);
+}
+
+.fifth li:nth-child(6) {
+    transform: rotateY(90deg) translateX(90px) translateZ(-25px);
+}
+
+
+
+/* 颜色 */
+
+// .third li {
+//     background-color: rgba(131, 69, 180, 0.8);
+// }
+
+// .second li {
+//     background-color: rgba(90, 55, 158, 0.7);
+// }
+
+// .first li {
+//     background-color: rgba(49, 40, 135, 0.6);
+// }
+
+// .fourth li {
+//     background-color: rgba(172, 84, 203, 0.5);
+// }
+
+// .fifth li {
+//     background-color: rgba(213, 98, 225, 0.4);
+// }
+
+
+// 第一行
+.loopingClass (@index) when (@index > 0) {
+    .first ul:nth-child(@{index}) li {
+        background-color: rgba(@index * 10, 40, 135, 0.7);
+    }
+
+    .loopingClass(@index - 1);
+}
+
+.loopingClass(25);
+
+// 第二行
+.loopingSecond (@index) when (@index > 0) {
+    .second ul:nth-child(@{index}) li {
+        background-color: rgba(@index * 10, 80, 135, 0.7);
+    }
+
+    .loopingSecond(@index - 1);
+}
+
+.loopingSecond(25);
+
+// 第三行
+.loopingThird (@index) when (@index > 0) {
+    .third ul:nth-child(@{index}) li {
+        background-color: rgba(@index * 10, 120, 135, 0.7);
+    }
+
+    .loopingThird(@index - 1);
+}
+
+.loopingThird(25);
+
+
+// 第四行
+.loopingFourth (@index) when (@index > 0) {
+    .fourth ul:nth-child(@{index}) li {
+        background-color: rgba(@index * 10, 150, 135, 0.7);
+    }
+
+    .loopingFourth(@index - 1);
+}
+
+.loopingFourth(25);
+
+
+// 第五行
+.loopingFifth (@index) when (@index > 0) {
+    .fifth ul:nth-child(@{index}) li {
+        background-color: rgba(@index * 10, 200, 135, 0.7);
+    }
+
+    .loopingFifth(@index - 1);
+}
+
+.loopingFifth(25);
