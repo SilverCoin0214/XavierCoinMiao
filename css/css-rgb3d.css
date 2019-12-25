@@ -116,33 +116,33 @@ ul:nth-child(n+5) li:nth-child(6) {
 }
 
 .box1 {
-    background-image: linear-gradient(to bottom right, #B1B35B, #CE9CFF);
+    background-image: linear-gradient(#3F800A, #7EFF14, #66CC10);
 }
 
 .box2 {
-    background-image: radial-gradient(#B35B87, #FF9CCD, #9FFF9F);
+    background-image: radial-gradient(#3F800A, #7EFF14, #66CC10);
 }
 
 .box3 {
-    background-image: linear-gradient(to bottom right, #6696B3, #FFDBAB);
+    background-image: linear-gradient(to bottom right, #7EFF14, #66CC10);
 }
 
 .box4 {
-    background-image: radial-gradient(#5B61B3 30%, #FFEA9C 70%);
+    background-image: radial-gradient(#BEFF8A 30%, #66CC10 70%);
 }
 
 .box5 {
-    background-image: radial-gradient(circle, #985BB3, #FFCE9C, #E4FF9C);
+    background-image: radial-gradient(circle, #3F800A, #7EFF14, #66CC10);
 }
 
 .box6 {
-    background-image: linear-gradient(to bottom right, #B35B7D, #9CFFA2);
+    background-image: linear-gradient(to top right, #7EFF14, #66CC10);
 }
 
 .box7 {
-    background-image: linear-gradient(to bottom right, #B3725B, #9CFFEB);
+    background-image: linear-gradient(to right, rgba(186, 255, 125, 0.5), rgba(98, 204, 6, 0.9));
 }
 
 .box8 {
-    background-image: linear-gradient(#625BB3, #A49CFF, #FFF09E);
+    background-image: repeating-linear-gradient(#3F800A 30%, #7EFF14 60%, #66CC10);
 }
