@@ -1,0 +1,179 @@
+* {
+    xbackground-color: rgba(0, 0, 0, 0.1);
+}
+
+/* 表盘部分 */
+
+article {
+    width: 432px;
+    height: 432px;
+    border-radius: 10px;
+    background-color: rgba(200, 200, 200, .9);
+}
+
+
+.clock {
+    width: 359px;
+    height: 359px;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 999px;
+    background-color: #fff;
+}
+
+.clock::after {
+    content: "";
+    position: absolute;
+    width: 17px;
+    height: 17px;
+    border-radius: 17px;
+    background-color: black;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+.number span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+
+    width: 40px;
+    height: 40px;
+    font-size: 40px;
+    text-align: center;
+    line-height: 40px;
+}
+
+.number span:nth-child(1) {
+    transform: rotate(-60deg) translateX(150px) rotate(60deg);
+}
+
+.number span:nth-child(2) {
+    transform: rotate(-30deg) translateX(150px) rotate(30deg);
+}
+
+.number span:nth-child(3) {
+    transform: rotate(0deg) translateX(150px) rotate(0deg);
+}
+
+.number span:nth-child(4) {
+    transform: rotate(30deg) translateX(150px) rotate(-30deg);
+}
+
+.number span:nth-child(5) {
+    transform: rotate(60deg) translateX(150px) rotate(-60deg);
+}
+
+.number span:nth-child(6) {
+    transform: rotate(90deg) translateX(150px) rotate(-90deg);
+}
+
+.number span:nth-child(7) {
+    transform: rotate(120deg) translateX(150px) rotate(-120deg);
+}
+
+.number span:nth-child(8) {
+    transform: rotate(150deg) translateX(150px) rotate(-150deg);
+}
+
+.number span:nth-child(9) {
+    transform: rotate(180deg) translateX(150px) rotate(-180deg);
+}
+
+.number span:nth-child(10) {
+    transform: rotate(210deg) translateX(150px) rotate(-210deg);
+}
+
+.number span:nth-child(11) {
+    transform: rotate(240deg) translateX(150px) rotate(-240deg);
+}
+
+.number span:nth-child(12) {
+    transform: rotate(270deg) translateX(150px) rotate(-270deg);
+}
+
+
+/* 指针部分 */
+
+
+.hours-container,
+.minutes-container,
+.seconds-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.seconds {
+    width: 3px;
+    height: 160px;
+    background-color: red;
+    position: absolute;
+    top: 0px;
+    bottom: 95px;
+    right: 0;
+    left: 0;
+    margin: auto;
+    z-index: 10;
+    transform-origin: 50% 80%;
+    animation: ro 60s infinite steps(60);
+}
+
+.minutes {
+    width: 7px;
+    height: 145px;
+    background-color: black;
+    position: absolute;
+    top: 0px;
+    bottom: 145px;
+    right: 0;
+    left: 0;
+    margin: auto;
+    transform-origin: 50% 100%;
+    animation: ro 3600s infinite steps(60);
+}
+
+.hours {
+    width: 9px;
+    height: 60px;
+    background-color: black;
+    position: absolute;
+    top: 0px;
+    bottom: 60px;
+    right: 0;
+    left: 0;
+    margin: auto;
+    transform-origin: 50% 100%;
+    animation: ro 43200s infinite linear;
+}
+
+
+@keyframes ro {
+    100% {
+        transform: rotatez(360deg);
+    }
+}
+
+@keyframes bounce {
+    from {
+        transform: rotate(0deg);
+    }
+
+    20%,
+    to {
+        transform: rotate(5deg);
+    }
+}
+
+.seconds-container {
+    animation: bounce 1s infinite cubic-bezier(.4, 2.08, .55, .44);
+}

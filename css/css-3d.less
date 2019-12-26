@@ -240,7 +240,7 @@ li:nth-child(6) {
 // 第一行
 .loopingClass (@index) when (@index > 0) {
     .first ul:nth-child(@{index}) li {
-        background-color: rgba(@index * 10, 40, 135, 0.7);
+        background-color: rgba(@index * 10, @index * 10, 255, 0.7);
     }
 
     .loopingClass(@index - 1);
@@ -251,7 +251,7 @@ li:nth-child(6) {
 // 第二行
 .loopingSecond (@index) when (@index > 0) {
     .second ul:nth-child(@{index}) li {
-        background-color: rgba(@index * 10, 80, 135, 0.7);
+        background-color: rgba(@index * 10, @index * 10, 255, 0.7);
     }
 
     .loopingSecond(@index - 1);
@@ -262,7 +262,7 @@ li:nth-child(6) {
 // 第三行
 .loopingThird (@index) when (@index > 0) {
     .third ul:nth-child(@{index}) li {
-        background-color: rgba(@index * 10, 120, 135, 0.7);
+        background-color: rgba(@index * 10, @index * 10, 255, 0.7);
     }
 
     .loopingThird(@index - 1);
@@ -286,7 +286,7 @@ li:nth-child(6) {
 // 第五行
 .loopingFifth (@index) when (@index > 0) {
     .fifth ul:nth-child(@{index}) li {
-        background-color: rgba(@index * 10, 200, 135, 0.7);
+        background-color: rgba(@index * 10, 255, 255, 0.7);
     }
 
     .loopingFifth(@index - 1);

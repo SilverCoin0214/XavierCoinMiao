@@ -1,0 +1,341 @@
+@font-face {
+    font-family: 'BebasNeueRegular';
+    src: url('../fonts/BebasNeue-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@silder-width: 600px;
+
+// 初始代码
+
+* {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+html,
+body {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+}
+
+body {
+    font-family: Cambria, Palatino, "Palatino Linotype", "Palatino LT STD", Georgia, serif;
+    background: #fff url(../img/silder-bg.jpg) repeat top left;
+    font-weight: 400;
+    font-size: 15px;
+    color: #3a2127;
+
+}
+
+
+// demo选择
+
+
+h1 {
+    font-size: 35px;
+    line-height: 35px;
+    position: relative;
+    font-weight: 400;
+    color: rgba(26, 89, 120, 0.9);
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 20px 30px 10px 30px;
+}
+
+input {
+    display: none;
+}
+
+
+input:nth-child(3):checked~.silder-container>.bgimg .slice:nth-child(2) span,
+input:nth-child(3):checked~.silder-container>.bgimg .slice:nth-child(4) span {
+    left: 100%;
+    animation: silderToLeft 0.8s;
+}
+
+input:nth-child(4):checked~.silder-container>.bgimg .slice:nth-child(1) span,
+input:nth-child(4):checked~.silder-container>.bgimg .slice:nth-child(3) span,
+input:nth-child(4):checked~.silder-container>.bgimg .slice:nth-child(2) span,
+input:nth-child(4):checked~.silder-container>.bgimg .slice:nth-child(4) span {
+    left: 0;
+    top: 100%;
+    animation: silderToUp 0.8s;
+}
+
+input:nth-child(4):checked~.silder-container>.bgimg .slice:nth-child(2) span,
+input:nth-child(4):checked~.silder-container>.bgimg .slice:nth-child(4) span {
+    left: 0;
+    top: -100%;
+    animation: silderToDown 0.8s;
+}
+
+
+input:nth-child(4):checked~.silder-container>input:nth-child(1):checked~.bgimg>.slice>span:nth-child(1),
+input:nth-child(4):checked~.silder-container>input:nth-child(2):checked~.bgimg>.slice>span:nth-child(2),
+input:nth-child(4):checked~.silder-container>input:nth-child(3):checked~.bgimg>.slice>span:nth-child(3),
+input:nth-child(4):checked~.silder-container>input:nth-child(4):checked~.bgimg>.slice>span:nth-child(4) {
+    top: 0;
+    z-index: 20;
+    animation: none;
+}
+
+
+.demo-labels {
+    text-align: center;
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 14px;
+
+    label {
+        display: inline-block;
+        font-size: 11px;
+        width: 60px;
+        height: 60px;
+        line-height: 60px;
+        margin: 0px 3px;
+        font-style: italic;
+        border-radius: 50%;
+        box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.05) inset;
+        color: #fff;
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+        background: rgba(104, 171, 194, 0.5);
+        cursor: pointer;
+
+        &:hover {
+            background: #4fa2c4;
+        }
+    }
+}
+
+input:nth-child(2):checked~.demo-labels>label:nth-child(1),
+input:nth-child(3):checked~.demo-labels>label:nth-child(2),
+input:nth-child(4):checked~.demo-labels>label:nth-child(3),
+input:nth-child(5):checked~.demo-labels>label:nth-child(4) {
+    background-color: #fff;
+    color: #68abc2;
+}
+
+
+
+
+// 轮播图部分代码
+
+@keyframes silderToRight {
+    from {
+        left: 0;
+    }
+
+    to {
+        left: 100%;
+    }
+}
+
+@keyframes silderToLeft {
+    from {
+        left: 0;
+    }
+
+    to {
+        left: -100%;
+    }
+}
+
+@keyframes silderToUp {
+    from {
+        top: 0;
+    }
+
+    to {
+        top: -100%;
+    }
+}
+
+@keyframes silderToDown {
+    from {
+        top: 0;
+    }
+
+    to {
+        top: 100%;
+    }
+}
+
+
+.container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    text-align: center;
+}
+
+
+.silder-container {
+    width: @silder-width;
+    height: 400px;
+    position: relative;
+    margin: 0 auto;
+    border: 20px solid #fff;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+
+    >input {
+        display: none;
+    }
+
+    >input:nth-child(1):checked~.bgimg>.slice>span:nth-child(1),
+    >input:nth-child(2):checked~.bgimg>.slice>span:nth-child(2),
+    >input:nth-child(3):checked~.bgimg>.slice>span:nth-child(3),
+    >input:nth-child(4):checked~.bgimg>.slice>span:nth-child(4) {
+        left: 0;
+        z-index: 20;
+        animation: none;
+    }
+
+    >.labels {
+        position: absolute;
+        width: 100%;
+        bottom: 20px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        z-index: 1000;
+
+        label {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            box-shadow: 0px 0px 0px 4px rgba(255, 255, 255, 0.3);
+            text-align: center;
+            line-height: 34px;
+            font-size: 25px;
+            color: #fff;
+            background-color: #68abc2;
+            cursor: pointer;
+        }
+
+    }
+
+    >input:nth-child(1):checked~.labels>label:nth-child(1),
+    >input:nth-child(2):checked~.labels>label:nth-child(2),
+    >input:nth-child(3):checked~.labels>label:nth-child(3),
+    >input:nth-child(4):checked~.labels>label:nth-child(4) {
+        background-color: #fff;
+        color: #68abc2;
+        box-shadow: 0px 0px 0px 4px rgba(104, 171, 194, 0.6);
+
+    }
+
+    >.bgimg {
+        width: 100%;
+        height: 100%;
+
+        .slice {
+            width: 25%;
+            height: 100%;
+            float: left;
+            position: relative;
+            overflow: hidden;
+
+            &:nth-child(1) span {
+                background-position: 0 0;
+            }
+
+            &:nth-child(2) span {
+                background-position: 33.333% 0;
+            }
+
+            &:nth-child(3) span {
+                background-position: 66.667% 0;
+            }
+
+            &:nth-child(4) span {
+                background-position: 100% 0;
+            }
+
+            &::after {
+                content: "";
+                width: 1px;
+                height: 400px;
+                right: 0;
+                position: absolute;
+                bottom: 0px;
+                z-index: 30;
+                background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
+            }
+
+            >span {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                left: -100%;
+                background-color: blue;
+                transition: 0.8s;
+                animation: silderToRight .8s;
+                background-size: @silder-width 100%;
+                text-indent: -999px;
+
+                &:nth-child(1) {
+                    background-image: url(../img/silder-1.jpg);
+                }
+
+                &:nth-child(2) {
+                    background-image: url(../img/silder-2.jpg);
+                }
+
+                &:nth-child(3) {
+                    background-image: url(../img/silder-3.jpg);
+                }
+
+                &:nth-child(4) {
+                    background-image: url(../img/silder-4.jpg);
+                }
+            }
+        }
+    }
+
+    >.titles {
+
+        >h3 {
+            opacity: 0;
+            color: #fff;
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            top: 50%;
+            z-index: 500;
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+            transition: opacity 0.8s ease-in-out;
+
+
+            >span:nth-child(1) {
+                font-size: 70px;
+                display: block;
+                letter-spacing: 7px;
+                font-family: 'BebasNeueRegular', 'Arial Narrow', Arial, sans-serif;
+                text-transform: uppercase;
+                font-weight: 400;
+            }
+
+            >span:nth-child(2) {
+                letter-spacing: 0px;
+                display: block;
+                background: rgba(104, 171, 194, 0.9);
+                font-size: 14px;
+                padding: 10px;
+                font-style: italic;
+                font-family: Cambria, Palatino, "Palatino Linotype", "Palatino LT STD", Georgia, serif;
+            }
+        }
+    }
+
+    >input:nth-child(1):checked~.titles>h3:nth-child(1),
+    >input:nth-child(2):checked~.titles>h3:nth-child(2),
+    >input:nth-child(3):checked~.titles>h3:nth-child(3),
+    >input:nth-child(4):checked~.titles>h3:nth-child(4) {
+        opacity: 1;
+    }
+
+}
