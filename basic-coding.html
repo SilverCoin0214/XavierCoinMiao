@@ -9,25 +9,31 @@
 </head>
 
 <body>
-    <script xtype="x" id="ch0103/01">
+    <script id="ch0103/01">
         var aplusb = function (a, b) {
             return a + b
         }
         console.log(aplusb(1, 2))
     </script>
-    <script xtype="x" id="ch0103/02">
+
+
+    <script id="ch0103/02">
         var multiplicationC = function (a, b, c) {
             return ((a + b) * c)
         }
         console.log(multiplicationC(2, 3, 5))
     </script>
-    <script xtype="x" id="ch0103/03">
+
+
+    <script id="ch0103/03">
         var divisionC = function (a, b, c) {
             return (Math.floor((a + b) / c))
         }
         console.log(divisionC(1, 1, 3))
     </script>
-    <script xtype="x" id="ch0103/04">
+
+
+    <script id="ch0103/04">
         var remainder = function (a, b) {
             let arr = []
             arr[0] = Math.floor(a / b)
@@ -38,22 +44,120 @@
 
         console.log(remainder(10, 3)[0], remainder(10, 3)[1])
     </script>
-    <script xtype="x" id="ch0103/01"></script>
-    <script xtype="x" id="ch0103/01"></script>
-    <script xtype="x" id="ch0103/01"></script>
-    <script xtype="x" id="ch0103/01"></script>
-    <script xtype="x" id="ch0103/01"></script>
-    <script xtype="x" id="ch0103/01"></script>
-    <script xtype="x" id="ch0103/01"></script>
-    <script xtype="x" id="ch0103/01"></script>
-    <script xtype="x" id="ch0103/01"></script>
-    <script xtype="x" id="ch0103/01"></script>
-    <script xtype="x" id="ch0103/01"></script>
-    <script xtype="x" id="ch0103/01"></script>
-    <script xtype="x" id="ch0103/01"></script>
-    <script xtype="x" id="ch0103/01"></script>
-    <script xtype="x" id="ch0103/01"></script>
-    <script xtype="x" id="ch0103/01"></script>
+
+
+    <script id="ch0103/05">
+        var doubleFloat = function (a, b) {
+            return ((a / b).toFixed(9))
+        }
+
+        console.log(doubleFloat(5, 7))
+    </script>
+
+
+    <script id="ch0103/06">
+        var percentage = function (a, b) {
+            var per = Number((b / a) * 100).toFixed(3)
+            per += "%"
+            return per
+        }
+
+        console.log(percentage(10433, 60))
+    </script>
+
+
+    <script id="ch0103/07">
+        var multiple = function (x, a, b, c, d) {
+            var s = (a * Math.pow(x, 3)) + (b * Math.pow(x, 2)) + (c * x) + d
+            return s.toFixed(7)
+        }
+
+        console.log(multiple(2.31, 1.2, 2, 2, 3))
+    </script>
+
+
+    <script id="ch0103/08">
+        var temperature = function (x) {
+            var c = Number((5 * (x - 32)) / 9)
+            return c.toFixed(5)
+        }
+
+        console.log(temperature(41))
+    </script>
+
+
+    <script id="ch0103/09">
+        var circle = function (r) {
+            var arr = []
+            arr[0] = (2 * r).toFixed(4)
+            arr[1] = ((2 * Math.PI.toFixed(5) * r)).toFixed(4)
+            arr[2] = (Math.PI * Math.pow(r, 2)).toFixed(4)
+
+            return arr
+        }
+
+        console.log(circle(3)[0], circle(3)[1], circle(3)[2])
+    </script>
+
+
+    <script id="ch0103/10">
+        var resistance = function (a, b) {
+            var r = Number(1 / ((1 / a) + (1 / b)))
+            return r.toFixed(2)
+        }
+
+        console.log(resistance(1, 2))
+    </script>
+
+
+    <script id="ch0103/11">
+        var floatRemainder = function (a, b) {
+            return (a % b).toFixed(4)
+        }
+
+        console.log(floatRemainder(73.263, 0.9973))
+    </script>
+
+
+    <script id="ch0103/12">
+        var volume = function (r) {
+            if (0 < r < 100) {
+                var v = (4 / 3) * Math.PI.toFixed(2) * Math.pow(r, 3)
+            }
+
+            return v.toFixed(2)
+        }
+
+        console.log(volume(4))
+    </script>
+
+
+    <script id="ch0103/13">
+        var
+    </script>
+
+
+    <script id="ch0103/01"></script>
+
+
+    <script id="ch0103/01"></script>
+
+
+    <script id="ch0103/01"></script>
+
+
+    <script id="ch0103/01"></script>
+
+
+    <script id="ch0103/01"></script>
+
+
+    <script id="ch0103/01"></script>
+
+
+    <script id="ch0103/01"></script>
+
+
 </body>
 
 </html>
