@@ -133,29 +133,88 @@
 
 
     <script id="ch0103/13">
-        var
+        var reverse = function (x) {
+            var r = String(x)
+            return r.split("").reverse().join("")
+        }
+
+        console.log(reverse(100))
     </script>
 
 
-    <script id="ch0103/01"></script>
+    <script id="ch0103/14">
+        var elephant = function (h, r) {
+            var v = (Math.PI.toFixed(5) * r * r * h) / 1000
+            return Math.ceil(20 / v)
+        }
+
+        console.log(elephant(23, 11))
+    </script>
 
 
-    <script id="ch0103/01"></script>
+    <script id="ch0103/15">
+        var eatApple = function (n, x, y) {
+            return Number(n - Math.ceil(y / x))
+        }
+
+        console.log(eatApple(10, 4, 9))
+    </script>
 
 
-    <script id="ch0103/01"></script>
+    <script id="ch0103/16">
+        var lineLength = function (x1, y1, x2, y2) {
+            var len = Math.pow((x2 - x1), 2) + Math.pow((y2 - y1), 2)
+            return Math.sqrt(len).toFixed(3)
+        }
+
+        console.log(lineLength(1, 1, 2, 2))
+    </script>
 
 
-    <script id="ch0103/01"></script>
+    <script id="ch0103/17">
+        var triangleArea = function (x1, y1, x2, y2, x3, y3) {
+            var a = Number(lineLength(x1, y1, x2, y2))
+            var b = Number(lineLength(x1, y1, x3, y3))
+            var c = Number(lineLength(x2, y2, x3, y3))
+
+            var p = (a + b + c) / 2
+            var s = Math.sqrt(p * (p - a) * (p - b) * (p - c)).toFixed(2)
+
+            return s
+        }
+
+        console.log(triangleArea(0, 0, 4, 0, 0, 3))
+    </script>
 
 
-    <script id="ch0103/01"></script>
+    <script id="ch0103/18">
+        var arithmeticSequence = function (a1, a2, n) {
+            var d = Number(a2 - a1)
+            var an = a1 + (n - 1) * d
+
+            return an
+        }
+
+        console.log(arithmeticSequence(1, 4, 100))
+    </script>
 
 
-    <script id="ch0103/01"></script>
+    <script id="ch0103/19">
+        var multiplication = function (a, b) {
+            return (a * b)
+        }
+
+        console.log(multiplication(3, 4))
+    </script>
 
 
-    <script id="ch0103/01"></script>
+    <script id="ch0103/20">
+        var power2 = function (x) {
+            return Math.pow(2, x)
+        }
+
+        console.log(power2(3))
+    </script>
 
 
 </body>
