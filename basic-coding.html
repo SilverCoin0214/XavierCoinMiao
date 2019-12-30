@@ -222,6 +222,364 @@
     </script>
 
 
+    <script id="ch0104/01">
+        var posAndNeg = function (x) {
+            var result = ""
+            if (x < 0) {
+                return result = "negative"
+            }
+            else if (x > 0) {
+                return result = "positive"
+            }
+            else if (x = 0) {
+                return result = "zero"
+            }
+        }
+
+        console.log(posAndNeg(1))
+    </script>
+
+
+    <script id="ch0104/02">
+        var absolute = function (x) {
+            if (x < 0) {
+                return -x.toFixed(2)
+            }
+            else {
+                return x.toFixed(2)
+            }
+        }
+
+        console.log(absolute(-3.14))
+    </script>
+
+
+    <script id="ch0104/03">
+        var odevity = function (x) {
+            if (x % 2 == 0) {
+                return "even"
+            }
+            else if (x % 2 == 1) {
+                return "odd"
+            }
+        }
+
+        console.log(odevity(5))
+
+    </script>
+
+
+    <script id="ch0104/06">
+        var doubleDigit = function (x) {
+            if (x < 100 && x >= 10) {
+                return 1
+            }
+            else {
+                return 0
+            }
+        }
+
+        console.log(doubleDigit(54))
+
+    </script>
+
+
+    <script id="ch0104/07">
+        var bottleCap = function (x, y) {
+            if (x >= 10 || y >= 20) {
+                return 1
+            }
+            else {
+                return 0
+            }
+        }
+
+        console.log(bottleCap(11, 19))
+    </script>
+
+
+    <script id="ch0104/08">
+        var divide35 = function (x) {
+            if (x % 5 == 0 && x % 3 == 0) {
+                return "YES"
+            }
+            else {
+                return 'NO'
+            }
+        }
+
+        console.log(divide35(15))
+    </script>
+
+
+    <script id="ch0104/09">
+        var divide357 = function (x) {
+            var s = []
+            if (x % 3 == 0) {
+                s[0] = 3
+                if (x % 5 == 0) {
+                    s[1] = 5
+                    if (x % 7 == 0) {
+                        s[2] = 7
+                        return s.join(" ")
+                    }
+                    else if (x % 7 != 0) {
+                        return s.join(" ")
+                    }
+                }
+                else if (x % 7 == 0) {
+                    s[1] = 7
+                    return s.join(" ")
+                }
+                else if (x % 5 != 0 && x % 7 != 0) {
+                    return s.join(" ")
+                }
+            }
+            else if (x % 5 == 0) {
+                s[0] = 5
+                if (x % 7 == 0) {
+                    s[1] = 7
+                    return s.join(" ")
+                }
+                else { x % 7 != 0 } {
+                    return s.join(" ")
+                }
+            }
+            else if (x % 7 == 0) {
+                s[0] = 7
+                return s.join(" ")
+            }
+            else {
+                return 'n'
+            }
+        }
+
+        console.log(divide357(105))
+    </script>
+
+
+    <script id="ch0104/10">
+        var failed = function (x, y) {
+            if (x < 60 || y < 60) {
+                return 1
+            }
+            else {
+                return 0
+            }
+        }
+
+        console.log(failed(50, 80))
+    </script>
+
+
+    <script id="ch0104/11">
+        var dateTime = function (x) {
+            if (x >= 1 && x <= 7) {
+                if (x == 1 || x == 3 || x == 5) {
+                    return 'NO'
+                }
+                else {
+                    return "YES"
+                }
+            }
+        }
+
+        console.log(dateTime(2))
+    </script>
+
+
+    <script id="ch0104/12">
+        var bikeOrWalk = function (x) {
+            var b = Math.ceil(x / 3) + 50
+            var w = Math.ceil(x / 1.2)
+            if (b < w) {
+                return 'Bike'
+            }
+            else if (w < b) {
+                return 'Walk'
+            }
+            else {
+                return 'All'
+            }
+        }
+
+        console.log(bikeOrWalk(120))
+
+
+    </script>
+
+
+    <script id="ch0104/13">
+        var piecewise = function (x) {
+            var y = 0
+            if (x >= 0 && x < 5) {
+                y = -x + 2.5
+                return y.toFixed(3)
+            }
+            else if (x >= 5 && x < 10) {
+                y = 2 - 1.5 * (x - 3) * (x - 3)
+                return y.toFixed(3)
+            }
+            else if (x >= 10 && x < 20) {
+                y = (x / 2) - 1.5
+                return y.toFixed(3)
+            }
+        }
+
+        console.log(piecewise(1.0))
+    </script>
+
+
+    <script id="ch0104/14">
+        var postage = function (x, y) {
+            var s = 8
+            if (y == "y") {
+                for (x; x > 1000; x = x - 500) {
+                    s = s + 4
+                }
+                return s + 5
+            }
+            else if (y == "n") {
+                for (x; x > 1000; x = x - 500) {
+                    s = s + 4
+                }
+                return s
+            }
+        }
+
+        console.log(postage(1200, "y"))
+    </script>
+
+
+    <script id="ch0104/15">
+        var maxNumber = function (x, y, z) {
+            if (x > y) {
+                if (x > z) {
+                    return x
+                }
+            }
+            else if (y > z) {
+                return y
+            }
+            else {
+                return z
+            }
+        }
+
+        console.log(maxNumber(10, 20, 56))
+    </script>
+
+
+    <script id="ch0104/16">
+        var triangel = function (x, y, z) {
+            if (x + y > z && x + z > y && y + z > x) {
+                return 'yes'
+            }
+            else {
+                return 'no'
+            }
+        }
+
+        console.log(triangel(3, 4, 5))
+    </script>
+
+
+    <script id="ch0104/17">
+        var leapYear = function (x) {
+            if (x % 400 == 0 || (x % 4 == 0 && x % 100 != 0)) {
+                return 'Y'
+            }
+            else {
+                return 'N'
+            }
+        }
+
+        console.log(leapYear(2006))
+    </script>
+
+
+    <script id="ch0104/18">
+        var inSquare = function (x, y) {
+            if ((x >= -1 && x <= 1) && (y >= -1 && y <= 1)) {
+                return 'yes'
+            }
+            else {
+                return 'no'
+            }
+        }
+        console.log(inSquare(1, 1))
+    </script>
+
+
+    <script id="ch0104/19">
+        var calc = function (x, y, z) {
+            if (z == "+") {
+                return x + y
+            }
+            else if (z == "-") {
+                return x - y
+            }
+            else if (z == '*') {
+                return x * y
+            }
+            else if (z == "/") {
+                if (y == 0) {
+                    return "Divide by zero!"
+                }
+                else {
+                    return x / y
+                }
+            }
+            else {
+                return "Invalid operator!"
+            }
+        }
+
+        console.log(calc(1, 2, '+'))
+    </script>
+
+
+    <script id="ch0104/20">
+        var monad = function (a, b, c) {
+            var x1, x2
+            if (b * b == 4 * a * c) {
+                return ("x1=x2=" + (-b + Math.sqrt(b * b - 4 * a * c)) / (2 * a).toFixed(5))
+            } else if (b * b > 4 * a * c) {
+                x1 = (-b + Math.sqrt(b * b - 4 * a * c)) / (2 * a).toFixed(5)
+                x2 = (-b - Math.sqrt(b * b - 4 * a * c)) / (2 * a).toFixed(5)
+                if (x1 > x2) {
+                    return ("x1=" + x1 + ";" + "x2=" + x2)
+                } else {
+                    return ("x1=" + x2 + ";" + "x2=" + x1)
+                }
+            } else if (b * b < 4 * a * c) {
+                return ("x1=" + (-b / (2 * a)).toFixed(5) + "+" + (Math.sqrt(4 * a * c - b * b) / (2 * a)).toFixed(5) + "i" + ";" + "x2=" + (-b / (2 * a)).toFixed(5) + "-" + (Math.sqrt(4 * a * c - b * b) / (2 * a)).toFixed(5) + "i")
+            }
+        }
+
+        console.log(monad(1.0, 2.0, 8.0))
+    </script>
+
+
+    <script id="ch0104/21">
+        var eatApple2 = function (n, x, y) {
+            if (y <= n * x && y > 0) {
+                return Number(n - Math.ceil(y / x))
+            }
+            else if (y < 0) {
+                return 10
+            }
+            else {
+                return 0
+            }
+        }
+
+        console.log(eatApple2(10, 4, 9))
+    </script>
+
+
+
+
 </body>
 
 </html>
