@@ -268,6 +268,36 @@
 
     </script>
 
+    <script id="ch0104/04">
+        var ascii = function (x) {
+            var s = x.charCodeAt(0)
+            if (s % 2 == 0) {
+                return 'NO'
+            }
+            else {
+                return 'YES'
+            }
+        }
+
+        console.log(ascii("A"))
+    </script>
+
+    <script id="ch0104/05">
+        var specificsize = function (x, y) {
+            if (x > y) {
+                return ">"
+            }
+            else if (x == y) {
+                return "="
+            }
+            else if (x < y) {
+                return "<"
+            }
+        }
+
+        console.log(specificsize(1000, 100))
+    </script>
+
 
     <script id="ch0104/06">
         var doubleDigit = function (x) {
@@ -558,6 +588,7 @@
         }
 
         console.log(monad(1.0, 2.0, 8.0))
+        console.log(monad(1, 0, 1))
     </script>
 
 
