@@ -1002,7 +1002,7 @@
         let n = Number(prompt())
         while (n != 1) {
             if (n % 2 == 1) {
-                console.log(`${n}*3+1=${n * 3 + 1} `)
+                console.log(`${n}*3+1=${n * 3 + 1}`)
                 n = n * 3 + 1
             }
             if (n % 2 == 0) {
@@ -1011,11 +1011,6 @@
             }
         }
         console.log("End")
-    </script>
-
-
-    <script id="ch0105/01">
-
 
     </script>
 
@@ -1026,8 +1021,46 @@
     </script>
 
 
-    <script id="ch0105/01">
+    <script id="ch0105/23">
+        const pharmacy = function (m, n, arr) {
+            let count = 0
+            for (let i = 0; i < n; i++) {
+                if (arr[i] <= m) {
+                    m = m - arr[i]
+                    count++
+                }
+            }
+            return n - count
+        }
 
+        console.log(pharmacy(30, 6, [10, 5, 20, 6, 7, 8]))
+    </script>
+
+
+    <script id="ch0105/24">
+        const bloddPressure = function (n, arr) {
+            let count = []
+            for (let i = 0; i < n; i++) {
+                if (arr[i][0] >= 90 && arr[i][0] <= 140 && arr[i][1] >= 60 && arr[i][1] <= 90) {
+                    count[i] = 1
+                }
+                else {
+                    count[i] = 0
+                }
+            }
+
+            let a = count.join("").split("0")
+            let s = 0
+            for (let i = 0; i < a.length; i++) {
+                s = a[i].length
+                if (a[i].length > s) {
+                    s = a[i].length
+                }
+            }
+            return s
+        }
+
+        console.log(bloddPressure(4, [[100, 80], [90, 50], [120, 60], [140, 90]]))
 
     </script>
 
