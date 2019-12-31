@@ -964,15 +964,37 @@
     </script>
 
 
-    <script id="ch0105/01">
+    <script id="ch0105/19">
+        const rescue = function (n) {
+            let a = arguments
+            let time = 0
+            let line = 0
+            for (let i = 1; i <= n; i++) {
+                line = Math.sqrt(Math.pow(a[i][0], 2) + Math.pow(a[i][1], 2))
+                time = (line / 50) * 2 + (a[i][2] * 1.5) + time
+            }
 
+            return Math.ceil(time)
+        }
 
+        console.log(rescue(1, [30, 40, 3]))
     </script>
 
 
-    <script id="ch0105/01">
+    <script id="ch0105/20">
+        const ballHeight = function (h) {
+            let s = 0
+            let all = []
+            for (let i = 2; i <= 10; i++) {
+                h = h / 2
+                s = h * 2 + s
+            }
+            all[0] = s + 20
+            all[1] = h / 2
+            return all.join(" ")
+        }
 
-
+        console.log(ballHeight(20))
     </script>
 
 
