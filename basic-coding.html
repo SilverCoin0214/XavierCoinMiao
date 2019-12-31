@@ -711,38 +711,109 @@
     </script>
 
 
-    <script id="ch0105/01">
+    <script id="ch0105/05">
+        const maxValue = function (n) {
+            let a = arguments
+            var max = a[1]
+            if (n >= 1 && n < 100) {
+                for (let i = 1; i <= n; i++) {
+                    if (a[i] > max) {
+                        max = a[i]
+                    }
+                }
+            }
+            return max
+        }
 
+        console.log(maxValue(5, 85, 78, 90, 99, 60))
+    </script>
+
+
+    <script id="ch0105/06">
+        const spanValue = function (n) {
+            let a = arguments
+            var max = a[1]
+            var min = a[1]
+            if (n >= 1 && n <= 1000) {
+                for (let i = 1; i <= n; i++) {
+                    if (a[i] > max) {
+                        max = a[i]
+                    }
+                    if (a[i] < min) {
+                        min = a[i]
+                    }
+                }
+            }
+            return max - min
+        }
+
+        console.log(spanValue(6, 3, 0, 8, 7, 5, 9))
+    </script>
+
+
+    <script id="ch0105/07">
+        const medals = function (n) {
+            let a = arguments
+            let all = [0, 0, 0]
+            if (n >= 1 && n <= 17) {
+                for (let i = 1; i <= n; i++) {
+                    all[0] += a[i][0]
+                    all[1] += a[i][1]
+                    all[2] += a[i][2]
+                }
+            }
+            all[3] = all[0] + all[1] + all[2]
+            return all.join(" ")
+        }
+
+        console.log(medals(3, [1, 0, 3], [3, 1, 0], [0, 3, 0]))
 
     </script>
 
 
-    <script id="ch0105/01">
+    <script id="ch0105/08">
+        const innerAngle = function (n) {
+            let a = arguments
+            let s = (n - 2) * 180
+            for (let i = 1; i < a.length; i++) {
+                s = s - a[i]
+            }
+            return s
+        }
 
-
+        console.log(innerAngle(3, 45, 60))
     </script>
 
 
-    <script id="ch0105/01">
+    <script id="ch0105/09">
+        const oddSum = function (x, y) {
+            let s = 0
+            if (y >= 0 && y <= 300 && (x < y)) {
+                for (x; x <= y; x = x + 2) {
+                    s += x
+                }
+            }
+            return s
+        }
 
-
+        console.log(oddSum(7, 15))
     </script>
 
 
-    <script id="ch0105/01">
+    <script id="ch0105/10">
+        const conditionSum = function (x, y) {
+            let s = 0
+            if (y > 0 && y < 100 && x < y) {
+                for (x; x <= y; x++) {
+                    if (x % 17 == 0) {
+                        s += x
+                    }
+                }
+            }
+            return s
+        }
 
-
-    </script>
-
-
-    <script id="ch0105/01">
-
-
-    </script>
-
-
-    <script id="ch0105/01">
-
+        console.log(conditionSum(50, 85))
 
     </script>
 
