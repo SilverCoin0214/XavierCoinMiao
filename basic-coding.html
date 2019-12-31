@@ -9,8 +9,10 @@
 </head>
 
 <body>
+    <!-- http://noi.openjudge.cn/ 题目地址-->
+    <!-- 1.3 顺序执行  ----------------------------------------------------------->
     <script id="ch0103/01">
-        var aplusb = function (a, b) {
+        const aplusb = function (a, b) {
             return a + b
         }
         console.log(aplusb(1, 2))
@@ -18,7 +20,7 @@
 
 
     <script id="ch0103/02">
-        var multiplicationC = function (a, b, c) {
+        const multiplicationC = function (a, b, c) {
             return ((a + b) * c)
         }
         console.log(multiplicationC(2, 3, 5))
@@ -26,7 +28,7 @@
 
 
     <script id="ch0103/03">
-        var divisionC = function (a, b, c) {
+        const divisionC = function (a, b, c) {
             return (Math.floor((a + b) / c))
         }
         console.log(divisionC(1, 1, 3))
@@ -34,7 +36,7 @@
 
 
     <script id="ch0103/04">
-        var remainder = function (a, b) {
+        const remainder = function (a, b) {
             let arr = []
             arr[0] = Math.floor(a / b)
             arr[1] = a % b
@@ -47,7 +49,7 @@
 
 
     <script id="ch0103/05">
-        var doubleFloat = function (a, b) {
+        const doubleFloat = function (a, b) {
             return ((a / b).toFixed(9))
         }
 
@@ -56,7 +58,7 @@
 
 
     <script id="ch0103/06">
-        var percentage = function (a, b) {
+        const percentage = function (a, b) {
             var per = Number((b / a) * 100).toFixed(3)
             per += "%"
             return per
@@ -67,7 +69,7 @@
 
 
     <script id="ch0103/07">
-        var multiple = function (x, a, b, c, d) {
+        const multiple = function (x, a, b, c, d) {
             var s = (a * Math.pow(x, 3)) + (b * Math.pow(x, 2)) + (c * x) + d
             return s.toFixed(7)
         }
@@ -87,7 +89,7 @@
 
 
     <script id="ch0103/09">
-        var circle = function (r) {
+        const circle = function (r) {
             var arr = []
             arr[0] = (2 * r).toFixed(4)
             arr[1] = ((2 * Math.PI.toFixed(5) * r)).toFixed(4)
@@ -101,7 +103,7 @@
 
 
     <script id="ch0103/10">
-        var resistance = function (a, b) {
+        const resistance = function (a, b) {
             var r = Number(1 / ((1 / a) + (1 / b)))
             return r.toFixed(2)
         }
@@ -111,7 +113,7 @@
 
 
     <script id="ch0103/11">
-        var floatRemainder = function (a, b) {
+        const floatRemainder = function (a, b) {
             return (a % b).toFixed(4)
         }
 
@@ -120,7 +122,7 @@
 
 
     <script id="ch0103/12">
-        var volume = function (r) {
+        const volume = function (r) {
             if (0 < r < 100) {
                 var v = (4 / 3) * Math.PI.toFixed(2) * Math.pow(r, 3)
             }
@@ -133,7 +135,7 @@
 
 
     <script id="ch0103/13">
-        var reverse = function (x) {
+        const reverse = function (x) {
             var r = String(x)
             return r.split("").reverse().join("")
         }
@@ -143,7 +145,7 @@
 
 
     <script id="ch0103/14">
-        var elephant = function (h, r) {
+        const elephant = function (h, r) {
             var v = (Math.PI.toFixed(5) * r * r * h) / 1000
             return Math.ceil(20 / v)
         }
@@ -153,7 +155,7 @@
 
 
     <script id="ch0103/15">
-        var eatApple = function (n, x, y) {
+        const eatApple = function (n, x, y) {
             return Number(n - Math.ceil(y / x))
         }
 
@@ -162,7 +164,7 @@
 
 
     <script id="ch0103/16">
-        var lineLength = function (x1, y1, x2, y2) {
+        const lineLength = function (x1, y1, x2, y2) {
             var len = Math.pow((x2 - x1), 2) + Math.pow((y2 - y1), 2)
             return Math.sqrt(len).toFixed(3)
         }
@@ -172,15 +174,15 @@
 
 
     <script id="ch0103/17">
-        var lineLength = function (x1, y1, x2, y2) {
+        const lineLength2 = function (x1, y1, x2, y2) {
             var len = Math.pow((x2 - x1), 2) + Math.pow((y2 - y1), 2)
             return Math.sqrt(len).toFixed(3)
         }
 
-        var triangleArea = function (x1, y1, x2, y2, x3, y3) {
-            var a = Number(lineLength(x1, y1, x2, y2))
-            var b = Number(lineLength(x1, y1, x3, y3))
-            var c = Number(lineLength(x2, y2, x3, y3))
+        const triangleArea = function (x1, y1, x2, y2, x3, y3) {
+            var a = Number(lineLength2(x1, y1, x2, y2))
+            var b = Number(lineLength2(x1, y1, x3, y3))
+            var c = Number(lineLength2(x2, y2, x3, y3))
 
             var p = (a + b + c) / 2
             var s = Math.sqrt(p * (p - a) * (p - b) * (p - c)).toFixed(2)
@@ -193,7 +195,7 @@
 
 
     <script id="ch0103/18">
-        var arithmeticSequence = function (a1, a2, n) {
+        const arithmeticSequence = function (a1, a2, n) {
             var d = Number(a2 - a1)
             var an = a1 + (n - 1) * d
 
@@ -205,7 +207,7 @@
 
 
     <script id="ch0103/19">
-        var multiplication = function (a, b) {
+        const multiplication = function (a, b) {
             return (a * b)
         }
 
@@ -214,7 +216,7 @@
 
 
     <script id="ch0103/20">
-        var power2 = function (x) {
+        const power2 = function (x) {
             return Math.pow(2, x)
         }
 
@@ -222,8 +224,9 @@
     </script>
 
 
+    <!-- 1.4 条件分支 --------------------------------------------------------------->
     <script id="ch0104/01">
-        var posAndNeg = function (x) {
+        const posAndNeg = function (x) {
             var result = ""
             if (x < 0) {
                 return result = "negative"
@@ -241,7 +244,7 @@
 
 
     <script id="ch0104/02">
-        var absolute = function (x) {
+        const absolute = function (x) {
             if (x < 0) {
                 return -x.toFixed(2)
             }
@@ -269,7 +272,7 @@
     </script>
 
     <script id="ch0104/04">
-        var ascii = function (x) {
+        const ascii = function (x) {
             var s = x.charCodeAt(0)
             if (s % 2 == 0) {
                 return 'NO'
@@ -283,7 +286,7 @@
     </script>
 
     <script id="ch0104/05">
-        var specificsize = function (x, y) {
+        const specificsize = function (x, y) {
             if (x > y) {
                 return ">"
             }
@@ -300,7 +303,7 @@
 
 
     <script id="ch0104/06">
-        var doubleDigit = function (x) {
+        const doubleDigit = function (x) {
             if (x < 100 && x >= 10) {
                 return 1
             }
@@ -315,7 +318,7 @@
 
 
     <script id="ch0104/07">
-        var bottleCap = function (x, y) {
+        const bottleCap = function (x, y) {
             if (x >= 10 || y >= 20) {
                 return 1
             }
@@ -329,7 +332,7 @@
 
 
     <script id="ch0104/08">
-        var divide35 = function (x) {
+        const divide35 = function (x) {
             if (x % 5 == 0 && x % 3 == 0) {
                 return "YES"
             }
@@ -343,7 +346,7 @@
 
 
     <script id="ch0104/09">
-        var divide357 = function (x) {
+        const divide357 = function (x) {
             var s = []
             if (x % 3 == 0) {
                 s[0] = 3
@@ -389,8 +392,16 @@
 
 
     <script id="ch0104/10">
-        var failed = function (x, y) {
-            if (x < 60 || y < 60) {
+        const failed = function (x, y) {
+            let count = 0
+            if (x < 60) {
+                count += 1
+            }
+            if (y < 60) {
+                count += 1
+            }
+
+            if (count == 1) {
                 return 1
             }
             else {
@@ -403,7 +414,7 @@
 
 
     <script id="ch0104/11">
-        var dateTime = function (x) {
+        const dateTime = function (x) {
             if (x >= 1 && x <= 7) {
                 if (x == 1 || x == 3 || x == 5) {
                     return 'NO'
@@ -419,7 +430,7 @@
 
 
     <script id="ch0104/12">
-        var bikeOrWalk = function (x) {
+        const bikeOrWalk = function (x) {
             var b = Math.ceil(x / 3) + 50
             var w = Math.ceil(x / 1.2)
             if (b < w) {
@@ -440,7 +451,7 @@
 
 
     <script id="ch0104/13">
-        var piecewise = function (x) {
+        const piecewise = function (x) {
             var y = 0
             if (x >= 0 && x < 5) {
                 y = -x + 2.5
@@ -461,7 +472,7 @@
 
 
     <script id="ch0104/14">
-        var postage = function (x, y) {
+        const postage = function (x, y) {
             var s = 8
             if (y == "y") {
                 for (x; x > 1000; x = x - 500) {
@@ -482,7 +493,7 @@
 
 
     <script id="ch0104/15">
-        var maxNumber = function (x, y, z) {
+        const maxNumber = function (x, y, z) {
             if (x > y) {
                 if (x > z) {
                     return x
@@ -501,7 +512,7 @@
 
 
     <script id="ch0104/16">
-        var triangel = function (x, y, z) {
+        const triangel = function (x, y, z) {
             if (x + y > z && x + z > y && y + z > x) {
                 return 'yes'
             }
@@ -515,7 +526,7 @@
 
 
     <script id="ch0104/17">
-        var leapYear = function (x) {
+        const leapYear = function (x) {
             if (x % 400 == 0 || (x % 4 == 0 && x % 100 != 0)) {
                 return 'Y'
             }
@@ -529,7 +540,7 @@
 
 
     <script id="ch0104/18">
-        var inSquare = function (x, y) {
+        const inSquare = function (x, y) {
             if ((x >= -1 && x <= 1) && (y >= -1 && y <= 1)) {
                 return 'yes'
             }
@@ -542,7 +553,7 @@
 
 
     <script id="ch0104/19">
-        var calc = function (x, y, z) {
+        const calc = function (x, y, z) {
             if (z == "+") {
                 return x + y
             }
@@ -570,7 +581,7 @@
 
 
     <script type="x" id="ch0104/20">
-        var monad = function (a, b, c) {
+        const monad = function (a, b, c) {
             var x1, x2
             if (b * b == 4 * a * c) {
                 return ("x1=x2=" + (-b + Math.sqrt(b * b - 4 * a * c)) / (2 * a).toFixed(5))
@@ -595,7 +606,7 @@
 
 
     <script id="ch0104/21">
-        var eatApple2 = function (n, x, y) {
+        const eatApple2 = function (n, x, y) {
             if (y <= n * x && y > 0) {
                 return Number(n - Math.ceil(y / x))
             }
@@ -608,6 +619,341 @@
         }
 
         console.log(eatApple2(10, 4, 9))
+    </script>
+
+
+
+    <!-- 1.5 循环控制      ------------------------------------------------------------->
+    <script id="ch0105/01">
+        const aveAge = function (n, arr) {
+            let s = 0
+            if (n >= 1 && n <= 100) {
+                for (let i = 0; i < arr.length; i++) {
+                    if (arr[i] >= 15 && arr[i] <= 25) {
+                        s = s + arr[i]
+                    }
+                    else {
+                        return "please input 15<x<25 number!"
+                    }
+                }
+                return (s / n).toFixed(2)
+            }
+            else {
+                return "pelease input 1<=n<=100 number!"
+            }
+        }
+
+        console.log(aveAge(2, [18, 17]))
+    </script>
+
+
+    <script id="ch0105/02">
+        const financial = function (arr) {
+            let s = 0
+            let len = arr.length
+            for (let i = 0; i < len; i++) {
+                if (arr[i] < 1000000) {
+                    s += Number(arr[i].toFixed(2))
+                }
+                else {
+                    return "剩不了那么多钱"
+                }
+
+            }
+            return "$" + (s / len).toFixed(2)
+        }
+
+        console.log(financial([100, 489.12, 12454.12, 1234.10, 823.05, 109.20, 5.27, 1542.25, 839.18, 83.99, 1295.01, 1.75]))
+    </script>
+
+
+    <script id="ch0105/03">
+        const averageValue = function (n) {
+            let a = arguments
+            let s = 0
+            if (n < 100) {
+                for (let i = 1; i <= n; i++) {
+                    s += Number(a[i])
+                }
+            }
+            else {
+                return "n < 100 !!!"
+            }
+            return (s / n).toFixed(4)
+        }
+
+
+        console.log(averageValue(2, 1.0, 3.0))
+    </script>
+
+
+    <script id="ch0105/04">
+        const sumAndAve = function (n) {
+            let a = arguments
+            let s = 0
+            let arr = []
+            if (n >= 1 && n <= 10000) {
+                for (let i = 1; i <= n; i++) {
+                    s += Number(a[i])
+                }
+            }
+            else {
+                return "n out of limit!"
+            }
+            arr[0] = s
+            arr[1] = (s / n).toFixed(5)
+
+            return arr.join(" ")
+        }
+
+        console.log(sumAndAve(4, 344, 222, 343, 222))
+
+    </script>
+
+
+    <script id="ch0105/01">
+
+
+    </script>
+
+
+    <script id="ch0105/01">
+
+
+    </script>
+
+
+    <script id="ch0105/01">
+
+
+    </script>
+
+
+    <script id="ch0105/01">
+
+
+    </script>
+
+
+    <script id="ch0105/01">
+
+
+    </script>
+
+
+    <script id="ch0105/01">
+
+
+    </script>
+
+
+    <script id="ch0105/01">
+
+
+    </script>
+
+
+    <script id="ch0105/01">
+
+
+    </script>
+
+
+    <script id="ch0105/01">
+
+
+    </script>
+
+
+    <script id="ch0105/01">
+
+
+    </script>
+
+
+    <script id="ch0105/01">
+
+
+    </script>
+
+
+    <script id="ch0105/01">
+
+
+    </script>
+
+
+    <script id="ch0105/01">
+
+
+    </script>
+
+
+    <script id="ch0105/01">
+
+
+    </script>
+
+
+    <script id="ch0105/01">
+
+
+    </script>
+
+
+    <script id="ch0105/01">
+
+
+    </script>
+
+
+    <script id="ch0105/01">
+
+
+    </script>
+
+
+    <script id="ch0105/01">
+
+
+    </script>
+
+
+    <script id="ch0105/01">
+
+
+    </script>
+
+
+    <script id="ch0105/01">
+
+
+    </script>
+
+
+    <script id="ch0105/01">
+
+
+    </script>
+
+
+    <script id="ch0105/01">
+
+
+    </script>
+
+
+    <script id="ch0105/01">
+
+
+    </script>
+
+
+    <script id="ch0105/01">
+
+
+    </script>
+
+
+    <script id="ch0105/01">
+
+
+    </script>
+
+
+    <script id="ch0105/01">
+
+
+    </script>
+
+
+    <script id="ch0105/01">
+
+
+    </script>
+
+
+    <script id="ch0105/01">
+
+
+    </script>
+
+
+    <script id="ch0105/01">
+
+
+    </script>
+
+
+    <script id="ch0105/01">
+
+
+    </script>
+
+
+    <script id="ch0105/01">
+
+
+    </script>
+
+
+    <script id="ch0105/01">
+
+
+    </script>
+
+
+    <script id="ch0105/01">
+
+
+    </script>
+
+
+    <script id="ch0105/01">
+
+
+    </script>
+
+
+    <script id="ch0105/01">
+
+
+    </script>
+
+
+    <script id="ch0105/01">
+
+
+    </script>
+
+
+    <script id="ch0105/01">
+
+
+    </script>
+
+
+    <script id="ch0105/01">
+
+
+    </script>
+
+
+    <script id="ch0105/01">
+
+
+    </script>
+
+
+    <script id="ch0105/01">
+
+
+    </script>
+
+
+    <script id="ch0105/01">
+
+
     </script>
 
 
