@@ -989,8 +989,8 @@
                 h = h / 2
                 s = h * 2 + s
             }
-            all[0] = s + 20
-            all[1] = h / 2
+            all[0] = (s + 20).toFixed(4)
+            all[1] = (h / 2).toFixed(7)
             return all.join(" ")
         }
 
@@ -998,9 +998,19 @@
     </script>
 
 
-    <script id="ch0105/01">
-
-
+    <script type="x" id="ch0105/21">
+        let n = Number(prompt())
+        while (n != 1) {
+            if (n % 2 == 1) {
+                console.log(`${n}*3+1=${n * 3 + 1} `)
+                n = n * 3 + 1
+            }
+            if (n % 2 == 0) {
+                console.log(`${n}/2=${n / 2}`)
+                n = n / 2
+            }
+        }
+        console.log("End")
     </script>
 
 
