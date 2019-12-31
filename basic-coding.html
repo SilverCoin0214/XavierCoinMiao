@@ -345,7 +345,7 @@
     </script>
 
 
-    <script id="ch0104/09">
+    <script type="x" id="ch0104/09">
         const divide357 = function (x) {
             var s = []
             if (x % 3 == 0) {
@@ -387,7 +387,8 @@
             }
         }
 
-        console.log(divide357(105))
+        var n = Number(prompt())
+        console.log(divide357(n))
     </script>
 
 
@@ -818,8 +819,25 @@
     </script>
 
 
-    <script id="ch0105/01">
+    <script id="ch0105/11">
+        const countNumber = function (k) {
+            let a = arguments
+            let count = [0, 0, 0]
+            for (let i = 1; i <= k; i++) {
+                if (a[i] == 1) {
+                    count[0]++
+                }
+                else if (a[i] == 5) {
+                    count[1]++
+                }
+                else if (a[i] == 10) {
+                    count[2]++
+                }
+            }
+            return count.join(" ")
+        }
 
+        console.log(countNumber(5, 1, 5, 8, 10, 5))
 
     </script>
 
