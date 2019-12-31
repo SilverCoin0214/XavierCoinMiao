@@ -842,45 +842,125 @@
     </script>
 
 
-    <script id="ch0105/01">
+    <script id="ch0105/12">
+        const sameNumber = function (n, m) {
+            let a = arguments
+            let count = 0
+            for (let i = 2; i < n + 2; i++) {
+                if (a[i] == m) {
+                    count++
+                }
+            }
+            return count
+        }
 
+        console.log(sameNumber(3, 2, 2, 3, 2))
+    </script>
+
+
+    <script id="ch0105/13">
+        const powerA = function (a, n) {
+            let p = 1
+            if (a >= -1000000 && a <= 1000000 && n >= 1 && n <= 10000) {
+                for (let i = 0; i < n; i++) {
+                    p *= a
+                }
+            }
+            return p
+        }
+
+        console.log(powerA(2, 3))
 
     </script>
 
 
-    <script id="ch0105/01">
+    <script id="ch0105/14">
+        const population = function (x, n) {
+            if (x >= 1 && x <= 100 && n >= 1 && n <= 100) {
+                for (let i = 0; i < n; i++) {
+                    x = x + x * 0.001
+                }
+            }
+            return x.toFixed(4)
+        }
 
+        console.log(population(13, 10))
+    </script>
+
+
+    <script id="ch0105/15">
+        const interest = function (r, m, y) {
+            for (let i = 0; i < y; i++) {
+                m = m + m * r * 0.01
+            }
+            return Math.floor(m)
+        }
+
+        console.log(interest(5, 5000, 4))
+    </script>
+
+
+    <script id="ch0105/16">
+        const house = function (n, k) {
+            let year = 1
+            let price = 200
+            while (n * year < price) {
+                price = price + price * k * 0.01
+                year += 1
+                if (year > 20) {
+                    break
+                }
+            }
+            if (year <= 20) {
+                return year
+            }
+            else {
+                return "impossible"
+            }
+        }
+
+        console.log(house(50, 10))
+    </script>
+
+
+    <script id="ch0105/17">
+        const fib = function (k) {
+            if (k == 1 || k == 2) {
+                return 1
+            }
+            if (k >= 3) {
+                return fib(k - 2) + fib(k - 1)
+            }
+        }
+
+        console.log(fib(19))
 
     </script>
 
 
-    <script id="ch0105/01">
+    <script id="ch0105/18">
+        const cocktail = function (n) {
+            let a = arguments
+            let arr = []
+            let s = []
+            for (let i = 1; i <= n; i++) {
+                arr[i - 1] = (a[i][1] / a[i][0])
+            }
+            for (let i = 0; i < n; i++) {
+                if (arr[i] - arr[0] > 0.05) {
+                    s[i] = "better"
+                }
+                else if (arr[i] - arr[0] < -0.05) {
+                    s[i] = "worse"
+                }
+                else {
+                    s[i] = "same"
+                }
+            }
+            return s.splice(1).join(" ")
+        }
 
-
-    </script>
-
-
-    <script id="ch0105/01">
-
-
-    </script>
-
-
-    <script id="ch0105/01">
-
-
-    </script>
-
-
-    <script id="ch0105/01">
-
-
-    </script>
-
-
-    <script id="ch0105/01">
-
-
+        console.log(cocktail(5, [124, 99], [112, 89], [145, 99], [99, 97], [123, 98]))
     </script>
 
 
