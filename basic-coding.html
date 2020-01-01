@@ -1086,7 +1086,7 @@
 
         }
         // console.log(naturalNumber())
-        console.log("(不提供)")
+        console.log("（不提供）")
     </script>
 
 
@@ -1197,9 +1197,138 @@
     </script>
 
 
-    <script id="ch0105/01">
+    <script id="ch0105/31">
+        const swithcLight = function (n, m) {
+            let arr = []
 
 
+            for (let i = 0; i < n; i++) {
+                arr[i] = true
+            }
+
+            for (let i = 1; i <= m; i++) {
+                for (let j = 1; j <= n; j++) {
+                    if (j % i == 0) {
+                        arr[j - 1] = !arr[j - 1]
+                    }
+
+                }
+            }
+
+
+            let count = []
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i] == false) {
+                    count.push(i + 1)
+                }
+            }
+
+            return count.join(",")
+        }
+
+        console.log(swithcLight(10, 10))
+    </script>
+
+
+    <script id="ch0105/00">
+        const fractional = function (n) {
+            let sn = 0
+            let p = 1
+            let q = 2
+            let an = 0
+            for (let i = 0; i < n; i++) {
+                an = (q + p) / p
+                console.log(an)
+            }
+        }
+
+        // console.log(fractional(5))
+
+    </script>
+
+
+    <script id="ch0105/33">
+        const plusMinus = function (n) {
+            let sn = 0
+            let sn1 = 0
+            let sn2 = 0
+            for (let i = 1; i <= n; i++) {
+                if (i % 2 == 0) {
+                    sn1 = -(1 / i) + sn1
+
+                }
+                else {
+                    sn2 = (1 / i) + sn2
+                }
+            }
+
+            sn = sn1 + sn2
+            return sn.toFixed(4)
+        }
+
+        console.log(plusMinus(2))
+
+    </script>
+
+
+    <script id="ch0105/34">
+        const factorial = function (x) {
+            let s = 1
+            for (let i = 1; i <= x; i++) {
+                s = i * s
+            }
+            return s
+        }
+
+        const factorialSum = function (n) {
+            let sn = 0
+            for (let i = 1; i <= n; i++) {
+                sn = factorial(i) + sn
+            }
+
+            return sn
+        }
+
+
+        console.log(factorialSum(5))
+
+    </script>
+
+
+    <script id="ch0105/35">
+
+        const factorial2 = function (x) {
+            let s = 1
+            for (let i = 1; i <= x; i++) {
+                s = i * s
+            }
+            return s
+        }
+
+        const irrationalNumberE = function (x) {
+            let e = 1
+            for (let i = 1; i <= x; i++) {
+                e = e + (1 / factorial2(i))
+            }
+
+            return e.toFixed(10)
+        }
+
+        console.log(irrationalNumberE(10))
+    </script>
+
+
+    <script id="ch0105/36">
+        const multionmial = function (x, n) {
+            let sn = 0
+            for (let i = 0; i <= n; i++) {
+                sn = sn + Math.pow(x, i)
+            }
+
+            return sn.toFixed(2)
+        }
+
+        console.log(multionmial(2.0, 4))
     </script>
 
 
@@ -1215,39 +1344,20 @@
     </script>
 
 
-    <script id="ch0105/01">
+    <script id="ch0105/39">
+        const no7 = function (x) {
+            let sn = 0
+            for (let i = 0; i < x; i++) {
+                let stri = String(i)
+                if (i % 7 != 0 && stri.indexOf("7") == -1) {
+                    sn = sn + i * i
+                }
+            }
 
+            return sn
+        }
 
-    </script>
-
-
-    <script id="ch0105/01">
-
-
-    </script>
-
-
-    <script id="ch0105/01">
-
-
-    </script>
-
-
-    <script id="ch0105/01">
-
-
-    </script>
-
-
-    <script id="ch0105/01">
-
-
-    </script>
-
-
-    <script id="ch0105/01">
-
-
+        console.log(no7(21))
     </script>
 
 
