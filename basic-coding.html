@@ -1140,9 +1140,34 @@
     </script>
 
 
-    <script id="ch0105/29">
+    <script type="x" id="ch0105/29">
+        const reverseNumber = function (x) {
+            let re
+            if (x < 0) {
+                re = String(Math.abs(x)).split("").reverse()
+                re.unshift("-")
+            }
+            else {
+                re = String(x).split("").reverse()
+            }
+
+            for (let i = 0; i < re.length; i++) {
+                if (re[i] == 0) {
+                    delete re[i]
+                }
+                if (re[i + 1] != 0) {
+                    break
+                }
+            }
 
 
+            return re.join("")
+        }
+
+        var a = Number(prompt())
+        console.log(reverseNumber(a))
+        var b = Number(prompt())
+        console.log(reverseNumber(b))
     </script>
 
 
