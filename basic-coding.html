@@ -1085,7 +1085,8 @@
             }
 
         }
-        console.log(naturalNumber())
+        // console.log(naturalNumber())
+        console.log("(不提供)")
     </script>
 
 
@@ -1166,14 +1167,33 @@
 
         var a = Number(prompt())
         console.log(reverseNumber(a))
-        var b = Number(prompt())
-        console.log(reverseNumber(b))
     </script>
 
 
-    <script id="ch0105/01">
+    <script id="ch0105/30">
+        const k3 = function (m, k) {
+            if (m % 19 == 0) {
+                let count = 0
+                let strm = String(m).split("")
+                for (let i = 0; i < strm.length; i++) {
+                    if (strm[i] == 3) {
+                        count++
+                    }
+                }
+                if (count == k) {
+                    return 'YES'
+                }
+                else {
+                    return 'NO'
+                }
 
+            }
+            else {
+                return 'NO'
+            }
+        }
 
+        console.log(k3(43833, 3))
     </script>
 
 
