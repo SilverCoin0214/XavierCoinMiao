@@ -1065,31 +1065,82 @@
     </script>
 
 
-    <script id="ch0105/01">
+    <script id="ch0105/25">
+        const naturalNumber = function () {
+            let n7 = 0
+            let n9 = 0
+            let n7s = 0
+            let arr = []
 
+            for (let i = 0; i < 1000; i++) {
+                n7 = i.toString(7)
+                n7s = n7.split("").reverse().join("")
+                n9 = i.toString(9)
+                if (n7s == n9 && (n9.length >= 3)) {
+                    arr[0] = i
+                    arr[1] = n7
+                    arr[2] = n9
+                    return arr.join(" ")
+                }
+            }
+
+        }
+        console.log(naturalNumber())
+    </script>
+
+
+    <script id="ch0105/26">
+        const fourNumber = function (n, arr) {
+            let s1 = 0
+            let s2 = 0
+            let s3 = 0
+            let s4 = 0
+            let count = 0
+            for (let i = 0; i < arr.length; i++) {
+                s1 = Number(String(arr[i]).split("")[0])
+                s2 = Number(String(arr[i]).split("")[1])
+                s3 = Number(String(arr[i]).split("")[2])
+                s4 = Number(String(arr[i]).split("")[3])
+                if (s4 - s3 - s2 - s1 > 0) {
+                    count++
+                }
+            }
+            return count
+        }
+
+        console.log(fourNumber(5, [1234, 1349, 6119, 2123, 5017]))
 
     </script>
 
 
-    <script id="ch0105/01">
+    <script id="ch0105/27">
+        const sumSn = function (k) {
+            let sn = 1
+            let count = 1
+            if (k >= 1 && k <= 15) {
+                while (sn <= k) {
+                    sn = sn + (1 / sn)
+                    count++
+                }
+            }
+            return count
+        }
 
-
+        console.log(sumSn(1))
     </script>
 
 
-    <script id="ch0105/01">
+    <script id="ch0105/28">
+        const splitNumber = function (x) {
+            let re = String(x).split("").reverse().join(" ")
+            return re
+        }
 
-
+        console.log(splitNumber(123))
     </script>
 
 
-    <script id="ch0105/01">
-
-
-    </script>
-
-
-    <script id="ch0105/01">
+    <script id="ch0105/29">
 
 
     </script>
