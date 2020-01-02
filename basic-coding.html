@@ -1015,8 +1015,45 @@
     </script>
 
 
-    <script id="ch0105/01">
+    <script type="x" id="ch0105/22">
+        const savingplan = function (arr) {
+            let m = 300
+            let sn = 0
+            let save = 0
+            for (let i = 0; i < 12; i++) {
+                sn = m - arr[i] + sn
+                if (sn >= 200) {
+                    save = 200 + save
+                    sn = sn - 200
+                }
+                if (sn >= 100) {
+                    save = 100 + save
+                    sn = sn - 100
+                }
+                if (sn < 0) {
+                    return -(i + 1)
+                }
+            }
+            if (sn > 0) {
+                save = save * (1 + 0.2) + sn
+                return save
+            }
+        }
 
+
+        var a = Number(prompt())
+        var b = Number(prompt())
+        var c = Number(prompt())
+        var d = Number(prompt())
+        var e = Number(prompt())
+        var f = Number(prompt())
+        var g = Number(prompt())
+        var h = Number(prompt())
+        var i = Number(prompt())
+        var j = Number(prompt())
+        var k = Number(prompt())
+        var l = Number(prompt())
+        console.log(savingplan([a, b, c, d, e, f, g, h, i, j, k, l]))
 
     </script>
 
@@ -1332,8 +1369,10 @@
     </script>
 
 
-    <script id="ch0105/01">
+    <script id="ch0105/37">
+        const mercenary = function (m, n, x) {
 
+        }
 
     </script>
 
