@@ -1361,39 +1361,126 @@
     </script>
 
 
-    <script id="ch0105/01">
+    <script id="ch0105/40">
+        const count1 = function (n) {
+            let count = 0
+            let str = 0
+            for (let i = 1; i <= n; i++) {
+                str += String(i)
+            }
 
+            count = str.split("1").length - 1
+            return count
+        }
 
+        console.log(count1(12))
     </script>
 
 
-    <script id="ch0105/01">
+    <script type="x" id="ch0105/41">
+        const numCount = function (x, y) {
+            let count = 0
+            let str = 0
+            for (x; x <= y; x++) {
+                str += String(x)
+            }
 
+            count = str.split("2").length - 1
+            return count
+        }
 
+        var a = Number(prompt())
+        var b = Number(prompt())
+        console.log(numCount(a, b))
     </script>
 
 
-    <script id="ch0105/01">
+    <script id="ch0105/42">
+        const rectangle = function (height, width, symbol, sign) {
+            if (sign == 1) {
+                for (let i = 0; i < height; i++) {
+                    for (let j = 0; j < width; j++) {
+                        console.log(symbol)
+                    }
+                    console.log("\n")
+                }
+            }
+            if (sign == 0) {
+                for (let i = 0; i < height; i++) {
+                    for (let j = 0; j < width; j++) {
+                        if (i == 0 || i == (height - 1)) {
+                            console.log(symbol)
+                        }
+                        else if (j == 0 || j == (width - 1)) {
+                            console.log(symbol)
+                        }
+                    }
+                    console.log("\n")
+                }
+            }
+        }
 
-
+        rectangle(7, 7, "@", 0)
     </script>
 
 
-    <script id="ch0105/01">
+    <script id="ch0105/43">
+        const primeFactor = function (n) {
+            let arr = []
+            while (n != 1) {
+                for (let i = 2; i <= n; i++) {
+                    if (n % i == 0) {
+                        arr.push(i)
+                        n = n / i
+                        break
+                    }
+                }
+            }
+            return arr.sort().reverse()[0]
+        }
 
-
+        console.log(primeFactor(21))
     </script>
 
 
-    <script id="ch0105/01">
+    <script id="ch0105/44">
+        const primeNumber = function (n) {
+            let arr = [2, 3, 5, 7]
+            for (let i = 2; i <= 1000; i++) {
+                if (i % 2 != 0 && i % 3 != 0 && i % 5 != 0 && i % 7 != 0) {
+                    arr.push(i)
+                }
+            }
 
+            return arr[n - 1]
+        }
 
+        console.log(primeNumber(10))
     </script>
 
 
-    <script id="ch0105/01">
+    <script id="ch0105/45">
+        const gold = function (n) {
+            let sn = 0
+            let arr = []
+
+            // 先计算 1*1 2*2 3*3 ...的次数有多少
+            for (let i = 0; i < n; i++) {
+                arr[i] = n - i
+                n = n - i
+            }
+
+            for (let i = 1; i <= arr.length - 1; i++) {
+                sn = sn + i * i
+            }
+
+            sn = sn + arr.length * arr.pop()
+
+            return sn
+        }
 
 
+        console.log(gold(6))
     </script>
 
 
