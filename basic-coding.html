@@ -479,7 +479,7 @@
                 for (x; x > 1000; x = x - 500) {
                     s = s + 4
                 }
-                return s + 5
+                return s  + 5
             }
             else if (y == "n") {
                 for (x; x > 1000; x = x - 500) {
@@ -1267,15 +1267,17 @@
     </script>
 
 
-    <script id="ch0105/00">
+    <script id="ch0105/32">
         const fractional = function (n) {
-            let sn = 0
-            let p = 1
-            let q = 2
-            let an = 0
-            for (let i = 0; i < n; i++) {
-                an = (q + p) / p
-                console.log(an)
+            if (n == 1) {
+                let arr = [2, 1]
+                return arr
+            }
+            if (n >= 2) {
+                q = p + q
+                p = fractional(n - 1)[0]
+                q = fractional(n - 1)[1]
+                p = q
             }
         }
 

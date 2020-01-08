@@ -4,7 +4,7 @@
  */
 var isPowerOfThree = function(n) {
   let count = 0;
-  while (Math.pow(3, count) < n) {
+  while (Math.pow(3, count) <= n) {
     if (Math.pow(3, count) == n) {
       return true;
     }
@@ -12,5 +12,3 @@ var isPowerOfThree = function(n) {
   }
   return false;
 };
-
-isPowerOfThree(27);
