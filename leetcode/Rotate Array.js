@@ -14,6 +14,7 @@ var rotate = function(nums, k) {
 
 console.log(rotate([1, 2, 3, 4, 5, 6, 7], 3));
 
+// 解法2肯定更优
 var rotate = function(nums, k) {
   // 1. 如果K移动的步数大于数组长度,则只要求余数就可以了
   if (k > nums.length) {
