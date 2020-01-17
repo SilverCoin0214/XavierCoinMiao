@@ -1,16 +1,19 @@
 /**
  * @param {number} n
- * @return {boolean}
+ * @return {number}
  */
-var isPowerOfThree = function(n) {
-  let count = 0;
-  while (Math.pow(3, count) < n) {
-    if (Math.pow(3, count) == n) {
-      return true;
-    }
-    count += 1;
+var climbStairs = function(n) {
+  if (n == 2) {
+    return 2;
   }
-  return false;
+
+  if (n == 3) {
+    return 3;
+  }
+
+  if (n > 3) {
+    return climbStairs(n - 1) + climbStairs(n - 2);
+  }
 };
 
-isPowerOfThree(27);
+console.log(climbStairs(10));
