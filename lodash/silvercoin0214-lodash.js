@@ -1,6 +1,6 @@
 var silvercoin0214 = {
   isNull: function (val) {
-    if (val == null || val == undefined) {
+    if (val == null && val != undefined) {
       return true;
     } else {
       return false;
