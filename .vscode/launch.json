@@ -4,10 +4,12 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
 
     "version": "0.2.0",
-    "configurations": [{
+    "configurations": [
+
+        {
             "type": "node",
             "request": "launch",
-            "name": "Launch Program",
+            "name": "test2",
             "program": "${workspaceFolder}/test2.js",
             "skipFiles": [
                 "<node_internals>/**"
@@ -16,8 +18,17 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Launch Program",
+            "name": "test",
             "program": "${workspaceFolder}/test.js",
+            "skipFiles": [
+                "<node_internals>/**"
+            ]
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "lodash",
+            "program": "${workspaceFolder}/lodash/silvercoin0214-lodash.js",
             "skipFiles": [
                 "<node_internals>/**"
             ]
