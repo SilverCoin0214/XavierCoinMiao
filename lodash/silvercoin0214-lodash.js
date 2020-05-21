@@ -25,13 +25,13 @@ var silvercoin0214 = {
   compact: function (ary) {
     for (var i = 0; i < ary.length; i++) {
       if (
-        ary[i] == false ||
-        ary[i] == 0 ||
+        ary[i] === false ||
+        ary[i] === 0 ||
         ary[i] == null ||
         ary[i] == undefined ||
-        ary[i] == "" ||
-        ary[i] == "" ||
-        ary[i] == NaN
+        ary[i] === "" ||
+        ary[i] === "" ||
+        isNaN(ary[i])
       ) {
         ary.splice(i, 1);
         i = 0;
@@ -57,4 +57,4 @@ var silvercoin0214 = {
   },
 };
 
-console.log(silvercoin0214.concat([2, 3, 4], 3, [5, 7]));
+console.log(silvercoin0214.compact([2, 3, 5, NaN]));
