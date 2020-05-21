@@ -40,4 +40,21 @@ var silvercoin0214 = {
 
     return ary;
   },
+
+  concat: function (ary) {
+    var new_ary = ary;
+    for (var i = 1; i < arguments.length; i++) {
+      if (arguments[i] instanceof Array) {
+        for (var j = 0; j < arguments[i].length; j++) {
+          new_ary.push(arguments[i][j]);
+        }
+      } else {
+        new_ary.push(arguments[i]);
+      }
+    }
+
+    return new_ary;
+  },
 };
+
+console.log(silvercoin0214.concat([2, 3, 4], 3, [5, 7]));
