@@ -21,6 +21,23 @@ var silvercoin0214 = {
     new_array.push(array);
     return new_array;
   },
-};
 
-console.log(silvercoin0214.chunk([1, 2, 3], 2));
+  compact: function (ary) {
+    for (var i = 0; i < ary.length; i++) {
+      if (
+        ary[i] == false ||
+        ary[i] == 0 ||
+        ary[i] == null ||
+        ary[i] == undefined ||
+        ary[i] == "" ||
+        ary[i] == "" ||
+        ary[i] == NaN
+      ) {
+        ary.splice(i, 1);
+        i = 0;
+      }
+    }
+
+    return ary;
+  },
+};
