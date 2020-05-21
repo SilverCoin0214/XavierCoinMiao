@@ -55,6 +55,19 @@ var silvercoin0214 = {
 
     return new_ary;
   },
+
+  difference: function (ary) {
+    for (var i = 1; i < arguments.length; i++) {
+      for (var j = 0; j < ary.length; j++) {
+        if (arguments[i].includes(ary[j])) {
+          ary.splice(j, 1);
+          j = -1;
+        }
+      }
+    }
+
+    return ary;
+  },
 };
 
-console.log(silvercoin0214.compact([2, 3, 5, NaN]));
+console.log(silvercoin0214.difference([2, 1], [2, 3]));
