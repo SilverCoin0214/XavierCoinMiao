@@ -99,20 +99,20 @@ var silvercoin0214 = {
     return -1;
   },
 
-  join: function(ary, separator = ",") {
-    var str = ""
-    for(var i = 0; i < ary.length; i++) {
-      if(i == ary.length - 1) {
-        str += ary[i]
-        return str
+  join: function (ary, separator = ",") {
+    var str = "";
+    for (var i = 0; i < ary.length; i++) {
+      if (i == ary.length - 1) {
+        str += ary[i];
+        return str;
       }
-      str += ary[i] + separator
+      str += ary[i] + separator;
     }
+  },
 
-
-
-
-  }
+  last: function (ary) {
+    return ary.pop();
+  },
 };
 
-console.log(silvercoin0214.join(['a', 'b', 'c'], '~'));
+console.log(silvercoin0214.last(["a", "b", "c"]));
