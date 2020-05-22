@@ -84,6 +84,10 @@ var silvercoin0214 = {
 
     return ary;
   },
+
+  head: function (ary) {
+    return ary.shift();
+  },
 };
 
-console.log(silvercoin0214.fill([4, 6, 8, 10], "*", 1, 3));
+console.log(silvercoin0214.head([]));

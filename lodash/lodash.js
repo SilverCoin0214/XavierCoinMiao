@@ -2,9 +2,9 @@ chunk;
 compact;
 concat;
 difference;
-
 drop;
 fill;
+
 find;
 first / head;
 flatten;
