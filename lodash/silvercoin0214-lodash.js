@@ -76,6 +76,14 @@ var silvercoin0214 = {
 
     return ary;
   },
+
+  fill: function (ary, value, start = 0, end = ary.length) {
+    for (var i = start; i < end; i++) {
+      ary[i] = value;
+    }
+
+    return ary;
+  },
 };
 
-console.log(silvercoin0214.drop([2, 1, 2, 3], 2));
+console.log(silvercoin0214.fill([4, 6, 8, 10], "*", 1, 3));
