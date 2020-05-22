@@ -120,6 +120,8 @@ var silvercoin0214 = {
         return i;
       }
     }
+
+    return -1;
   },
 };
 

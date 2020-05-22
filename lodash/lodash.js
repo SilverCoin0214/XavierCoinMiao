@@ -5,14 +5,14 @@ difference;***
 drop;***
 fill;***
 find;
-first / head;
+first / head;***
 flatten;
-indexOf;  ***
+indexOf;***
 initial;
 intersection;
-join;
-last;
-lastIndexOf;
+join;***
+last;***
+lastIndexOf;***
 nth;
 pull;
 pullAll;
