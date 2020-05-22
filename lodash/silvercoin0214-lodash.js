@@ -98,6 +98,21 @@ var silvercoin0214 = {
 
     return -1;
   },
+
+  join: function(ary, separator = ",") {
+    var str = ""
+    for(var i = 0; i < ary.length; i++) {
+      if(i == ary.length - 1) {
+        str += ary[i]
+        return str
+      }
+      str += ary[i] + separator
+    }
+
+
+
+
+  }
 };
 
-console.log(silvercoin0214.indexOf([1, +0, NaN, NaN], NaN));
+console.log(silvercoin0214.join(['a', 'b', 'c'], '~'));
