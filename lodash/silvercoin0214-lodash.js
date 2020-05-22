@@ -123,6 +123,14 @@ var silvercoin0214 = {
 
     return -1;
   },
+
+  nth: function (ary, n = 0) {
+    if (n >= 0) {
+      return ary[n];
+    }
+
+    return ary[ary.length + n];
+  },
 };
 
-console.log(silvercoin0214.lastIndexOf([1, 2, 1, 2], 2, 2));
+console.log(silvercoin0214.nth([1, 2, 3, 4], 1));
