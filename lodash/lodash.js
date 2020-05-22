@@ -15,7 +15,7 @@ last; ***
 lastIndexOf; ***
 nth; ***
 pull; ***
-pullAll;
+pullAll; ***
 pullAt;
 remove;
 reverse;

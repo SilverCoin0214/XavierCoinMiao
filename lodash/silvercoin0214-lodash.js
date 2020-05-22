@@ -153,6 +153,21 @@ var silvercoin0214 = {
 
     return ary;
   },
+
+  pullAt: function (ary, indexes) {
+    var new_ary = [];
+    if (indexes instanceof Array) {
+      for (var i = 0; i < indexes.length; i++) {
+        new_ary.push(ary[indexes[i]]);
+        ary.splice(i, 1);
+      }
+    } else {
+      new_ary.push(ary[indexes]);
+      ary.splice(indexes, 1);
+    }
+
+    return new_ary;
+  },
 };
 
-console.log(silvercoin0214.pullAll([1, 2, 3, 1, 2, 3], [1, 3]));
+console.log(silvercoin0214.pullAt([1, 2, 3, 1, 2, 3], 2));
