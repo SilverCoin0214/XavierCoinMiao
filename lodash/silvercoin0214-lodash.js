@@ -68,6 +68,14 @@ var silvercoin0214 = {
 
     return ary;
   },
+
+  drop: function (ary, n = 1) {
+    for (var i = 0; i < n; i++) {
+      ary.shift();
+    }
+
+    return ary;
+  },
 };
 
-console.log(silvercoin0214.difference([2, 1], [2, 3]));
+console.log(silvercoin0214.drop([2, 1, 2, 3], 2));
