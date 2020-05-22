@@ -159,13 +159,20 @@ var silvercoin0214 = {
     if (indexes instanceof Array) {
       for (var i = 0; i < indexes.length; i++) {
         new_ary.push(ary[indexes[i]]);
-        ary.splice(i, 1);
+      }
+
+      for (var j = 0; j < new_ary.length; j++) {
+        if (ary.includes(new_ary[j])) {
+          var idx = ary.indexOf(new_ary[j]);
+          ary.splice(idx, 1);
+        }
       }
     } else {
       new_ary.push(ary[indexes]);
       ary.splice(indexes, 1);
     }
 
+    console.log(ary);
     return new_ary;
   },
 
@@ -178,4 +185,4 @@ var silvercoin0214 = {
   },
 };
 
-console.log(silvercoin0214.reverse(["a", "b", "c"]));
+console.log(silvercoin0214.pullAt(["a", "b", "c", "d"], [1, 3]));
