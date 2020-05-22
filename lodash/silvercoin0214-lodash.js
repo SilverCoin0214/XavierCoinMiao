@@ -113,6 +113,14 @@ var silvercoin0214 = {
   last: function (ary) {
     return ary.pop();
   },
+
+  lastIndexOf: function (ary, value, fromIndex = ary.length - 1) {
+    for (var i = fromIndex; i > 0; i--) {
+      if (ary[i] === value || (Number.isNaN(value) && Number.isNaN(ary[i]))) {
+        return i;
+      }
+    }
+  },
 };
 
-console.log(silvercoin0214.join([1, 2, 3], 4));
+console.log(silvercoin0214.lastIndexOf([1, 2, 1, 2], 2, 2));
