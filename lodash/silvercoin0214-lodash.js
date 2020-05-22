@@ -106,7 +106,7 @@ var silvercoin0214 = {
         str += ary[i];
         return str;
       }
-      str += ary[i] + separator;
+      str += ary[i] + String(separator);
     }
   },
 
@@ -115,4 +115,4 @@ var silvercoin0214 = {
   },
 };
 
-console.log(silvercoin0214.last(["a", "b", "c"]));
+console.log(silvercoin0214.join([1, 2, 3], 4));
