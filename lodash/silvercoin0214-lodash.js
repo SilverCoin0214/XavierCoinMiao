@@ -131,6 +131,17 @@ var silvercoin0214 = {
 
     return ary[ary.length + n];
   },
+
+  pull: function (ary, ...values) {
+    for (var i = 0; i < ary.length; i++) {
+      if (values.includes(ary[i])) {
+        ary.splice(i, 1);
+        i = -1;
+      }
+    }
+
+    return ary;
+  },
 };
 
-console.log(silvercoin0214.nth([1, 2, 3, 4], 1));
+console.log(silvercoin0214.pull([1, 2, 3, 1, 2, 3], 1, 3));
