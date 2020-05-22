@@ -1,20 +1,20 @@
-chunk;***
-compact;***
-concat;***
-difference;***
-drop;***
-fill;***
+chunk; ***
+compact; ***
+concat; ***
+difference; ***
+drop; ***
+fill; ***
 find;
-first / head;***
+first / head; ***
 flatten;
-indexOf;***
+indexOf; ***
 initial;
 intersection;
-join;***
-last;***
-lastIndexOf;***
-nth;
-pull;
+join; ***
+last; ***
+lastIndexOf; ***
+nth; ***
+pull; ***
 pullAll;
 pullAt;
 remove;

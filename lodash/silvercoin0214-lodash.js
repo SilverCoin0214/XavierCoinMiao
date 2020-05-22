@@ -142,6 +142,17 @@ var silvercoin0214 = {
 
     return ary;
   },
+
+  pullAll: function (ary, values) {
+    for (var i = 0; i < ary.length; i++) {
+      if (values.includes(ary[i])) {
+        ary.splice(i, 1);
+        i = -1;
+      }
+    }
+
+    return ary;
+  },
 };
 
-console.log(silvercoin0214.pull([1, 2, 3, 1, 2, 3], 1, 3));
+console.log(silvercoin0214.pullAll([1, 2, 3, 1, 2, 3], [1, 3]));
