@@ -16,9 +16,9 @@ lastIndexOf; ***
 nth; ***
 pull; ***
 pullAll; ***
-pullAt;
+pullAt; ***
 remove;
-reverse;
+reverse; ***
 slice;
 sortedIndex;
 sortedIndexOf;

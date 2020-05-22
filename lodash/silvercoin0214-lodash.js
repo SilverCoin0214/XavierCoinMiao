@@ -168,6 +168,14 @@ var silvercoin0214 = {
 
     return new_ary;
   },
+
+  reverse: function (ary) {
+    for (var i = 0; i < ary.length; i++) {
+      ary.splice(i, 0, ary.pop());
+    }
+
+    return ary;
+  },
 };
 
-console.log(silvercoin0214.pullAt([1, 2, 3, 1, 2, 3], 2));
+console.log(silvercoin0214.reverse(["a", "b", "c"]));
