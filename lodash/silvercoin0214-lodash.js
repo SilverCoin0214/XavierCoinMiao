@@ -88,6 +88,16 @@ var silvercoin0214 = {
   head: function (ary) {
     return ary.shift();
   },
+
+  indexOf: function (ary, value, fromIndex = 0) {
+    for (var i = fromIndex; i < ary.length; i++) {
+      if (ary[i] === value || (Number.isNaN(value) && Number.isNaN(ary[i]))) {
+        return i;
+      }
+    }
+
+    return -1;
+  },
 };
 
-console.log(silvercoin0214.head([]));
+console.log(silvercoin0214.indexOf([1, +0, NaN, NaN], NaN));
