@@ -22,10 +22,10 @@ reverse; ***
 slice;
 sortedIndex;
 sortedIndexOf;
-tail;
-take;
-takeRight;
-union;
+tail; ***
+take; ***
+takeRight; ***
+union; ***
 uniq;
 unzip;
 without;

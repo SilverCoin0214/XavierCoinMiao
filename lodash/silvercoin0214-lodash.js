@@ -227,6 +227,17 @@ var silvercoin0214 = {
 
     return new_ary;
   },
+
+  uniq: function (ary) {
+    let new_ary = [];
+    for (var i = 0; i < ary.length; i++) {
+      if (new_ary.includes(ary[i]) == false) {
+        new_ary.push(ary[i]);
+      }
+    }
+
+    return new_ary;
+  },
 };
 
-console.log(silvercoin0214.union([1, 2, 3, 2], [7, 2, 3]));
+console.log(silvercoin0214.uniq([1, 2, 3, 2]));
