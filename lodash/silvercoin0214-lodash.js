@@ -214,6 +214,19 @@ var silvercoin0214 = {
 
     return new_ary;
   },
+
+  union: function (...arys) {
+    let new_ary = [];
+    for (var i = 0; i < arys.length; i++) {
+      for (var j = 0; j < arys[i].length; j++) {
+        if (new_ary.includes(arys[i][j]) == false) {
+          new_ary.push(arys[i][j]);
+        }
+      }
+    }
+
+    return new_ary;
+  },
 };
 
-console.log(silvercoin0214.takeRight([1, 2, 3, 4, 5, 6], 55));
+console.log(silvercoin0214.union([1, 2, 3, 2], [7, 2, 3]));
