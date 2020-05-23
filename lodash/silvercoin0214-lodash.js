@@ -183,6 +183,11 @@ var silvercoin0214 = {
 
     return ary;
   },
+
+  tail: function (ary) {
+    ary.shift();
+    return ary;
+  },
 };
 
-console.log(silvercoin0214.pullAt(["a", "b", "c", "d"], [1, 3]));
+console.log(silvercoin0214.tail(["a", "b", "c", "d"]));
