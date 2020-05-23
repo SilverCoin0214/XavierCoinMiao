@@ -188,6 +188,19 @@ var silvercoin0214 = {
     ary.shift();
     return ary;
   },
+
+  take: function (ary, n = 1) {
+    let new_ary = [];
+    if (ary.length > n) {
+      for (var i = 0; i < n; i++) {
+        new_ary.push(ary[i]);
+      }
+    } else {
+      return ary;
+    }
+
+    return new_ary;
+  },
 };
 
-console.log(silvercoin0214.tail(["a", "b", "c", "d"]));
+console.log(silvercoin0214.take([1, 2, 3], 0));
