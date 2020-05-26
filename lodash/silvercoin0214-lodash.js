@@ -262,6 +262,26 @@ var silvercoin0214 = {
 
     return new_ary;
   },
+
+  // 所有添加进的数组找到不同值.  先合并所有数组, 然后清除同类项.
+  xor: function (...arys) {
+    var new_ary = [];
+    var filter_ary = [];
+
+    for (var i = 0; i < arys.length; i++) {
+      new_ary = new_ary.concat(arys[i]);
+    }
+
+    for (var i = 0; i < new_ary.length; i++) {
+      if (new_ary.indexOf(new_ary[i]) == new_ary.lastIndexOf(new_ary[i])) {
+        filter_ary.push(new_ary[i]);
+      }
+    }
+
+    return filter_ary;
+  },
 };
 
-console.log(silvercoin0214.without([1, 2, 3, 2], 1, 2));
+console.log(
+  silvercoin0214.xor([1, 2, 3, 4], [2, 3, 4, 5], [2, 4, 5, 6, 7], [5, 6, 7, 8])
+);
