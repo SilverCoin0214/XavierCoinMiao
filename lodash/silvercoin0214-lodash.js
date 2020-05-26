@@ -285,7 +285,34 @@ var silvercoin0214 = {
   //
   //
 
-  pad: function (str = "", length = 0, chars = " ") {},
+  pad: function (str = "", length = 0, chars = " ") {
+    if (str.length > length) {
+      return str;
+    }
+
+    var slength = Math.floor((length - str.length) / 2);
+    var elength = length - str.length - slength;
+
+    var sstr = "";
+    while (sstr.length < slength) {
+      for (var i = 0; i < chars.length; i++) {
+        if (sstr.length < slength) {
+          sstr += chars[i];
+        }
+      }
+    }
+
+    var estr = "";
+    while (estr.length < elength) {
+      for (var i = 0; i < chars.length; i++) {
+        if (estr.length < elength) {
+          estr += chars[i];
+        }
+      }
+    }
+
+    return sstr + str + estr;
+  },
 
   padEnd: function (str = "", length = 0, chars = " ") {
     if (str.length > length) {
@@ -321,4 +348,4 @@ var silvercoin0214 = {
   },
 };
 
-console.log(silvercoin0214.padstart("123", 8, "-44"));
+console.log(silvercoin0214.pad("abc", 8, "_-"));
