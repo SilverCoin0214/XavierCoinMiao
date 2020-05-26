@@ -302,6 +302,23 @@ var silvercoin0214 = {
 
     return str;
   },
+
+  padstart: function (str = "", length = 0, chars = " ") {
+    if (str.length > length) {
+      return str;
+    }
+
+    var start_str = "";
+    while (start_str.length < length - str.length) {
+      for (var i = 0; i < chars.length; i++) {
+        if (start_str.length < length - str.length) {
+          start_str += chars[i];
+        }
+      }
+    }
+
+    return start_str + str;
+  },
 };
 
-console.log(silvercoin0214.padend("123", 8, "-44"));
+console.log(silvercoin0214.padstart("123", 8, "-44"));
