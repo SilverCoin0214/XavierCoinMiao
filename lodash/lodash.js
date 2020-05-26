@@ -19,7 +19,7 @@ pullAll; ***
 pullAt; ***
 remove;
 reverse; ***
-slice;
+slice; ***
 sortedIndex;
 sortedIndexOf;
 tail; ***
@@ -28,8 +28,8 @@ takeRight; ***
 union; ***
 uniq; ***
 unzip;
-without;
-xor;
+without; ***
+xor; ***
 zip;
 zipObject;
 includes;

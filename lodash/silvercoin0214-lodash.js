@@ -280,8 +280,28 @@ var silvercoin0214 = {
 
     return filter_ary;
   },
+
+  // String 类的方法
+  //
+  //
+
+  pad: function (str = "", length = 0, chars = " ") {},
+
+  padend: function (str = "", length = 0, chars = " ") {
+    if (str.length > length) {
+      return str;
+    }
+
+    while (str.length < length) {
+      for (var i = 0; i < chars.length; i++) {
+        if (str.length < length) {
+          str += chars[i];
+        }
+      }
+    }
+
+    return str;
+  },
 };
 
-console.log(
-  silvercoin0214.xor([1, 2, 3, 4], [2, 3, 4, 5], [2, 4, 5, 6, 7], [5, 6, 7, 8])
-);
+console.log(silvercoin0214.padend("123", 8, "-44"));
