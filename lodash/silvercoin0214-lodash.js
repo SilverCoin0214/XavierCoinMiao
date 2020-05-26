@@ -287,7 +287,7 @@ var silvercoin0214 = {
 
   pad: function (str = "", length = 0, chars = " ") {},
 
-  padend: function (str = "", length = 0, chars = " ") {
+  padEnd: function (str = "", length = 0, chars = " ") {
     if (str.length > length) {
       return str;
     }
@@ -303,7 +303,7 @@ var silvercoin0214 = {
     return str;
   },
 
-  padstart: function (str = "", length = 0, chars = " ") {
+  padStart: function (str = "", length = 0, chars = " ") {
     if (str.length > length) {
       return str;
     }
