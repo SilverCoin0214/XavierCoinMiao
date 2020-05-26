@@ -26,7 +26,7 @@ tail; ***
 take; ***
 takeRight; ***
 union; ***
-uniq;
+uniq; ***
 unzip;
 without;
 xor;

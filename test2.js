@@ -1,38 +1,26 @@
-/**
- * @param {number[][]} A
- * @return {number[][]}
- */
-var flipAndInvertImage = function(A) {
-  // 先翻转数组
-  for (let i = 0; i < A.length; i++) {
-    A[i].reverse();
+function array2list(ary) {
+  if (ary.length == 0) {
+    return null;
   }
 
-  // 然后再把每个值都取反,
-  for (let i = 0; i < A.length; i++) {
-    for (let j = 0; j < A[i].length; j++) {
-      if (A[i][j] == 0) {
-        A[i][j] = 1;
-      } else if (A[i][j] == 1) {
-        A[i][j] = 0;
-      }
-    }
+  var head = {
+    value: ary[0],
+    next: null,
+  };
+
+  var prev = head;
+
+  for (var i = 1; i < ary.length; i++) {
+    var node = {
+      value: ary[i],
+      next: null,
+    };
+
+    prev.next = node;
+    prev = node;
   }
 
-  return A;
-};
+  return head;
+}
 
-console.log(
-  flipAndInvertImage([
-    [1, 1, 0],
-    [1, 0, 1],
-    [0, 0, 0]
-  ])
-);
-
-// 更好的解法
-var flipAndInvertImage = function(A) {
-  return A.map(a => {
-    return a.reverse().map(b => b ^ 1);
-  });
-};
+console.log(array2list([1, 2, 3, 4, 5]));

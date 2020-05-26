@@ -238,6 +238,30 @@ var silvercoin0214 = {
 
     return new_ary;
   },
+
+  slice: function (ary, start = 0, end = ary.length) {
+    for (var i = 0; i < start; i++) {
+      ary.shift();
+    }
+
+    for (var i = ary.length; i > end; i--) {
+      ary.pop();
+    }
+
+    return ary;
+  },
+
+  without: function (ary, ...values) {
+    var new_ary = [];
+
+    for (var i = 0; i < ary.length; i++) {
+      if (values.includes(ary[i]) == false) {
+        new_ary.push(ary[i]);
+      }
+    }
+
+    return new_ary;
+  },
 };
 
-console.log(silvercoin0214.uniq([1, 2, 3, 2]));
+console.log(silvercoin0214.without([1, 2, 3, 2], 1, 2));
