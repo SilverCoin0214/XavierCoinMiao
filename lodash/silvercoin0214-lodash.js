@@ -346,6 +346,21 @@ var silvercoin0214 = {
 
     return start_str + str;
   },
+
+  lowerCase: function (str = "") {},
+
+  lowerFirst: function (str = "") {
+    var new_str = "";
+    if (str[0].charCodeAt() >= 65 && str[0].charCodeAt() <= 90) {
+      new_str += String.fromCharCode(str[0].charCodeAt() + 32);
+    }
+
+    for (var i = 1; i < str.length; i++) {
+      new_str += str[i];
+    }
+
+    return new_str;
+  },
 };
 
-console.log(silvercoin0214.pad("abc", 8, "_-"));
+console.log(silvercoin0214.lowerFirst("Abc"));
