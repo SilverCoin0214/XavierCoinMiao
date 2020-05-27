@@ -68,7 +68,7 @@ endsWith;
 escape;
 kebabCase;
 lowerCase;
-lowerFirst;
+lowerFirst;  ***
 pad;
 padEnd;
 padStart;

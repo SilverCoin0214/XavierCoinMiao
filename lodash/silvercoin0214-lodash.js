@@ -351,11 +351,28 @@ var silvercoin0214 = {
 
   lowerFirst: function (str = "") {
     var new_str = "";
+    var sign = 0;
     if (str[0].charCodeAt() >= 65 && str[0].charCodeAt() <= 90) {
       new_str += String.fromCharCode(str[0].charCodeAt() + 32);
+      sign = 1;
     }
 
-    for (var i = 1; i < str.length; i++) {
+    for (var i = sign; i < str.length; i++) {
+      new_str += str[i];
+    }
+
+    return new_str;
+  },
+
+  upperFirst: function (str = "") {
+    var new_str = "";
+    var sign = 0;
+    if (str[0].charCodeAt() >= 97 && str[0].charCodeAt() <= 122) {
+      new_str += String.fromCharCode(str[0].charCodeAt() - 32);
+      sign = 1;
+    }
+
+    for (var i = sign; i < str.length; i++) {
       new_str += str[i];
     }
 
@@ -363,4 +380,4 @@ var silvercoin0214 = {
   },
 };
 
-console.log(silvercoin0214.lowerFirst("Abc"));
+console.log(silvercoin0214.upperFirst("werDFEWerbc"));
