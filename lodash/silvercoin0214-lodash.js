@@ -77,7 +77,7 @@ var silvercoin0214 = {
     return ary;
   },
 
-  dropRigth: function (ary, n = 1) {
+  dropRight: function (ary, n = 1) {
     for (var i = 0; i < n; i++) {
       ary.pop();
     }
@@ -388,4 +388,4 @@ var silvercoin0214 = {
   },
 };
 
-console.log(silvercoin0214.dropRigth([1, 2, 3], 5));
+console.log(silvercoin0214.dropRight([1, 2, 3], 5));
