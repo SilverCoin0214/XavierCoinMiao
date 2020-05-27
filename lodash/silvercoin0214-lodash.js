@@ -93,6 +93,26 @@ var silvercoin0214 = {
     return ary;
   },
 
+  //  flatten: 把数组中存在的二维数组展开一层
+  //  @param: {array}  ary  需要展平的数组
+  //  @returns: {array}  new_ary  返回新的已展平数组
+  //
+
+  flatten: function (ary) {
+    var new_ary = [];
+    for (var i = 0; i < ary.length; i++) {
+      if (Array.isArray(ary[i])) {
+        for (var j = 0; j < ary[i].length; j++) {
+          new_ary.push(ary[i][j]);
+        }
+      } else {
+        new_ary.push(ary[i]);
+      }
+    }
+
+    return new_ary;
+  },
+
   head: function (ary) {
     return ary.shift();
   },
@@ -388,4 +408,4 @@ var silvercoin0214 = {
   },
 };
 
-console.log(silvercoin0214.dropRight([1, 2, 3], 5));
+console.log(silvercoin0214.flatten([1, [2, [3, [4]], 5]]));

@@ -6,7 +6,7 @@ drop; ***
 fill; ***
 find;
 first / head; ***
-flatten;
+flatten; ***
 indexOf; ***
 initial;
 intersection;
