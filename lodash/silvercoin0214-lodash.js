@@ -127,6 +127,15 @@ var silvercoin0214 = {
     return -1;
   },
 
+  /** initial: 返回除了最后一个元素外的数组
+   * @param {array} ary
+   * @return {array} ary
+   */
+  initial: function (ary) {
+    //return ary.slice(0, ary.length - 1);
+    return this.slice(ary, 0, ary.length - 1);
+  },
+
   join: function (ary, separator = ",") {
     var str = "";
     for (var i = 0; i < ary.length; i++) {
@@ -408,4 +417,4 @@ var silvercoin0214 = {
   },
 };
 
-console.log(silvercoin0214.flatten([1, [2, [3, [4]], 5]]));
+console.log(silvercoin0214.initial([1, 2, 3]));

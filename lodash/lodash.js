@@ -8,7 +8,7 @@ find;
 first / head; ***
 flatten; ***
 indexOf; ***
-initial;
+initial; ***
 intersection;
 join; ***
 last; ***
