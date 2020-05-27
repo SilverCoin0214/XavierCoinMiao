@@ -69,9 +69,9 @@ escape;
 kebabCase;
 lowerCase;
 lowerFirst;  ***
-pad;
-padEnd;
-padStart;
+pad; ***
+padEnd; ***
+padStart; ***
 parseInt;
 repeat;
 replace;
@@ -85,6 +85,6 @@ trimStart;
 truncate;
 unescape;
 upperCase;
-upperFirst;
+upperFirst; ***
 words;
 range;

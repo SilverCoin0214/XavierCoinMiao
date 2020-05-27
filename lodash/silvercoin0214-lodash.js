@@ -77,6 +77,14 @@ var silvercoin0214 = {
     return ary;
   },
 
+  dropRigth: function (ary, n = 1) {
+    for (var i = 0; i < n; i++) {
+      ary.pop();
+    }
+
+    return ary;
+  },
+
   fill: function (ary, value, start = 0, end = ary.length) {
     for (var i = start; i < end; i++) {
       ary[i] = value;
@@ -380,4 +388,4 @@ var silvercoin0214 = {
   },
 };
 
-console.log(silvercoin0214.upperFirst("werDFEWerbc"));
+console.log(silvercoin0214.dropRigth([1, 2, 3], 5));
