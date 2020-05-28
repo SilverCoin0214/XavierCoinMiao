@@ -479,11 +479,24 @@ var silvercoin0214 = {
 
     return false;
   },
+
+  //
+  // Math方法
+  //
+
+  /**
+   * add: 加法
+   * @param {number} augend
+   * @param {number} addend
+   * @return {number}
+   */
+  add: function (augend, addend) {
+    if (typeof augend != "number" || typeof addend != "number") {
+      return false;
+    }
+
+    return augend + addend;
+  },
 };
 
-console.log(
-  silvercoin0214.fromPairs([
-    ["a", 1],
-    ["b", 2],
-  ])
-);
+console.log(silvercoin0214.add(4, 6));
