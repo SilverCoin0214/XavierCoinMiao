@@ -114,6 +114,23 @@ var silvercoin0214 = {
     return new_ary;
   },
 
+  /**
+   * flattenDeep: 把数组中存在的数组全部展平成一维数组
+   * @param {array} ary
+   * @return {array} new_ary
+   */
+
+  flattenDeep: function (ary) {
+    for (var i = 0; i < ary.length; i++) {
+      if (Array.isArray(ary[i])) {
+        ary = this.flatten(ary);
+        this.flattenDeep(ary);
+      }
+    }
+
+    return ary;
+  },
+
   head: function (ary) {
     return ary.shift();
   },
@@ -441,4 +458,4 @@ var silvercoin0214 = {
   },
 };
 
-console.log(silvercoin0214.gt(5, "3"));
+console.log(silvercoin0214.flattenDeep([1, [2, [3, [4]], 5]]));
