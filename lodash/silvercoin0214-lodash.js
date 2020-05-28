@@ -131,6 +131,20 @@ var silvercoin0214 = {
     return ary;
   },
 
+  /**
+   * flattenDepth: 可以自己控制数组要展平几层
+   * @param {array} ary
+   * @param {number} depth
+   */
+  flattenDepth: function (ary, depth = 1) {
+    while (depth) {
+      ary = this.flatten(ary);
+      depth = depth - 1;
+    }
+
+    return ary;
+  },
+
   head: function (ary) {
     return ary.shift();
   },
@@ -458,4 +472,4 @@ var silvercoin0214 = {
   },
 };
 
-console.log(silvercoin0214.flattenDeep([1, [2, [3, [4]], 5]]));
+console.log(silvercoin0214.flattenDepth([1, [2, [3, [4]], 5]], 3));
