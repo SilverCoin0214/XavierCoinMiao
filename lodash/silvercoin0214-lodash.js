@@ -93,10 +93,11 @@ var silvercoin0214 = {
     return ary;
   },
 
-  //  flatten: 把数组中存在的二维数组展开一层
-  //  @param: {array}  ary  需要展平的数组
-  //  @returns: {array}  new_ary  返回新的已展平数组
-  //
+  /**
+   *  flatten: 把数组中存在的二维数组展开一层
+   *  @param: {array}  ary  需要展平的数组
+   *  @returns: {array}  new_ary  返回新的已展平数组
+   */
 
   flatten: function (ary) {
     var new_ary = [];
@@ -127,9 +128,10 @@ var silvercoin0214 = {
     return -1;
   },
 
-  /** initial: 返回除了最后一个元素外的数组
-   * @param {array} ary
-   * @return {array} ary
+  /**
+   *  initial: 返回除了最后一个元素外的数组
+   *  @param {array} ary
+   *  @return {array} ary
    */
   initial: function (ary) {
     //return ary.slice(0, ary.length - 1);
@@ -318,8 +320,8 @@ var silvercoin0214 = {
     return filter_ary;
   },
 
-  // String 类的方法
   //
+  // String 类的方法
   //
 
   pad: function (str = "", length = 0, chars = " ") {
@@ -415,6 +417,14 @@ var silvercoin0214 = {
 
     return new_str;
   },
+
+  //
+  // lang方法
+  //
+
+  isArray: function (value) {
+    return Object.prototype.toString.apply(value) === "[object Array]";
+  },
 };
 
-console.log(silvercoin0214.initial([1, 2, 3]));
+console.log(silvercoin0214.isArray("ddd"));
