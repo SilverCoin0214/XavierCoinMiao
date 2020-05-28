@@ -425,6 +425,20 @@ var silvercoin0214 = {
   isArray: function (value) {
     return Object.prototype.toString.apply(value) === "[object Array]";
   },
+
+  /**
+   * gt: 判断value是否大于Other
+   * @param {*} value
+   * @param {*} other
+   * @return {boolean}
+   */
+  gt: function (value, other) {
+    if (value > other) {
+      return true;
+    }
+
+    return false;
+  },
 };
 
-console.log(silvercoin0214.isArray("ddd"));
+console.log(silvercoin0214.gt(5, "3"));
