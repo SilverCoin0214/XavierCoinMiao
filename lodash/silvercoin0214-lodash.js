@@ -145,6 +145,15 @@ var silvercoin0214 = {
     return ary;
   },
 
+  fromPairs: function (ary) {
+    let obj = {};
+    for (let i = 0; i < ary.length; i++) {
+      obj[ary[i][0]] = ary[i][1];
+    }
+
+    return obj;
+  },
+
   head: function (ary) {
     return ary.shift();
   },
@@ -472,4 +481,9 @@ var silvercoin0214 = {
   },
 };
 
-console.log(silvercoin0214.flattenDepth([1, [2, [3, [4]], 5]], 3));
+console.log(
+  silvercoin0214.fromPairs([
+    ["a", 1],
+    ["b", 2],
+  ])
+);
