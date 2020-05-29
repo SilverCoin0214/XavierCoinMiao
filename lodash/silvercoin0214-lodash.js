@@ -498,20 +498,28 @@ var silvercoin0214 = {
     return augend + addend;
   },
 
+  /**
+   * ceil: 可选位取整, 如果precision为负数, 则为从整数个位数往上取整
+   * @param {number} number
+   * @param {number} precision
+   * @return {number}
+   */
   ceil: function (number, precision = 0) {
     var aryNum = String(number).split(".");
 
     if (precision != 0) {
       if (precision > 0 && precision < aryNum[1].length) {
-        var n = 0;
+        var n = "";
         for (let i = 0; i < precision; i++) {
           if (i == precision - 1) {
-            n += Number(aryNum[1][i]) + 1;
+            var x = Number(aryNum[1][i]) + 1;
+            n += x;
+
             aryNum[1] = n;
 
             return Number(aryNum.join("."));
           } else {
-            n = n * 10 + Number(aryNum[1][i]) * 10;
+            n += aryNum[1][i];
           }
         }
       }
@@ -537,4 +545,4 @@ var silvercoin0214 = {
   },
 };
 
-console.log(silvercoin0214.ceil(6040.222, 5));
+console.log(silvercoin0214.ceil(6.0034234, 3));
