@@ -37,9 +37,13 @@ sample;
 sampleSize;
 shuffle;
 size;
-eq, gt, gte;
-lt, lte;
-add, ceil;
+eq;
+gt;
+gte;
+lt;
+lte;
+add; ***
+ceil;
 divide;
 floor;
 max;

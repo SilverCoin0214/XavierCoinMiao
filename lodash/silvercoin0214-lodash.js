@@ -497,6 +497,44 @@ var silvercoin0214 = {
 
     return augend + addend;
   },
+
+  ceil: function (number, precision = 0) {
+    var aryNum = String(number).split(".");
+
+    if (precision != 0) {
+      if (precision > 0 && precision < aryNum[1].length) {
+        var n = 0;
+        for (let i = 0; i < precision; i++) {
+          if (i == precision - 1) {
+            n += Number(aryNum[1][i]) + 1;
+            aryNum[1] = n;
+
+            return Number(aryNum.join("."));
+          } else {
+            n = n * 10 + Number(aryNum[1][i]) * 10;
+          }
+        }
+      }
+      if (precision < 0) {
+        var n = 0;
+        for (let i = 0; i < aryNum[0].length + precision; i++) {
+          if (i == aryNum[0].length + precision - 1) {
+            n += Number(aryNum[0][i]) + 1;
+
+            var x = aryNum[0].length - String(n).length;
+
+            return n * 10 ** x;
+          } else {
+            n = n * 10 + Number(aryNum[0][i]) * 10;
+          }
+        }
+      }
+
+      return number;
+    } else {
+      return Number(aryNum[0]) + 1;
+    }
+  },
 };
 
-console.log(silvercoin0214.add(4, 6));
+console.log(silvercoin0214.ceil(6040.222, 5));
