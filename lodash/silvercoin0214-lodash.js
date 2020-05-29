@@ -503,6 +503,7 @@ var silvercoin0214 = {
    * @param {number} number
    * @param {number} precision
    * @return {number}
+   * 思维: 把数字分割成整数和小数部分, 通过判断可选位来研究是处理小数部分还是整数部分.
    */
   ceil: function (number, precision = 0) {
     var aryNum = String(number).split(".");
@@ -543,6 +544,18 @@ var silvercoin0214 = {
       return Number(aryNum[0]) + 1;
     }
   },
+
+  /**
+   *
+   * @param {number} dividend
+   * @param {number} divisor
+   */
+  divide: function (dividend, divisor) {
+    if (typeof dividend != "number" || typeof divisor != "number") {
+      return false;
+    }
+    return dividend / divisor;
+  },
 };
 
-console.log(silvercoin0214.ceil(6.0034234, 3));
+console.log(silvercoin0214.divide(6, 4));
