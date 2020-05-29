@@ -558,9 +558,15 @@ var silvercoin0214 = {
     return dividend / divisor;
   },
 
+  /**
+   * floor: 向下取整
+   * @param {number} number
+   * @param {number} precision
+   * @return {number}
+   */
   floor: function (number, precision = 0) {
     var strNum = String(number).split(".");
-    if (precision > 0 && precision < strNum[1].length) {
+    if (precision >= 0 && precision < strNum[1].length) {
       let exp = 10 ** -precision;
       return number - (number % exp);
     }
@@ -573,4 +579,4 @@ var silvercoin0214 = {
   },
 };
 
-console.log(silvercoin0214.floor(23234.046, -2));
+console.log(silvercoin0214.floor(4.006));
