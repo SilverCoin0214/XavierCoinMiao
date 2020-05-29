@@ -546,9 +546,10 @@ var silvercoin0214 = {
   },
 
   /**
-   *
+   * divide: 两个数字相除
    * @param {number} dividend
    * @param {number} divisor
+   * @return {number}
    */
   divide: function (dividend, divisor) {
     if (typeof dividend != "number" || typeof divisor != "number") {
@@ -556,6 +557,20 @@ var silvercoin0214 = {
     }
     return dividend / divisor;
   },
+
+  floor: function (number, precision = 0) {
+    var strNum = String(number).split(".");
+    if (precision > 0 && precision < strNum[1].length) {
+      let exp = 10 ** -precision;
+      return number - (number % exp);
+    }
+    if (precision < 0 && -precision < strNum[0].length) {
+      let exp = 10 ** -precision;
+      return number - (number % exp);
+    }
+
+    return 0;
+  },
 };
 
-console.log(silvercoin0214.divide(6, 4));
+console.log(silvercoin0214.floor(23234.046, -2));
