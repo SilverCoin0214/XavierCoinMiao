@@ -178,6 +178,41 @@ var silvercoin0214 = {
     return this.slice(ary, 0, ary.length - 1);
   },
 
+  /**
+   * intersection: 返回所有数组里的交集.
+   * @param  {...any} arys
+   * @return {array}
+   */
+  intersection: function (...arys) {
+    // 把所有数组过滤掉重复项后全部存到一个数组中
+    var new_ary = [];
+    for (let i = 0; i < arys.length; i++) {
+      arys[i] = Array.from(new Set(arys[i]));
+    }
+    for (let i = 0; i < arys.length; i++) {
+      for (let j = 0; j < arys[i].length; j++) {
+        new_ary.push(arys[i][j]);
+      }
+    }
+
+    // 创建一个对象计算数组里每个元素的个数
+    var new_obj = {};
+    for (let i = 0; i < new_ary.length; i++) {
+      var num = new_ary[i];
+      new_obj[num] = new_obj[num] + 1 || 1;
+    }
+
+    // 如果元素的个数等于添加到的数组个数的长度, 说明每个数组都有存在该元素.
+    var reary = [];
+    for (key in new_obj) {
+      if (new_obj[key] == arys.length) {
+        reary.push(Number(key));
+      }
+    }
+
+    return reary;
+  },
+
   join: function (ary, separator = ",") {
     var str = "";
     for (var i = 0; i < ary.length; i++) {
@@ -579,4 +614,6 @@ var silvercoin0214 = {
   },
 };
 
-console.log(silvercoin0214.floor(4.006));
+console.log(
+  silvercoin0214.intersection([2, 1, 2, 2, 2], [2, 3, 8], [2, 3, 4, 8])
+);

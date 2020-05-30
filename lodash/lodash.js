@@ -43,9 +43,9 @@ gte;
 lt;
 lte;
 add; ***
-ceil;
-divide;
-floor;
+ceil; ***
+divide; ***
+floor; ***
 max;
 mean;
 min;
