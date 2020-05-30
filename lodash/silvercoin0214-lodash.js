@@ -613,6 +613,11 @@ var silvercoin0214 = {
     return 0;
   },
 
+  /**
+   * max: 返回数组里的最大值
+   * @param {array} ary
+   * @return {number}
+   */
   max: function (ary) {
     var max = -Infinity;
 
@@ -628,6 +633,22 @@ var silvercoin0214 = {
 
     return max;
   },
+
+  min: function (ary) {
+    var min = Infinity;
+
+    if (ary === [] || ary == false) {
+      return undefined;
+    }
+
+    for (let i = 0; i < ary.length; i++) {
+      if (min > ary[i]) {
+        min = ary[i];
+      }
+    }
+
+    return min;
+  },
 };
 
-console.log(silvercoin0214.max([2, 3, 4, 2]));
+console.log(silvercoin0214.min([]));
