@@ -634,6 +634,23 @@ var silvercoin0214 = {
     return max;
   },
 
+  mean: function (ary) {
+    var avg = 0;
+    var sum = 0;
+    for (let i = 0; i < ary.length; i++) {
+      sum += ary[i];
+    }
+
+    avg = sum / ary.length;
+
+    return avg;
+  },
+
+  /**
+   * min: 返回数组里的最小值
+   * @param {array} ary
+   * @return {number}
+   */
   min: function (ary) {
     var min = Infinity;
 
@@ -651,4 +668,4 @@ var silvercoin0214 = {
   },
 };
 
-console.log(silvercoin0214.min([]));
+console.log(silvercoin0214.mean([4, 2, 8, 6]));
