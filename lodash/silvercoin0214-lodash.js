@@ -675,6 +675,19 @@ var silvercoin0214 = {
   multiply: function (multiplier, multiplicand) {
     return multiplier * multiplicand;
   },
+
+  subtract: function (minuend, sub) {
+    return minuend - sub;
+  },
+
+  sum: function (ary) {
+    let sum = 0;
+    for (let i = 0; i < ary.length; i++) {
+      sum += ary[i];
+    }
+
+    return sum;
+  },
 };
 
-console.log(silvercoin0214.multiply(4, 6));
+console.log(silvercoin0214.sum([23, 2, 3, 4]));
