@@ -634,6 +634,11 @@ var silvercoin0214 = {
     return max;
   },
 
+  /**
+   * mean: 求平均数
+   * @param {array} ary
+   * @return {number}
+   */
   mean: function (ary) {
     var avg = 0;
     var sum = 0;
@@ -666,6 +671,10 @@ var silvercoin0214 = {
 
     return min;
   },
+
+  multiply: function (multiplier, multiplicand) {
+    return multiplier * multiplicand;
+  },
 };
 
-console.log(silvercoin0214.mean([4, 2, 8, 6]));
+console.log(silvercoin0214.multiply(4, 6));

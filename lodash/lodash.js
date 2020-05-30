@@ -9,7 +9,7 @@ first / head; ***
 flatten; ***
 indexOf; ***
 initial; ***
-intersection;
+intersection; ***
 join; ***
 last; ***
 lastIndexOf; ***
@@ -38,7 +38,7 @@ sampleSize;
 shuffle;
 size;
 eq;
-gt;
+gt; ***
 gte;
 lt;
 lte;
@@ -46,9 +46,9 @@ add; ***
 ceil; ***
 divide; ***
 floor; ***
-max;
-mean;
-min;
+max; ***
+mean; ***
+min; ***
 multiply;
 round;
 substract;
