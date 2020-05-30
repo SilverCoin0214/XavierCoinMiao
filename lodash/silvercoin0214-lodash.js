@@ -396,7 +396,7 @@ var silvercoin0214 = {
   },
 
   //
-  // String 类的方法
+  // String 类的方法 !!!
   //
 
   pad: function (str = "", length = 0, chars = " ") {
@@ -494,7 +494,7 @@ var silvercoin0214 = {
   },
 
   //
-  // lang方法
+  // lang方法 !!!
   //
 
   isArray: function (value) {
@@ -516,7 +516,7 @@ var silvercoin0214 = {
   },
 
   //
-  // Math方法
+  // Math方法!!!
   //
 
   /**
@@ -612,8 +612,22 @@ var silvercoin0214 = {
 
     return 0;
   },
+
+  max: function (ary) {
+    var max = -Infinity;
+
+    if (ary === [] || ary == false) {
+      return undefined;
+    }
+
+    for (let i = 0; i < ary.length; i++) {
+      if (max < ary[i]) {
+        max = ary[i];
+      }
+    }
+
+    return max;
+  },
 };
 
-console.log(
-  silvercoin0214.intersection([2, 1, 2, 2, 2], [2, 3, 8], [2, 3, 4, 8])
-);
+console.log(silvercoin0214.max([2, 3, 4, 2]));
