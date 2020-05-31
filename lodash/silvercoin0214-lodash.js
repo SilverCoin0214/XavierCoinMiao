@@ -515,6 +515,14 @@ var silvercoin0214 = {
     return false;
   },
 
+  isNil: function (value) {
+    if (value === null || value === undefined) {
+      return true;
+    }
+
+    return false;
+  },
+
   //
   // Math方法!!!
   //
@@ -672,14 +680,28 @@ var silvercoin0214 = {
     return min;
   },
 
+  /**
+   * 乘法
+   * @param {number} multiplier
+   * @param {number} multiplicand
+   */
   multiply: function (multiplier, multiplicand) {
     return multiplier * multiplicand;
   },
 
+  /**
+   * 减法
+   * @param {number} minuend
+   * @param {number} sub
+   */
   subtract: function (minuend, sub) {
     return minuend - sub;
   },
 
+  /**
+   * 求和
+   * @param {array} ary
+   */
   sum: function (ary) {
     let sum = 0;
     for (let i = 0; i < ary.length; i++) {
@@ -690,4 +712,4 @@ var silvercoin0214 = {
   },
 };
 
-console.log(silvercoin0214.sum([23, 2, 3, 4]));
+console.log(silvercoin0214.isNil(void 0));

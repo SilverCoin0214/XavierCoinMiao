@@ -49,10 +49,10 @@ floor; ***
 max; ***
 mean; ***
 min; ***
-multiply;
+multiply; ***
 round;
-substract;
-sum;
+substract; ***
+sum; ***
 at;
 defaults;
 get;
