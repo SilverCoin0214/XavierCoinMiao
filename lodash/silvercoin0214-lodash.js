@@ -1,12 +1,4 @@
 var silvercoin0214 = {
-  isNull: function (val) {
-    if (val === null) {
-      return true;
-    } else {
-      return false;
-    }
-  },
-
   chunk: function (array, size = 1) {
     var split_array = [];
     for (var i = 0; i < size; i++) {
@@ -395,6 +387,24 @@ var silvercoin0214 = {
     return filter_ary;
   },
 
+  unzip: function (ary) {
+    var new_ary = [];
+
+    var itemLength = ary[0].length;
+
+    for (let i = 0; i < itemLength; i++) {
+      new_ary.push([]);
+    }
+
+    for (let i = 0; i < itemLength; i++) {
+      for (let j = 0; j < ary.length; j++) {
+        new_ary[i].push(ary[j][i]);
+      }
+    }
+
+    return new_ary;
+  },
+
   //
   // String 类的方法 !!!
   //
@@ -515,12 +525,24 @@ var silvercoin0214 = {
     return false;
   },
 
+  /**
+   * 判断是否是Null或者undefined
+   * @param {*}} value
+   */
   isNil: function (value) {
     if (value === null || value === undefined) {
       return true;
     }
 
     return false;
+  },
+
+  isNull: function (val) {
+    if (val === null) {
+      return true;
+    } else {
+      return false;
+    }
   },
 
   //
@@ -712,4 +734,9 @@ var silvercoin0214 = {
   },
 };
 
-console.log(silvercoin0214.isNil(void 0));
+console.log(
+  silvercoin0214.unzip([
+    ["a", 1, true],
+    ["b", 2, false],
+  ])
+);
