@@ -387,11 +387,39 @@ var silvercoin0214 = {
     return filter_ary;
   },
 
+  /**
+   * unzip: 解包, 传进的数组集拆分成下标相同的归为一类的数组集
+   * @param {array} ary
+   * @return {array}
+   */
   unzip: function (ary) {
+    // 创建一个数组, 其中具有需要解包元素个数的空数组
     var new_ary = [];
 
     var itemLength = ary[0].length;
 
+    for (let i = 0; i < itemLength; i++) {
+      new_ary.push([]);
+    }
+
+    // 把元素放到每个空数组中
+    for (let i = 0; i < itemLength; i++) {
+      for (let j = 0; j < ary.length; j++) {
+        new_ary[i].push(ary[j][i]);
+      }
+    }
+
+    return new_ary;
+  },
+
+  /**
+   * zip: 创建一个分组元素的数组，每数组第n个元素各自存成一个数组.
+   * @param  {...any} ary
+   * @return  {array}
+   */
+  zip: function (...ary) {
+    var new_ary = [];
+    var itemLength = ary[0].length;
     for (let i = 0; i < itemLength; i++) {
       new_ary.push([]);
     }
@@ -734,9 +762,4 @@ var silvercoin0214 = {
   },
 };
 
-console.log(
-  silvercoin0214.unzip([
-    ["a", 1, true],
-    ["b", 2, false],
-  ])
-);
+console.log(silvercoin0214.zip(["a", "b"], [1, 2], [true, false]));
