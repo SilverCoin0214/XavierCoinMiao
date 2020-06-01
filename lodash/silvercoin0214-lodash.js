@@ -553,6 +553,12 @@ var silvercoin0214 = {
     return Number(str);
   },
 
+  /**
+   * repeat: 字符串重复输出
+   * @param {string} str
+   * @param {number} n
+   * @return {string}
+   */
   repeat: function (str = "", n = 1) {
     if (n === 0) {
       return "";
@@ -565,6 +571,20 @@ var silvercoin0214 = {
 
     return repeatStr;
   },
+
+  /**
+   * replace: 把字符串其中一个片段替换成需要的.
+   * @param {string} string
+   * @param {string | RegExP} pattern
+   * @param {string | Function} replacement
+   */
+  replace: function (string = "", pattern, replacement) {
+    var str2ary = string.split(" ");
+    str2ary.splice(str2ary.indexOf(pattern), 1, replacement);
+
+    return str2ary.join(" ");
+  },
+
   //
   // lang方法 !!!
   //
@@ -796,4 +816,4 @@ var silvercoin0214 = {
   },
 };
 
-console.log(silvercoin0214.repeat("abc", 0));
+console.log(silvercoin0214.replace("hi fred", "fred", "barney"));
