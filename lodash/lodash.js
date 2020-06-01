@@ -27,10 +27,10 @@ take; ***
 takeRight; ***
 union; ***
 uniq; ***
-unzip;
+unzip;***
 without; ***
 xor; ***
-zip;
+zip;***
 zipObject;
 includes;
 sample;

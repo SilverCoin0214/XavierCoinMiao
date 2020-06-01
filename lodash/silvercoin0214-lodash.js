@@ -531,6 +531,23 @@ var silvercoin0214 = {
     return new_str;
   },
 
+  parseInt: function (str, radix = 10) {
+    if (radix === 16) {
+      var num = 0;
+      for (let i = str.length - 1; i >= 0; i--) {
+        num = str[i] * 16 ** (str.length - 1 - i) + num;
+      }
+
+      return num;
+    }
+
+    if (radix === 0) {
+      return Number(str);
+    }
+
+    return Number(str);
+  },
+
   //
   // lang方法 !!!
   //
@@ -762,4 +779,4 @@ var silvercoin0214 = {
   },
 };
 
-console.log(silvercoin0214.zip(["a", "b"], [1, 2], [true, false]));
+console.log(silvercoin0214.parseInt("110"));
