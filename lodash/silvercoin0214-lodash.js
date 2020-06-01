@@ -531,6 +531,11 @@ var silvercoin0214 = {
     return new_str;
   },
 
+  /**
+   * parseInt: 讲字符串数字转成数字形式, 默认参数如果未定义或者0时为十进制, 如果为16,则认为传入16进制,输出10进制.
+   * @param {string} str
+   * @param {number} radix
+   */
   parseInt: function (str, radix = 10) {
     if (radix === 16) {
       var num = 0;
@@ -548,6 +553,18 @@ var silvercoin0214 = {
     return Number(str);
   },
 
+  repeat: function (str = "", n = 1) {
+    if (n === 0) {
+      return "";
+    }
+
+    var repeatStr = "";
+    for (let i = 0; i < n; i++) {
+      repeatStr += str;
+    }
+
+    return repeatStr;
+  },
   //
   // lang方法 !!!
   //
@@ -779,4 +796,4 @@ var silvercoin0214 = {
   },
 };
 
-console.log(silvercoin0214.parseInt("110"));
+console.log(silvercoin0214.repeat("abc", 0));
