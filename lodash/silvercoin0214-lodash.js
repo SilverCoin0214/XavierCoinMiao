@@ -579,10 +579,8 @@ var silvercoin0214 = {
    * @param {string | Function } replacement
    */
   replace: function (string = "", pattern, replacement) {
-    var str2ary = string.split(" ");
-    str2ary.splice(str2ary.indexOf(pattern), 1, replacement);
+    string = string.split(pattern).join(replacement);
 
-    string = str2ary.join(" ");
     return string;
   },
 
