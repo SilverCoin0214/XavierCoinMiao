@@ -576,13 +576,14 @@ var silvercoin0214 = {
    * replace: 把字符串其中一个片段替换成需要的.
    * @param {string} string
    * @param {string | RegExP} pattern
-   * @param {string | Function} replacement
+   * @param {string | Function } replacement
    */
   replace: function (string = "", pattern, replacement) {
     var str2ary = string.split(" ");
     str2ary.splice(str2ary.indexOf(pattern), 1, replacement);
 
-    return str2ary.join(" ");
+    string = str2ary.join(" ");
+    return string;
   },
 
   //
@@ -816,4 +817,4 @@ var silvercoin0214 = {
   },
 };
 
-console.log(silvercoin0214.replace("hi fred", "fred", "barney"));
+console.log(silvercoin0214.replace("Hi Fred", "Fred", "Barney"));
