@@ -584,6 +584,33 @@ var silvercoin0214 = {
     return string;
   },
 
+  /**
+   * split: 将字符串按照特定符号切割后返回切割片段组成的数组.
+   * @param {string} str
+   * @param {*} separator
+   * @param {number} limit
+   */
+  split: function (str = "", separator, limit) {
+    var ary = [];
+    var cut = "";
+    for (let i = 0; i < str.length; i++) {
+      if (str[i] !== separator) {
+        cut += str[i];
+      }
+      if (str[i] === separator || i === str.length - 1) {
+        ary.push(cut);
+        cut = "";
+      }
+    }
+
+    var reAry = [];
+    for (let i = 0; i < limit; i++) {
+      reAry.push(ary[i]);
+    }
+
+    return reAry;
+  },
+
   //
   // lang方法 !!!
   //
@@ -815,4 +842,4 @@ var silvercoin0214 = {
   },
 };
 
-console.log(silvercoin0214.replace("Hi Fred", "Fred", "Barney"));
+console.log(silvercoin0214.split("a-b-c", "-", 2));

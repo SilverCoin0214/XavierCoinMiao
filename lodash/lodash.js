@@ -76,9 +76,9 @@ lowerFirst;  ***
 pad; ***
 padEnd; ***
 padStart; ***
-parseInt;
-repeat;
-replace;
+parseInt;***
+repeat;***
+replace;***
 snakeCase;
 split;
 startCase;
