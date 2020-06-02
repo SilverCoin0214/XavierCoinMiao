@@ -80,9 +80,9 @@ parseInt;***
 repeat;***
 replace;***
 snakeCase;
-split;
+split; ***
 startCase;
-startsWith;
+startsWith; ***
 trim;
 trimEnd;
 trimStart;

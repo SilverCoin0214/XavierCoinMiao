@@ -611,6 +611,13 @@ var silvercoin0214 = {
     return reAry;
   },
 
+  /**
+   * strtsWith: 判断是否按照规定的字符串开头,可以选择起始位置
+   * @param {string} str
+   * @param {string} target
+   * @param {number} position
+   * @return {boolean}
+   */
   startsWith: function (str = "", target, position = 0) {
     var cut = "";
     for (let i = position; i < str.length; i++) {
@@ -624,6 +631,49 @@ var silvercoin0214 = {
     } else {
       return false;
     }
+  },
+
+  /**
+   * trimEnd: 末尾去除指定字符串
+   * @param {string} str
+   * @param {string} chars
+   * @return {string}
+   */
+  trimEnd: function (str = "", chars = " ") {
+    var newStr = "";
+    for (let i = str.length - 1; i > 0; i--) {
+      if (!chars.includes(str[i])) {
+        newStr = str.slice(0, i + 1);
+        return newStr;
+      }
+    }
+  },
+
+  /**
+   * tirmStart: 头部去除指定字符串
+   * @param {*} str
+   * @param {*} chars
+   * @return {string}
+   */
+  trimStart: function (str = "", chars = " ") {
+    var newStr = "";
+    for (let i = 0; i < str.length; i++) {
+      if (!chars.includes(str[i])) {
+        newStr += str.slice(i);
+        return newStr;
+      }
+    }
+  },
+
+  /**
+   * trim: 两头去除指定字符串
+   * @param {string} str
+   * @param {string} chars
+   * @return {string}
+   */
+  trim: function (str = "", chars = " ") {
+    var newStr = this.trimStart(str, chars);
+    return this.trimEnd(newStr, chars);
   },
 
   //
@@ -857,4 +907,4 @@ var silvercoin0214 = {
   },
 };
 
-console.log(silvercoin0214.startsWith("abc", "b", 1));
+console.log(silvercoin0214.trim("-_-abc-_-", "_-"));
