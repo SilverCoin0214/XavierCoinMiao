@@ -640,13 +640,22 @@ var silvercoin0214 = {
    * @return {string}
    */
   trimEnd: function (str = "", chars = " ") {
-    var newStr = "";
-    for (let i = str.length - 1; i > 0; i--) {
-      if (!chars.includes(str[i])) {
-        newStr = str.slice(0, i + 1);
-        return newStr;
+    // var newStr = "";
+    // for (let i = str.length - 1; i > 0; i--) {
+    //   if (!chars.includes(str[i])) {
+    //     newStr = str.slice(0, i + 1);
+    //     return newStr;
+    //   }
+    // }
+
+    var j = str.length - 1;
+    while (j > 0) {
+      if (!chars.includes(str[j])) {
+        break;
       }
+      j--;
     }
+    return str.slice(0, j + 1);
   },
 
   /**
@@ -656,13 +665,22 @@ var silvercoin0214 = {
    * @return {string}
    */
   trimStart: function (str = "", chars = " ") {
-    var newStr = "";
-    for (let i = 0; i < str.length; i++) {
+    // var newStr = "";
+    // for (let i = 0; i < str.length; i++) {
+    //   if (!chars.includes(str[i])) {
+    //     newStr += str.slice(i);
+    //     return newStr;
+    //   }
+    // }
+
+    var i = 0;
+    while (i < str.length) {
       if (!chars.includes(str[i])) {
-        newStr += str.slice(i);
-        return newStr;
+        break;
       }
+      i++;
     }
+    return str.slice(i);
   },
 
   /**
@@ -907,4 +925,4 @@ var silvercoin0214 = {
   },
 };
 
-console.log(silvercoin0214.trim("-_-abc-_-", "_-"));
+console.log(silvercoin0214.trim("   abc  "));

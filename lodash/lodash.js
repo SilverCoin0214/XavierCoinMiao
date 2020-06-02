@@ -83,9 +83,9 @@ snakeCase;
 split; ***
 startCase;
 startsWith; ***
-trim;
-trimEnd;
-trimStart;
+trim; ***
+trimEnd; ***
+trimStart; ***
 truncate;
 unescape;
 upperCase;
