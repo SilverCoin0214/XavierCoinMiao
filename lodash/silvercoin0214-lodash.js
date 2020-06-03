@@ -694,6 +694,23 @@ var silvercoin0214 = {
     return this.trimEnd(newStr, chars);
   },
 
+  unescape: function (str = "") {
+    var dict = {
+      "&amp;": "&",
+      "&lt;": "<",
+      "&gt;": ">",
+      "&quot;": '"',
+      "&#39;": "'",
+    };
+
+    for (let i in dict) {
+      let r = new RegExp(i, "g");
+      str = str.replace(r, dict[i]);
+    }
+
+    return str;
+  },
+
   //
   // lang方法 !!!
   //
@@ -925,4 +942,4 @@ var silvercoin0214 = {
   },
 };
 
-console.log(silvercoin0214.trim("   abc  "));
+console.log(silvercoin0214.unescape("fred, barney, &amp; pebbles"));
