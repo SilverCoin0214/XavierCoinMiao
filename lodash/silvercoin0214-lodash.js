@@ -940,6 +940,52 @@ var silvercoin0214 = {
 
     return sum;
   },
+
+  /**
+   * range: 生成一个从开始到结束的数字数组, 可以设置步长
+   * @param {number} start = 0
+   * @param {number} end
+   * @param {number} step = 1
+   */
+  range: function (start = 0, end, step = 1) {
+    var ary = [];
+
+    if (end === undefined) {
+      for (let i = 0; i < start; i = i + step) {
+        ary.push(i);
+      }
+
+      if (start < 0) {
+        for (let i = 0; i > start; i = i - 1) {
+          ary.push(i);
+        }
+      }
+    }
+
+    if (step === 0) {
+      for (let i = start; i < end; i++) {
+        ary.push(start);
+      }
+    } else {
+      for (let i = start; i < end; i = i + step) {
+        ary.push(i);
+      }
+
+      if (end < 0) {
+        if (step < 0) {
+          for (let i = start; i > end; i = i + step) {
+            ary.push(i);
+          }
+        } else {
+          for (let i = start; i > end; i = i - 1) {
+            ary.push(i);
+          }
+        }
+      }
+    }
+
+    return ary;
+  },
 };
 
-console.log(silvercoin0214.unescape("fred, barney, &amp; pebbles"));
+console.log(silvercoin0214.range(2, 4, 0));
