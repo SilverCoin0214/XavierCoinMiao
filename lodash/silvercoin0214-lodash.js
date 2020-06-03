@@ -986,6 +986,29 @@ var silvercoin0214 = {
 
     return ary;
   },
+
+  //
+  //  collection !!!
+  //
+
+  /**
+   * size: 返回所需要查询元素的个数
+   * @param {Array | Object | string} collection
+   */
+  size: function (collection) {
+    if (typeof collection == "string") {
+      return collection.length;
+    }
+
+    if (collection instanceof Array) {
+      console.log(collection);
+      return collection.length;
+    }
+
+    if (collection instanceof Object && !(collection instanceof Array)) {
+      return Object.getOwnPropertyNames(collection).length;
+    }
+  },
 };
 
-console.log(silvercoin0214.range(2, 4, 0));
+console.log(silvercoin0214.size([1, 2, 3]));

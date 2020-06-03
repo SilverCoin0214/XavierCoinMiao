@@ -87,8 +87,8 @@ trim; ***
 trimEnd; ***
 trimStart; ***
 truncate;
-unescape;
+unescape; ***
 upperCase;
 upperFirst; ***
 words;
-range;
+range; ***
