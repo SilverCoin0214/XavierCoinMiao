@@ -1023,6 +1023,12 @@ var silvercoin0214 = {
     }
   },
 
+  forEach: function (ary, action) {
+    for (var i = 0; i < ary.length; i++) {
+      action(ary[i]);
+    }
+  },
+
   /**
    * filter: 返回被筛选为真的所有元素的数组
    * @param {Array | Object} collection
@@ -1033,11 +1039,11 @@ var silvercoin0214 = {
     var result = [];
 
     var collectFun = function (collection, test) {
-      for (let i = 0; i < collection.length; i++) {
-        if (test(collection[i])) {
-          result.push(collection[i]);
+      collection.forEach(function (p) {
+        if (test(p)) {
+          result.push(p);
         }
-      }
+      });
     };
 
     var collectStr = function (collection, test) {
