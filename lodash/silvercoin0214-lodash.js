@@ -1098,15 +1098,39 @@ var silvercoin0214 = {
 
     return result;
   },
+
+  reduce: function (collection, iteratee = this.identity, initial) {
+    if (Array.isArray(collection)) {
+      var start = 0;
+      if (arguments.length === 2) {
+        start = 1;
+        initial = collection[0];
+      }
+
+      for (let i = start; i < collection.length; i++) {
+        initial = iteratee(initial, collection[i]);
+      }
+    } else {
+      for (let i in collection) {
+        if (initial === null) {
+          initial = { i: collection[i] };
+        } else {
+          initial = iteratee(initial, collection[i], i);
+        }
+      }
+    }
+
+    return initial;
+  },
 };
 
-var users = [
-  { user: "barney", age: 36, active: true },
-  { user: "fred", age: 40, active: false },
-];
-
 console.log(
-  silvercoin0214.filter(users, function (o) {
-    return !o.active;
-  })
+  silvercoin0214.reduce(
+    { a: 1, b: 2, c: 1 },
+    function (result, value, key) {
+      (result[value] || (result[value] = [])).push(key);
+      return result;
+    },
+    {}
+  )
 );
