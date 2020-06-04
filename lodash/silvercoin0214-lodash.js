@@ -1012,9 +1012,36 @@ var silvercoin0214 = {
 
   filter: function (collection, test) {
     var result = [];
-    for (let i = 0; i < collection.length; i++) {
-      if (test(collection[i])) {
-        result.push(collection[i]);
+
+    var collect = function (collection, test) {
+      for (let i = 0; i < collection.length; i++) {
+        if (test(collection[i])) {
+          result.push(collection[i]);
+        }
+      }
+    };
+
+    if (Object.prototype.toString.call(test) == "[object Function]") {
+      collect(collection, test);
+    } else if (Object.prototype.toString.call(test) == "[object Object]") {
+      for (let i = 0; i < collection.length; i++) {
+        let flag = true;
+        for (let j in test) {
+          if (test[j] != collection[i][j]) {
+            flag = false;
+          }
+        }
+        if (flag) {
+          result.push(collection[i]);
+        }
+      }
+    } else if (Object.prototype.toString.call(test) == "[object String]") {
+      collect(collection, test);
+    } else {
+      for (let i = 0; i < collection.length; i++) {
+        if (collection[i][test[0]] == test[1]) {
+          result.push(collection[i]);
+        }
       }
     }
 
