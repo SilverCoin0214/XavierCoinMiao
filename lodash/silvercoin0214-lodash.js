@@ -1122,15 +1122,46 @@ var silvercoin0214 = {
 
     return initial;
   },
+
+  keyBy: function (collection, iteratee = this.identity) {
+    var result = {};
+    if (typeof iteratee == "string") {
+      collection.forEach((item) => {
+        result[item[iteratee]] = item;
+      });
+    } else {
+      collection.forEach((item) => {
+        result[iteratee(item)] = item;
+      });
+    }
+
+    return result;
+  },
+
+  groupBy: function (collection, iteratee = this.identity) {
+    var fun = iteratee;
+    if (typeof iteratee == "string") {
+      fun = (item) => item[iteratee];
+    }
+
+    var result = {};
+    collection.forEach((item) => {
+      var key = fun(item);
+
+      if (!(key in result)) {
+        result[key] = [];
+      }
+
+      result[key].push(item);
+    });
+
+    return result;
+  },
 };
 
-console.log(
-  silvercoin0214.reduce(
-    { a: 1, b: 2, c: 1 },
-    function (result, value, key) {
-      (result[value] || (result[value] = [])).push(key);
-      return result;
-    },
-    {}
-  )
-);
+var array = [
+  { dir: "left", code: 97 },
+  { dir: "right", code: 100 },
+];
+
+console.log(silvercoin0214.groupBy(["one", "two", "three"], "length"));
