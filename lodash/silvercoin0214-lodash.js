@@ -988,6 +988,19 @@ var silvercoin0214 = {
   },
 
   //
+  //  Util !!!
+  //
+
+  /**
+   * identity: 返回首个提供的参数
+   * @param  {...any} value
+   * @return {*}
+   */
+  identity: function (...value) {
+    return value[0];
+  },
+
+  //
   //  collection !!!
   //
 
@@ -1010,10 +1023,16 @@ var silvercoin0214 = {
     }
   },
 
+  /**
+   * filter: 返回被筛选为真的所有元素的数组
+   * @param {Array | Object} collection
+   * @param {Array | Function | Object | string} test
+   * @return {Array}
+   */
   filter: function (collection, test = this.identity) {
     var result = [];
 
-    var collect = function (collection, test) {
+    var collectFun = function (collection, test) {
       for (let i = 0; i < collection.length; i++) {
         if (test(collection[i])) {
           result.push(collection[i]);
@@ -1021,9 +1040,15 @@ var silvercoin0214 = {
       }
     };
 
-    if (Object.prototype.toString.call(test) == "[object Function]") {
-      collect(collection, test);
-    } else if (Object.prototype.toString.call(test) == "[object Object]") {
+    var collectStr = function (collection, test) {
+      for (let i = 0; i < collection.length; i++) {
+        if (collection[i][test]) {
+          result.push(collection[i]);
+        }
+      }
+    };
+
+    var collectObj = function (collection, test) {
       for (let i = 0; i < collection.length; i++) {
         let flag = true;
         for (let j in test) {
@@ -1035,8 +1060,14 @@ var silvercoin0214 = {
           result.push(collection[i]);
         }
       }
+    };
+
+    if (Object.prototype.toString.call(test) == "[object Function]") {
+      collectFun(collection, test);
+    } else if (Object.prototype.toString.call(test) == "[object Object]") {
+      collectObj(collection, test);
     } else if (Object.prototype.toString.call(test) == "[object String]") {
-      collect(collection, test);
+      collectStr(collection, test);
     } else {
       for (let i = 0; i < collection.length; i++) {
         if (collection[i][test[0]] == test[1]) {
@@ -1046,19 +1077,6 @@ var silvercoin0214 = {
     }
 
     return result;
-  },
-
-  //
-  //  Util !!!
-  //
-
-  /**
-   * identity: 返回首个提供的参数
-   * @param  {...any} value
-   * @return {*}
-   */
-  identity: function (...value) {
-    return value[0];
   },
 };
 
