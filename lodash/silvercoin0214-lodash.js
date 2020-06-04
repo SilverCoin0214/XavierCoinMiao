@@ -1023,10 +1023,18 @@ var silvercoin0214 = {
     }
   },
 
-  forEach: function (ary, action) {
-    for (var i = 0; i < ary.length; i++) {
-      action(ary[i]);
+  forEach: function (collection, iterate = this.identity) {
+    if (array.isArray(collection)) {
+      for (var i = 0; i < ary.length; i++) {
+        iterate(ary[i]);
+      }
+    } else {
+      for (let key in collection) {
+        iterate(collection[key], key);
+      }
     }
+
+    return collection;
   },
 
   /**
