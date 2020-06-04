@@ -1023,14 +1023,20 @@ var silvercoin0214 = {
     }
   },
 
-  forEach: function (collection, iterate = this.identity) {
+  /**
+   * 遍历collection的元素, 并未每个元素调用iteratee
+   * @param {Array | Object} collection
+   * @param {function} iteratee
+   * @return {*}
+   */
+  forEach: function (collection, iteratee = this.identity) {
     if (array.isArray(collection)) {
       for (var i = 0; i < ary.length; i++) {
-        iterate(ary[i]);
+        iteratee(ary[i]);
       }
     } else {
       for (let key in collection) {
-        iterate(collection[key], key);
+        iteratee(collection[key], key);
       }
     }
 
