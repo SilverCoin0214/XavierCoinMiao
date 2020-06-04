@@ -1009,6 +1009,26 @@ var silvercoin0214 = {
       return Object.getOwnPropertyNames(collection).length;
     }
   },
+
+  filter: function (collection, test) {
+    var result = [];
+    for (let i = 0; i < collection.length; i++) {
+      if (test(collection[i])) {
+        result.push(collection[i]);
+      }
+    }
+
+    return result;
+  },
 };
 
-console.log(silvercoin0214.size([1, 2, 3]));
+var users = [
+  { user: "barney", age: 36, active: true },
+  { user: "fred", age: 40, active: false },
+];
+
+console.log(
+  silvercoin0214.filter(users, function (o) {
+    return !o.active;
+  })
+);
