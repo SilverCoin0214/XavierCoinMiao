@@ -1030,7 +1030,7 @@ var silvercoin0214 = {
    * @return {*}
    */
   forEach: function (collection, iteratee = this.identity) {
-    if (array.isArray(collection)) {
+    if (Array.isArray(collection)) {
       for (var i = 0; i < ary.length; i++) {
         iteratee(ary[i]);
       }
