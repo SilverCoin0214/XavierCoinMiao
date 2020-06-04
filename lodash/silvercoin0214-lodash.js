@@ -1010,7 +1010,7 @@ var silvercoin0214 = {
     }
   },
 
-  filter: function (collection, test) {
+  filter: function (collection, test = this.identity) {
     var result = [];
 
     var collect = function (collection, test) {
@@ -1046,6 +1046,19 @@ var silvercoin0214 = {
     }
 
     return result;
+  },
+
+  //
+  //  Util !!!
+  //
+
+  /**
+   * identity: 返回首个提供的参数
+   * @param  {...any} value
+   * @return {*}
+   */
+  identity: function (...value) {
+    return value[0];
   },
 };
 
