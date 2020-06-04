@@ -1061,11 +1061,11 @@ var silvercoin0214 = {
     };
 
     var collectStr = function (collection, test) {
-      for (let i = 0; i < collection.length; i++) {
-        if (collection[i][test]) {
-          result.push(collection[i]);
+      collection.forEach(function (p) {
+        if (p[test]) {
+          result.push(p);
         }
-      }
+      });
     };
 
     var collectObj = function (collection, test) {
