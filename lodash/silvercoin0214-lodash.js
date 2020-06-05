@@ -753,6 +753,14 @@ var silvercoin0214 = {
     }
   },
 
+  lt: function (value, other) {
+    if (value < other) {
+      return true;
+    } else {
+      return false;
+    }
+  },
+
   //
   // Math方法!!!
   //
@@ -1164,4 +1172,4 @@ var array = [
   { dir: "right", code: 100 },
 ];
 
-console.log(silvercoin0214.groupBy(["one", "two", "three"], "length"));
+console.log(silvercoin0214.lt("a", "b"));
