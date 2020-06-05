@@ -753,8 +753,28 @@ var silvercoin0214 = {
     }
   },
 
+  /**
+   * lt:判断value是否小于other
+   * @param {*} value
+   * @param {*} other
+   * @return {boolean}
+   */
   lt: function (value, other) {
     if (value < other) {
+      return true;
+    } else {
+      return false;
+    }
+  },
+
+  /**
+   * lte:判断value是否小于等于other
+   * @param {*} value
+   * @param {*} other
+   * @return {boolean}
+   */
+  lte: function (value, other) {
+    if (value <= other) {
       return true;
     } else {
       return false;
@@ -1165,11 +1185,44 @@ var silvercoin0214 = {
 
     return result;
   },
+
+  //
+  //  Object !!!
+  //
+
+  get: function (obj, path, defaultValue) {
+    var result = obj;
+
+    if (typeof path === "string") {
+      let reg = /\b\w+\b/g;
+      var ary = path.match(reg);
+    } else if (Array.isArray(path)) {
+      ary = path;
+    }
+
+    if (ary.length == 1) {
+      return result[ary[0]];
+    }
+
+    for (let i of ary) {
+      if (i in result) {
+        result = result[i];
+      } else {
+        return defaultValue;
+      }
+    }
+
+    return result === undefined ? defaultValue : result;
+  },
+
+  at: function (object, ...paths) {
+    var result = [];
+    [].concat(...paths).forEach((item) => result.push(this.get(object, item)));
+
+    return result;
+  },
 };
 
-var array = [
-  { dir: "left", code: 97 },
-  { dir: "right", code: 100 },
-];
+var object = { a: [{ b: { c: 3 } }, 4] };
 
-console.log(silvercoin0214.lt("a", "b"));
+console.log(silvercoin0214.at(object, ["a[0].b.c", "a[1]"]));

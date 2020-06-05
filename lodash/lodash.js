@@ -40,8 +40,8 @@ size; ***
 eq;
 gt; ***
 gte;
-lt;
-lte;
+lt; ***
+lte; ***
 add; ***
 ceil; ***
 divide; ***
