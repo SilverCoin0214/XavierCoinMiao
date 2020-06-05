@@ -1,4 +1,8 @@
 var silvercoin0214 = {
+  //
+  //  Array !!!
+  //
+
   chunk: function (array, size = 1) {
     var split_array = [];
     for (var i = 0; i < size; i++) {
@@ -427,6 +431,23 @@ var silvercoin0214 = {
     for (let i = 0; i < itemLength; i++) {
       for (let j = 0; j < ary.length; j++) {
         new_ary[i].push(ary[j][i]);
+      }
+    }
+
+    return new_ary;
+  },
+
+  remove: function (ary, predicate = this.identity) {
+    var new_ary = [];
+    for (let i = 0; i < ary.length; i++) {
+      if (predicate(ary[i])) {
+        new_ary.push(ary[i]);
+      }
+    }
+
+    for (let i = 0; i < new_ary.length; i++) {
+      if (ary.includes(new_ary[i])) {
+        ary.splice(ary.indexOf(new_ary[i]), 1);
       }
     }
 
@@ -1223,6 +1244,11 @@ var silvercoin0214 = {
   },
 };
 
-var object = { a: [{ b: { c: 3 } }, 4] };
+var array = [1, 2, 3, 4];
+var evens = silvercoin0214.remove(array, function (n) {
+  return n % 2 == 0;
+});
 
-console.log(silvercoin0214.at(object, ["a[0].b.c", "a[1]"]));
+console.log(array);
+
+console.log(evens);
