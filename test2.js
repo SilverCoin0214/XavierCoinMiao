@@ -9,3 +9,9 @@ function assert(x) {
 //
 //
 //
+
+function add(x, y, f) {
+  return f(x) + f(y);
+}
+
+console.log(add(4, 6, Math.abs));

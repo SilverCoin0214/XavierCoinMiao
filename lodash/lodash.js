@@ -1,5 +1,4 @@
 find;
-remove;
 sortedIndex;
 sortedIndexOf;
 zipObject;

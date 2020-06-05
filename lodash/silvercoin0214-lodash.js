@@ -437,6 +437,12 @@ var silvercoin0214 = {
     return new_ary;
   },
 
+  /**
+   * remove: 删除被选中的元素组成新数组返回, 并且把原数组里的元素也删除
+   * @param {array} ary
+   * @param {function} predicate
+   * @return {array}
+   */
   remove: function (ary, predicate = this.identity) {
     var new_ary = [];
     for (let i = 0; i < ary.length; i++) {
@@ -1207,6 +1213,32 @@ var silvercoin0214 = {
     return result;
   },
 
+  /**
+   *
+   * @param {Array | Object}} collection
+   * @param {function} iteratee
+   * @return {array}
+   */
+  map: function (collection, iteratee = this.identity) {
+    var result = [];
+
+    if (Array.isArray(collection)) {
+      for (let i = 0; i < collection.length; i++) {
+        if (typeof iteratee === "function") {
+          result.push(iteratee(collection[i]));
+        } else if (typeof iteratee === "string") {
+          result.push(collection[i][iteratee]);
+        }
+      }
+    } else {
+      for (let i in collection) {
+        result.push(iteratee(collection[i]));
+      }
+    }
+
+    return result;
+  },
+
   //
   //  Object !!!
   //
@@ -1244,11 +1276,10 @@ var silvercoin0214 = {
   },
 };
 
-var array = [1, 2, 3, 4];
-var evens = silvercoin0214.remove(array, function (n) {
-  return n % 2 == 0;
-});
+function square(n) {
+  return n * n;
+}
 
-console.log(array);
+var users = [{ user: "barney" }, { user: "fred" }];
 
-console.log(evens);
+console.log(silvercoin0214.map({ a: 4, b: 8 }, square));
