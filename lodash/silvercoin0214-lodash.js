@@ -96,18 +96,28 @@ var silvercoin0214 = {
    */
 
   flatten: function (ary) {
-    var new_ary = [];
-    for (var i = 0; i < ary.length; i++) {
-      if (Array.isArray(ary[i])) {
-        for (var j = 0; j < ary[i].length; j++) {
-          new_ary.push(ary[i][j]);
-        }
-      } else {
-        new_ary.push(ary[i]);
-      }
-    }
+    // var new_ary = [];
+    // for (var i = 0; i < ary.length; i++) {
+    //   if (Array.isArray(ary[i])) {
+    //     for (var j = 0; j < ary[i].length; j++) {
+    //       new_ary.push(ary[i][j]);
+    //     }
+    //   } else {
+    //     new_ary.push(ary[i]);
+    //   }
+    // }
 
-    return new_ary;
+    // return new_ary;
+
+    return ary.reduce((result, item) => {
+      if (Array.isArray(item)) {
+        result.push(...item);
+      } else {
+        result.push(item);
+      }
+
+      return result;
+    }, []);
   },
 
   /**
@@ -125,6 +135,15 @@ var silvercoin0214 = {
     }
 
     return ary;
+
+    // var result = [];
+    // ary.forEach((item) => {
+    //   if (Array.isArray(item)) {
+    //     result.push(...this.flattenDeep(item));
+    //   } else {
+    //     result.push(item);
+    //   }
+    // });
   },
 
   /**
@@ -1239,6 +1258,15 @@ var silvercoin0214 = {
     return result;
   },
 
+  every: function (collection, predicate = this.identity) {
+    if (Array.isArray(collection)) {
+      for (var i = 0; i < collection.length; i++) {
+        if (!predicate(collection[i])) {
+        }
+      }
+    }
+  },
+
   //
   //  Object !!!
   //
@@ -1274,12 +1302,41 @@ var silvercoin0214 = {
 
     return result;
   },
+
+  //
+  //  Function !!!
+  //
+
+  before: function (n, func) {
+    var i = 0;
+    var result;
+    return function (...args) {
+      if (i < n) {
+        i++;
+        result = func(...args);
+      }
+
+      return result;
+    };
+  },
+
+  after: function (n, func) {
+    var i = 0;
+    return function () {
+      i++;
+      if (i > n) {
+        return func(...args);
+      }
+    };
+  },
+
+  ary: function (func, n = func.length) {
+    return function (...args) {
+      return func(...args.slice(0, n));
+    };
+  },
 };
 
-function square(n) {
-  return n * n;
-}
-
-var users = [{ user: "barney" }, { user: "fred" }];
-
-console.log(silvercoin0214.map({ a: 4, b: 8 }, square));
+console.log(
+  silvercoin0214.map(["6", "8", "10"], silvercoin0214.ary(parseInt, 1))
+);
