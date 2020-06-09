@@ -1335,8 +1335,23 @@ var silvercoin0214 = {
       return func(...args.slice(0, n));
     };
   },
+
+  unary: function (func) {
+    return function (arg) {
+      return func(arg);
+    };
+  },
+
+  flip: function (func) {
+    return function (...args) {
+      var sgra = args.reverse();
+      return func(sgra);
+    };
+  },
 };
 
 console.log(
-  silvercoin0214.map(["6", "8", "10"], silvercoin0214.ary(parseInt, 1))
+  silvercoin0214.map(["6", "8", "50"], silvercoin0214.unary(parseInt))
 );
+
+console.log([1, 2, 3, 4].reverse());
