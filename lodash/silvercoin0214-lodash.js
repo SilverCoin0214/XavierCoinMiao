@@ -1375,23 +1375,10 @@ var silvercoin0214 = {
       return !func(...args);
     };
   },
+
+  spread: function (func, start = 0) {
+    return function (ary) {
+      return func(...ary);
+    };
+  },
 };
-
-function isEven(n) {
-  return n % 2 == 0;
-}
-
-console.log(
-  silvercoin0214.filter([1, 2, 3, 4, 5, 6], silvercoin0214.negate(isEven))
-);
-
-var users = [
-  { user: "barney", age: 36, active: false },
-  { user: "fred", age: 40, active: true },
-];
-
-console.log(
-  silvercoin0214.reject(users, function (o) {
-    return !o.active;
-  })
-);
