@@ -1249,6 +1249,10 @@ var silvercoin0214 = {
     return result;
   },
 
+  reject: function (collection, predicate = this.identity) {
+    return this.filter(collection, this.negate(predicate));
+  },
+
   /**
    *
    * @param {Array | Object}} collection
@@ -1379,4 +1383,15 @@ function isEven(n) {
 
 console.log(
   silvercoin0214.filter([1, 2, 3, 4, 5, 6], silvercoin0214.negate(isEven))
+);
+
+var users = [
+  { user: "barney", age: 36, active: false },
+  { user: "fred", age: 40, active: true },
+];
+
+console.log(
+  silvercoin0214.reject(users, function (o) {
+    return !o.active;
+  })
 );
