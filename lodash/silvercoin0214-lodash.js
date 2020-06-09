@@ -1367,4 +1367,8 @@ var silvercoin0214 = {
   },
 };
 
-console.log(silvercoin0214.toArray(null));
+var flipped = silvercoin0214.flip(function () {
+  return silvercoin0214.toArray(arguments);
+});
+
+console.log(flipped("a", "b", "c", "d"));
