@@ -1365,10 +1365,18 @@ var silvercoin0214 = {
       return func(sgra);
     };
   },
+
+  negate: function (func) {
+    return function (...args) {
+      return !func(...args);
+    };
+  },
 };
 
-var flipped = silvercoin0214.flip(function () {
-  return silvercoin0214.toArray(arguments);
-});
+function isEven(n) {
+  return n % 2 == 0;
+}
 
-console.log(flipped("a", "b", "c", "d"));
+console.log(
+  silvercoin0214.filter([1, 2, 3, 4, 5, 6], silvercoin0214.negate(isEven))
+);
