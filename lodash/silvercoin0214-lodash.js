@@ -827,6 +827,23 @@ var silvercoin0214 = {
     }
   },
 
+  toArray: function (value) {
+    var ary = [];
+    if (typeof value === "string") {
+      ary = value.split("");
+    } else if (Array.isArray(value)) {
+      return value;
+    } else if (typeof value === "object" && !Array.isArray(value)) {
+      for (let i in value) {
+        ary.push(value[i]);
+      }
+    } else {
+      return [];
+    }
+
+    return ary;
+  },
+
   //
   // Math方法!!!
   //
@@ -1350,8 +1367,4 @@ var silvercoin0214 = {
   },
 };
 
-console.log(
-  silvercoin0214.map(["6", "8", "50"], silvercoin0214.unary(parseInt))
-);
-
-console.log([1, 2, 3, 4].reverse());
+console.log(silvercoin0214.toArray(null));
