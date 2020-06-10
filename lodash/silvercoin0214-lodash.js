@@ -1442,6 +1442,18 @@ var silvercoin0214 = {
   },
 
   bind: function (func, thisArg, partials) {},
+
+  curry: function (func, arity = func.length) {
+    return function (...args) {
+      if (args.length >= arity) {
+        return func(...args);
+      } else {
+        return curry(func.bind(null, ...args), arity - args.length);
+      }
+    };
+  },
 };
 
-console.log(silvercoin0214.isMatch({ a: 1, b: 2 }, { b: 1 }));
+var abc = function (a, b, c) {
+  return [a, b, c];
+};
