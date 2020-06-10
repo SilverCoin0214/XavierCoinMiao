@@ -844,6 +844,21 @@ var silvercoin0214 = {
     return ary;
   },
 
+  /**
+   * 在对象和源之间执行部分深度比较，以确定对象是否包含等效的属性值。
+   * @param {object} obj
+   * @param {object} source
+   */
+  isMatch: function (obj, source) {
+    for (let key in source) {
+      if (source[key] !== obj[key]) {
+        return false;
+      }
+    }
+
+    return true;
+  },
+
   //
   // Math方法!!!
   //
@@ -1422,11 +1437,7 @@ var silvercoin0214 = {
   bind: function (func, thisArg, partials) {},
 };
 
-var objects = [
-  { a: 1, b: 2, c: 3 },
-  { a: 4, b: 5, c: 6 },
-];
+var object = { a: 1, b: 2 };
 
-console.log(
-  silvercoin0214.filter(objects, silvercoin0214.matches({ a: 4, c: 6 }))
-);
+console.log(silvercoin0214.isMatch(object, { b: 1 }));
+// => true
