@@ -1091,6 +1091,27 @@ var silvercoin0214 = {
     return value[0];
   },
 
+  /**
+   * 创建一个函数，该函数在给定对象的路径处返回值。
+   * @param {arrray | string} path
+   * @return {function}
+   */
+  property: function (path) {
+    var result;
+    return function (obj) {
+      if (typeof path == "string") {
+        path = path.split(".");
+      }
+      for (let i = 0; i < path.length; i++) {
+        obj = obj[path[i]];
+      }
+
+      result = obj;
+
+      return result;
+    };
+  },
+
   //
   //  collection !!!
   //
@@ -1365,8 +1386,7 @@ var silvercoin0214 = {
 
   flip: function (func) {
     return function (...args) {
-      var sgra = args.reverse();
-      return func(sgra);
+      return func(...args.reverse());
     };
   },
 
@@ -1381,4 +1401,12 @@ var silvercoin0214 = {
       return func(...ary);
     };
   },
+
+  bind: function (func, thisArg, partials) {},
 };
+
+var objects = [{ a: { b: 2 } }, { a: { b: 1 } }];
+
+console.log(objects[0]["a"]["b"]);
+
+console.log(silvercoin0214.map(objects, silvercoin0214.property("a.b")));
