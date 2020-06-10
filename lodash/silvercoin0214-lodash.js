@@ -850,22 +850,14 @@ var silvercoin0214 = {
    * @param {object} source
    */
   isMatch: function (obj, source) {
-    function keyIsObject(test) {
-      var result;
-      for (let key in test) {
-        if (Object.prototype.toString.call(key) == "[object Object]") {
-          var ts = key;
-          result = keyIsObject(ts);
-        } else {
-          result = test[key];
-        }
-      }
-
-      return result;
-    }
-
     for (let key in source) {
-      if (keyIsObject(source[key]) !== keyIsObject(obj[key])) {
+      if (typeof source[key] === "object") {
+        for (let k2 in source[key]) {
+          if (source[key][k2] !== obj[key][k2]) {
+            return false;
+          }
+        }
+      } else if (source[key] !== obj[key]) {
         return false;
       }
     }
@@ -1451,6 +1443,4 @@ var silvercoin0214 = {
   bind: function (func, thisArg, partials) {},
 };
 
-var object = { a: 1, b: 2 };
-
-console.log(silvercoin0214.isMatch(object, { b: 2 }));
+console.log(silvercoin0214.isMatch({ a: 1, b: 2 }, { b: 1 }));
