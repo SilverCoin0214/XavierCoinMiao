@@ -1112,6 +1112,23 @@ var silvercoin0214 = {
     };
   },
 
+  /**
+   * 该函数在给定对象和源之间执行部分深度比较，如果给定对象具有相等的属性值，则返回true，否则返回false。
+   * @param {object} source
+   * @return {function}
+   */
+  matches: function (source) {
+    return function (obj) {
+      for (var key in source) {
+        if (obj[key] !== source[key]) {
+          return false;
+        }
+      }
+
+      return true;
+    };
+  },
+
   //
   //  collection !!!
   //
@@ -1405,8 +1422,11 @@ var silvercoin0214 = {
   bind: function (func, thisArg, partials) {},
 };
 
-var objects = [{ a: { b: 2 } }, { a: { b: 1 } }];
+var objects = [
+  { a: 1, b: 2, c: 3 },
+  { a: 4, b: 5, c: 6 },
+];
 
-console.log(objects[0]["a"]["b"]);
-
-console.log(silvercoin0214.map(objects, silvercoin0214.property("a.b")));
+console.log(
+  silvercoin0214.filter(objects, silvercoin0214.matches({ a: 4, c: 6 }))
+);
