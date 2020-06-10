@@ -850,6 +850,7 @@ var silvercoin0214 = {
    * @param {object} source
    */
   isMatch: function (obj, source) {
+    // 只能做两层判断, 无法无限叠加下去.
     for (let key in source) {
       if (typeof source[key] === "object") {
         for (let k2 in source[key]) {
