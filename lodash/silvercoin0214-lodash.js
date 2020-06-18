@@ -765,6 +765,30 @@ var silvercoin0214 = {
     return Object.prototype.toString.apply(value) === "[object Array]";
   },
 
+  isArguments: function (val) {
+    return Object.prototype.toString.apply(val) === "[object Arguments]";
+  },
+
+  isBoolean: function (val) {
+    return Object.prototype.toString.apply(val) === "[object Boolean]";
+  },
+
+  isDate: function (val) {
+    return Object.prototype.toString.apply(val) === "[object Date]";
+  },
+
+  isArrayLike: function (val) {
+    if (
+      typeof val !== "function" &&
+      val.length >= 0 &&
+      val.length < Number.MAX_SAFE_INTEGER
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  },
+
   /**
    * gt: 判断value是否大于Other
    * @param {*} value
@@ -1454,6 +1478,9 @@ var silvercoin0214 = {
   },
 };
 
-var abc = function (a, b, c) {
-  return [a, b, c];
-};
+function Foo() {
+  this.a = 1;
+  this.b = 2;
+}
+
+Foo.prototype.c = 3;

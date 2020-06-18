@@ -23,7 +23,3 @@ var canConstruct = function (ransomNote, magazine) {
     return false;
   }
 };
-
-var ransomNote = "ac";
-var magazine = "abc";
-console.log(canConstruct(ransomNote, magazine));
