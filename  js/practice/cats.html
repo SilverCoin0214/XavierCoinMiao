@@ -1,0 +1,28 @@
+<button>cat!</button>
+
+
+<script>
+    var btn = document.querySelector('button')
+
+    btn.addEventListener('click', e => {
+
+        // 使用XMLHttpRequest的标准方式就是下面这三步, 取得内容后再开始操作.
+        var xhr = new XMLHttpRequest()
+        xhr.open("GET", "https://xieranmaya.github.io/images/cats/cats.json")
+        xhr.send()
+
+        xhr.onload = function () {
+            var cats = JSON.parse(xhr.responseText)
+            for (var cat of cats) {
+                let img = document.createElement('img')
+                img.src = 'https://xieranmaya.github.io/images/cats/' + cat.url
+                img.onload = function () {
+                    document.body.appendChild(img)
+                }
+
+            }
+
+        }
+    })
+
+</script>
