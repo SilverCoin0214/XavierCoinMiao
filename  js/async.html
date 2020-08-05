@@ -1,0 +1,60 @@
+<script>
+
+    function* f() {
+        console.log('start')
+        var a = yield getValue(5, 2000)
+        console.log(a)
+        yield delay(1000)
+        console.log(a)
+        var b = yield getValue(10, 3000)
+        console.log(a + b)
+    }
+
+    var g = f()
+
+    g.next().value.then(value => {
+        g.next(value).value.then(value => {
+            g.next(value).value.then(value => {
+                g.next(value)
+            })
+        })
+    })
+
+
+
+
+
+
+
+
+    function getValue(val, duration) {
+        return new Promise(resolve => {
+            setTimeout(() => {
+                resolve(val)
+            }, duration)
+        })
+    }
+
+
+    function delay(duration) {
+        return new Promise(resolve => {
+            setTimeout(resolve, duration)
+        })
+    }
+
+    function getJSON(url) {
+        return get(url).then(JSON.parse)
+    }
+
+    function get(url) {
+        return new Promise(resolve => {
+            var xhr = new XMLHttpRequest()
+            xhr.open('get', url)
+            xhr.onload = function () {
+                resolve(xhr.responseText)
+            }
+
+            xhr.send()
+        })
+    }
+</script>

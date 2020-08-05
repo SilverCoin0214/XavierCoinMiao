@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #result-el {
+            border: 2px solid;
+            min-height: 3em;
+        }
+    </style>
+</head>
+
+<body>
+
+    <textarea name="" id="codeInput" cols="30" rows="10"></textarea>
+    <button id='run' onclick='runCode()'>运行</button>
+    <div id="result-el"></div>
+</body>
+
+</html>
+
+<script>
+
+    var resultEl = document.querySelector('#result-el')
+    var codeInput = document.querySelector('#codeInput')
+
+
+    function evalCode(code) {
+        var logs = []
+
+        var console = {
+            log: function (...args) {
+                logs.push(args)
+            }
+        }
+
+        var result = eval(code)
+        logs.push([result])
+        return logs
+    }
+
+    function runCode() {
+        resultEl.textContent = ''
+        var code = codeInput.value
+        var logs = evalCode(code)
+        resultEl.textContent = logs.map(it => it.map(String).join(' ')).join('\n')
+    }
+</script>

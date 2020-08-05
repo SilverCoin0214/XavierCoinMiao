@@ -1408,6 +1408,18 @@ var silvercoin0214 = {
     return result;
   },
 
+  forOwn: function (object, iteratee = this.identity) {
+    for (var key in object) {
+      if (object.hasOwnProperty(key)) {
+        if (iteratee(object[key], key) === false) {
+          break;
+        }
+      }
+    }
+
+    return object;
+  },
+
   //
   //  Function !!!
   //
@@ -1482,5 +1494,9 @@ function Foo() {
   this.a = 1;
   this.b = 2;
 }
-
+debugger;
 Foo.prototype.c = 3;
+5;
+silvercoin0214.forOwn(new Foo(), function (value, key) {
+  console.log(key);
+});

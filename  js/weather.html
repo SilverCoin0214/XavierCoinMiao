@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <select name="prov" id="prov"></select>
+    <select name="city" id="city"></select>
+    <button id='queryWeather'>查询天气</button>
+    <div id="weather-infomation">
+
+
+    </div>
+
+</body>
+
+</html>
+
+<script src="china-city-area-zip.js"></script>
+<script>
+    var provSelect = document.querySelector('#prov')
+    var citySelect = document.querySelector('#city')
+    var queryWeatherBtn = document.querySelector('#queryWeather')
+    var weatherInfomation = document.querySelector('#weather-infomation')
+
+    queryWeatherBtn.onclick = function (e) {
+        var cityName = citySelect.value
+        if (!cityName) return
+
+        getJSON('http://wthrcdn.etouch.cn/weather_mini?city=' + cityName)
+            .then(info => {
+                console.log(info)
+                weatherInfomation.textContent = JSON.stringify(info)
+            })
+    }
+
+    function getJSON(url) {
+        return get(url).then(JSON.parse)
+    }
+
+    function get(url) {
+        return new Promise((resolve, reject) => {
+            var xhr = new XMLHttpRequest()
+            xhr.open('get', url)
+            xhr.onload = () => {
+                resolve(xhr.responseText)
+            }
+
+            xhr.send()
+        })
+    }
+
+    for (var i = 0; i < china_city_area_zip.length; i++) {
+        var prov = china_city_area_zip[i]
+
+        var option = document.createElement('option')
+        option.textContent = prov.name
+        option.value = i
+        provSelect.appendChild(option)
+    }
+
+    china_city_area_zip[0].child.forEach((city) => {
+        var option = document.createElement('option')
+        option.textContent = city.name
+        citySelect.appendChild(option)
+    })
+
+    provSelect.onchange = function () {
+        var provIdx = provSelect.value
+        var selectedProv = china_city_area_zip[provIdx]
+
+        citySelect.innerHTML = ''
+
+        for (var city of selectedProv.child) {
+            var option = document.createElement('option')
+            option.textContent = city.name
+            citySelect.appendChild(option)
+        }
+    }
+</script>

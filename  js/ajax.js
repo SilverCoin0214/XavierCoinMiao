@@ -41,3 +41,31 @@ function post(url, data, Success) {
 }
 
 post("/", "name=lili&content=123", function (data) {});
+
+//-----------------------------------------------------------
+
+//JSONP简单实现, 跨域获取数据使用
+
+function jsonp(url, callback) {
+  var functionName = "JSONP_CALLBACK_" + Math.random().toString(16).slice(2);
+
+  url = url + "&callback=" + functionName;
+  window[functionName] = callback;
+
+  var script = document.createElement("script");
+  script.src = url;
+  script.onload = function () {
+    document.body.removeChild(script);
+    delete window[functionName];
+  };
+
+  document.body.appendChild(script);
+}
+
+jsonp(
+  "http://wthrcdn.etouch.cn/weather_mini?city=%E5%8C%97%E4%BA%AC",
+  function (info) {
+    debugger;
+    console.log(info);
+  }
+);
