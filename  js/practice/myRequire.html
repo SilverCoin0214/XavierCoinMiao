@@ -1,0 +1,95 @@
+<script>
+
+    (function () {
+        function readfile(filename) {
+            var xhr = new XMLHttpRequest();
+            xhr.open("get", filename, false);
+            xhr.send();
+            return xhr.responseText;
+        }
+
+
+        // require简单实现
+        function require(filename) {
+            var fileContent = readfile(filename)
+            var modFunc = new Function('require', fileContent)
+
+            return modFunc(require)
+        }
+
+
+        // require具体实现
+        function require(filename) {
+            var fileContent = readfile(filename);
+            var modFunc = new Function('require', 'module', 'exports', fileContent);
+
+            // exports只是Module.exports的一个引用
+            var module = { exports: {} }
+            modFunc(require, module, module.exports);
+            return module.exports
+        }
+
+        // require实现缓存
+        require.cache = {}
+
+        function require(filename) {
+            if (require.cache.hasOwnProperty(filename)) {
+                return require.cache[filename].exports
+            }
+
+            var fileContent = readfile(filename);
+            var modFunc = new Function('require', 'module', 'exports', fileContent);
+
+            var module = { exports: {} }
+
+            require.cache[filename] = module
+
+            modFunc(require, module, modele.exports);
+            return module.exports
+        }
+
+
+
+        debugger
+        (function () {
+            var jQuery = require("./myJquery.js");
+            console.log(jQuery)
+        })()
+    }())
+
+
+
+</script>
+
+
+<script>
+    // node.js里的require源码
+
+    function makeRequireFunction(mod) {
+        const module = mod.constructor
+
+        function require(path) {
+            try {
+                exports.requireDepth += 1
+                return mod.require(path)
+            } finally {
+                exports.requireDepth -= 1
+            }
+        }
+
+        function resolve(request) {
+            return Module._resolveFilename(request, mod)
+        }
+
+        require.resolve = resolve
+
+        require.main = process.mainModule
+
+        require.extensions = Module._extensions
+        require.cache = Module._cache
+
+        return require
+
+    }
+
+</script>
