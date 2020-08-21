@@ -5,20 +5,25 @@
 
   "version": "0.2.0",
   "configurations": [{
-      "name": "Attach to Chrome",
-      "port": 9222,
-      "request": "attach",
-      "type": "pwa-chrome",
-      "webRoot": "${workspaceFolder}"
+      "type": "node",
+      "request": "launch",
+      "name": "Launch Program",
+      "program": "${workspaceFolder}/app.js"
     },
+
     {
-      "name": "Attach",
-      "port": 9229,
+      "type": "node",
+      "request": "launch",
+      "name": "启动程序",
+      "program": "${file}"
+    },
+
+    {
+      "type": "node",
       "request": "attach",
-      "skipFiles": [
-        "<node_internals>/**"
-      ],
-      "type": "pwa-node"
+      "name": "附加到进程",
+      "address": "localhost",
+      "port": 5858
     },
 
     {
