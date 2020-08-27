@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .todo-item input[type='text'] {
+            display: none;
+        }
+
+        .todo-item button {
+            display: none;
+        }
+
+        .todo-item:hover button {
+            display: inline-block;
+        }
+
+        .todo-item.completed span {
+            text-decoration: line-through;
+        }
+
+        .todo-item.editing span {
+            display: none;
+        }
+
+        .todo-item.editing input[type="text"] {
+            display: inline-block;
+        }
+
+
+        #todo-list:empty+.state {
+            display: none;
+        }
+
+
+        /* body {
+            counter-reset: left-count;
+        }
+
+        .todo-item {
+            counter-increment: left-count;
+        }
+
+        .todo-item.completed {
+            counter-increment: none;
+        }
+
+        .left-count::before {
+            content: counter(left-count)
+        } */
+
+
+        ul.completed li:not(.completed) {
+            display: none;
+        }
+
+        ul.active li.completed {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <h3>todos</h3>
+        <div class="">
+            <input type="checkbox" id="toggle-select-all">
+            <input type="text" id="todo-input">
+        </div>
+
+        <ul id="todo-list" class='all'></ul>
+
+        <div class="state">
+            <span class="left-count"> items left</span>
+            <span id="category-select">
+                <input type="radio" checked name="selected" value="all"> All
+                <input type="radio" name="selected" value='active'> Active
+                <input type="radio" name="selected" value='completed'> Completed
+            </span>
+
+            <button id="clear-completed">Clear completed</button>
+        </div>
+    </div>
+
+
+    <script>
+        var toggleAllInput = document.querySelector('#toggle-select-all')
+        var todoInput = document.querySelector('#todo-input')
+        var todoList = document.querySelector("#todo-list")
+        var stateWrap = document.querySelector('.state')
+        var leftCount = document.querySelector('.left-count')
+        var clearCompletedBtn = document.querySelector('#clear-completed')
+        var categorySelect = document.querySelector('#category-select')
+
+        categorySelect.onclick = e => {
+            if (e.target.matches('input')) {
+                todoList.classList.remove('all', 'active', 'completed')
+                todoList.classList.add(e.target.value)
+            }
+        }
+
+        toggleAllInput.onclick = e => {
+            var completeds = todoList.querySelectorAll('li.completed')
+            if (completeds.length == todoList.children.length) {
+                Array.from(todoList.children).forEach(it => {
+                    it.classList.remove('completed')
+                    it.firstElementChild.checked = false
+                })
+            } else {
+                Array.from(todoList.children).forEach(it => {
+                    it.classList.add('completed')
+                    it.firstElementChild.checked = true
+                })
+            }
+
+            setSelectAllAndLeftCount()
+            save()
+        }
+
+        todoInput.onkeyup = function (e) {
+            console.log(e)
+            if (e.key === 'Enter') {
+                addTodo({
+                    content: e.target.value.trim(),
+                    completed: false,
+                })
+                e.target.value = ''
+                save()
+            }
+        }
+
+
+        clearCompletedBtn.onclick = e => {
+            var tobeDeleted = document.querySelectorAll('.completed')
+            tobeDeleted.forEach(it => {
+                todoList.removeChild(it)
+            })
+            clearCompletedBtn.style.display = 'none'
+        }
+
+
+
+        function setSelectAllAndLeftCount() {
+            var actives = todoList.querySelectorAll('input:first-child:not(:checked)')
+            var completeds = todoList.querySelectorAll('input:first-child:checked')
+            if (actives.length) {
+                toggleAllInput.checked = false
+            } else {
+                toggleAllInput.checked = true
+            }
+            leftCount.textContent = actives.length + ' items left'
+            if (completeds.length) {
+                clearCompletedBtn.style.display = 'inline-block'
+            } else {
+                clearCompletedBtn.style.display = 'none'
+            }
+        }
+
+        var todos = JSON.parse(localStorage.todos) || []
+
+        todos.forEach(todo => {
+            addTodo(todo)
+        })
+
+        function addTodo(todo) {
+            var todoText = todo.content
+
+            if (todoText.trim() !== '') {
+                this.value = ''
+
+                var li = document.createElement('li')
+                li.classList.add('todo-item')
+                todo.completed && li.classList.add('completed')
+
+                var checkbox = document.createElement('input')
+                checkbox.type = 'checkbox'
+                checkbox.checked = todo.completed
+                checkbox.onchange = e => {
+                    if (checkbox.checked) {
+                        li.classList.add('completed')
+                    } else {
+                        li.classList.remove('completed')
+                    }
+                    setSelectAllAndLeftCount()
+                    save()
+                }
+
+                var span = document.createElement('span')
+                span.textContent = todoText
+                span.ondblclick = e => {
+                    li.classList.add('editing')
+                    setTimeout(() => {
+                        editBox.focus()
+                    })
+
+                }
+
+                var editBox = document.createElement('input')
+                editBox.type = 'text'
+                editBox.value = todoText
+                editBox.onkeyup = e => {
+                    if (e.key == 'Enter') {
+                        span.textContent = editBox.value
+                        li.classList.remove('editing')
+                        save()
+                    }
+                }
+                editBox.onblur = e => {
+                    span.textContent = editBox.value
+                    li.classList.remove('editing')
+                    save()
+                }
+
+                var deleteBtn = document.createElement('button')
+                deleteBtn.textContent = "x"
+
+
+                deleteBtn.onclick = e => {
+                    todoList.removeChild(li)
+                    setSelectAllAndLeftCount()
+                    if (todoList.children.length === 0) {
+                        // stateWrap.style.display = 'none'
+                    }
+                    save()
+                }
+
+
+
+                li.append(checkbox, span, editBox, deleteBtn)
+
+                todoList.append(li)
+                // stateWrap.style.display = 'block'
+                setSelectAllAndLeftCount()
+            }
+        }
+
+        function save() {
+            var todos = Array.from(todoList.children).map(li => {
+                return {
+                    completed: li.firstElementChild.checked,
+                    content: li.firstElementChild.nextElementSibling.textContent,
+                }
+            })
+
+            localStorage.todos = JSON.stringify(todos)
+        }
+    </script>
+</body>
+
+</html>

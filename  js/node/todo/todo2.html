@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        li button {
+            display: none;
+        }
+
+        li:hover button {
+            display: inline-block;
+        }
+
+
+
+        li.completed span {
+            text-decoration: line-through;
+        }
+
+        ul.active li.completed {
+            display: none;
+        }
+
+        ul.completed li.active {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container"></div>
+
+    <script src="lodash-4.17.5.min.js"></script>
+
+    <script>
+        var showingCategory = 'all'
+        var editingIdx = -1
+        var todos = JSON.parse(localStorage.todos) || [{
+            content: 'eat',
+            completed: false,
+        }, {
+            content: 'drink',
+            completed: true,
+        }, {
+            content: 'sleep',
+            completed: false,
+        },
+        {
+            content: 'get up',
+            completed: false,
+        },]
+
+
+        // $(container).on('click', '.clear-completed', e=> {
+        //     todos = todos.filter(it => !it.completed)
+        //     render()
+        // }).on('click', '.toggle-all-completed')
+
+        container.addEventListener('click', e => {
+            // 完成后的清除选项
+            if (e.target.matches('.clear-completed')) {
+                todos = todos.filter(it => !it.completed)
+                render()
+            }
+
+            // 输入框
+            if (e.target.matches('.toggle-all-completed')) {
+                if (todos.every(it => it.completed)) {
+                    todos.forEach(it => {
+                        it.completed = false
+                    })
+                } else {
+                    todos.forEach(it => {
+                        it.completed = true
+                    })
+                }
+
+                render()
+            }
+
+            // checkbox按钮
+            if (e.target.matches('.toggle-completed')) {
+                var li = e.target.parentNode
+                var ul = li.parentNode
+                var idx = Array.from(ul.children).indexOf(li)
+                todos[idx].completed = !todos[idx].completed
+                render()
+            }
+
+
+            //删除按钮
+            if (e.target.matches('.delete')) {
+                var li = e.target.parentNode
+                var ul = li.parentNode
+                var idx = Array.from(ul.children).indexOf(li)
+                todos.splice(idx, 1)
+                render()
+            }
+
+            // ridio选项
+            if (e.target.matches(['input[type="radio"]'])) {
+                showingCategory = e.target.value
+
+                render()
+            }
+
+        })
+
+        container.addEventListener('dblclick', e => {
+            if (e.target.matches('li span')) {
+                var li = e.target.parentNode
+                var ul = li.parentNode
+                var idx = Array.from(ul.children).indexOf(li)
+                editingIdx = idx
+                render()
+                var editBox = document.querySelector('.edit-box')
+                editBox.focus()
+                editBox.selectionStart = editBox.selectionEnd = 999999
+            }
+        })
+
+
+        container.addEventListener('keyup', e => {
+            if (e.key == 'Enter' && e.target.matches('.todo-input')) {
+                var todoText = e.target.value.trim()
+                if (todoText) {
+                    e.target.value = ''
+                    todos.push({
+                        content: todoText,
+                        completed: false
+                    })
+                    render()
+                    document.querySelector('.todo-input').focus()
+                }
+
+            }
+
+            if (e.key == 'Enter' && e.target.matches('.edit-box')) {
+                var todoText = e.target.value.trim()
+                todos[editingIdx].content = todoText
+                editingIdx = -1
+                render()
+            }
+        })
+
+
+        container.addEventListener('focusout', e => {
+            if (e.target.matches('.edit-box')) {
+                var todoText = e.target.value.trim()
+                if (editingIdx == -1) return
+                todos[editingIdx].content = todoText
+                editingIdx = -1
+                render()
+            }
+        })
+
+
+
+
+        function getPageContent() {
+            var html = `
+            <h3>todos</h3>
+                <div>
+                    <input type="checkbox" class="toggle-all-completed" ${todos.every(todo => todo.completed) ? 'checked' : ''} >
+                    <input type="text" class="todo-input">
+                </div>
+                <ul class="todo-list ${showingCategory}">
+                    ${
+                todos.map((todo, idx) => {
+                    return `
+                                <li class="todo-item ${todo.completed ? 'completed' : 'active'}">
+                                    <input class="toggle-completed" type='checkbox' ${todo.completed ? 'checked' : ''}>
+
+                                    ${
+                        editingIdx == idx ?
+                            `  <input type="text" class='edit-box' value="${todo.content}">`
+                            :
+                            `<span>${todo.content}</span>`
+                        }
+
+                                    <button class="delete">&times;</button>
+                                </li>
+
+                            `
+                }).join('\n')
+                }
+                </ul>
+
+                ${
+                todos.length ?
+                    `
+                    <div>
+                    <span>${todos.filter(it => !it.completed).length} items left</span>
+                    <div>
+                        <label><input type="radio" ${showingCategory == 'all' ? 'checked' : ''} value="all">All</label>
+                        <label><input type="radio" ${showingCategory == 'active' ? 'checked' : ''} value="active">Active</label>
+                        <label><input type="radio" ${showingCategory == 'completed' ? 'checked' : ''} value="completed">Completed</label>
+                    </div>
+                        ${
+                    todos.some(todo => todo.completed) ?
+                        `<button class="clear-completed">Clear completed</button>` : ''
+                    }
+
+
+                </div>` : ""
+                }
+
+
+
+
+            `
+
+            return html
+
+        }
+
+
+
+        function render() {
+            localStorage.todos = JSON.stringify(todos)
+            container.innerHTML = getPageContent()
+
+        }
+
+        render()
+    </script>
+</body>
+
+</html>
