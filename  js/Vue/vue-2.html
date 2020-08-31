@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <a v-bind:[attributeName]='url'>.......连接</a>
+    </div>
+
+
+    <!-- v-bind缩写 -->
+    <!-- 完整语法 -->
+    <a v-bind:href="url">...</a>
+
+    <!-- 缩写 -->
+    <a :href="url">...</a>
+
+    <!-- 动态参数的缩写 (2.6.0+) -->
+    <a :[key]="url"> ... </a>
+
+    <!-- v-on缩写 -->
+    <!-- 完整语法 -->
+    <a v-on:click="doSomething">...</a>
+
+    <!-- 缩写 -->
+    <a @click="doSomething">...</a>
+
+    <!-- 动态参数的缩写 (2.6.0+) -->
+    <a @[event]="doSomething"> ... </a>
+</body>
+
+<script>
+
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            attributename: 'href',
+            url: 'https://www.baidu.com'
+        }
+
+    })
+
+
+
+
+
+</script>
+
+</html>
+
+
+<!--
+    1. Vue实例被创建时, 它会将data对象里的所有属性都加入到Vue的响应系统中. 所以当里面的属性值发生改变时,
+    视图就会响应修改. 但是如果之后再添加的属性, 响应不会出现. 必须是实例在创建时就已经写好的属性.
+
+    2. Vue实例里的属性和方法, 最好再前面加上$前缀, 这样可以与自己定义的属性区分开来.
+-->>
+
+
+<!--
+    1. 动态参数里存在语法约束, 空格和引号放在HTML属性名里是无效的.
+    2. 属性名会被浏览器全部转成小写, 所以在属性名变量里用大写无效, 最好全部都改为小写.
+-->

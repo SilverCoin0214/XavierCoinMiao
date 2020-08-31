@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <!-- 计算属性的简单实例 -->
+    <div id="example">
+        <p>Original message: "{{ message }}"</p>
+        <p>Computed reversed message: "{{ reversedMessage }}"</p>
+    </div>
+
+
+    <!-- 侦听属性 -->
+    <div id="demo">{{ fullName }}</div>
+</body>
+
+
+<script>
+
+    // 计算属性的简单实例
+    var vm = new Vue({
+        el: '#example',
+        data: {
+            message: 'Hello'
+        },
+
+        computed: {
+            reversedMessage: function () {
+                return this.message.split('').reverse().join("")
+            }
+        }
+    })
+
+    //侦听属性
+    // var vm2 = new Vue({
+    //     el: '#demo',
+    //     data: {
+    //         firstName: 'Foo',
+    //         lastName: 'Bar',
+    //         fullName: 'Foo Bar'
+    //     },
+    //     watch: {
+    //         firstName: function (val) {
+    //             this.fullName = val + ' ' + this.lastName
+    //         },
+    //         lastName: function (val) {
+    //             this.fullName = this.firstName + ' ' + val
+    //         }
+    //     }
+    // })
+
+    // 用计算属性修改侦听属性
+    var vm3 = new Vue({
+        el: '#demo',
+        data: {
+            firstName: 'Foo',
+            lastName: 'Bar',
+        },
+        computed: {
+            fullName: {
+                get: function () {
+                    return this.firstName + ' ' + this.lastName
+                },
+
+                set: function (newValue) {
+                    var names = newValue.split(' ')
+                    this.firstName = names[0]
+                    this.lastName = names[names.length - 1]
+                }
+            }
+        }
+    })
+
+</script>
+
+</html>
+
+<!--  computed 和 method 的区别 -->>
+<!--
+    1. 它们俩实现的最终结果是相同的. 但是计算属性是基于它们的响应式依赖进行缓存. 所以只有响应式依赖发生改变时才会再次执行.
+    2. 而方法则是每次调用都会执行一遍.
+
+    如果不需要对一个结果进行缓存的话, 用方法会更好. 需要则使用计算属性.
+
+-->

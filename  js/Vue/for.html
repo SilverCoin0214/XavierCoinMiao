@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <ul id="example-1">
+        <li v-for="item,index in items" :key="item.message">
+            {{ index }} - {{ item.message }}
+        </li>
+    </ul>
+
+
+    <ul id="v-for-object" class="demo">
+        <li v-for="value,key in object">
+            {{ key }} - {{ value }}
+        </li>
+    </ul>
+</body>
+<script>
+    var example1 = new Vue({
+        el: '#example-1',
+        data: {
+            items: [
+                { message: 'Foo' },
+                { message: 'Bar' }
+            ]
+        }
+    })
+
+
+    var vForObject = new Vue({
+        el: "#v-for-object",
+        data: {
+            object: {
+                title: 'How to do lists in Vue',
+                author: 'jan done',
+                publishedAt: '2020-8-30'
+            }
+        }
+    })
+</script>
+
+</html>
