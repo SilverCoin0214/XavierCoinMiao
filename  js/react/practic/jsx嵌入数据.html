@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <script src="../react.development.js"></script>
+    <script src="../react-dom.development.js"></script>
+
+    <!-- Don't use this in production: -->
+    <script src="../babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        class App extends React.Component {
+            constructor(props) {
+                super(props)
+
+                this.state = {
+                    // 可以直接展示
+                    num: 1000,
+                    str: '我是字符串',
+                    array: ['数组1', '数组2', '数组3'],
+
+                    // 不能直接展示
+                    nu: null,
+                    unf: undefined,
+                    tf: true,
+                    flag: true,
+
+                    // 对象不能作为jsx子类
+                    friend: {
+                        name: 'xx',
+                        age: 12,
+                    }
+                }
+            }
+
+            render() {
+                return (
+                    <div>
+                        <p>{this.state.num}</p>
+                        <p>{this.state.str}</p>
+                        <p>{this.state.array}</p>
+                        <p>{this.state.nu}</p>
+                        <p>{this.state.nuf}</p>
+                        <p>{this.state.tf}</p>
+                        <p>{this.state.flag ? "三元运算" : ''}</p>
+                        <p>{this.state.tf && '与运算'}</p>
+                    </div>
+                )
+            }
+        }
+
+        ReactDOM.render(
+            <App />,
+            document.getElementById('root')
+        )
+
+
+    </script>
+
+</body>
+
+</html>

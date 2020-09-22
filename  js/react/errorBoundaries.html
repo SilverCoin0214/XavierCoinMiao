@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <script src="react.development.js"></script>
+    <script src="react-dom.development.js"></script>
+
+    <!-- Don't use this in production: -->
+    <script src="babel.min.js"></script>
+
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        class ErrorBoundary extends React.Component {
+            constructor(props) {
+                super(props)
+                this.state = { hasError: true }
+            }
+
+            static getDerivedStateFromError(error) {
+                return { hasError: true }
+            }
+
+            componentDidCatch(error, errorInfo) {
+                logErrorMyService(error, errorInof)
+            }
+
+            render() {
+                if (this.state.hasError) {
+                    return <h1>Something went wrong.</h1>
+                }
+
+                return (
+                    <div>无错误</div>
+                )
+            }
+
+        }
+
+        ReactDOM.render(
+            <ErrorBoundary text={'无错误'} />,
+            document.getElementById('root')
+        )
+    </script>
+
+</body>
+
+</html>

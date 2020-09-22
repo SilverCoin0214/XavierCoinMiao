@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="node_modules/react/umd/react.development.js"></script>
+    <script src='node_modules/react-dom/umd/react-dom.development.js'></script>
+    <script src='node_modules/babel-standalone/babel.min.js'></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        let bool = true
+
+        let MyCom = (props) => {
+            return (
+                <div style={{ display: bool ? "block" : "none" }}>
+                    {props.arr.map((item, index) => {
+                        return <p key={index} >这是{item}</p>
+                    })}
+                </div>
+            )
+        }
+
+        let data = ['测试', '玩儿', '说的热']
+
+        let Com = () => {
+            return (
+                <div>
+                    <h1 onClick={() => { bool = !bool; console.log(bool); render() }}>点击显示隐藏</h1>
+                    <MyCom arr={data} />
+                </div>
+            )
+        }
+
+        function render() {
+            ReactDOM.render(<Com />, document.getElementById('root'))
+        }
+
+        render()
+
+
+    </script>
+</body>
+
+</html>

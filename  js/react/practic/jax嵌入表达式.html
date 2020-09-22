@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <script src="../react.development.js"></script>
+    <script src="../react-dom.development.js"></script>
+
+    <!-- Don't use this in production: -->
+    <script src="../babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        class App extends React.Component {
+            constructor(props) {
+                super(props)
+                this.state = {
+                    firstName: 'aaa',
+                    lastName: 'bbb',
+                    isLogin: true,
+                }
+            }
+
+            func() {
+                return this.state.firstName
+            }
+
+            render() {
+                return (
+                    <div>
+                        {/* 运算表达式 */}
+                        <h2>{this.state.firstName + this.state.lastName}</h2>
+                        {/* 三元运算符 */}
+                        <h2>{this.state.isLogin ? '已登录' : ''}</h2>
+                        {/* 执行函数 */}
+
+                        <h2>{this.func()}</h2>
+
+                    </div>
+                )
+            }
+        }
+
+        ReactDOM.render(
+            <App />,
+            document.getElementById('root')
+        )
+
+
+    </script>
+
+</body>
+
+</html>

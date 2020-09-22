@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <script src="../react.development.js"></script>
+    <script src="../react-dom.development.js"></script>
+
+    <!-- Don't use this in production: -->
+    <script src="../babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        class App extends React.Component {
+            constructor(props) {
+                super(props)
+                this.state = {
+                    movie: ['新世界', '黄海', '美丽人生']
+                }
+            }
+
+            liCilck(item, index, event) {
+                console.log('点击了click', item, index, event)
+            }
+
+
+
+            render() {
+                return (
+                    <div>
+                        <ul>
+                            {
+                                this.state.movie.map((item, index) => {
+                                    return (
+                                        <li key={index}
+                                            onClick={(e) => { this.liCilck(item, index, e) }}>
+                                            {item}
+                                        </li>
+                                    )
+
+                                })
+                            }
+                        </ul>
+                    </div>
+                )
+            }
+        }
+
+        ReactDOM.render(
+            <App />,
+            document.getElementById('root')
+        )
+
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="node_modules/react/umd/react.development.js"></script>
+    <script src='node_modules/react-dom/umd/react-dom.development.js'></script>
+    <script src='node_modules/babel-standalone/babel.min.js'></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        // 3种使用ref的方式
+        // 1. 字符串方式
+        // 2. 回调函数方式
+        // 3. React.createRef()
+
+        class Dom extends React.Component {
+
+
+            constructor(props) {
+                super(props)
+                this.myRef = React.createRef()
+            }
+
+            // 字符串方式
+            func = () => {
+                console.log(this.refs.demoInput.value)
+            }
+
+
+            // 回调函数方式
+            func2 = () => {
+                console.log(this.textInput.value)
+            }
+
+            // React.createRef()
+            func3 = () => {
+                console.log(this.myRef.current.value)
+            }
+            render() {
+                return (
+                    <div>
+                        <input type="text" ref='demoInput' placeholder="字符串方式" />
+                        <button onClick={this.func} >字符串方式获得值</button>
+                        <hr />
+                        <input type="text" ref={(input) => { this.textInput = input }} placeholder="回调函数方式" />
+                        <button onClick={this.func2}>回调函数</button>
+                        <hr />
+                        <input type="text" ref={this.myRef} placeholder="create()方式" />
+                        <button onClick={this.func3}>React.create()方式</button>
+                    </div>
+                )
+            }
+        }
+
+        ReactDOM.render(
+            <Dom />,
+            document.getElementById('root')
+
+        )
+
+    </script>
+</body>
+
+</html>

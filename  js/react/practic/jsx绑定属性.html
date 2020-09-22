@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <script src="../react.development.js"></script>
+    <script src="../react-dom.development.js"></script>
+
+    <!-- Don't use this in production: -->
+    <script src="../babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        class App extends React.Component {
+            constructor(props) {
+                super(props)
+
+                this.state = {
+                    active: true
+                }
+            }
+
+            render() {
+                return (
+                    <div>
+                        <div className={'title box ' + (this.state.active ? 'active' : '')} >就一个注意点是active</div>
+
+                        <div style={{ color: 'red', fontSize: '50px' }} >绑定style</div>
+                    </div>
+                )
+            }
+        }
+
+        ReactDOM.render(
+            <App />,
+            document.getElementById('root')
+        )
+
+
+    </script>
+
+</body>
+
+</html>

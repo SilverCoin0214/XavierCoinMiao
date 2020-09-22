@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="node_modules/react/umd/react.development.js"></script>
+    <script src='node_modules/react-dom/umd/react-dom.development.js'></script>
+    <script src='node_modules/babel-standalone/babel.min.js'></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        class Dom extends React.Component {
+
+            constructor(props) {
+                super(props)
+                this.state = {
+                    name: '这是Name'
+                }
+            }
+
+            setName = () => {
+                // setState是异步操作的
+                this.setState(
+                    {
+                        name: '修改Name为新的'
+                    }, () => {
+                        console.log(this.state.name)
+                    }
+                )
+
+                console.log(this.state.name)
+            }
+
+            render() {
+                return (
+                    <div>
+                        <button onClick={this.setName}>修改数据</button>
+                        类组件---{this.state.name}
+                    </div>
+                )
+            }
+        }
+
+        ReactDOM.render(
+            <Dom />,
+            document.getElementById('root')
+
+        )
+
+    </script>
+</body>
+
+</html>

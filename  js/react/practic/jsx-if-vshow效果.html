@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <script src="../react.development.js"></script>
+    <script src="../react-dom.development.js"></script>
+
+    <!-- Don't use this in production: -->
+    <script src="../babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        class App extends React.Component {
+            constructor(props) {
+                super(props)
+                this.state = {
+                    isLogin: true
+                }
+            }
+
+            render() {
+                const { isLogin } = this.state
+                const titleDisplayValue = isLogin ? 'block' : 'none'
+
+                return (
+                    <div>
+                        <button onClick={() => { this.changeBtn() }}> {isLogin ? "退出" : "登录"}</button>
+                        {/* 属性里设置三元运算, 可以达成v-show效果 */}
+                        <h2 style={{ display: titleDisplayValue }} >hello, sce</h2>
+                    </div>
+                )
+            }
+
+
+            changeBtn() {
+                this.setState({
+                    isLogin: !this.state.isLogin
+                })
+            }
+        }
+
+        ReactDOM.render(
+            <App />,
+            document.getElementById('root')
+        )
+
+
+    </script>
+
+</body>
+
+</html>

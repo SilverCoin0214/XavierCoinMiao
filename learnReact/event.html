@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="node_modules/react/umd/react.development.js"></script>
+    <script src='node_modules/react-dom/umd/react-dom.development.js'></script>
+    <script src='node_modules/babel-standalone/babel.min.js'></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        //react事件处理 绑定函数时不能加(),否则会立即执行
+        // 1.修改this指向
+        // 2. bing方式原地绑定
+        // 3. 函数通过箭头函数进行创建
+        // 4. consternation中提前绑定
+        // 5. 把事件调用写成箭头函数的调用方式
+
+
+        class Dom extends React.Component {
+            constructor(props) {
+                super(props)
+                this.func = this.func.bind(this)
+            }
+
+            funa() {
+                console.log(this)
+            }
+
+            funb = () => {
+                console.log(this)
+            }
+
+            func() {
+                console.log(this)
+            }
+
+            fund() {
+                console.log(this)
+            }
+
+            fune = (i, e) => {
+                console.log(i)
+                console.log(e)
+            }
+
+
+            render() {
+                return (
+                    <div>
+                        <button onClick={this.funa.bind(this)} >bind方式绑定</button>
+                        <button onClick={this.funb} >通过箭头函数</button>
+                        <button onClick={this.func} >在constructor中提前绑定</button>
+                        <button onClick={() => { this.fund() }} >调用方式为箭头函数</button>
+                        <h1>函数传递实参</h1>
+                        <button onClick={this.fune.bind(this, '参数')} >bind方式传递实参</button>
+                        <button onClick={(e) => { this.fune('参数2', e) }} >箭头函数方式传递实参</button>
+                    </div>
+
+                )
+            }
+        }
+
+
+
+        ReactDOM.render(
+            <Dom />,
+            document.getElementById('root')
+
+        )
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="node_modules/react/umd/react.development.js"></script>
+    <script src='node_modules/react-dom/umd/react-dom.development.js'></script>
+    <script src='node_modules/babel-standalone/babel.min.js'></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        // 状态提升
+        // 多个组件需要反映相同变化的数据, 这时就将他们提升到父组件中去
+
+        // 多个子组件需要利用对方状态的情况下, 那么这时候就用到状态提升
+
+
+        class Demoa extends React.Component {
+            constructor(props) {
+                super(props)
+            }
+
+            render() {
+                return (
+                    <div>
+                        我是第一个组件--
+                        {this.props.parent}
+                    </div>
+
+                )
+            }
+
+        }
+
+        class Demob extends React.Component {
+            constructor(props) {
+                super(props)
+            }
+
+            render() {
+                return (
+                    <div>
+                        我是第二个组件--
+                        {this.props.parent}
+                    </div>
+
+                )
+            }
+
+        }
+
+        class Dom extends React.Component {
+            constructor(props) {
+                super(props)
+                this.state = {
+                    parent: '这是一个父组件里用的状态'
+                }
+            }
+
+            fun = () => {
+                this.setState({
+                    parent: '这是被我修改了的状态, 子组件同时都修改'
+                })
+            }
+
+            render() {
+                return (
+                    <div>
+                        <button onClick={this.fun} >在父组件修改数据</button>
+                        <Demoa parent={this.state.parent} />
+                        <Demob parent={this.state.parent} />
+
+                    </div>
+
+                )
+            }
+        }
+
+
+
+        ReactDOM.render(
+            <Dom />,
+            document.getElementById('root')
+
+        )
+
+    </script>
+</body>
+
+</html>
