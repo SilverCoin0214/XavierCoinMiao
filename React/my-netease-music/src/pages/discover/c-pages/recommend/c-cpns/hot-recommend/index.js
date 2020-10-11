@@ -35,6 +35,7 @@ export default memo(function SceHotRecommend() {
           return <SceSongsCover key={item.id} info={item}></SceSongsCover>;
         })}
       </div>
+      <div className="music-ad"></div>
     </HotRecommendWrapper>
   );
 });

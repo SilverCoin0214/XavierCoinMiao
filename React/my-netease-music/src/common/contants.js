@@ -1,1 +1,5 @@
 export const HOT_RECOMMEND_LIMIT = 8;
+
+export const UP_RANKING_LIST = 19723756;
+export const NEW_RANKING_LIST = 3779629;
+export const ORIGIN_RANKING_LIST = 2884035;
