@@ -71,11 +71,11 @@ export const discoverMenu = [
   },
   {
     title: "排行榜",
-    link: "/discover/ranking",
+    link: "/discover/toplist",
   },
   {
     title: "歌单",
-    link: "/discover/songs",
+    link: "/discover/playlist",
   },
   {
     title: "主播电台",

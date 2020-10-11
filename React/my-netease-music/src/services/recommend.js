@@ -5,3 +5,12 @@ export function getTopbanners() {
     url: "/banner",
   });
 }
+
+export function getHotRecommends(limit) {
+  return request({
+    url: "/personalized",
+    params: {
+      limit,
+    },
+  });
+}

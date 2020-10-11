@@ -12,16 +12,40 @@ var silvercoin0214 = {
 
   chunk: function (ary, size) {
     let newAry = [];
-    let copyAry = [...ary];
-    while (copyAry.length !== 0) {
-      let childAry = copyAry.slice(0, size);
-      newAry.push(childAry);
-      copyAry.splice(0, size);
+    for (let i = 0; i < ary.length; i += size) {
+      newAry.push(ary.slice(i, i + size));
     }
 
     return newAry;
   },
+
+  /**
+   *  创建一个删除了所有false,null,0,""和undefined还有NaN的数组
+   *  @param ary{Array} 需要处理的数组
+   *  @returns {Array[]} 返回一维数组
+   */
+
+  compact: function (ary) {
+    let result = [];
+    for (let item of ary) {
+      if (Boolean(item)) {
+        result.push(item);
+      }
+    }
+
+    return result;
+  },
 };
 
-const ary = silvercoin0214.chunk(["a", "b", "c", "d"], 3);
+const ary = silvercoin0214.compact([
+  0,
+  1,
+  false,
+  2,
+  "",
+  3,
+  null,
+  undefined,
+  NaN,
+]);
 console.log(ary);

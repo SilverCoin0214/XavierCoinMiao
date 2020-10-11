@@ -27,11 +27,11 @@ const routes = [
         component: SceRecommend,
       },
       {
-        path: "/discover/ranking",
+        path: "/discover/toplist",
         component: SceRanking,
       },
       {
-        path: "/discover/songs",
+        path: "/discover/playlist",
         component: SceSongs,
       },
       {
