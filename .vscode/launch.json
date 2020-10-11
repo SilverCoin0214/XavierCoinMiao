@@ -41,10 +41,11 @@
       "skipFiles": ["<node_internals>/**"]
     },
     {
-      "type": "node",
+      "type": "chrome",
       "request": "launch",
       "name": "lodash",
-      "program": "${workspaceFolder}/lodash/silvercoin0214-lodash.js",
+      "url": "http://localhost:8088",
+      "file": "${workspaceFolder}/lodash/silvercoin0214-lodash.js",
       "skipFiles": ["<node_internals>/**"]
     }
   ]
