@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <a href="/home">history主页</a>
+        <a href="/about">history关于</a>
+
+        <div class="routerView"></div>
+    </div>
+
+    <script>
+        const routerView = document.getElementsByClassName("routerView")[0]
+
+        const aElement = document.getElementsByTagName('a')
+
+        for (let el of aElement) {
+
+            el.addEventListener('click', e => {
+                e.preventDefault()
+                const href = el.getAttribute('href')
+
+                history.pushState({}, '', href)
+                changeView()
+            })
+
+        }
+
+        window.addEventListener('popstate', changeView)
+
+
+        function changeView() {
+            console.log(location.pathname)
+            switch (location.pathname) {
+                case '/home':
+                    routerView.innerHTML = "我是主页"
+                    break;
+                case '/about':
+                    routerView.innerHTML = "我是关于"
+                    break;
+                default:
+                    routerView.innerHTML = ""
+            }
+        }
+
+    </script>
+</body>
+
+</html>

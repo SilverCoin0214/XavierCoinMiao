@@ -1,35 +1,31 @@
-import React, { Component, propTypes } from "react";
+import React from "react";
 import ReactDOM from "react-dom";
+import "antd/dist/antd.less";
+// import Home, { App2 } from "./components/Home";
+// import Tab from "./components/Tab";
+// import "./components/style.css";
 
-class Clock extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { date: new Date() };
-  }
+// import App from "./react实现slot/App";
+// import "./react实现slot/style.css";
 
-  componentDidMount() {
-    this.timerID = setInterval(() => this.tick(), 1000);
-  }
+// import MyContext from "./components/MyContext";
 
-  componentWillUnmount() {
-    clearInterval(this.timerID);
-  }
+// import MysetState from "./components/MysetState";
+// import Refs from "./components/Refs";
 
-  tick() {
-    this.setState({
-      date: new Date(),
-    });
-  }
+// import Form from "./components/Form";
 
-  render() {
-    return (
-      <div>
-        <h1>Hello, world!</h1>
-        <h2>It is {this.state.date.toLocaleTimeString()}</h2>
-      </div>
-    );
-  }
-}
+// import UseCss from "./components/UseCss";
 
-ReactDOM.render(<Clock />, document.getElementById("root"));
-``;
+// import UseAntd from "./components/UseAntd";
+
+// import App from "./comment/App";
+
+// import App from "./axios/App";
+// import App from "./router/App.js";
+// import { BrowserRouter } from "react-router-dom";
+
+// import UseEffect from "./hooks/useEffect";
+import App from "./hooks/App";
+
+ReactDOM.render(<App />, document.getElementById("root"));

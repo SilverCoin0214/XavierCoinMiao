@@ -1,11 +1,11 @@
-var figlet = require("figlet");
-
-var bigHelloWorld = figlet.text(
-  "hello World",
-  { font: "3-D" },
-  (err, result) => {
-    console.log(result);
+function foo() {
+  var a = "hello world";
+  function bar() {
+    console.log(a);
   }
-);
-dsfsdf;
-dsfsdf;
+
+  return bar;
+}
+
+var baz = foo();
+baz();

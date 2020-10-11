@@ -1,0 +1,24 @@
+.tabControl {
+    display: flex;
+    height: 44px;
+    line-height: 44px;
+}
+
+.tabItem {
+    flex: 1;
+    text-align: center;
+}
+
+
+.tabItem.active {
+    color: red
+}
+
+.tabItem span {
+    padding: 5px 8px;
+}
+
+.tabItem.active span {
+    color: red;
+    border-bottom: 3px solid red;
+}
