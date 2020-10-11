@@ -81,7 +81,7 @@ button {
 }
 
 .text-nowrap {
-  white-space: nowarp;
+  white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
 }

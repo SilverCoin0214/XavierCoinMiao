@@ -20,9 +20,9 @@ const changeHotRecommendsAction = (res) => ({
   hotRecommends: res.result,
 });
 
-export const getHotRecommendsAction = () => {
+export const getHotRecommendsAction = (limit) => {
   return (dispatch) => {
-    getHotRecommends(8).then((res) => {
+    getHotRecommends(limit).then((res) => {
       dispatch(changeHotRecommendsAction(res));
     });
   };
