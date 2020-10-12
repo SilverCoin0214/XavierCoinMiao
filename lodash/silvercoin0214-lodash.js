@@ -48,6 +48,7 @@ var silvercoin0214 = {
     if (typeof func === "string") {
       return this.property(func);
     } else if (func instanceof Array) {
+      return this.matchesProperty(func);
     } else {
       return this.matches(func);
     }
@@ -71,24 +72,35 @@ var silvercoin0214 = {
     };
   },
 
-
-    /**
+  /**
    * 创建一个函数，判断给定对象属性是否与传入的参数相同，相同返回true，不同返回false
    * @param {Array|string} path 待获取的属性名
    * @param {*} srcValue 待比较的属性值
    * @returns {Function}
    */
 
-   matchesProperty: function(path,srcValue) {
-     return function(obj) {
-       if(typeof path === 'string') {
-         let ary = path.split('.')
-         for(let property of ary){
-
-         }
-       }
-     }
-   }
+  matchesProperty: function (path, srcValue) {
+    return function (obj) {
+      var copyObj = Object.assign({}, obj);
+      if (typeof path === "string") {
+        let ary = path.split(".");
+        for (let i of ary) {
+          copyObj = copyObj[i];
+        }
+        if (srcValue === copyObj) {
+          return true;
+        }
+      } else {
+        for (let i of path) {
+          copyObj = copyObj[i];
+        }
+        if (srcValue === copyObj) {
+          return true;
+        }
+      }
+      return false;
+    };
+  },
 
   /**
    ** Array
@@ -231,11 +243,10 @@ var silvercoin0214 = {
   },
 };
 
-
 var objects = [
   { a: 1, b: 2, c: 3 },
-  { a: 4, b: 5, c: 6 },
+  { a: { d: 5 }, b: 5, c: 6 },
 ];
 
-var value = silvercoin0214.matches({ a: 4, c: 6 });
-console.log(value({ a: 1, b: 2, c: 3 }));
+var value = silvercoin0214.matchesProperty("a.d", 5);
+console.log(value({ a: { d: 5 }, b: 5, c: 6 }));
