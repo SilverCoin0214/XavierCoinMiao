@@ -12,7 +12,7 @@ var silvercoin0214 = {
 
   property: function (path) {
     return function (obj) {
-      var value = { ...obj };
+      var value = Object.assign({}, obj);
       if (typeof path === "string") {
         let ary = path.split(".");
         for (let i of ary) {
