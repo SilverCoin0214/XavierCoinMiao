@@ -5,15 +5,6 @@ var silvercoin0214 = {
    */
 
   /**
-   * identity: 返回首个提供的参数
-   * @param  {any} value
-   * @return {*}
-   */
-  identity: function (value) {
-    return value;
-  },
-
-  /**
    *  该函数接收数组或字符串后返回一个函数, 返回函数的返回值为其参数在Path路径上的值.
    *  @param path {Array | string}
    *  @return {function}
@@ -38,6 +29,15 @@ var silvercoin0214 = {
   },
 
   /**
+   * identity: 返回首个提供的参数
+   * @param  {any} value
+   * @return {*}
+   */
+  identity: function (value) {
+    return value;
+  },
+
+  /**
    * 创建一个使用创建的函数的参数调用func的函数。如果func是属性名称，则创建的函数返回给定元素的属性值。
    * 如果func是数组或对象，则创建的函数对包含等效源属性的元素返回true，否则返回false。
    * @param func {*}
@@ -48,7 +48,27 @@ var silvercoin0214 = {
     if (typeof func === "string") {
       return this.property(func);
     } else if (func instanceof Array) {
+    } else {
+      return this.matches(func);
     }
+  },
+
+  /**
+   *  创建一个函数判断一个给定的对象和参数source，如果给定对象中有与source相同的属性，返回true，否则返回false
+   *  @param source {object}
+   *  @return {function}
+   *
+   */
+
+  matches: function (source) {
+    return function (obj) {
+      for (let key of Object.keys(source)) {
+        if (obj[key] !== source[key]) {
+          return false;
+        }
+      }
+      return true;
+    };
   },
 
   /**
@@ -194,7 +214,10 @@ var silvercoin0214 = {
 
 var _ = silvercoin0214;
 
-var users = [{ user: "barney" }, { user: "fred" }];
+var objects = [
+  { a: 1, b: 2, c: 3 },
+  { a: 4, b: 5, c: 6 },
+];
 
-let ary = _.map(users, "user");
-console.log(ary);
+var value = _.matches({ a: 4, c: 6 });
+console.log(value({ a: 1, b: 2, c: 3 }));
