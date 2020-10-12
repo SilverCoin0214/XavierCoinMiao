@@ -21,7 +21,7 @@ var silvercoin0214 = {
 
   property: function (path) {
     return function (obj) {
-      let value = { ...obj };
+      var value = { ...obj };
       if (typeof path === "string") {
         let ary = path.split(".");
         for (let i of ary) {
@@ -38,9 +38,18 @@ var silvercoin0214 = {
   },
 
   /**
-   *
-   *
+   * 创建一个使用创建的函数的参数调用func的函数。如果func是属性名称，则创建的函数返回给定元素的属性值。
+   * 如果func是数组或对象，则创建的函数对包含等效源属性的元素返回true，否则返回false。
+   * @param func {*}
+   * @returns {function}
    */
+
+  iteratee: function (func = this.identity) {
+    if (typeof func === "string") {
+      return this.property(func);
+    } else if (func instanceof Array) {
+    }
+  },
 
   /**
    ** Array
