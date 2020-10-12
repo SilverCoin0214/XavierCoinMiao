@@ -221,7 +221,9 @@ var silvercoin0214 = {
     if (collection instanceof Array) {
       for (let item of collection) {
         if (iteratee instanceof Function) {
-          result.push(iteratee(item));
+          let value = item;
+          let index = collection.findIndex((e) => e === item);
+          result.push(iteratee(value, index, collection));
         } else if (
           Object.prototype.toString.call(iteratee) == "[object String]"
         ) {
@@ -248,5 +250,7 @@ var objects = [
   { a: { d: 5 }, b: 5, c: 6 },
 ];
 
-var value = silvercoin0214.matchesProperty("a.d", 5);
-console.log(value({ a: { d: 5 }, b: 5, c: 6 }));
+var value = silvercoin0214.map([1, 2, 3], function (v, i, o) {
+  return v + i + o.length * 2;
+});
+console.log(value);
