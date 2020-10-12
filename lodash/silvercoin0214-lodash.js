@@ -71,6 +71,25 @@ var silvercoin0214 = {
     };
   },
 
+
+    /**
+   * 创建一个函数，判断给定对象属性是否与传入的参数相同，相同返回true，不同返回false
+   * @param {Array|string} path 待获取的属性名
+   * @param {*} srcValue 待比较的属性值
+   * @returns {Function}
+   */
+
+   matchesProperty: function(path,srcValue) {
+     return function(obj) {
+       if(typeof path === 'string') {
+         let ary = path.split('.')
+         for(let property of ary){
+
+         }
+       }
+     }
+   }
+
   /**
    ** Array
    */
@@ -212,12 +231,11 @@ var silvercoin0214 = {
   },
 };
 
-var _ = silvercoin0214;
 
 var objects = [
   { a: 1, b: 2, c: 3 },
   { a: 4, b: 5, c: 6 },
 ];
 
-var value = _.matches({ a: 4, c: 6 });
+var value = silvercoin0214.matches({ a: 4, c: 6 });
 console.log(value({ a: 1, b: 2, c: 3 }));
