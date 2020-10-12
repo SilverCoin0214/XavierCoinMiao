@@ -130,14 +130,14 @@ var silvercoin0214 = {
    *  @returns {Array}
    */
 
-  differenceBy: function (ary, iteeratee = this.identity, ...values) {
+  differenceBy: function (ary, iteratee = this.identity, ...values) {
     let result = [];
     let aryValues = this.concat([], ...values);
 
     for (let item of ary) {
       if (iteeratee instanceof Function) {
         item = iteeratee(item);
-        let ele = aryValues.find((e) => iteeratee(e) == item);
+        let ele = aryValues.find((e) => iteratee(e) == item);
         if (typeof ele == "undefined") {
           result.push(item);
         }
@@ -147,6 +147,7 @@ var silvercoin0214 = {
     return result;
   },
 
+  // ------------
   /**
    *  通过传入的函数对数组或对象进行遍历后返回一个新的数组
    *  @param collection {array | object}
@@ -164,7 +165,11 @@ var silvercoin0214 = {
         } else if (
           Object.prototype.toString.call(iteratee) == "[object String]"
         ) {
-          result.push(item[iteratee]);
+          let aryIte = iteratee.split(".");
+          for (let i of aryIte) {
+            item = item[i];
+          }
+          result.push(item);
         }
       }
     } else {
@@ -180,7 +185,7 @@ var silvercoin0214 = {
 
 var _ = silvercoin0214;
 
-var objects = [{ a: { b: 2 } }, { a: { b: 1 } }];
+var users = [{ user: "barney" }, { user: "fred" }];
 
-let ary = _.map(objects, _.property("a.b"));
+let ary = _.map(users, "user");
 console.log(ary);
