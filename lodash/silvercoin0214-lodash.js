@@ -200,7 +200,16 @@ var silvercoin0214 = {
     let result = [...ary];
     let aryAndFunc = values;
 
-    let func = this.iteratee(aryAndFunc.pop());
+    let last = aryAndFunc.pop();
+
+    let func;
+    if (last instanceof Array) {
+      func = this.identity;
+      aryAndFunc.push(last);
+    } else {
+      func = this.iteratee(last);
+    }
+
     let aryValue = this.concat([], ...aryAndFunc);
 
     for (let i of ary.keys()) {
@@ -208,7 +217,7 @@ var silvercoin0214 = {
       for (let iten of aryValue) {
         let funcIten = func(iten);
         if (funcItem == funcIten) {
-          result.splice(result.indexOf(funcItem), 1);
+          result.splice(result.indexOf(ary[i]), 1);
         }
       }
     }
