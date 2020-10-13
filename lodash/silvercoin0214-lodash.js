@@ -324,7 +324,7 @@ var silvercoin0214 = {
       }
     }
 
-    let obj = { ...object };
+    let obj = Object.assign({}, object);
     for (let p of path) {
       if (p in obj) {
         obj = obj[p];
