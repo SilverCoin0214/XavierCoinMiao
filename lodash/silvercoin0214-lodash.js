@@ -49,7 +49,9 @@ var silvercoin0214 = {
       return this.property(func);
     } else if (func instanceof Array) {
       return this.matchesProperty(func);
-    } else {
+    } else if (func instanceof Function) {
+      return func;
+    } else if (func instanceof Object) {
       return this.matches(func);
     }
   },
@@ -190,16 +192,19 @@ var silvercoin0214 = {
    *  @returns {Array}
    */
 
-  differenceBy: function (ary, iteratee = this.identity, ...values) {
-    let result = [];
-    let aryValues = this.concat([], ...values);
+  differenceBy: function (ary, ...values) {
+    let result = [...ary];
+    let aryAndFunc = values;
 
-    for (let item of ary) {
-      if (iteeratee instanceof Function) {
-        item = iteeratee(item);
-        let ele = aryValues.find((e) => iteratee(e) == item);
-        if (typeof ele == "undefined") {
-          result.push(item);
+    let func = this.iteratee(aryAndFunc.pop());
+    let aryValue = this.concat([], ...aryAndFunc);
+
+    for (let i of ary.keys()) {
+      let funcItem = func(ary[i]);
+      for (let iten of aryValue) {
+        let funcIten = func(iten);
+        if (funcItem == funcIten) {
+          result.splice(i, 1);
         }
       }
     }
@@ -245,12 +250,5 @@ var silvercoin0214 = {
   },
 };
 
-var objects = [
-  { a: 1, b: 2, c: 3 },
-  { a: { d: 5 }, b: 5, c: 6 },
-];
-
-var value = silvercoin0214.map([1, 2, 3], function (v, i, o) {
-  return v + i + o.length * 2;
-});
+var value = silvercoin0214.differenceBy([2.1, 1.2], [2.3, 3.4], Math.floor);
 console.log(value);
