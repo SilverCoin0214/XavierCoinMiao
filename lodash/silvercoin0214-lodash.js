@@ -193,6 +193,10 @@ var silvercoin0214 = {
    */
 
   differenceBy: function (ary, ...values) {
+    if (values.length === 2) {
+      return this.difference(ary, ...values);
+    }
+
     let result = [...ary];
     let aryAndFunc = values;
 
@@ -204,7 +208,7 @@ var silvercoin0214 = {
       for (let iten of aryValue) {
         let funcIten = func(iten);
         if (funcItem == funcIten) {
-          result.splice(i, 1);
+          result.splice(result.indexOf(funcItem), 1);
         }
       }
     }
@@ -281,8 +285,5 @@ var silvercoin0214 = {
   },
 };
 
-var object = [2, 3];
-var other = [2, 3];
-
-var value = silvercoin0214.isEqual(object, other);
+var value = silvercoin0214.differenceBy([1, 2, 3, 4], [1, 3], [4]);
 console.log(value);
