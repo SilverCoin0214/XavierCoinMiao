@@ -306,7 +306,7 @@ var silvercoin0214 = {
    *  @defaultvalue {*}
    */
 
-  get: function (object, path, defaultvalue = "") {
+  get: function (object, path, defaultvalue = "undefined") {
     if (typeof path == "string") {
       path = path.split(".");
 
@@ -314,17 +314,19 @@ var silvercoin0214 = {
         let sp = path[i].split("[");
 
         if (sp.length > 1) {
-          var num = sp[sp.length - 1][0];
-          sp.splice(sp.length - 1, 1, num);
+          let newsp = [];
+          for (let item of sp) {
+            newsp.push(item[0]);
+          }
 
-          path.splice(i, 1, ...sp);
+          path.splice(i, 1, ...newsp);
         }
       }
     }
 
     let obj = { ...object };
     for (let p of path) {
-      if (p in path) {
+      if (p in obj) {
         obj = obj[p];
       } else {
         return defaultvalue;
