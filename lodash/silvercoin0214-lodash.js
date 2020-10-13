@@ -193,7 +193,7 @@ var silvercoin0214 = {
    */
 
   differenceBy: function (ary, ...values) {
-    if (values.length === 2) {
+    if (values.length === 1) {
       return this.difference(ary, ...values);
     }
 
@@ -285,5 +285,5 @@ var silvercoin0214 = {
   },
 };
 
-var value = silvercoin0214.isEqual({ a: 1, b: 2 }, { b: 2, a: 1 });
+var value = silvercoin0214.differenceBy([1, 2, 3, 4], [2, 3, 4, 5]);
 console.log(value);
