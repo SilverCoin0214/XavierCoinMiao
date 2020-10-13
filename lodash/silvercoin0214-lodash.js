@@ -271,11 +271,11 @@ var silvercoin0214 = {
     } else if (value instanceof Object && !(other instanceof Object)) {
       return false;
     } else if (value instanceof Object && other instanceof Object) {
-      if (value.length !== other.length) {
+      if (Object.keys(value).length !== Object.keys(other).length) {
         return false;
       }
       for (let key of Object.keys(value)) {
-        if (value[key] !== other[key]) {
+        if (!this.isEqual(value[key], other[key])) {
           return false;
         }
       }
@@ -285,5 +285,5 @@ var silvercoin0214 = {
   },
 };
 
-var value = silvercoin0214.differenceBy([1, 2, 3, 4], [1, 3], [4]);
+var value = silvercoin0214.isEqual({ a: 1, b: 2 }, { b: 2, a: 1 });
 console.log(value);
