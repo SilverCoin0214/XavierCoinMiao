@@ -292,7 +292,50 @@ var silvercoin0214 = {
       return true;
     }
   },
+
+  /**
+   *
+   *  Object
+   *
+   */
+
+  /**
+   *  获取对象路径处的值, 如果解析未定义, 就返回默认值
+   *  @param object {object}
+   *  @param path {array | string}
+   *  @defaultvalue {*}
+   */
+
+  get: function (object, path, defaultvalue = "") {
+    if (typeof path == "string") {
+      path = path.split(".");
+
+      for (let i = 0; i < path.length; i++) {
+        let sp = path[i].split("[");
+
+        if (sp.length > 1) {
+          var num = sp[sp.length - 1][0];
+          sp.splice(sp.length - 1, 1, num);
+
+          path.splice(i, 1, ...sp);
+        }
+      }
+    }
+
+    let obj = { ...object };
+    for (let p of path) {
+      if (p in path) {
+        obj = obj[p];
+      } else {
+        return defaultvalue;
+      }
+    }
+
+    return obj;
+  },
 };
 
-var value = silvercoin0214.differenceBy([1, 2, 3, 4], [2, 3, 4, 5]);
+var object = { a: [{ b: { c: 3 } }] };
+
+var value = silvercoin0214.get(object, "a.b.c", "default");
 console.log(value);
