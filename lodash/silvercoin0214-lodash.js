@@ -248,7 +248,41 @@ var silvercoin0214 = {
 
     return result;
   },
+
+  /**
+   *    lang
+   *
+   */
+
+  /**
+   *  两个值进行深度比较后判断是否相等
+   *  @param value {*}  待比较的值
+   *  @param other {*}  用来比较的值
+   *  @returns {boolean}
+   */
+
+  isEqual: function (value, other) {
+    if (!(value instanceof Object)) {
+      return value === other;
+    } else if (value instanceof Object && !(other instanceof Object)) {
+      return false;
+    } else if (value instanceof Object && other instanceof Object) {
+      if (value.length !== other.length) {
+        return false;
+      }
+      for (let key of Object.keys(value)) {
+        if (value[key] !== other[key]) {
+          return false;
+        }
+      }
+
+      return true;
+    }
+  },
 };
 
-var value = silvercoin0214.differenceBy([2.1, 1.2], [2.3, 3.4], Math.floor);
+var object = [2, 3];
+var other = [2, 3];
+
+var value = silvercoin0214.isEqual(object, other);
 console.log(value);
