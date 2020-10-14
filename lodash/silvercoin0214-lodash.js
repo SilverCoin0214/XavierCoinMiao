@@ -225,6 +225,40 @@ var silvercoin0214 = {
     return result;
   },
 
+  /**
+   *
+   *   通过传入一个比较器来判断第一个数组里的元素是否跟需要比较的其他数组相等, 把不相等的元素重新组成一个数组返回
+   *   @param array {Array} 待比较的第一个数组
+   *   @param value {...array}  用来比较的其他数组
+   *   @param comparator {function}  比较器
+   *   @returns {array} 返回新数组
+   */
+
+  differenceWith: function (array, ...values) {
+    let result = [];
+
+    if (!Array.isArray(values[values.length - 1])) {
+      var func = this.iteratee(values[values.length - 1]);
+      values.pop();
+    } else {
+      func = this.identity();
+    }
+
+    let aryValue = this.concat([], ...values);
+
+    for (let item of array) {
+      let arrVal = item;
+      for (let iten of aryValue) {
+        let othVal = iten;
+        if (!func(arrVal, othVal)) {
+          result.push(item);
+        }
+      }
+    }
+
+    return result;
+  },
+
   // ------------
   /**
    *  通过传入的函数对数组或对象进行遍历后返回一个新的数组
@@ -274,7 +308,7 @@ var silvercoin0214 = {
    *  @returns {boolean}
    */
 
-  isEqual: function (value, other) {
+  isEqual: (value, other) => {
     if (!(value instanceof Object)) {
       return value === other;
     } else if (value instanceof Object && !(other instanceof Object)) {
@@ -284,7 +318,7 @@ var silvercoin0214 = {
         return false;
       }
       for (let key of Object.keys(value)) {
-        if (!this.isEqual(value[key], other[key])) {
+        if (!silvercoin0214.isEqual(value[key], other[key])) {
           return false;
         }
       }
@@ -337,7 +371,14 @@ var silvercoin0214 = {
   },
 };
 
-var object = { a: [{ b: { c: 3 } }] };
+var objects = [
+  { x: 1, y: 2 },
+  { x: 2, y: 1 },
+];
 
-var value = silvercoin0214.get(object, "a.b.c", "default");
+var value = silvercoin0214.differenceWith(
+  objects,
+  [{ x: 1, y: 2 }],
+  silvercoin0214.isEqual
+);
 console.log(value);
