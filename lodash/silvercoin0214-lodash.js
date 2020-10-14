@@ -1,110 +1,5 @@
 var silvercoin0214 = {
   /**
-   *   Util
-   *
-   */
-
-  /**
-   *  该函数接收数组或字符串后返回一个函数, 返回函数的返回值为其参数在Path路径上的值.
-   *  @param path {Array | string}
-   *  @return {function}
-   */
-
-  property: function (path) {
-    return function (obj) {
-      var value = Object.assign({}, obj);
-      if (typeof path === "string") {
-        let ary = path.split(".");
-        for (let i of ary) {
-          value = value[i];
-        }
-      } else {
-        for (let i of path) {
-          value = value[i];
-        }
-      }
-
-      return value;
-    };
-  },
-
-  /**
-   * identity: 返回首个提供的参数
-   * @param  {any} value
-   * @return {*}
-   */
-  identity: function (value) {
-    return value;
-  },
-
-  /**
-   * 创建一个使用创建的函数的参数调用func的函数。如果func是属性名称，则创建的函数返回给定元素的属性值。
-   * 如果func是数组或对象，则创建的函数对包含等效源属性的元素返回true，否则返回false。
-   * @param func {*}
-   * @returns {function}
-   */
-
-  iteratee: function (func = this.identity) {
-    if (typeof func === "string") {
-      return this.property(func);
-    } else if (func instanceof Array) {
-      return this.matchesProperty(func);
-    } else if (func instanceof Function) {
-      return func;
-    } else if (func instanceof Object) {
-      return this.matches(func);
-    }
-  },
-
-  /**
-   *  创建一个函数判断一个给定的对象和参数source，如果给定对象中有与source相同的属性，返回true，否则返回false
-   *  @param source {object}
-   *  @return {function}
-   *
-   */
-
-  matches: function (source) {
-    return function (obj) {
-      for (let key of Object.keys(source)) {
-        if (obj[key] !== source[key]) {
-          return false;
-        }
-      }
-      return true;
-    };
-  },
-
-  /**
-   * 创建一个函数，判断给定对象属性是否与传入的参数相同，相同返回true，不同返回false
-   * @param {Array|string} path 待获取的属性名
-   * @param {*} srcValue 待比较的属性值
-   * @returns {Function}
-   */
-
-  matchesProperty: function (path, srcValue) {
-    return function (obj) {
-      var copyObj = Object.assign({}, obj);
-      if (typeof path === "string") {
-        let ary = path.split(".");
-        for (let i of ary) {
-          copyObj = copyObj[i];
-        }
-        if (srcValue === copyObj) {
-          return true;
-        }
-      } else {
-        for (let i of path) {
-          copyObj = copyObj[i];
-        }
-        if (srcValue === copyObj) {
-          return true;
-        }
-      }
-      return false;
-    };
-  },
-
-  /**
    ** Array
    */
 
@@ -259,12 +154,84 @@ var silvercoin0214 = {
     return result;
   },
 
+  /**
+   *   创建一个切片数组, 从开头删除N个元素
+   *   @param ary {array} 需要切片的数组
+   *   @param n {number}  删除个数
+   *   @return {array}
+   */
+
+  drop: (ary, n = 1) => {
+    let result = [];
+    if (ary.length < n) {
+      return result;
+    }
+    for (let i = n; i < ary.length; i++) {
+      result.push(ary[i]);
+    }
+
+    return result;
+
+    // 使用Array.slice写法, Array.silce(start, end)
+    // let result = [...ary];
+    // return result.slice(n);
+  },
+
+  /**
+   *  创建一个切片数组, 原数组从结束位置开始删N个元素,
+   *   @param ary {array} 需要切片的数组
+   *   @param n {number}  删除个数
+   *   @return {array}
+   */
+
+  dropRight: (ary, n = 1) => {
+    let result = [...ary];
+    if (ary.length < n) {
+      return [];
+    }
+
+    for (let i = 0; i < n; i++) {
+      result.pop();
+    }
+
+    return result;
+
+    // 使用Array.slice写法
+    // return ary.length > n ? result.slice(0, ary.length - n) : [];
+  },
+
+  /**
+   *  创建一个切片数组, 从头开始按照指定方法删除元素,直到方法返回False
+   *  @param ary {array}  要被切片的数组
+   *  @param predicate {function}  指定的方法
+   *  @return {array}
+   */
+
+  dropWhile: (ary, predicate = this.identity) => {
+    let result = [];
+
+    predicate = silvercoin0214.iteratee(predicate);
+
+    for (let i = 0; i < ary.length; i++) {
+      if (!predicate(ary[i], i, ary)) {
+        result.push(ary[i]);
+      }
+    }
+
+    return result;
+  },
+
   // ------------
   /**
    *  通过传入的函数对数组或对象进行遍历后返回一个新的数组
    *  @param collection {array | object}
    *  @param iteratee {function}
    *  @returns {Array}
+   */
+
+  /**
+   *
+   *
    */
 
   map: function (collection, iteratee = this.identity) {
@@ -369,16 +336,124 @@ var silvercoin0214 = {
 
     return obj;
   },
+
+  /**
+   *   Util
+   *
+   */
+
+  /**
+   *  该函数接收数组或字符串后返回一个函数, 返回函数的返回值为其参数在Path路径上的值.
+   *  @param path {Array | string}
+   *  @return {function}
+   */
+
+  property: function (path) {
+    return function (obj) {
+      var value = Object.assign({}, obj);
+      if (typeof path === "string") {
+        let ary = path.split(".");
+        for (let i of ary) {
+          value = value[i];
+        }
+      } else {
+        for (let i of path) {
+          value = value[i];
+        }
+      }
+
+      return value;
+    };
+  },
+
+  // property: function (path) {
+  //   return function (obj) {
+  //     return obj[path];
+  //   };
+  // },
+
+  /**
+   * identity: 返回首个提供的参数
+   * @param  {any} value
+   * @return {*}
+   */
+  identity: function (value) {
+    return value;
+  },
+
+  /**
+   * 创建一个使用创建的函数的参数调用func的函数。如果func是属性名称，则创建的函数返回给定元素的属性值。
+   * 如果func是数组或对象，则创建的函数对包含等效源属性的元素返回true，否则返回false。
+   * @param func {*}
+   * @returns {function}
+   */
+
+  iteratee: function (func = this.identity) {
+    if (typeof func === "string") {
+      return this.property(func);
+    } else if (func instanceof Array) {
+      return this.matchesProperty(func[0], func[1]);
+    } else if (func instanceof Function) {
+      return func;
+    } else if (func instanceof Object) {
+      return this.matches(func);
+    }
+  },
+
+  /**
+   *  创建一个函数判断一个给定的对象和参数source，如果给定对象中有与source相同的属性，返回true，否则返回false
+   *  @param source {object}
+   *  @return {function}
+   *
+   */
+
+  matches: function (source) {
+    return function (obj) {
+      for (let key of Object.keys(source)) {
+        if (obj[key] !== source[key]) {
+          return false;
+        }
+      }
+      return true;
+    };
+  },
+
+  /**
+   * 创建一个函数，判断给定对象属性是否与传入的参数相同，相同返回true，不同返回false
+   * @param {Array|string} path 待获取的属性名
+   * @param {*} srcValue 待比较的属性值
+   * @returns {Function}
+   */
+
+  matchesProperty: function (path, srcValue) {
+    return function (obj) {
+      var copyObj = Object.assign({}, obj);
+      if (typeof path === "string") {
+        let ary = path.split(".");
+        for (let i of ary) {
+          copyObj = copyObj[i];
+        }
+        if (srcValue === copyObj) {
+          return true;
+        }
+      } else {
+        for (let i of path) {
+          copyObj = copyObj[i];
+        }
+        if (srcValue === copyObj) {
+          return true;
+        }
+      }
+      return false;
+    };
+  },
 };
 
-var objects = [
-  { x: 1, y: 2 },
-  { x: 2, y: 1 },
+var users = [
+  { user: "barney", active: false },
+  { user: "fred", active: false },
+  { user: "pebbles", active: true },
 ];
 
-var value = silvercoin0214.differenceWith(
-  objects,
-  [{ x: 1, y: 2 }],
-  silvercoin0214.isEqual
-);
+var value = silvercoin0214.dropWhile(users, "active");
 console.log(value);
