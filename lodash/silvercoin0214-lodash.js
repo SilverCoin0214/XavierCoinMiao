@@ -201,28 +201,30 @@ var silvercoin0214 = {
   },
 
   /**
-   *  创建一个切片数组, 从头开始按照指定方法删除元素,直到方法返回False
+   *  创建一个切片数组, 从predicate返回false时开始返回剩余所有元素
    *  @param ary {array}  要被切片的数组
    *  @param predicate {function}  指定的方法
    *  @return {array}
    */
 
   dropWhile: (ary, predicate = this.identity) => {
-    let result = [];
+    let result = [...ary];
 
     predicate = silvercoin0214.iteratee(predicate);
 
     for (let i = 0; i < ary.length; i++) {
       if (!predicate(ary[i], i, ary)) {
-        result.push(ary[i]);
-      }
-    }
+        result = result.slice(i);
 
-    if (result.find((e) => silvercoin0214.isEqual(e, ary[ary.length - 1]))) {
-      return result;
-    } else {
-      result.push(ary[ary.length - 1]);
-      return result;
+        if (
+          result.find((e) => silvercoin0214.isEqual(e, ary[ary.length - 1]))
+        ) {
+          return result;
+        } else {
+          result.push(ary[ary.length - 1]);
+          return result;
+        }
+      }
     }
   },
 
@@ -234,21 +236,21 @@ var silvercoin0214 = {
    */
 
   dropRightWhile: (ary, predicate = this.identity) => {
-    let result = [];
+    let result = [...ary];
 
     predicate = silvercoin0214.iteratee(predicate);
 
     for (let i = ary.length - 1; i >= 0; i--) {
       if (!predicate(ary[i], i, ary)) {
-        result.push(ary[i]);
-      }
-    }
+        result = result.slice(0, i + 1);
 
-    if (result.find((e) => silvercoin0214.isEqual(e, ary[0]))) {
-      return result;
-    } else {
-      result.push(ary[0]);
-      return result;
+        if (result.find((e) => silvercoin0214.isEqual(e, ary[0]))) {
+          return result;
+        } else {
+          result.push(ary[0]);
+          return result;
+        }
+      }
     }
   },
 
