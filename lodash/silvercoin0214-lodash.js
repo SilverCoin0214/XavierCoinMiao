@@ -218,14 +218,45 @@ var silvercoin0214 = {
       }
     }
 
-    return result;
+    if (result.find((e) => silvercoin0214.isEqual(e, ary[ary.length - 1]))) {
+      return result;
+    } else {
+      result.push(ary[ary.length - 1]);
+      return result;
+    }
+  },
+
+  /**
+   *  创建一个切片数组, 从尾部开始按照指定方法删除元素,直到方法返回False
+   *  @param ary {array}  要被切片的数组
+   *  @param predicate {function}  指定的方法
+   *  @return {array}
+   */
+
+  dropRightWhile: (ary, predicate = this.identity) => {
+    let result = [];
+
+    predicate = silvercoin0214.iteratee(predicate);
+
+    for (let i = ary.length - 1; i >= 0; i--) {
+      if (!predicate(ary[i], i, ary)) {
+        result.push(ary[i]);
+      }
+    }
+
+    if (result.find((e) => silvercoin0214.isEqual(e, ary[0]))) {
+      return result;
+    } else {
+      result.push(ary[0]);
+      return result;
+    }
   },
 
   // ------------
   /**
    *  通过传入的函数对数组或对象进行遍历后返回一个新的数组
    *  @param collection {array | object}
-   *  @param iteratee {function}
+   *  @param iter {function}
    *  @returns {Array}
    */
 
@@ -234,19 +265,17 @@ var silvercoin0214 = {
    *
    */
 
-  map: function (collection, iteratee = this.identity) {
+  map: function (collection, iter = this.identity) {
     let result = [];
 
     if (collection instanceof Array) {
       for (let item of collection) {
-        if (iteratee instanceof Function) {
+        if (iter instanceof Function) {
           let value = item;
           let index = collection.findIndex((e) => e === item);
-          result.push(iteratee(value, index, collection));
-        } else if (
-          Object.prototype.toString.call(iteratee) == "[object String]"
-        ) {
-          let aryIte = iteratee.split(".");
+          result.push(iter(value, index, collection));
+        } else if (Object.prototype.toString.call(iter) == "[object String]") {
+          let aryIte = iter.split(".");
           for (let i of aryIte) {
             item = item[i];
           }
@@ -256,7 +285,7 @@ var silvercoin0214 = {
     } else {
       let aryVaules = Object.values(collection);
       for (let item of aryVaules) {
-        result.push(iteratee(item));
+        result.push(iter(item));
       }
     }
 
@@ -450,10 +479,10 @@ var silvercoin0214 = {
 };
 
 var users = [
-  { user: "barney", active: false },
+  { user: "barney", active: true },
   { user: "fred", active: false },
-  { user: "pebbles", active: true },
+  { user: "pebbles", active: false },
 ];
 
-var value = silvercoin0214.dropWhile(users, "active");
+var value = silvercoin0214.dropRightWhile(users, "active");
 console.log(value);
