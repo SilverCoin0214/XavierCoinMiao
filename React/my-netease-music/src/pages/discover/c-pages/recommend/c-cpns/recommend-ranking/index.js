@@ -1,5 +1,9 @@
 import React, { memo, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
+
+import { RankingWrapper } from "./style";
+
+import SceTopRanking from "@/components/top-ranking";
 
 import {
   UP_RANKING_LIST,
@@ -11,6 +15,15 @@ import SceThemeHeaderRCM from "@/components/theme-header-rcm";
 import { getTopListAction } from "../../store/actionCreators";
 
 export default memo(function SceRecommendRanking() {
+  const { upRanking, newRanking, originRanking } = useSelector(
+    (state) => ({
+      upRanking: state.getIn(["recommend", "upRanking"]),
+      newRanking: state.getIn(["recommend", "newRanking"]),
+      originRanking: state.getIn(["recommend", "originRanking"]),
+    }),
+    shallowEqual
+  );
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -19,5 +32,14 @@ export default memo(function SceRecommendRanking() {
     dispatch(getTopListAction(ORIGIN_RANKING_LIST));
   }, [dispatch]);
 
-  return <SceThemeHeaderRCM title="榜单"> </SceThemeHeaderRCM>;
+  return (
+    <RankingWrapper>
+      <SceThemeHeaderRCM title="榜单"> </SceThemeHeaderRCM>
+      <div className="tops">
+        <SceTopRanking info={upRanking}></SceTopRanking>
+        <SceTopRanking info={newRanking}></SceTopRanking>
+        <SceTopRanking info={originRanking}></SceTopRanking>
+      </div>
+    </RankingWrapper>
+  );
 });

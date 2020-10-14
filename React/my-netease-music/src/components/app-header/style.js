@@ -2,8 +2,9 @@ import styled from "styled-components";
 
 export const HeaderWrapper = styled.div`
   height: 75px;
-  background-color: #242424;
   font-size: 14px;
+  color: #fff;
+  background-color: #242424;
 
   .content {
     height: 70px;
@@ -42,7 +43,7 @@ export const HeaderLeft = styled.div`
       }
 
       :last-of-type a {
-        position: realative;
+        position: relative;
         ::after {
           position: absolute;
           content: "";

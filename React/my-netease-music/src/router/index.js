@@ -23,6 +23,11 @@ const routes = [
     component: SceDiscover,
     routes: [
       {
+        path: "/discover",
+        exact: true,
+        render: () => <Redirect to="/discover/recommend" />,
+      },
+      {
         path: "/discover/recommend",
         component: SceRecommend,
       },
