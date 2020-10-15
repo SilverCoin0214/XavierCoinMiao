@@ -623,10 +623,50 @@ var silvercoin0214 = {
    *
    */
 
-  find: function (collection, predicate, fromIndex) {},
+  find: function (collection, predicate, fromIndex = 0) {
+    for (let i = fromIndex; i < collection.length; i++) {
+      let func = silvercoin0214.iteratee(predicate);
+
+      if (func(collection[i])) {
+        return collection[i];
+      }
+    }
+
+    return undefined;
+  },
+
+  /**
+   *  在数组中通过编写的条件方法找到第一个返回true的元素
+   *  @param  collection {array | object}
+   *  @param  predicate {function}
+   *  @param  fromIndex {number}
+   *
+   */
+
+  findLast: function (
+    collection,
+    predicate,
+    fromIndex = collection.length - 1
+  ) {
+    for (let i = fromIndex; i >= 0; i--) {
+      let func = silvercoin0214.iteratee(predicate);
+
+      if (func(collection[i])) {
+        return collection[i];
+      }
+    }
+
+    return undefined;
+  },
 };
 
-var array = [1, [2, [3, [4]], 5]];
+var users = [
+  { user: "barney", age: 36, active: true },
+  { user: "fred", age: 40, active: false },
+  { user: "pebbles", age: 1, active: true },
+];
 
-var value = silvercoin0214.flattenDeep(array);
+var value = silvercoin0214.findLast([1, 2, 3, 4], function (n) {
+  return n % 2 == 1;
+});
 console.log(value);
