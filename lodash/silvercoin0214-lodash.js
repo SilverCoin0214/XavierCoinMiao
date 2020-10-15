@@ -321,6 +321,75 @@ var silvercoin0214 = {
     return -1;
   },
 
+  /**
+   *  返回数组的第一个元素
+   *  @param ary {array}
+   *  @return {*}
+   */
+
+  head: function (ary) {
+    return ary[0];
+  },
+
+  /**
+   *  展平一层数组
+   *  @param ary {arary}
+   *  @return {array}
+   */
+
+  flatten: function (ary) {
+    return silvercoin0214.flattenDepth(ary);
+  },
+
+  /**
+   *  展平所有数组
+   *  @param ary {array}
+   *  @return {array}
+   */
+
+  flattenDeep: function (ary) {
+    while (
+      ary.find((e) => {
+        return e instanceof Array;
+      })
+    ) {
+      ary = silvercoin0214.flatten(ary);
+    }
+
+    return ary;
+  },
+
+  /**
+   *   按所给的层级展平数组
+   *   @param ary {array}
+   *   @param depth {number}
+   *   @return {array}
+   */
+
+  flattenDepth: function (ary, depth = 1) {
+    let result = [];
+    let copyAry = [...ary];
+
+    while (depth) {
+      for (let i = 0; i < copyAry.length; i++) {
+        if (copyAry[i] instanceof Array) {
+          let childAry = copyAry[i];
+          result.push(...childAry);
+        } else {
+          result.push(copyAry[i]);
+        }
+      }
+      depth = depth - 1;
+
+      if (depth === 0) {
+        return result;
+      }
+
+      copyAry = result;
+      result = [];
+    }
+  },
+
   // ------------
   /**
    *  通过传入的函数对数组或对象进行遍历后返回一个新的数组
@@ -557,14 +626,7 @@ var silvercoin0214 = {
   find: function (collection, predicate, fromIndex) {},
 };
 
-var users = [
-  { user: "barney", active: true },
-  { user: "fred", active: false },
-  { user: "pebbles", active: false },
-];
+var array = [1, [2, [3, [4]], 5]];
 
-var value = silvercoin0214.findLastIndex(users, {
-  user: "barney",
-  active: true,
-});
+var value = silvercoin0214.flattenDeep(array);
 console.log(value);
