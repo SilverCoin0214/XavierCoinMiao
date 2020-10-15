@@ -254,6 +254,73 @@ var silvercoin0214 = {
     }
   },
 
+  /**
+   *  使用自定义元素填充数组,默认起始为0,终点为数组长度, 区间为[start, end)
+   *  @param ary {Array} 需要填充的数组
+   *  @param value {*} 任何元素
+   *  @param start {number}
+   *  @param end {number}
+   *  @return {array}
+   */
+
+  fill: function (ary, value, start = 0, end = ary.length) {
+    let result = [...ary];
+
+    for (let i = start; i < end; i++) {
+      result[i] = value;
+    }
+
+    return result;
+  },
+
+  /**
+   *  在数组中通过编写的条件方法从头部开始找到第一个返回true的元素的下标
+   *  @param  ary {array}
+   *  @param  predicate {function}
+   *  @param  fromIndex {number}
+   *  @return {number}
+   */
+
+  findIndex: function (
+    ary,
+    predicate = silvercoin0214.identity,
+    fromIndex = 0
+  ) {
+    for (let i = fromIndex; i < ary.length; i++) {
+      let func = silvercoin0214.iteratee(predicate);
+
+      if (func(ary[i])) {
+        return i;
+      }
+    }
+
+    return -1;
+  },
+
+  /**
+   *  在数组中通过编写的条件方法从尾部开始找到第一个返回true的元素的下标
+   *  @param  ary {array}
+   *  @param  predicate {function}
+   *  @param  fromIndex {number}
+   *  @return {number}
+   */
+
+  findLastIndex: function (
+    ary,
+    predicate = silvercoin0214.identity,
+    fromIndex = ary.length - 1
+  ) {
+    for (let i = fromIndex; i >= 0; i--) {
+      let func = silvercoin0214.iteratee(predicate);
+
+      if (func(ary[i])) {
+        return i;
+      }
+    }
+
+    return -1;
+  },
+
   // ------------
   /**
    *  通过传入的函数对数组或对象进行遍历后返回一个新的数组
@@ -262,12 +329,7 @@ var silvercoin0214 = {
    *  @returns {Array}
    */
 
-  /**
-   *
-   *
-   */
-
-  map: function (collection, iter = this.identity) {
+  map: function (collection, iter = silvercoin0214.identity) {
     let result = [];
 
     if (collection instanceof Array) {
@@ -478,6 +540,21 @@ var silvercoin0214 = {
       return false;
     };
   },
+
+  /**
+   *   Collection
+   *
+   */
+
+  /**
+   *  在数组中通过编写的条件方法找到第一个返回true的元素
+   *  @param  collection {array | object}
+   *  @param  predicate {function}
+   *  @param  fromIndex {number}
+   *
+   */
+
+  find: function (collection, predicate, fromIndex) {},
 };
 
 var users = [
@@ -486,5 +563,8 @@ var users = [
   { user: "pebbles", active: false },
 ];
 
-var value = silvercoin0214.dropRightWhile(users, "active");
+var value = silvercoin0214.findLastIndex(users, {
+  user: "barney",
+  active: true,
+});
 console.log(value);
