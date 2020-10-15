@@ -390,6 +390,24 @@ var silvercoin0214 = {
     }
   },
 
+  /**
+   *  键值对数组转对象
+   *  @param pairs {array}
+   *  @return {object}
+   */
+
+  fromPairs: function (pairs) {
+    let result = {};
+
+    for (let i = 0; i < pairs.length; i++) {
+      let key = pairs[i][0];
+      let value = pairs[i][1];
+      result[key] = value;
+    }
+
+    return result;
+  },
+
   // ------------
   /**
    *  通过传入的函数对数组或对象进行遍历后返回一个新的数组
@@ -497,6 +515,23 @@ var silvercoin0214 = {
     }
 
     return obj;
+  },
+
+  /**
+   *   把对象转成映射的数组
+   *   @param obj {object}
+   *   @return {array}
+   */
+
+  toPairs: function (obj) {
+    let result = [];
+
+    for (let key of Object.keys(obj)) {
+      let element = [key, obj[key]];
+      result.push(element);
+    }
+
+    return result;
   },
 
   /**
@@ -660,13 +695,10 @@ var silvercoin0214 = {
   },
 };
 
-var users = [
-  { user: "barney", age: 36, active: true },
-  { user: "fred", age: 40, active: false },
-  { user: "pebbles", age: 1, active: true },
-];
+function Foo() {
+  this.a = 1;
+  this.b = 2;
+}
 
-var value = silvercoin0214.findLast([1, 2, 3, 4], function (n) {
-  return n % 2 == 1;
-});
+var value = silvercoin0214.toPairs(new Foo());
 console.log(value);
