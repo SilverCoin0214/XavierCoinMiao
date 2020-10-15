@@ -408,6 +408,40 @@ var silvercoin0214 = {
     return result;
   },
 
+  /**
+   *  在数组中从头开始找到指定的元素, 返回其下标, 如果第三个参数为负数,则从尾部开始找
+   *  @param ary {array}
+   *  @param value {*}
+   *  @param fromIndex {number}
+   *  @return {number}
+   */
+
+  indexOf: function (ary, value, fromIndex = 0) {
+    let absIndex = Math.abs(fromIndex);
+
+    if (fromIndex > ary.length) {
+      return -1;
+    }
+
+    if (fromIndex >= 0 || ary.length < absIndex) {
+      fromIndex = ary.length < absIndex ? 0 : fromIndex;
+      for (let i = fromIndex; i < ary.length; i++) {
+        if (ary[i] === value) {
+          return i;
+        }
+      }
+    } else {
+      let index = ary.length - fromIndex - 2;
+      for (let i = index; i >= 0; i--) {
+        if (ary[i] === value) {
+          return i;
+        }
+      }
+    }
+
+    return -1;
+  },
+
   // ------------
   /**
    *  通过传入的函数对数组或对象进行遍历后返回一个新的数组
@@ -700,5 +734,5 @@ function Foo() {
   this.b = 2;
 }
 
-var value = silvercoin0214.toPairs(new Foo());
+var value = silvercoin0214.indexOf([1, 2, 1, 2], 2, 2);
 console.log(value);
