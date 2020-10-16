@@ -442,6 +442,120 @@ var silvercoin0214 = {
     return -1;
   },
 
+  /**
+   *  获取除数组最后一个以外的所有元素
+   *  @param ary {array}
+   *  @return {array}
+   */
+
+  initial: function (ary) {
+    let result = [...ary];
+    result.pop();
+    return result;
+  },
+
+  /**
+   *  获取多个数组的交集
+   *  @param arys {...array}
+   *  @return {array}
+   *
+   */
+
+  intersection: function (...arys) {
+    let result = [];
+
+    let total = [].concat(...arys);
+    let setNum = new Set(total);
+    let elements = Array.from(setNum);
+
+    for (let ele of elements) {
+      let flag = arys.every((item, index) => {
+        return item.find((e) => e === ele);
+      });
+
+      if (flag === true) {
+        result.push(ele);
+      }
+    }
+
+    return result;
+  },
+
+  /**
+   *   依旧是获取交集,但是有条件限制, 需要先处理后在进行获取
+   *   @param arys {array}
+   *   @param iter {function}
+   *   @return {array}
+   */
+
+  intersectionBy: function () {},
+
+  /**
+   *  依旧是求交集, 但是用比较器比较后才判断相交
+   *  @param arys {array}
+   *  @param comparator {function}
+   *  @return {array}
+   */
+
+  intersectionWith: function () {},
+
+  /**
+   *   将数组转为字符串, 并且分隔符自定义,默认为逗号
+   *  @param ary {array}
+   *  @param sep {string}
+   *  @returns {string}
+   *
+   */
+
+  join: function (ary, sep = ",") {
+    let result = "";
+
+    for (let i = 0; i < ary.length; i++) {
+      result = result + ary[i] + sep;
+    }
+
+    return result.slice(0, result.length - 1);
+  },
+
+  /**
+   *  与indexOf相似, 区别是从右到左
+   *  @param ary {array}
+   *  @param value {*}
+   *  @param fromIndex {number}
+   *  @return {number}
+   */
+
+  lastIndexOf: function (ary, value, fromIndex = ary.length - 1) {
+    if (fromIndex > ary.length) {
+      return -1;
+    }
+
+    for (let i = fromIndex; i >= 0; i--) {
+      if (ary[i] === value) {
+        return i;
+      }
+    }
+
+    return -1;
+  },
+
+  /**
+   *  获取索引处元素的值, 如果是负数就从右往左数
+   *  @param ary {array}
+   *  @param n {number}
+   *  @pram {*}
+   */
+
+  nth: function (ary, n = 0) {
+    if (n > 0 && n < ary.length) {
+      return ary[n];
+    } else if (n < 0 && Math.abs(n) < ary.length) {
+      return ary[ary.length + n];
+    }
+
+    return undefined;
+  },
+
   // ------------
   /**
    *  通过传入的函数对数组或对象进行遍历后返回一个新的数组
@@ -729,10 +843,7 @@ var silvercoin0214 = {
   },
 };
 
-function Foo() {
-  this.a = 1;
-  this.b = 2;
-}
+var array = ["a", "b", "c", "d"];
 
-var value = silvercoin0214.indexOf([1, 2, 1, 2], 2, 2);
+var value = silvercoin0214.nth(array, -2);
 console.log(value);
