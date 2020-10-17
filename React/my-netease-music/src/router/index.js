@@ -11,6 +11,7 @@ import SceSongs from "@/pages/discover/c-pages/songs";
 import SceDjradio from "@/pages/discover/c-pages/djradio";
 import SceArtist from "@/pages/discover/c-pages/artist";
 import SceAlbum from "@/pages/discover/c-pages/album";
+import ScePlayer from "@/pages/player";
 
 const routes = [
   {
@@ -50,6 +51,10 @@ const routes = [
       {
         path: "/discover/album",
         component: SceAlbum,
+      },
+      {
+        path: "/discover/player",
+        component: ScePlayer,
       },
     ],
   },

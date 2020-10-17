@@ -518,6 +518,16 @@ var silvercoin0214 = {
   },
 
   /**
+   *  获得数组最后一个值
+   *  @param ary {array}
+   *  @param {*}
+   */
+
+  last: function (ary) {
+    return ary.pop();
+  },
+
+  /**
    *  与indexOf相似, 区别是从右到左
    *  @param ary {array}
    *  @param value {*}

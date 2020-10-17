@@ -77,23 +77,38 @@ const changeOriginRankingAction = (res) => ({
 
 export const getTopListAction = (id) => {
   return (dispatch) => {
-    getTopList(id).then((res) => {
-      switch (id) {
-        case UP_RANKING_LIST:
-          dispatch(changeUpRankingAction(res.playlist));
-          break;
-        case NEW_RANKING_LIST:
-          dispatch(changeNewRankingAction(res.playlist));
-          break;
-        case ORIGIN_RANKING_LIST:
-          dispatch(changeOriginRankingAction(res.playlist));
-          break;
-        default:
-      }
-    });
+    getTopList(id)
+      .then((res) => {
+        // let obj = {};
+        // let playlist = res.playlist;
+        // if (playlist) {
+        //   for (let key of Object.keys(playlist)) {
+        //     if (key === "name" || key === "coverImgUrl" || key === "tracks") {
+        //       obj[key] = playlist[key];
+        //     }
+        //   }
+        // }
+        // console.log(obj);
+
+        switch (id) {
+          case UP_RANKING_LIST:
+            dispatch(changeUpRankingAction(res.playlist));
+            break;
+          case NEW_RANKING_LIST:
+            dispatch(changeNewRankingAction(res.playlist));
+            break;
+          case ORIGIN_RANKING_LIST:
+            dispatch(changeOriginRankingAction(res.playlist));
+            break;
+          default:
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
 
     // getTopList(id).then((res) => {
-    //   console.log(res.playlist);
+    //   console.log(res.playlist.tracks.slice(0, 20));
     // });
   };
 };
