@@ -638,6 +638,77 @@ var silvercoin0214 = {
     return ary;
   },
 
+  /**
+   *  按照给定位置删除元素,返回原数组
+   *  @param ary {array}
+   *  @param index {*}
+   *  @return {array}
+   *
+   */
+
+  pullAt: function (ary, index) {
+    if (Array.isArray(index)) {
+      let del = [];
+      for (let key of index) {
+        del.push(ary[key]);
+      }
+
+      for (let value of del) {
+        ary.splice(
+          ary.findIndex((e) => e === value),
+          1
+        );
+      }
+    } else {
+      return ary.splice(index, 1);
+    }
+
+    return ary;
+  },
+
+  /**
+   *   根据回调函数删除元素, 返回原数组
+   *   @param ary {array}
+   *   @param pred {function}
+   *   @return {array} newArray
+   */
+
+  remove: function (ary, pred = this.identity) {
+    let res = [];
+
+    ary.forEach((item, index, ary) => {
+      if (pred(item, index, ary)) {
+        ary.splice(index, 1);
+        res.push(item);
+      }
+    });
+
+    return res;
+  },
+
+  /**
+   *  逆序数组, 返回逆序后的数组
+   *  @param ary {array}
+   *  @return {array}
+   *
+   */
+
+  reverse: function (ary) {
+    return ary.reverse();
+  },
+
+  /**
+   *  切片数组
+   *  @param ary {array}
+   *  @param start {number}
+   *  @param end {number}
+   *
+   */
+
+  slice: function (ary, start = 0, end = ary.length) {
+    return ary.slice(start, end);
+  },
+
   // ------------
   /**
    *  通过传入的函数对数组或对象进行遍历后返回一个新的数组
@@ -925,16 +996,7 @@ var silvercoin0214 = {
   },
 };
 
-var array = [
-  { x: 1, y: 2 },
-  { x: 3, y: 4 },
-  { x: 5, y: 6 },
-];
-
+var array = [1, 2, 3];
 // debugger
-var value = silvercoin0214.pullAllWith(
-  array,
-  [{ x: 3, y: 4 }],
-  silvercoin0214.isEqual
-);
+var value = silvercoin0214.reverse(array);
 console.log(value);
