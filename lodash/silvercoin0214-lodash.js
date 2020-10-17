@@ -566,6 +566,78 @@ var silvercoin0214 = {
     return undefined;
   },
 
+  /**
+   *   删除给定的元素, 返回被删除元素的数组
+   *   @param ary {array}
+   *   @param value {*}
+   *   @return {array}
+   */
+
+  pull: function (ary, ...value) {
+    for (let i = 0; i < ary.length; i++) {
+      if (value.find((e) => e === ary[i])) {
+        ary.splice(i, 1);
+        i = 0;
+      }
+    }
+
+    return ary;
+  },
+
+  /**
+   *  给定删除的数组, 返回被删除的元素
+   *  @param ary {array}
+   *  @param value {array}
+   *  @return {array}
+   */
+
+  pullAll: function (ary, value) {
+    return this.pull(ary, ...value);
+  },
+
+  /**
+   *   通过给定的选择器删除元素
+   *   @param ary {array}
+   *   @param value {array}
+   *   @param iter {function}
+   *   @return {array}
+   */
+
+  pullAllBy: function (ary, value, iter = this.identity) {
+    let func = this.iteratee(iter);
+
+    for (let i = 0; i < ary.length; i++) {
+      if (value.find((e) => func(e) === func(ary[i]))) {
+        ary.splice(i, 1);
+        i = 0;
+      }
+    }
+
+    return ary;
+  },
+
+  /**
+   *   通过比较器删除元素, 返回原数组
+   *   @param ary {array}
+   *   @param values {array}
+   *   @param comparator {function}
+   *   @return {array}
+   */
+
+  pullAllWith: function (ary, value, comparator) {
+    let func = this.iteratee(comparator);
+
+    for (let item of ary.keys()) {
+      for (let iten of value) {
+        if (func(iten, ary[item])) {
+          ary.splice(item, 1);
+        }
+      }
+    }
+
+    return ary;
+  },
+
   // ------------
   /**
    *  通过传入的函数对数组或对象进行遍历后返回一个新的数组
@@ -853,7 +925,16 @@ var silvercoin0214 = {
   },
 };
 
-var array = ["a", "b", "c", "d"];
+var array = [
+  { x: 1, y: 2 },
+  { x: 3, y: 4 },
+  { x: 5, y: 6 },
+];
 
-var value = silvercoin0214.nth(array, -2);
+// debugger
+var value = silvercoin0214.pullAllWith(
+  array,
+  [{ x: 3, y: 4 }],
+  silvercoin0214.isEqual
+);
 console.log(value);
