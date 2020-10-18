@@ -690,6 +690,8 @@ var silvercoin0214 = {
    */
 
   pullAt: function (ary, index) {
+    let res = [];
+
     if (Array.isArray(index)) {
       let del = [];
       for (let key of index) {
@@ -697,16 +699,18 @@ var silvercoin0214 = {
       }
 
       for (let value of del) {
-        ary.splice(
-          ary.findIndex((e) => e === value),
-          1
+        res.push(
+          ...ary.splice(
+            ary.findIndex((e) => e === value),
+            1
+          )
         );
       }
     } else {
       return ary.splice(index, 1);
     }
 
-    return ary;
+    return res;
   },
 
   /**
@@ -750,6 +754,90 @@ var silvercoin0214 = {
 
   slice: function (ary, start = 0, end = ary.length) {
     return ary.slice(start, end);
+  },
+
+  /**
+   *  去除第一个元素返回切片数组
+   *  @param {array} ary
+   *  @return {array}
+   */
+
+  tail: function (ary) {
+    ary.shift();
+    return ary;
+  },
+
+  /**
+   *  切片数组, 从头开始取n个
+   *  @param {array} ary 需要切片的数组
+   *  @param {number} n  切片个数
+   *  @return {array} 返回切片后的数组
+   */
+
+  take: function (ary, n = 1) {
+    return ary.slice(0, n);
+  },
+
+  /**
+   *  切片数组, 从末尾开始往前切n个
+   *  @param {array} ary
+   *  @param {number} n
+   *  @return {array}
+   */
+
+  takeRight: function (ary, n = 1) {
+    let res = [];
+
+    if (n === undefined) {
+      res = ary.pop();
+      return res;
+    }
+
+    for (let i = 0; i < n; i++) {
+      res.push(ary.pop());
+    }
+
+    return res.reverse();
+  },
+
+  /**
+   *   创建一个数组切片，从开始取元素。采取元素直到谓词返回false。谓词由三个参数调用：（值，索引，数组）。
+   *   @param {array} ary
+   *   @param {function} pred
+   *   @return {array}
+   */
+
+  takeWhile: function (ary, pred = this.identity) {
+    let res = [];
+    let func = silvercoin0214.iteratee(pred);
+
+    for (let i = 0; i < ary.length; i++) {
+      if (func(ary[i], i, ary)) {
+        res.push(ary[i]);
+      } else {
+        return res;
+      }
+    }
+  },
+
+  /**
+   *   创建一个数组切片，从结尾取元素。采取元素直到谓词返回false。谓词由三个参数调用：（值，索引，数组）。
+   *   @param {array} ary
+   *   @param {function} pred
+   *   @return {array}
+   */
+
+  takeRightWhile: function (ary, pred = this.identity) {
+    let res = [];
+    let func = silvercoin0214.iteratee(pred);
+
+    for (let i = ary.length - 1; i >= 0; i--) {
+      if (func(ary[i], i, ary)) {
+        res.push(ary[i]);
+      } else {
+        return res.reverse();
+      }
+    }
   },
 
   // ------------
@@ -1039,18 +1127,11 @@ var silvercoin0214 = {
   },
 };
 
-var objects = [
-  { x: 1, y: 2 },
-  { x: 2, y: 1 },
-];
-var others = [
-  { x: 1, y: 1 },
-  { x: 1, y: 2 },
+var users = [
+  { user: "barney", active: true },
+  { user: "fred", active: false },
+  { user: "pebbles", active: false },
 ];
 // debugger;
-var value = silvercoin0214.intersectionWith(
-  objects,
-  others,
-  silvercoin0214.isEqual
-);
+var value = silvercoin0214.takeRightWhile(users, "active");
 console.log(value);
