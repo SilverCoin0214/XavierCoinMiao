@@ -793,7 +793,8 @@ var silvercoin0214 = {
       return res;
     }
 
-    for (let i = 0; i < n; i++) {
+    let len = n < ary.length ? n : ary.length;
+    for (let i = 0; i < len; i++) {
       res.push(ary.pop());
     }
 
