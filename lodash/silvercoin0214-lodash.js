@@ -840,6 +840,86 @@ var silvercoin0214 = {
     }
   },
 
+  /**
+   *   创建一个新数组, 把数组集合里每个数组里与新数组元素不同的值添加到数组中, 返回新数组
+   *   @param {...array} arys
+   *   @return {array} newAry
+   */
+
+  union: function (...arys) {
+    let res = [];
+
+    for (let item of arys) {
+      for (let ele of item) {
+        let value = res.find((e) => e == ele);
+        if (value === undefined || value == -1) {
+          res.push(ele);
+        }
+      }
+    }
+
+    return res;
+  },
+
+  /**
+   *   创建一个新数组, 把数组里的每个数组的元素通过处理器处理后把不同的值添加到数组中, 返回新数组
+   *   @param {...array} arys
+   *   @param {function} iter
+   *   @return {array} newAry
+   */
+
+  unionBy: function (...arys) {
+    let func;
+    let res = [];
+    if (!Array.isArray(arys[arys.length - 1])) {
+      func = this.iteratee(arys.pop());
+    } else {
+      func = this.identity();
+    }
+
+    for (let item of arys) {
+      for (let ele of item) {
+        let value = res.find((e) => func(e) == func(ele));
+        if (value === undefined || value == -1) {
+          res.push(ele);
+        }
+      }
+    }
+
+    return res;
+  },
+
+  /**
+   *  创建一个新数组, 把数组里的每个数组的元素通过比较器处理后把不同的值添加到数组中, 返回新数组
+   *   @param {...array} arys
+   *   @param {function} comparator
+   *   @return {array} newAry
+   */
+
+  unionWith: function (...arys) {
+    let comparator;
+    let res = arys[0];
+    if (!Array.isArray(arys[arys.length - 1])) {
+      comparator = this.iteratee(arys.pop());
+    } else {
+      comparator = this.identity();
+    }
+
+    for (let item of arys) {
+      for (let ele of item) {
+        for (let resValue of res) {
+          if (!comparator(resValue, ele)) {
+            if (res.find((e) => silvercoin0214.isEqual(ele, e)) === undefined) {
+              res.push(ele);
+            }
+          }
+        }
+      }
+    }
+
+    return res;
+  },
+
   // ------------
   /**
    *  通过传入的函数对数组或对象进行遍历后返回一个新的数组
@@ -1127,11 +1207,14 @@ var silvercoin0214 = {
   },
 };
 
-var users = [
-  { user: "barney", active: true },
-  { user: "fred", active: false },
-  { user: "pebbles", active: false },
+var objects = [
+  { x: 1, y: 2 },
+  { x: 2, y: 1 },
+];
+var others = [
+  { x: 1, y: 1 },
+  { x: 1, y: 2 },
 ];
 // debugger;
-var value = silvercoin0214.takeRightWhile(users, "active");
+var value = silvercoin0214.unionWith(objects, others, silvercoin0214.isEqual);
 console.log(value);
