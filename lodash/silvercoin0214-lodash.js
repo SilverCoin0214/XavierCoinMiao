@@ -488,16 +488,59 @@ var silvercoin0214 = {
    *   @return {array}
    */
 
-  intersectionBy: function () {},
+  intersectionBy: function (...arys) {
+    let res = [];
+
+    let func;
+    if (!Array.isArray(arys[arys.length - 1])) {
+      func = silvercoin0214.iteratee(arys.pop());
+    } else {
+      func = this.identity();
+    }
+
+    for (let i = 1; i < arys.length; i++) {
+      for (let item of arys[i]) {
+        let value = arys[0].find((e) => func(e) === func(item));
+        if (value) {
+          res.push(value);
+        }
+      }
+
+      return res;
+    }
+  },
 
   /**
    *  依旧是求交集, 但是用比较器比较后才判断相交
-   *  @param arys {array}
+   *  @param arys {...array}
    *  @param comparator {function}
    *  @return {array}
    */
 
-  intersectionWith: function () {},
+  intersectionWith: function (...arys) {
+    let res = [];
+
+    let comparator;
+    if (!Array.isArray(arys[arys.length - 1])) {
+      comparator = silvercoin0214.iteratee(arys.pop());
+    } else {
+      comparator = silvercoin0214.identity();
+    }
+
+    let firstAry = arys.shift();
+
+    for (let item of firstAry) {
+      for (let iten of arys) {
+        for (let ele of iten) {
+          if (comparator(item, ele)) {
+            res.push(item);
+          }
+        }
+      }
+    }
+
+    return res;
+  },
 
   /**
    *   将数组转为字符串, 并且分隔符自定义,默认为逗号
@@ -996,7 +1039,18 @@ var silvercoin0214 = {
   },
 };
 
-var array = [1, 2, 3];
-// debugger
-var value = silvercoin0214.reverse(array);
+var objects = [
+  { x: 1, y: 2 },
+  { x: 2, y: 1 },
+];
+var others = [
+  { x: 1, y: 1 },
+  { x: 1, y: 2 },
+];
+// debugger;
+var value = silvercoin0214.intersectionWith(
+  objects,
+  others,
+  silvercoin0214.isEqual
+);
 console.log(value);
