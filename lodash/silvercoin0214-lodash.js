@@ -921,6 +921,54 @@ var silvercoin0214 = {
     return res;
   },
 
+  /**
+   *  想当与set数组, 把数组里重复的元素都去掉,返回一个新的数组
+   *  @param {array} ary
+   *  @return {array} newArray
+   */
+  uniq: function (ary) {
+    return Array.from(new Set(ary));
+  },
+
+  /**
+   *  通过选择器进行比较后set数组, 返回新的数组
+   *  @param {array} ary
+   *  @param {function} iter
+   *  @return {array}
+   */
+  uniqBy: function (ary, iter = this.identity) {
+    let res = [];
+    let func = this.iteratee(iter);
+
+    for (let i = 0; i < ary.length; i++) {
+      if (res.find((e) => func(e) == func(ary[i])) == undefined) {
+        res.push(ary[i]);
+      }
+    }
+
+    return res;
+  },
+
+  /**
+   *  通过选择器来去除重复的元素, 返回一个不重复的数组
+   *  @param {array} ary
+   *  @param {function} comp
+   *  @return {array}
+   */
+
+  uniqWith: function (ary, comp) {
+    let res = [];
+    const func = this.iteratee(comp);
+
+    for (let item of ary) {
+      if (res.find((e) => func(e, item)) == undefined) {
+        res.push(item);
+      }
+    }
+
+    return res;
+  },
+
   // ------------
   /**
    *  通过传入的函数对数组或对象进行遍历后返回一个新的数组
@@ -1211,11 +1259,8 @@ var silvercoin0214 = {
 var objects = [
   { x: 1, y: 2 },
   { x: 2, y: 1 },
-];
-var others = [
-  { x: 1, y: 1 },
   { x: 1, y: 2 },
 ];
 // debugger;
-var value = silvercoin0214.unionWith(objects, others, silvercoin0214.isEqual);
+var value = silvercoin0214.uniqWith(objects, silvercoin0214.isEqual);
 console.log(value);
