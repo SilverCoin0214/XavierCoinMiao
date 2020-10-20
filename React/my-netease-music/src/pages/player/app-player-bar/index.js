@@ -36,6 +36,7 @@ export default memo(function SceAppPlayerBar() {
   }, [dispatch]);
 
   useEffect(() => {
+    audioRef.current.volume = 0.1;
     audioRef.current.src = getPlaySong(currentSong.id);
     audioRef.current
       .play()
