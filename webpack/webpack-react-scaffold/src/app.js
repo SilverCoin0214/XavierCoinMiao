@@ -1,6 +1,6 @@
 import React from "react";
 
-import "./css/app.css";
+import "./css/app.less";
 
 function App() {
   return (
