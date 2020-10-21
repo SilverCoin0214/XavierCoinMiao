@@ -5,7 +5,7 @@ import background from "./img/test.jpg";
 
 function App() {
   return (
-    <div className="App">
+    <div className="app">
       {" "}
       没法时时更新啊!!!!!
       <h2>加加加</h2>
