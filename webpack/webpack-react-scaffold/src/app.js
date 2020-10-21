@@ -1,6 +1,7 @@
 import React from "react";
 
 import "./css/app.less";
+import background from "./img/test.jpg";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <h2>加加加</h2>
       <h2>加加加</h2>
       <h2>加加加</h2>
+      <img className="background" src={background} alt="" />
     </div>
   );
 }

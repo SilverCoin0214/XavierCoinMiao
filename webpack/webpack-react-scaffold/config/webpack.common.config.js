@@ -17,9 +17,23 @@ module.exports = {
   module: {
     rules: [
       {
+        // 导入 babel-loader
         test: /\.(js|jsx)$/,
         use: "babel-loader",
         exclude: /node_modules/,
+      },
+
+      {
+        // 导入url loader
+        test: /\.(jpg|png|gif)$/,
+        use: {
+          loader: "url-loader",
+          options: {
+            name: "[name].[ext]",
+            outputPath: "images/",
+            limit: 8192,
+          },
+        },
       },
     ],
   },
