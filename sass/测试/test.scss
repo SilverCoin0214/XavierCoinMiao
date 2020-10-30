@@ -1,0 +1,12 @@
+:root {
+    --ceshi: 240px; //--width-primary  ：变量名，css3有规则
+}
+
+$varWidth: var(--ceshi); //用var来盛放变量名
+
+
+div {
+    background-color: red;
+    width: $varWidth;
+    height: $varWidth;
+}

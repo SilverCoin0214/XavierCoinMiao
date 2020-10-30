@@ -62,6 +62,14 @@ let newMethod = function (constructor, ...rest) {
   return typeof result === "object" ? result : instance;
 };
 
+function mockNew() {
+  let consturctor = [].shift.call(arguments);
+  let instance = {};
+  instance.__proto__ = consturctor.prototype;
+  let result = consturctor.apply(instance, arguments);
+  return typeof result === "object" ? result : instance;
+}
+
 // 5. 实现map
 // 循环遍历数组, 返回一个新的数组.
 // 回调函数接受三个参数, item, index, arr

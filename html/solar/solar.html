@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="./styles.css" />
-
 </head>
 
 <body>
@@ -45,5 +44,13 @@
     </div>
 
 </body>
+<script>
+    var num = 10
+    var obj = document.getElementsByClassName("earth")[0]
+    var style = getComputedStyle(obj, null);
+
+    // style.animation = "orb 2.2440352158s linear infinite;"
+    console.log(style.animation)
+</script>
 
 </html>

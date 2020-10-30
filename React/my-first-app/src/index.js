@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo, useState } from "react";
 import ReactDOM from "react-dom";
 import "antd/dist/antd.less";
 // import Home, { App2 } from "./components/Home";

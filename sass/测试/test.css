@@ -1,0 +1,11 @@
+:root {
+  --ceshi: 240px;
+}
+
+div {
+  background-color: red;
+  width: var(--ceshi);
+  height: var(--ceshi);
+}
+
+/*# sourceMappingURL=test.css.map */

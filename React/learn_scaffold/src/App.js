@@ -1,26 +1,58 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class Header extends Component {
+  constructor() {
+    super();
+    console.log("constructor");
+  }
+
+  UNSAFE_componentWillMount() {
+    console.log("component will mount");
+  }
+
+  componentDidMount() {
+    console.log("component did mount");
+  }
+
+  componentWillUnmount() {
+    console.log("component will unmount");
+  }
+
+  render() {
+    console.log("render");
+
+    return (
+      <div>
+        <h1>哈哈</h1>
+      </div>
+    );
+  }
 }
 
-export default App;
+class Index extends Component {
+  constructor() {
+    super();
+    this.state = {
+      isShowHeader: true,
+    };
+  }
+
+  handleShowOrHide() {
+    this.setState({
+      isShowHeader: !this.state.isShowHeader,
+    });
+  }
+
+  render() {
+    return (
+      <div>
+        {this.state.isShowHeader ? <Header /> : null}
+        <button onClick={this.handleShowOrHide.bind(this)}>
+          显示或者隐藏标题
+        </button>
+      </div>
+    );
+  }
+}
+
+export default Index;

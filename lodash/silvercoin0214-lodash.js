@@ -1300,8 +1300,171 @@ var silvercoin0214 = {
 
     return undefined;
   },
+
+  /**
+   *  String!!!
+   *
+   */
+
+  /**
+   *   将字符串转为驼峰式写法
+   *   @param {string} str
+   *   @return {string}
+   */
+
+  camelCase: function (str = "") {
+    let res = "";
+
+    return res;
+  },
+
+  /**
+   *  将字符串第一个字母转为大写, 其余为小写
+   *  @param {string} str
+   *  @return {string}
+   */
+
+  capitalize: function (str = "") {
+    str = str.toLowerCase();
+    First = str.slice(0, 1).toUpperCase();
+    rest = str.slice(1);
+    return First + rest;
+  },
+
+  /**
+   *  检查字符串是否以给定的目标字符串结尾, 第三参数可以指定位置
+   *  @param {string} str
+   *  @param {string} target
+   *  @param {number} position
+   *  @return {boolean}
+   */
+
+  endsWith: function (str = "", target, positon = str.length) {
+    let res = false;
+
+    if (str[positon - 1] === target) {
+      return !res;
+    }
+
+    return res;
+  },
+
+  /**
+   *  将第一个字符小写, 其余不变
+   *  @param {string} str
+   *  @return {string}
+   */
+
+  lowerFirst: function (str = "") {
+    return str[0].toLowerCase() + str.slice(1);
+  },
+
+  /**
+   *   在字符尾部补满定义的字符,默认是空格
+   *   @param {string=""} str
+   *   @param {number=0} length
+   *   @param {string=" "} chars
+   *   @return {string}
+   */
+
+  padEnd: function (str = "", length = 0, chars = " ") {
+    let res;
+    if (str.length >= length) {
+      return str;
+    }
+
+    const restLength = length - str.length;
+    const len = chars.length;
+
+    const times = Math.floor(restLength / len);
+    const rest = restLength % len;
+
+    for (let i = 0; i < times; i++) {
+      str = str + chars;
+    }
+
+    res = str + chars.slice(0, rest);
+
+    return res;
+  },
+
+  /**
+   *  在字符头部填满定义的字符, 默认是空格
+   *   @param {string=""} str
+   *   @param {number=0} length
+   *   @param {string=" "} chars
+   *   @return {string}
+   */
+
+  padStart: function (str = "", length = 0, chars = " ") {
+    let res;
+    if (str.length >= length) {
+      return str;
+    }
+
+    const restLength = length - str.length;
+    const len = chars.length;
+
+    const times = Math.floor(restLength / len);
+    const rest = restLength % len;
+
+    let top = "";
+    for (let i = 0; i < times; i++) {
+      top = top + chars;
+    }
+
+    res = top + chars.slice(0, rest) + str;
+
+    return res;
+  },
+
+  /**
+   *  在字符两端填满定义的字符, 如果不够的话给定的字符会被截断
+   *   @param {string=""} str
+   *   @param {number=0} length
+   *   @param {string=" "} repeat
+   *   @return {string}
+   */
+
+  pad: function (str, length, repeat = " ") {
+    var flag = true;
+    while (true) {
+      if (str.length >= length) {
+        break;
+      }
+      if (flag) {
+        str += repeat;
+        flag = false;
+      } else {
+        str = repeat + str;
+        flag = true;
+      }
+    }
+    return str.substr(0, length);
+  },
+
+  /**
+   *  重复给定的字符串n次。
+   *  @param {string} str
+   *  @param {number} n
+   *  @return {string}
+   */
+
+  repeat: function (str = "", n = 1) {
+    let res = "";
+    if (n == 0) {
+      return res;
+    }
+
+    while (n > 0) {
+      res += str;
+      n--;
+    }
+
+    return res;
+  },
 };
 
 // debugger;
-var value = silvercoin0214.zip(["a", "b"], [1, 2], [true, false]);
+var value = silvercoin0214.repeat("abc", 1);
 console.log(value);

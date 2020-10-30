@@ -1,5 +1,17 @@
-import React from "react";
+import React, { memo } from "react";
 
-export default function SceFriend() {
-  return <div>SceFriend</div>;
-}
+import { FriendWrapper } from "./style";
+
+export default memo(function SceFriend() {
+  return (
+    <FriendWrapper>
+      <div className="content warp-v2">
+        <div className="pic">
+          <a className="login" href="/#">
+            立即登录
+          </a>
+        </div>
+      </div>
+    </FriendWrapper>
+  );
+});

@@ -1,10 +1,18 @@
 import React, { memo } from "react";
 
-import { RecommendWrapper, Content, RecommendLeft, RecommendRight } from "./style";
+import {
+  RecommendWrapper,
+  Content,
+  RecommendLeft,
+  RecommendRight,
+} from "./style";
 import SceTopBanner from "./c-cpns/top-banner";
-import SceHotRecommend from './c-cpns/hot-recommend'
-import SceNewAlbum from './c-cpns/new-album'
-import SceRecommendRanking from './c-cpns/recommend-ranking'
+import SceHotRecommend from "./c-cpns/hot-recommend";
+import SceNewAlbum from "./c-cpns/new-album";
+import SceRecommendRanking from "./c-cpns/recommend-ranking";
+import SceUserLogin from "./c-cpns/user-login";
+import SceSettleSinger from "./c-cpns/settle-singer";
+import SceHotRadio from "./c-cpns/hot-radio";
 
 function SceRecommend(props) {
   return (
@@ -16,7 +24,11 @@ function SceRecommend(props) {
           <SceNewAlbum />
           <SceRecommendRanking />
         </RecommendLeft>
-        <RecommendRight></RecommendRight>
+        <RecommendRight>
+          <SceUserLogin></SceUserLogin>
+          <SceSettleSinger></SceSettleSinger>
+          <SceHotRadio></SceHotRadio>
+        </RecommendRight>
       </Content>
     </RecommendWrapper>
   );

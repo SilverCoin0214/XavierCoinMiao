@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="App.css">
+    <script src='../node_modules/babel-standalone/babel.min.js'></script>
+    <script src='MyReact.js'></script>
+</head>
+
+<body>
+    <div id='root'></div>
+</body>
+
+<script type="text/babel">
+
+    /** @jsx MyReact.createElement */
+    function TodoForm(props) {
+        const [input, setInput] = MyReact.useState("");
+
+        const handleChange = (e) => {
+            setInput((state) => (state = e.target.value));
+        };
+
+        const handleSubmit = (e) => {
+            e.preventDefault();
+
+            props.onSubmit({
+                id: Math.floor(Math.random() * 10000),
+                text: input
+            });
+
+            setInput((state) => (state = ""));
+        };
+
+        return (
+            <form className="todo-form" onSubmit={handleSubmit}>
+                <input
+                    type="text"
+                    placeholder="Add a todo"
+                    value={input}
+                    name="text"
+                    className="todo-input"
+                    onChange={handleChange}
+                />
+                <button className="todo-button">Add todo</button>
+            </form>
+        );
+    }
+
+
+
+    /** @jsx MyReact.createElement */
+    function Todo(props) {
+        const [edit, setEdit] = MyReact.useState({
+            id: null,
+            value: ""
+        })
+        console.log(props)
+        return (
+            props.todos.map((todo, index) => {
+                console.log(todo, index, todo.text)
+                return (
+                    <div>
+                        <div>
+                            <p>{todo.text}</p>
+                        </div>
+                    </div>
+                )
+            })
+        )
+    }
+
+    /** @jsx MyReact.createElement */
+    function TodoList() {
+
+        const [todos, setTodos] = MyReact.useState([{
+            id: 6368, text: "次复查"
+        },])
+
+        const addTodo = todo => {
+            if (!todo.text || /^\s*$/.test(todo.text)) {
+                return;
+            }
+
+            const newTodos = [todo, ...todos];
+
+            setTodos(state => state = newTodos)
+        }
+
+        const completeTodo = id => {
+            let updatedTodos = todos.map((todo) => {
+                if (todo.id === id) {
+                    todo.isComplete = !todo.isComplete;
+                }
+                return todo;
+            });
+
+            setTodos(state => state = updateTodos)
+        }
+
+        return (
+            <div>
+                <h1>每日清单</h1>
+                <TodoForm onSubmit={addTodo} />
+                <Todo todos={todos} />
+            </div >
+        )
+    }
+
+
+    const element = <TodoList />
+    const container = document.getElementById("root");
+    MyReact.render(element, container);
+</script>
+
+</html>

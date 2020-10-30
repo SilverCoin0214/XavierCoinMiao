@@ -17,6 +17,7 @@ function createElement(type, props, ...children) {
 }
 
 function createTextElement(text) {
+  // 如果子节点不是dom节点,而是一些基本类似,例如string和number, 要封装成一个element对象.type类型是""TEXT_ELEMENT"
   return {
     type: "TEXT_ELEMENT",
     props: {
@@ -26,23 +27,8 @@ function createTextElement(text) {
   };
 }
 
-function createDom(fiber) {
-  // 判断节点是否是文本节点, 如果是文本节点就创建文本节点, 不是就创建元素节点
-  const dom =
-    fiber.type == "TEXT_ELEMENT"
-      ? document.createTextNode("")
-      : document.createElement(fiber.type);
-
-  // 将fiber对象里的props属性除了children属性添加到真实dom上
-  const isProperty = (key) => key !== "children";
-  Object.keys(fiber.props)
-    .filter(isProperty)
-    .forEach((name) => {
-      dom[name] = fiber.props[name];
-    });
-
-  return dom;
-}
+// 上面是创建 React Element对象
+// --------------------------------------------------
 
 /**
  *   commit阶段
@@ -58,7 +44,6 @@ const isGone = (prev, next) => (key) => !(key in next);
 
 function updateDom(dom, prevProps, nextProps) {
   // 删除旧事件或修改事件
-
   Object.keys(prevProps)
     .filter(isEvent)
     .filter((key) => !(key in nextProps) || isNew(prevProps, nextProps)(key))
@@ -79,7 +64,9 @@ function updateDom(dom, prevProps, nextProps) {
   Object.keys(nextProps)
     .filter(isProperty)
     .filter(isNew(prevProps, nextProps))
-    .forEach((name) => (dom[name] = nextProps[name]));
+    .forEach((name) => {
+      dom[name] = nextProps[name];
+    });
 
   // 增加监听事件
   Object.keys(nextProps)
@@ -112,10 +99,11 @@ function commitWork(fiber) {
   }
 
   let domParentFiber = fiber.parent;
+
+  // 要找到dom节点的父节点, 需要一直往上查找fiber树, 知道找到拥有dom节点的fiber节点
   while (!domParentFiber.dom) {
     domParentFiber = domParentFiber.parent;
   }
-
   const domParent = domParentFiber.dom;
 
   // 通过effectTag来判断是进行插入更新还是删除操作, 复用老节点是更新, 修改节点是插入,
@@ -147,9 +135,30 @@ function commitDeletion(fiber, domParent) {
  *   Reconciler阶段
  */
 
+// 用react element对象映射到的fiber节点创建dom节点
+function createDom(fiber) {
+  // 判断节点是否是文本节点, 如果是文本节点就创建文本节点, 不是就创建元素节点
+  const dom =
+    fiber.type == "TEXT_ELEMENT"
+      ? document.createTextNode("")
+      : document.createElement(fiber.type);
+
+  // // 将fiber对象里的props属性除了children属性添加到真实dom上
+  // const isProperty = (key) => key !== "children";
+  // Object.keys(fiber.props)
+  //   .filter(isProperty)
+  //   .forEach((name) => {
+  //     dom[name] = fiber.props[name];
+  //   });
+
+  updateDom(dom, {}, fiber.props);
+
+  return dom;
+}
+
 function render(element, container) {
   // 在内存中的fiber树, work in progress
-  // 第一次是rootfiber节点
+  // 第一次是root fiber节点
   wipRoot = {
     dom: container,
     props: {
@@ -163,6 +172,20 @@ function render(element, container) {
   deletions = [];
 
   nextUnitOfWork = wipRoot;
+
+  // // 需要特殊处理文本类型的元素,如果是文本类型的, 需要创建文本节点, 其他就是正常html标签
+  // const dom =
+  //   element.type == "TEXT_ELEMENT"
+  //     ? document.createTextElement("")
+  //     : document.createElement(element.type);
+
+  // // 在element对象的props里找到所有props属性,也就是dom上的属性, 挂载到dom上去
+  // const isProperty = (key) => key !== "children";
+  // Object.keys(element.props)
+  //   .filter(isProperty)
+  //   .forEach((name) => {
+  //     dom[name] = element.props[name];
+  //   });
 
   // // 循环将子节点也都渲染成真实dom
   // element.props.children.forEach((child) => {
@@ -186,11 +209,13 @@ let wipRoot = null;
 let deletions = null;
 
 function workLoop(deadline) {
-  // shouldYield用来判断浏览器是否空闲
+  // shouldYield用来判断线程是否需要打断, false代表不用打断
   let shouldYield = false;
 
   while (nextUnitOfWork && !shouldYield) {
     nextUnitOfWork = performUnitOfWork(nextUnitOfWork);
+
+    // 判断浏览器是否有更重要的工作, 主要是靠deaddline判断浏览器接管线程前还有多少时间, 一帧是16.666ms
     shouldYield = deadline.timeRemaining() < 1;
   }
 
@@ -223,8 +248,45 @@ function performUnitOfWork(fiber) {
   // // }
 
   // // 2. 循环给所有子节点创建新的fiber节点
-  // const elements = fiber.props.children;
+  // const elements = fiber.props.children;  // elements是一个数组
+  // // 抽取出新创建fiber节点的代码变成reconcilerChildren()函数
   // reconcilerChildren(fiber, elements);
+
+  // let index = 0
+  // let prevSibling = null
+
+  // while(index < element.length){
+  //   const element = elements[index]
+
+  //   const newFiber = {
+  //     type: element.type,
+  //     props: element.props,
+  //     partent: fiber,
+  //     dom: null,
+  //   }
+  // }
+  // // 根据是否为第一个节点, 添加到fiber root的child或者sibling上面,
+  // if(index === 0){
+  //   fiber.child = newFiber
+  // }else {
+  //   prevSibling.sibling = newFiber
+  // }
+
+  // prevSibling = newFiber
+  // index++
+
+  // // 3. 返回下一个工作单元
+  // if(fiber.child){
+  //   return fiber.child
+  // }
+
+  // let nextFiber = fiber
+  // while(nextFiber){
+  //   if(nextFiber.sibling){
+  //     return nextFiber.sibling
+  //   }
+  //   nextFiber = nextFiber.parent
+  // }
 
   // 函数式组件和类组件不同的地方在于:
   // - 函数式组件的fiber节点没有保存dom节点
@@ -257,7 +319,7 @@ function updateHostComponent(fiber) {
     fiber.dom = createDom(fiber);
   }
 
-  reconcilerChildren(fiber, fiber.props.children);
+  reconcileChildren(fiber, fiber.props.children);
 }
 
 /**
@@ -273,8 +335,9 @@ function updateFunctionComponent(fiber) {
   hookIndex = 0;
   wipFiber.hooks = [];
 
+  // 通过fiber.type找到的是函数式组件, 运行该函数返回一个react element,
   const children = [fiber.type(fiber.props)];
-  reconcilerChildren(fiber, children);
+  reconcileChildren(fiber, children);
 }
 
 // 使用useState时, 现在alternate上检查是否有旧的Hook,有就把旧的state给新的hook, 没有就初始化一个
@@ -300,7 +363,7 @@ function useState(initial) {
       props: currentRoot.props,
       alternate: currentRoot,
     };
-
+    // 设置为下一个更新工作单元
     nextUnitOfWork = wipRoot;
     deletions = [];
   };
@@ -313,23 +376,15 @@ function useState(initial) {
 // 抽取新建fiber节点的代码, diff算法
 // 1.如果old fiber和react element有相同的type(dom节点相同), 只需要更新它的属性
 // 2.如果type不同说明替换了新的dom节点, 需要重新创建
-// 3.如果type不同切同级仅存在old fiber,说明需要删除节点
-function reconcilerChildren(wipFiber, elements) {
+// 3.如果type不同且同级仅存在old fiber,说明需要删除节点
+function reconcileChildren(wipFiber, elements) {
   let index = 0;
+  // oldFiber就是当前页面渲染的Fiber树, currentFiber
   let oldFiber = wipFiber.alternate && wipFiber.alternate.child;
   let prevSibling = null;
 
   while (index < elements.length || oldFiber != null) {
     const element = elements[index];
-
-    // // 创建新的fiber节点
-    // const newFiber = {
-    //   type: element.type,
-    //   props: element.props,
-    //   parent: fiber,
-    //   dom: nul,
-    // };
-
     let newFiber = null;
 
     const sameType = oldFiber && element && element.type == oldFiber.type;
@@ -363,10 +418,9 @@ function reconcilerChildren(wipFiber, elements) {
       deletions.push(oldFiber);
     }
 
-    // ***
-    // if(oldFiber) {
-    //   oldFiber = oldFiber.sibling
-    // }
+    if (oldFiber) {
+      oldFiber = oldFiber.sibling;
+    }
 
     // 根据是否是第一个节点, 添加到对应的child/sibling上面
     if (index === 0) {

@@ -10,7 +10,18 @@ import {
   getHotRecommends,
   getNewAlbums,
   getTopList,
+  getArtistList,
 } from "@/services/recommend";
+
+// ----
+
+export const getArtistListAction = () => {
+  return (dispatch) => {
+    getArtistList(0, 10).then((res) => {
+      console.log(res);
+    });
+  };
+};
 
 // ----
 

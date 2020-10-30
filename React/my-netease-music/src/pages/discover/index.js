@@ -10,14 +10,6 @@ import { NavLink } from "react-router-dom";
 export default memo(function SceDiscover(props) {
   const { route } = props;
 
-  // useEffect(() => {
-  //   request({
-  //     url: "/banner",
-  //   }).then((res) => {
-  //     console.log(res);
-  //   });
-  // });
-
   return (
     <DiscoverWrapper>
       <div className="top">
