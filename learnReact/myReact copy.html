@@ -21,9 +21,12 @@
         useState,
     };
 
+
+
     /** @jsx MyReact.createElement */
     function Counter() {
         const [state, setState] = MyReact.useState(1)
+
         return (
             <div>
                 <h1 onClick={() => setState(c => c + 1)}>

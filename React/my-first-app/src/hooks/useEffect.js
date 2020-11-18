@@ -5,10 +5,15 @@ export default function TestUseEffect() {
 
   useEffect(() => {
     console.log("开始订阅");
+    console.log("修改dom" + counter);
 
     return () => {
       console.log("结束订阅");
     };
+  }, []);
+
+  useEffect(() => {
+    console.log("发送网络请求");
   }, []);
 
   return (

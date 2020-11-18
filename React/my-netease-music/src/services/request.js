@@ -7,6 +7,7 @@ const instance = axios.create({
   timeout: TIMEOUT,
 });
 
+// 请求拦截
 instance.interceptors.request.use(
   (config) => {
     return config;
@@ -14,6 +15,7 @@ instance.interceptors.request.use(
   (err) => {}
 );
 
+// 响应拦截
 instance.interceptors.response.use(
   (res) => {
     return res.data;

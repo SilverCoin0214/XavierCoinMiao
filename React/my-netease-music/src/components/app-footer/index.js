@@ -22,7 +22,8 @@ export default memo(function SceAppFooter() {
             })}
           </div>
           <div className="copyright">
-            <span>网易公司版权所有©1997-2020</span>
+            <span>网易公司版权所有©1997-2020 </span>
+
             <span>
               杭州乐读科技有限公司运营：
               <a
@@ -35,7 +36,8 @@ export default memo(function SceAppFooter() {
             </span>
           </div>
           <div className="report">
-            <span>违法和不良信息举报电话：0571-89853516</span>
+            <span>违法和不良信息举报电话：0571-89853516 </span>
+
             <span>
               举报邮箱：
               <a
@@ -48,7 +50,7 @@ export default memo(function SceAppFooter() {
             </span>
           </div>
           <div className="info">
-            <span>粤B2-20090191-18</span>
+            <span>粤B2-20090191-18 </span>
             <a
               href="http://www.beian.miit.gov.cn/publish/query/indexFirst.action"
               rel="noopener noreferrer"

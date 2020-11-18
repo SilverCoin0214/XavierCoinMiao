@@ -22,6 +22,7 @@ export default memo(function SceSongsCover(props) {
           </div>
         </div>
       </div>
+
       <div className="cover-bottom">{info.name}</div>
       {HOT_RECOMMEND_LIMIT !== 8 && (
         <div className="cover-source text-nowrap">by {info.copywriter}</div>

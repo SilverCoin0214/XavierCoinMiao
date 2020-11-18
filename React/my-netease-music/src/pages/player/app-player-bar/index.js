@@ -50,8 +50,11 @@ export default memo(function SceAppPlayerBar() {
 
   // other handle
 
+  // 获得图片地址
   const picUrl = (currentSong.al && currentSong.al.picUrl) || "";
+  // 获得歌手名
   const singerName = (currentSong.ar && currentSong.ar[0].name) || "佚名";
+  // 获取歌曲总时长
   const duration = currentSong.dt || 0;
   const showDuration = formatDate(duration, "mm:ss");
   const showCurrentTime = formatDate(currentTime, "mm:ss");
@@ -166,6 +169,7 @@ export default memo(function SceAppPlayerBar() {
             </div>
           </div>
         </PlayInfo>
+
         <Operator className="sprite_player" sequence={sequence}>
           <div className="left">
             <button className="sprite_player btn favor"></button>

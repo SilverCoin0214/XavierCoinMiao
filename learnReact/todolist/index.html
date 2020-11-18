@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyReact</title>
+    <link rel="stylesheet" href="App.css">
+    <script src='./babel.min.js'></script>
+    <script src='MyReact.js'></script>
+</head>
+
+<body>
+    <div id='root'></div>
+</body>
+
+<script type="text/babel">
+
+    /** @jsx MyReact.createElement */
+    function TodoForm(props) {
+        const [input, setInput] = MyReact.useState(props.edit ? props.edit.value : "");
+
+        const handleChange = (e) => {
+            setInput((state) => (state = e.target.value));
+        };
+
+        const handleSubmit = (e) => {
+            e.preventDefault();
+
+            props.onSubmit({
+                id: Math.floor(Math.random() * 10000),
+                text: input
+            });
+
+            setInput((state) => (state = ""));
+        };
+
+        return (
+            <form className="todo-form" onSubmit={handleSubmit}>
+                {props.edit ? (
+                    <div>
+                        <input
+                            type="text"
+                            placeholder="add a todo"
+                            value={input}
+                            name="text"
+                            className="todo-input edit"
+                            onChange={handleChange}
+                        />
+
+                        <button className="todo-button edit">update</button>
+                    </div>
+                ) : (
+                        <div>
+                            <input
+                                type="text"
+                                placeholder="add a todo"
+                                value={input}
+                                name="text"
+                                className="todo-input"
+                                onChange={handleChange}
+                            />
+
+                            <button className="todo-button">Add todo</button>
+                        </div>
+                    )}
+            </form>
+        );
+    }
+
+
+
+    /** @jsx MyReact.createElement */
+    function Todo(props) {
+        const [edit, setEdit] = MyReact.useState({
+            id: null,
+            value: ""
+        })
+
+        const submitUpdate = (value) => {
+            props.updateTodo(edit.id, value);
+            setEdit(edit => ({
+                id: null,
+                value: "",
+            }));
+        };
+
+        if (edit.id) {
+            return <TodoForm edit={edit} onSubmit={submitUpdate} />;
+        }
+
+
+        return (
+            <div>
+                {props.todos.map((todo, index) => {
+                    return (
+                        <div className={"todo-row"}>
+                            <div>
+                                {todo.text}
+                            </div>
+
+                            <div class="icons">
+                                <button
+                                    onClick={() => props.removeTodo(todo.id)}
+                                    className="delete-icon "
+                                >删除</button>
+                                <button
+                                    onClick={() => setEdit(edit =>
+                                        edit = { id: todo.id, value: todo.text })}
+                                    className="edit-icon "
+                                >修改</button>
+                            </div>
+                        </div>
+                    )
+                })}
+            </div>
+        )
+    }
+
+    /** @jsx MyReact.createElement */
+    function TodoList() {
+
+        const [todos, setTodos] = MyReact.useState([])
+
+        // 添加todos
+        const addTodo = todo => {
+            if (!todo.text || /^\s*$/.test(todo.text)) {
+                return;
+            }
+
+            const newTodos = [todo, ...todos];
+
+            setTodos(state => state = newTodos)
+        }
+
+
+        // 更新todos
+        const updateTodo = (todoId, newValue) => {
+            if (!newValue.text || /^\s*$/.test(newValue.text)) {
+                return;
+            }
+
+            setTodos(
+                (prev) => {
+                    return prev.map((item) => {
+                        return (item.id === todoId ? newValue : item)
+                    })
+                }
+            );
+        };
+
+        // 删除todo
+        const removeTodo = (id) => {
+            const removeArr = [...todos].filter((todo) => todo.id !== id);
+
+            setTodos(state => state = removeArr);
+        };
+
+        return (
+            <div>
+                <h1>每 日 清 单</h1>
+                <TodoForm onSubmit={addTodo} />
+                <Todo todos={todos}
+                    removeTodo={removeTodo}
+                    updateTodo={updateTodo}
+                />
+            </div >
+        )
+    }
+
+
+    const element = <div className="todo-app"><TodoList /></div>
+    const container = document.getElementById("root");
+    MyReact.render(element, container);
+</script>
+
+</html>

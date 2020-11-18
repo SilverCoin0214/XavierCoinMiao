@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    /* flex实现四列等宽 */
+    .parent1 {
+      display: flex;
+    }
+
+    .child1 {
+      flex-grow: 1;
+      height: 200px;
+      background-color: lightpink;
+    }
+
+    .child11 {
+      flex-grow: 1;
+      height: 200px;
+      background-color: lightgreen;
+    }
+
+    /* gird实现四列等宽 */
+
+    .parent2 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: 200px;
+    }
+
+    .child2 {
+      background-color: lightpink;
+    }
+
+    .child22 {
+      background-color: lightgreen;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>四列等宽</h1>
+  <h2>flex实现</h2>
+  <div class="parent1">
+    <div class="child1">1</div>
+    <div class="child11">2</div>
+    <div class="child1">3</div>
+    <div class="child11">4</div>
+  </div>
+
+  <h2>grid实现</h2>
+  <div class="parent2">
+    <div class="child2">1</div>
+    <div class="child22">2</div>
+    <div class="child2">3</div>
+    <div class="child22">4</div>
+  </div>
+</body>
+
+</html>

@@ -13,6 +13,8 @@ import {
   getArtistList,
 } from "@/services/recommend";
 
+import { getSongDetail } from "@/services/player";
+
 // ----
 
 export const getArtistListAction = () => {
@@ -100,6 +102,8 @@ export const getTopListAction = (id) => {
         //   }
         // }
         // console.log(obj);
+
+        console.log(res);
 
         switch (id) {
           case UP_RANKING_LIST:

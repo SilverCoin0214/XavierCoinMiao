@@ -43,21 +43,24 @@ export const FooterRight = styled.ul`
       width: 50px;
       height: 45px;
 
-      background-image: url(${require("@/assets/img/sprite_footer_02.png")});
+      background-image: url(${require("@/assets/img/foot_enter_new.png")});
       background-size: 110px 450px;
     }
 
     :nth-child(1) .link {
-      background-position: -60px -101px;
+      background-position: -60px -818px;
     }
     :nth-child(2) .link {
-      background-position: 0 0;
+      background-position: -60px -78px;
     }
     :nth-child(3) .link {
-      background-position: -60px -50px;
+      background-position: 0px 5px;
     }
     :nth-child(4) .link {
-      background-position: 0 -101px;
+      background-position: -60px -37px;
+    }
+    :nth-child(5) .link {
+      background-position: -60px -78px;
     }
 
     .title {
@@ -82,6 +85,11 @@ export const FooterRight = styled.ul`
     }
 
     :nth-child(4) .title {
+      background-position: -1px -72px;
+      margin-top: 6px;
+    }
+
+    :nth-child(5) .title {
       background-position: -1px -72px;
       margin-top: 6px;
     }

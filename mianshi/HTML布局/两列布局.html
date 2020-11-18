@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    .left {
+      background-color: pink;
+      width: 200px;
+      height: 200px;
+      text-align: center;
+      /* line-height: 200px; */
+    }
+
+    .right {
+      background-color: lightblue;
+      height: 200px;
+      text-align: center;
+      line-height: 200px;
+    }
+
+    /* float + margin-left */
+    .left1 {
+      float: left;
+    }
+
+    .right1 {
+      background-color: lightblue;
+      margin-left: 100px;
+    }
+
+    /* float:left + float:right */
+
+    .left2 {
+      float: left;
+    }
+
+    .right-fix {
+      float: right;
+      margin-left: -200px;
+      width: 100%;
+    }
+
+    .right2 {
+      margin-left: 200px;
+      height: 200px;
+    }
+
+    /* float + overflow:hidden */
+    .left3 {
+      float: left;
+    }
+
+    .right {
+      overflow: hidden;
+    }
+
+    /* position */
+    .parent4 {
+      position: relative;
+      height: 200px;
+    }
+
+    .left4 {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .right4 {
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 200px;
+    }
+
+    /* flex */
+    .parent5 {
+      display: flex;
+    }
+
+    .left5 {
+      width: 200px;
+    }
+
+    .right5 {
+      flex-grow: 1;
+    }
+
+    /* grid */
+    .parent6 {
+      display: grid;
+      grid-template-columns: 200px auto;
+    }
+
+
+    /* 左自适应, flex */
+
+    .parent7 {
+      display: flex;
+      height: 200px;
+    }
+
+    .left7 {
+      flex-grow: 1;
+      background-color: lightsalmon;
+    }
+
+    .right7 {
+      width: 200px;
+      background-color: lightgreen;
+    }
+
+    /* grid左自适应 */
+    .parent8 {
+      display: grid;
+      height: 200px;
+      grid-template-columns: auto 200px;
+    }
+
+    .left8 {
+      background-color: lightsalmon;
+    }
+
+    .right8 {
+      background-color: lightgreen
+    }
+
+    /* 一边不定宽, 一边自适应 */
+    .parent9 {
+      display: flex;
+      height: 200px;
+    }
+
+    .left9 {
+      background-color: lightgoldenrodyellow;
+      margin-right: 10px;
+    }
+
+    .right9 {
+      flex-grow: 1;
+      background-color: lightgray;
+    }
+  </style>
+</head>
+
+<body>
+  <h2>float + margin-left实现</h2>
+  <div class="left1 left">左列定宽float:left</div>
+  <div class="right1 right">右列自适应---margin-left</div>
+  <hr>
+  <hr>
+  <h2>float:left + float:right</h2>
+  <div class="left2 left">左定--float:left</div>
+  <div class="right-fix">
+    <div class="right2 right">右边自适应--float:right</div>
+  </div>
+  <hr>
+  <hr>
+
+  <h2>float + overflow实现</h2>
+  <div class="left3 left">左定--float:left</div>
+  <div class="right right3">右自适应--overflow:hidden</div>
+
+  <hr>
+  <hr>
+
+  <h2>postion实现</h2>
+  <div class="parent4">
+    <div class="left4 left">左定--position:absolute,left:0</div>
+    <div class="right4 right">右自适应--position:absolute, right:0</div>
+  </div>
+
+  <hr>
+  <hr>
+
+  <h2>flex实现</h2>
+  <div class="parent5">
+    <div class="left5 left">左定--width: 200px</div>
+    <div class="right5 right">右自适应--flex-grow: 1</div>
+  </div>
+
+  <hr>
+  <hr>
+
+  <h2>grid实现</h2>
+  <div class="parent6">
+    <div class="left6 left">左定</div>
+    <div class="right6 right">右自适应(只需要父类 display: grid; grid-template-columns:200px auto)</div>
+  </div>
+
+  <hr>
+  <hr>
+
+  <h2>flex实现左自适应, 右定</h2>
+  <div class="parent7">
+    <div class="left7">左自适应</div>
+    <div class="right7">右定</div>
+  </div>
+
+  <hr>
+  <hr>
+
+  <h2>grid实现左自适应, 右定</h2>
+  <div class="parent8">
+    <div class="left8">左自适应</div>
+    <div class="right8">右定</div>
+  </div>
+
+
+  <hr>
+  <hr>
+  <h2>一列不定宽, 一列自适应</h2>
+  <div class="parent9">
+    <div class="left9">不定宽----------</div>
+    <div class="right9">自适应</div>
+  </div>
+
+
+</body>
+
+</html>

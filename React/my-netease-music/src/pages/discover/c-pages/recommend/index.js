@@ -24,6 +24,7 @@ function SceRecommend(props) {
           <SceNewAlbum />
           <SceRecommendRanking />
         </RecommendLeft>
+
         <RecommendRight>
           <SceUserLogin></SceUserLogin>
           <SceSettleSinger></SceSettleSinger>

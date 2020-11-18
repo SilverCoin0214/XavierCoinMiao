@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    /* float + margin */
+    .left1 {
+      width: 200px;
+      height: 200px;
+      background-color: lightpink;
+
+      float: left;
+    }
+
+    .center1 {
+      width: 200px;
+      height: 200px;
+      background-color: lightblue;
+
+      float: left;
+    }
+
+    .right1 {
+      background-color: lightgreen;
+      height: 200px;
+      margin-left: 400px;
+    }
+
+    /* float + overflow */
+    .parent2 {
+      height: 200px;
+    }
+
+    .left2 {
+      float: left;
+      background-color: lightsalmon;
+      height: 200px;
+      width: 200px;
+    }
+
+    .center2 {
+      float: left;
+      width: 200px;
+      background-color: lightgrey;
+      height: 200px;
+    }
+
+    .right2 {
+      overflow: hidden;
+      height: 200px;
+      background-color: lightcyan;
+    }
+
+    /* flex */
+    .parent3 {
+      display: flex;
+      height: 200px;
+    }
+
+    .left3 {
+      flex-grow: 1;
+      background-color: limegreen;
+    }
+
+    .center3 {
+      width: 200px;
+      background-color: lightpink;
+    }
+
+    .right3 {
+      width: 200px;
+      background-color: lightcyan;
+    }
+
+    /* grid */
+
+    .parent4 {
+      display: grid;
+      grid-template-columns: auto 200px 200px;
+      height: 200px;
+    }
+
+    .left4 {
+      background-color: lightcyan;
+    }
+
+    .center4 {
+      background-color: lightgreen;
+    }
+
+    .right4 {
+      background-color: lightgoldenrodyellow;
+    }
+
+    /* position */
+
+    .parent5 {
+      position: relative;
+    }
+
+    .left5 {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 200px;
+      height: 200px;
+      background-color: lightseagreen;
+    }
+
+    .center5 {
+      position: absolute;
+      top: 0;
+      left: 200px;
+      width: 200px;
+      height: 200px;
+      background-color: lightgrey;
+    }
+
+    .right5 {
+      position: absolute;
+      left: 400px;
+      top: 0;
+      right: 0;
+      height: 200px;
+      background-color: lightsalmon;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>两列定宽, 一列自适应</h1>
+  <h2>float + margin-left实现</h2>
+
+  <div class="parent1">
+    <div class="left1">左定---float:left</div>
+    <div class="center1">中定--float:left</div>
+    <div class="right1">右自适应-- margin-left:400px</div>
+  </div>
+
+  <hr>
+  <h2>float + overflow:hidden</h2>
+  <div class="parent2">
+    <div class="left2">左定---float:left</div>
+    <div class="center2">中定--float:left</div>
+    <div class="right2">右适应-- overflow:hidden</div>
+  </div>
+
+  <hr>
+  <h2>flex实现-- display:flex;</h2>
+  <div class="parent3">
+    <div class="left3">左自适应: flex-grow:1</div>
+    <div class="center3">中定 width:200px</div>
+    <div class="right3">右定 width:200px</div>
+  </div>
+
+
+  <hr>
+  <h2>grid实现-- display:grid; grid-template-coclumns: auto 200px 200px</h2>
+  <div class="parent4">
+    <div class="left4">左自适应</div>
+    <div class="center4">中定</div>
+    <div class="right4">右定</div>
+  </div>
+
+  <hr>
+  <h2>position实现</h2>
+  <div class="parent5">
+    <div class="left5">左定---position:absolute; left:0</div>
+    <div class="center5">中定--position:absolute; left:200px</div>
+    <div class="right5">右适应-- position:absolute; left:400px; right:0;</div>
+  </div>
+</body>
+
+</html>

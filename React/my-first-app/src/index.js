@@ -26,6 +26,40 @@ import "antd/dist/antd.less";
 // import { BrowserRouter } from "react-router-dom";
 
 // import UseEffect from "./hooks/useEffect";
+
 import App from "./hooks/App";
 
-ReactDOM.render(<App />, document.getElementById("root"));
+class App2 extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      count: 1,
+    };
+  }
+
+  render() {
+    return (
+      <div>
+        <div>{this.state.count}</div>
+        <button onClick={(e) => this.Change()}>点击修改</button>
+      </div>
+    );
+  }
+
+  Change() {
+    // this.setState((prev) => console.log(prev.count));
+    this.setState((prev) => {
+      return {
+        count: prev.count + 1,
+      };
+    });
+    this.setState((prev) => {
+      return {
+        count: prev.count + 1,
+      };
+    });
+  }
+}
+
+ReactDOM.render(<App2 />, document.getElementById("root"));

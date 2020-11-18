@@ -33,6 +33,15 @@ export function getTopList(id) {
   });
 }
 
+export function getSongDetail(ids) {
+  return request({
+    url: "/song/detail",
+    params: {
+      ids,
+    },
+  });
+}
+
 export function getArtistList(offset, limit) {
   return request({
     url: "/top/artists",

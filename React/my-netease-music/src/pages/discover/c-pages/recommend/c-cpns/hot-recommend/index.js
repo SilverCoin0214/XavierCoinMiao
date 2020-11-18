@@ -30,11 +30,13 @@ export default memo(function SceHotRecommend() {
         title="热门推荐"
         keywords={["华语", "流行", "摇滚", "民谣", "电子"]}
       />
+
       <div className="recommend-list">
         {hotRecommends.map((item, index) => {
           return <SceSongsCover key={item.id} info={item}></SceSongsCover>;
         })}
       </div>
+
       <div className="music-ad"></div>
     </HotRecommendWrapper>
   );

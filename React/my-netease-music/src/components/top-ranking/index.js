@@ -36,6 +36,7 @@ export default memo(function SceTopRanking(props) {
           </div>
         </div>
       </div>
+
       <div className="list">
         {tracks.slice(0, 10).map((item, index) => {
           return (

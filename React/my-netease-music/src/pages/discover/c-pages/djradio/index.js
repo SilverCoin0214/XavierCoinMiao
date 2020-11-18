@@ -1,5 +1,5 @@
 import React, { memo } from "react";
 
 export default memo(function SceDjraido() {
-  return <div>SceDjraido</div>;
+  return <div>SceDjraido todo</div>;
 });

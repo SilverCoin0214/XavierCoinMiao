@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    .header1 {
+      height: 60px;
+      background-color: lightpink;
+    }
+
+    .left1 {
+      float: left;
+      width: 200px;
+      height: 200px;
+      background-color: lightcyan;
+      margin-left: -100%;
+    }
+
+    .center1 {
+      float: left;
+      height: 200px;
+      background-color: lightsalmon;
+      width: 100%;
+    }
+
+    .center-box {
+      margin-left: 200px;
+      margin-right: 300px;
+    }
+
+    .right1 {
+      float: left;
+      width: 300px;
+      height: 200px;
+      background-color: limegreen;
+
+      margin-left: -300px;
+    }
+
+    .footer1 {
+      clear: both;
+      height: 60px;
+      background-color: lightslategray;
+    }
+
+
+    /* 圣杯布局 */
+    .header2 {
+      height: 60px;
+      background-color: lightpink;
+    }
+
+    .parent2 {
+      height: 200px;
+      padding-left: 100px;
+      padding-right: 300px;
+    }
+
+    .left2 {
+      position: relative;
+      float: left;
+
+      margin-left: -100%;
+      left: -100px;
+
+      width: 100px;
+      height: 200px;
+      background-color: lightgreen;
+    }
+
+    .center2 {
+      float: left;
+      width: 100%;
+      height: 200px;
+      background-color: lightgoldenrodyellow;
+    }
+
+    .right2 {
+      position: relative;
+      float: left;
+
+      left: 300px;
+      margin-left: -300px;
+
+      width: 300px;
+      height: 200px;
+      background-color: lightsalmon;
+    }
+
+    .footer2 {
+      height: 50px;
+      background-color: lightseagreen;
+    }
+
+
+    /* flex */
+    .header3 {
+      height: 60px;
+      background-color: lightpink;
+    }
+
+    .parent3 {
+      display: flex;
+      height: 200px;
+    }
+
+    .left3 {
+      width: 100px;
+      background-color: lightcyan;
+    }
+
+    .right3 {
+      width: 300px;
+      background-color: lightgreen;
+    }
+
+    .center3 {
+      flex-grow: 1;
+      background-color: lightgoldenrodyellow;
+    }
+
+    .footer3 {
+      height: 50px;
+      background-color: lightsalmon;
+    }
+
+    /* grid */
+    .header4 {
+      height: 60px;
+      background-color: lightpink;
+    }
+
+    .parent4 {
+      display: grid;
+      height: 200px;
+      grid-template-columns: 100px auto 300px;
+    }
+
+    .left4 {
+      background-color: lightcyan;
+    }
+
+    .right4 {
+      background-color: lightgreen;
+    }
+
+    .center4 {
+      background-color: lightgoldenrodyellow;
+    }
+
+    .footer4 {
+      height: 50px;
+      background-color: lightsalmon;
+    }
+
+    /* 定位布局 */
+    .parent5 {
+      position: relative;
+    }
+
+    .left5 {
+      position: absolute;
+      left: 0;
+      top: 0;
+
+      width: 100px;
+      height: 200px;
+      background-color: lightcyan;
+    }
+
+    .center5 {
+      margin-left: 100px;
+      margin-right: 300px;
+
+      height: 200px;
+      background-color: lightgreen;
+    }
+
+    .right5 {
+      position: absolute;
+      right: 0;
+      top: 0;
+
+      width: 300px;
+      height: 200px;
+      background-color: lightseagreen;
+    }
+  </style>
+</head>
+
+<body>
+  <h2>双飞翼布局---主要使用float:left, 中间模块有两个DIV, 外层width:100%, 里层用margin设置左右边距</h2>
+  <div class="header1">头部</div>
+  <div class="parent1">
+    <div class="center1">
+      <div class="center-box">
+        中间自适应
+      </div>
+    </div>
+    <div class="left1">左列定宽</div>
+    <div class="right1">右列定宽</div>
+  </div>
+  <div class="footer1">尾部</div>
+
+  <hr>
+  <h2>圣杯布局---使用padding框住中间, 然后左右使用相对定位</h2>
+  <div class="header2">头部</div>
+  <div class="parent2">
+    <div class="center2">中间自适应</div>
+    <div class="left2">左列定宽</div>
+    <div class="right2">右列定宽</div>
+  </div>
+  <div class="footer2">尾部</div>
+
+  <hr>
+  <h2>flex布局---父元素display:flex; 中间自适应 flex-grow:1;</h2>
+  <div class="header3">头部</div>
+  <div class="parent3">
+    <div class="left3">左边定宽</div>
+    <div class="center3">中间自适应</div>
+    <div class="right3">右边定宽</div>
+  </div>
+  <div class="footer3">尾部</div>
+
+  <hr>
+  <h2>grid布局---父元素display:grid; grid-template-columns:100px auto 300px;</h2>
+  <div class="header4">头部</div>
+  <div class="parent4">
+    <div class="left4">左边定宽</div>
+    <div class="center4">中间自适应</div>
+    <div class="right4">右边定宽</div>
+  </div>
+  <div class="footer4">尾部</div>
+
+  <hr>
+  <h2>定位布局---左右绝对定位,中间设置margin-left和right</h2>
+  <div class="parent5">
+    <div class="left5">左边定宽</div>
+    <div class="center5">中间自适应</div>
+    <div class="right5">右边定宽</div>
+  </div>
+</body>
+
+</html>

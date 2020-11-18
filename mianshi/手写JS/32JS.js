@@ -347,7 +347,7 @@ Function.prototype.myApply = function (obj, args) {
   obj[fn] = this;
 
   let res;
-  if (!args) {
+  if (args === undefined) {
     res = obj[fn]();
   } else {
     res = obj[fn](...args);
@@ -697,3 +697,249 @@ console.log(e);
  *  20. Promise
  *
  */
+
+/**
+ *  21. Promise.all
+ */
+
+Promise.myAll = function (promiseArr) {
+  return new Promise((resolve, reject) => {
+    const ans = [];
+    let index = 0;
+    for (let i = 0; i < promiseArr.length; i++) {
+      promiseArr[i]
+        .then((res) => {
+          ans[i] = res;
+          index++;
+
+          if (index === promiseArr.length) {
+            resolve(ans);
+          }
+        })
+        .catch((err) => reject(err));
+    }
+  });
+};
+
+/**
+ *  22.Promise.race
+ */
+
+Promise.myRace = function (promiseArr) {
+  return new Promise((resolve, reject) => {
+    promiseArr.forEach((p) => {
+      Promise.resolve(p).then(
+        (val) => resolve(val),
+        (err) => reject(err)
+      );
+    });
+  });
+};
+
+/**
+ *  23.Promise并行限制
+ */
+
+/**
+ *  24.JSONP --  jsonp就是用get请求去向另一个域请求资源然后通过提前写好的回到函数处理发回来的资源
+ */
+
+const jsonp = ({ url, params, callbackName }) => {
+  const generateUrl = () => {
+    let dataSrc = "";
+    for (let key in params) {
+      if (Object.prototype.hasOwnProperty.call(params, key)) {
+        dataSrc += `${key}=${params[key]}&`;
+      }
+    }
+
+    dataSrc += `callback=${callbackName}`;
+    return `${url}?${dataSrc}`;
+  };
+
+  return new Promise((resolve, reject) => {
+    const scriptEle = document.createElement("script");
+    scriptEle.src = generateUrl();
+    document.body.appendChild(scriptEle);
+    window[callbackName] = (data) => {
+      resolve(data);
+      document.removeChild(scriptEle);
+    };
+  });
+};
+
+/**
+ *  25.AJAX
+ */
+
+const getJSON = function (url) {
+  return new Promise((resove, reject) => {
+    const xhr = XMLHttpRequest
+      ? new XMLHttpRequest()
+      : new ActiveXObject("Mscrosoft.XMLHttp");
+
+    xhr.open("GET", url, false);
+    xhr.setRequestHeader("Accept", "application/json");
+
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState !== 4) return;
+      if ((xhr.status = 200 || xhr.status === 304)) {
+        resolve(xhr.responseText);
+      } else {
+        reject(new Error(xhr.responseText));
+      }
+    };
+
+    xhr.send();
+  });
+};
+
+/**
+ *   27.图片懒加载
+ *   可以给图片img标签同意自定义属性 data-src = 'default.png', 当检测到图片出现在窗口再补充src属性, 此时才会进行图片资源加载
+ *   也就是真正的src先放在 data-src里, 到了出现时再把 data-src赋值给 src
+ */
+
+function lazyload() {
+  // 1. 首先获取所有图片元素
+  const imgs = document.getElementsByTagName("img");
+  const len = imgs.length;
+
+  // 视口高度
+  const viewHeight = document.documentELement.clientHeight;
+  // 滚动条高度
+  const scrollHeight =
+    document.documentElement.scrollTop || document.body.scrollTop;
+
+  // 当图片出现在视口内后就把 data-src里的内容赋值给真实的 src
+  for (let i = 0; i < len; i++) {
+    const offsetHeight = imgs[i].offsetTop;
+    if (offsetHeight < viewHeight + scrollHeight) {
+      const src = imgs[i].dataset.src;
+      imgs[i].src = src;
+    }
+  }
+}
+
+window.addEventListener("scroll", lazyload);
+
+// 自己默写一遍
+function lazyload() {
+  const imgs = document.getElementsByTagName("img");
+  const len = imgs.length;
+
+  const viewHeight = doucment.documentELement.clientHeight;
+  const scrollHeight =
+    document.documentElement.scrollTop || document.body.scrollTop;
+
+  for (let i = 0; i < len; i++) {
+    const offsetHeight = imgs[i].offsetTop;
+    if (offsetHeight < viewHeight + scrollHeight) {
+      const src = imgs[i].dataset.src;
+      imgs[i].src = src;
+    }
+  }
+}
+
+/**
+ *  28.滚动加载
+ *  原理就是监听页面滚动事件, 分析 clientHeight, scrollTop, scrollHeight三者的属性关系
+ */
+
+window.addEventListener(
+  "scroll",
+  function () {
+    const clientHeight = doucment.documentELement.clientHeight;
+    const scrollTop = document.documentELement.scrollTop;
+    const scrollHeight = document.documentELement.scrollHeight;
+
+    if (clientHeight + scrollTop >= scrollHeight) {
+      // 检测到滚动至页面底部, 进行后续操作
+      // ....
+    }
+  },
+  false
+);
+
+/**
+ *  29.渲染几万条数据不卡住页面
+ *  使用 createDocumentFragment 和 requestAnimationFrame, 将操作切分成一小段一小段执行
+ */
+
+setTimeout(() => {
+  // 插入十万条数据
+  const total = 10000;
+
+  // 一次插入的数据
+  const once = 20;
+
+  // 插入数据所需要的次数
+  const loopCount = Math.ceil(total / once);
+  // 渲染的次数
+  let countOfRender = 0;
+  const ul = document.querySelector("ul");
+
+  // 添加数据的方法
+  function add() {
+    const fragment = document.createDocumentFragment();
+    for (let i = 0; i < once; i++) {
+      const li = document.createElement("li");
+      li.innerText = Math.floor(Math.random() * total);
+      fragment.appendChild(li);
+    }
+    ul.appendChild(fragment);
+    countOfRender += 1;
+    loop();
+  }
+
+  function loop() {
+    if (countOfRender < loopCount) {
+      window.requestAnimationFrame(add);
+    }
+  }
+
+  loop();
+}, 0);
+
+// 自己默写一遍
+// setTimeout(() => {
+//   const total = 1000;
+//   const once = 20;
+//   const loopCount = Math.ceil(total / once);
+//   let countOfRender = 0;
+//   const ul = document.querySelector("ul");
+
+//   function add() {
+//     const fragment = document.createDocumentFragment();
+//     for (let i = 0; i < once; i++) {
+//       const li = document.createElement("li");
+//       li.innerText = Math.floor(Math.random() * total);
+//       fragment.appendChild(li);
+//     }
+
+//     ul.appendChild(fragment);
+//     countOfRender += 1;
+//     loop();
+//   }
+
+//   function loop() {
+//     if (countOfRender < loopCount) {
+//       window.requestAnimationFrame(add);
+//     }
+//   }
+
+//   loop();
+// }, 0);
+
+/**
+ *   30. 打印当前网页使用了多少中HTML元素
+ */
+
+const fn = () => {
+  return [
+    ...new Set(
+      [...document.querySelectorAll("*")],
+      map((el) => el.tagName)
+    ),
+  ].length;
+};
