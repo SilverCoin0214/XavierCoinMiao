@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="sparticles.min.js"></script>
+</head>
+
+<body>
+  <div class="sparticles-container">
+    <div class="index">
+      <div class="header">
+        <span class="hello">
+          嗨，你好!
+        </span>
+        <span class="message">
+          下面是我的一些CSS作品,请点击下方链接进行预览!
+        </span>
+      </div>
+      <div class="list">
+        <ul>
+          <li><a href="cssSilder/css-slider.html">CSS3轮播图</a></li>
+          <li><a href="clock.html">时钟</a></li>
+          <li><a href="ios-checkbox.html">ios滑动按钮</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <script>
+    window.onload = function () {
+      let container = document.querySelector('.sparticles-container')
+      let mySparticles = new Sparticles(container, { count: 700, style: "both", color: 'white' });
+    }
+
+  </script>
+  <style>
+    .sparticles-container {
+      height: 100vh;
+      width: 100vw;
+      position: fixed;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      z-index: -1;
+      background-color: black;
+    }
+
+    .index {
+      background-color: white;
+      height: 300px;
+      width: 300px;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      box-sizing: border-box;
+      padding: 0 20px;
+    }
+
+    .header {
+      margin-top: 30px;
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .hello {
+      display: inline-block;
+      font-size: 20px;
+      line-height: 30px;
+      height: 30px;
+      margin-bottom: 20px;
+    }
+
+    .message {
+      display: inline-block;
+      font-size: 14px;
+      line-height: 20px;
+      height: 20px;
+    }
+
+    .list ul {
+      list-style: none;
+      width: 130px;
+      margin: auto;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    a {
+      text-decoration: none;
+    }
+  </style>
+</body>
+
+</html>
