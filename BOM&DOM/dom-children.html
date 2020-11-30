@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+  <div>Users:</div>
+  <ul>
+    <li>John</li>
+    <li>Pete</li>
+  </ul>
+</body>
+<script>
+  console.log('DIV获取的第一种方式: document.body.children[0]', document.body.children[0])
+  console.log('DIV获取的第二种方式: document.getElementByTagName("div")', document.getElementsByTagName('div'))
+  console.log('DIV获取的第三种方式: document.querySelector("div")', document.querySelector('div'))
+  console.log('div获取的第四种方式: document.body.firstElementChild', document.body.firstElementChild)
+
+  console.log('ul获取的第一种方式: document.body.children[1]', document.body.children[1])
+  console.log('ul二三种方式也是 getElementByXXX 和 querySelector')
+  console.log('ul第四种方式有: document.body.children[0].nextElementSibling', document.body.children[0].nextElementSibling)
+</script>
+
+</html>
