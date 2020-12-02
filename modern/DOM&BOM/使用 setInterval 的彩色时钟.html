@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <style>
+    .hour {
+      color: red
+    }
+
+    .min {
+      color: green;
+    }
+
+    .sec {
+      color: blue
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="clock">
+    <span class="hour">hh</span>:<span class="min">mm</span>:<span class="sec">ss</span>
+  </div>
+
+  <!-- click on this button calls clockStart() -->
+  <input type="button" onclick="clockStart()" value="Start">
+
+  <!-- click on this button calls clockStop() -->
+  <input type="button" onclick="clockStop()" value="Stop">
+
+</body>
+<script>
+
+  const clock = document.querySelector('#clock')
+
+  function update() {
+    let mydate = new Date()
+
+    let hour = mydate.getHours()
+    let min = mydate.getMinutes()
+    let sec = mydate.getSeconds()
+    clock.children[0].innerHTML = hour < 10 ? '0' + hour : hour
+    clock.children[1].innerHTML = min < 10 ? '0' + min : min
+    clock.children[2].innerHTML = sec < 10 ? '0' + sec : sec
+  }
+
+  document.body.prepend(clock)
+
+  let clear
+  function clockStart() {
+    clear = setInterval(update, 1000);
+    update()
+  }
+
+  function clockStop() {
+    clearInterval(clear)
+  }
+
+  clockStart()
+</script>
+
+</html>
