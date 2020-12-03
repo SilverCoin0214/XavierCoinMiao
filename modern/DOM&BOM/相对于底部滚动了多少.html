@@ -1,0 +1,67 @@
+<!doctype html>
+
+<html>
+
+<head>
+
+  <style>
+    p {
+      width: 400px;
+      height: 400px;
+      overflow: auto;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>相对底部滚动了多少?</h1>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa unde accusantium rem ex assumenda ipsum, fugiat
+    tempore earum quibusdam veritatis reprehenderit, similique labore doloribus minima excepturi illo perferendis nobis
+    delectus!
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum sint magni voluptate nulla dolorum rerum quasi?
+    Veniam iusto, minus corrupti vel ab consectetur atque ipsum qui, soluta doloremque pariatur architecto.
+    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptas, veritatis laborum quis sed maiores recusandae
+    sint dignissimos dolorum debitis doloribus, possimus eveniet qui esse enim soluta consequuntur, aliquam dicta!
+    Laboriosam.
+    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minima sed deleniti officiis ducimus vel distinctio
+    excepturi debitis maiores ullam, odit voluptate tenetur unde tempore. Veniam alias a in asperiores deleniti?Lorem
+    ipsum dolor sit amet consectetur adipisicing elit. Culpa unde accusantium rem ex assumenda ipsum, fugiat
+    tempore earum quibusdam veritatis reprehenderit, similique labore doloribus minima excepturi illo perferendis nobis
+    delectus!
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum sint magni voluptate nulla dolorum rerum quasi?
+    Veniam iusto, minus corrupti vel ab consectetur atque ipsum qui, soluta doloremque pariatur architecto.
+    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptas, veritatis laborum quis sed maiores recusandae
+    sint dignissimos dolorum debitis doloribus, possimus eveniet qui esse enim soluta consequuntur, aliquam dicta!
+    Laboriosam.
+    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minima sed deleniti officiis ducimus vel distinctio
+    excepturi debitis maiores ullam, odit voluptate tenetur unde tempore. Veniam alias a in asperiores deleniti?Lorem
+    ipsum dolor sit amet consectetur adipisicing elit. Culpa unde accusantium rem ex assumenda ipsum, fugiat
+    tempore earum quibusdam veritatis reprehenderit, similique labore doloribus minima excepturi illo perferendis nobis
+    delectus!
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum sint magni voluptate nulla dolorum rerum quasi?
+    Veniam iusto, minus corrupti vel ab consectetur atque ipsum qui, soluta doloremque pariatur architecto.
+    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptas, veritatis laborum quis sed maiores recusandae
+    sint dignissimos dolorum debitis doloribus, possimus eveniet qui esse enim soluta consequuntur, aliquam dicta!
+    Laboriosam.
+    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minima sed deleniti officiis ducimus vel distinctio
+    excepturi debitis maiores ullam, odit voluptate tenetur unde tempore. Veniam alias a in asperiores deleniti?</p>
+</body>
+
+<script>
+  const p = document.querySelector('p')
+  const h2 = document.createElement('h2')
+  document.body.appendChild(h2)
+  h2.innerHTML = "距离底部的位置:  "
+
+  function handleScroll(e) {
+    const scrollBottom = this.scrollHeight - (this.scrollTop + this.clientHeight)
+
+    console.log(scrollBottom)
+
+    h2.innerHTML = `距离底部的位置:  ${scrollBottom}`
+  }
+
+  p.addEventListener('scroll', handleScroll)
+</script>
+
+</html>
