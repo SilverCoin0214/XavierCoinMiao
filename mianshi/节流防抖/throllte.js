@@ -5,12 +5,11 @@ function getUserAction() {
   container.innerHTML = count++;
 }
 
-getUserAction = throttle4(getUserAction, 1000, true);
+getUserAction = throttle2(getUserAction, 1000, true);
 
 container.onmousemove = getUserAction;
 
 // ------------------------------------------------------
-
 // 在n秒后才会第一次执行, 就是定时结束后才运行
 function throttle(fn, wait) {
   let timeout = null;
@@ -36,6 +35,7 @@ function throttle2(fn, wait) {
       timeout = setTimeout(() => {
         timeout = null;
       }, wait);
+
       fn.apply(context, arguments);
     }
   };

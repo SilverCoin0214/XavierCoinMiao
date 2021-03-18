@@ -6,13 +6,7 @@ import background from "./img/test.jpg";
 function App() {
   return (
     <div className="app">
-      {" "}
-      没法时时更新啊!!!!!
-      <h2>加加加</h2>
-      <h2>加加加</h2>
-      <h2>加加加</h2>
-      <h2>加加加</h2>
-      <h2>加加加</h2>
+      <h2>Webpack配置React脚手架</h2>
       <img className="background" src={background} alt="" />
     </div>
   );

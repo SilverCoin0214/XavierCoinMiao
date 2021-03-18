@@ -5,11 +5,23 @@ function getUserAction() {
   container.innerHTML = count++;
 }
 
-getUserAction = debounce(getUserAction, 1000, true);
+getUserAction = debounce_(getUserAction, 1000, true);
 
 container.onmousemove = getUserAction;
 
 // ----------------------------------------------------------------
+
+function debounce_(fn, time) {
+  let timeout = null;
+
+  return function () {
+    clearTimeout(timeout);
+
+    timeout = setTimeout(() => {
+      fn.apply(this, arguments);
+    }, time);
+  };
+}
 
 // 不会立马执行, 触发后需要等待N秒, 在N秒内又触发又需要等待.
 function debounce(fn, wait) {
