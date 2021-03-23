@@ -1,10 +1,25 @@
 import React, { PureComponent } from 'react'
 // import { connect } from '../utils/connect2'
-import { subAction } from '../store/actionCreator'
+import {
+  subAction,
+  changeBannersAction,
+  changeRecommendActon
+} from '../store/actionCreator'
 
 import { connect } from 'react-redux'
+import axios from 'axios'
 
 class About extends PureComponent {
+  componentDidMount() {
+    axios({
+      url: 'http://123.207.32.32:8000/home/multidata'
+    }).then((res) => {
+      const data = res.data.data
+      this.props.changeBanner(data.banner.list)
+      this.props.changeRecommend(data.recommend.list)
+    })
+  }
+
   render() {
     return (
       <div>
@@ -30,6 +45,12 @@ const mapDispatchToProps = (dispatch) => {
     },
     subNumber: (num) => {
       dispatch(subAction(num))
+    },
+    changeBanner: (banner) => {
+      dispatch(changeBannersAction(banner))
+    },
+    changeRecommend: (recommend) => {
+      dispatch(changeRecommendActon(recommend))
     }
   }
 }

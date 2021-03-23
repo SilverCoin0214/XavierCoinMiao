@@ -11,13 +11,21 @@ function Home(props) {
       <h2>当前计数: {props.counter} </h2>
       <button onClick={() => props.increment()}>+1</button>
       <button onClick={() => props.addNumber(5)}>+5</button>
+      <h1>banner</h1>
+      <ul>
+        {props.banners.map((item, index) => {
+          return <li key={item.acm}>{item.title}</li>
+        })}
+      </ul>
     </div>
   )
 }
 
 const mapStateToProps = (state) => {
   return {
-    counter: state.counter
+    counter: state.counter,
+    banners: state.banners,
+    recommend: state.recommend
   }
 }
 
